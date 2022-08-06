@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +14,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+    ],
+    function () {
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+        Route::get('/', function () {
+            return view('welcome');
+        });
+        
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->middleware(['auth'])->name('dashboard');
+        
+        require __DIR__ . '/auth.php';
+    }
+);
 
-require __DIR__ . '/auth.php';
