@@ -7389,7 +7389,7 @@ a.fc-more:hover {
   height: 1em;
   line-height: 1em;
   font-size: 1em;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Cairo", sans-serif !important;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -7714,7 +7714,7 @@ a.fc-more:hover {
   overflow: hidden;
   line-height: 8px;
   font-size: 11px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Cairo", sans-serif !important;
   text-align: center;
   cursor: s-resize; }
 
@@ -18897,7 +18897,7 @@ html {
   font-size: 14px; }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Cairo", sans-serif !important;
   margin: 0;
   padding: 0;
   font-size: 0.95rem;
@@ -18910,7 +18910,7 @@ h1, h2, h3, h4, h5, h6, p, span, ul, li, a, ol {
 h1, h2, h3, h4, h5, h6 {
   color: #323232;
   font-weight: 500;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Cairo", sans-serif !important;
   margin-bottom: 0.5rem; }
 
 h1 {
@@ -21082,7 +21082,7 @@ footer a {
   border: solid 2px #eeeeee;
   font-size: 12px;
   text-align: center;
-  font-family: 'Poppins', sans-serif !important; }
+  font-family: "Cairo", sans-serif !important;!important; }
   .morris-hover.morris-default-style .morris-hover-row-label {
     font-weight: bold;
     margin: 0.25em 0; }
@@ -21679,7 +21679,7 @@ select.form-control-sm:not([size]):not([multiple]) {
   line-height: 43px; }
 
 .custom-file-label:after {
-  font-family: 'Poppins', sans-serif; }
+  font-family: "Cairo", sans-serif !important; }
 
 /*hide-axis*/
 .hide-axis text[text-anchor="middle"] {

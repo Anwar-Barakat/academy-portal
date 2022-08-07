@@ -7,18 +7,12 @@
                     <!-- menu item Dashboard-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard">
-                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">Dashboard</span>
+                            <div class="pull-left">
+                                <i class="ti-home"></i>
+                                <span class="right-nav-text">{{ __('trans.dashboard') }}</span>
                             </div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
-                        <ul id="dashboard" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="index.html">Dashboard 01</a> </li>
-                            <li> <a href="index-02.html">Dashboard 02</a> </li>
-                            <li> <a href="index-03.html">Dashboard 03</a> </li>
-                            <li> <a href="index-04.html">Dashboard 04</a> </li>
-                            <li> <a href="index-05.html">Dashboard 05</a> </li>
-                        </ul>
                     </li>
                     <!-- menu title -->
                     <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">Components </li>
@@ -113,7 +107,8 @@
                     <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">Widgets, Forms & Tables </li>
                     <!-- menu item Widgets-->
                     <li>
-                        <a href="widgets.html"><i class="ti-blackboard"></i><span class="right-nav-text">Widgets</span>
+                        <a href="widgets.html"><i class="ti-blackboard"></i><span
+                                class="right-nav-text">Widgets</span>
                             <span class="badge badge-pill badge-danger float-right mt-1">59</span> </a>
                     </li>
                     <!-- menu item Form-->
@@ -138,7 +133,8 @@
                     <!-- menu item table -->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#table">
-                            <div class="pull-left"><i class="ti-layout-tab-window"></i><span class="right-nav-text">data
+                            <div class="pull-left"><i class="ti-layout-tab-window"></i><span
+                                    class="right-nav-text">data
                                     table</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
@@ -212,7 +208,8 @@
                                 </a>
                                 <ul id="auth" class="collapse">
                                     <li>
-                                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#login">Level
+                                        <a href="javascript:void(0);" data-toggle="collapse"
+                                            data-target="#login">Level
                                             item 1.1<div class="pull-right"><i class="ti-plus"></i></div>
                                             <div class="clearfix"></div>
                                         </a>

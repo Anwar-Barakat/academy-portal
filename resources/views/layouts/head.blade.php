@@ -1,5 +1,5 @@
 <!-- Title -->
-<title>{{ __('trans.school') }}@yield("title")</title>
+<title>{{ __('trans.laravel_school') }} | @yield('title')</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="{{ URL::asset('assets/images/favicon.ico') }}" type="image/x-icon" />
@@ -18,3 +18,5 @@
 @else
     <link href="{{ URL::asset('assets/css/rtl.css') }}" rel="stylesheet">
 @endif
+
+<link href="{{ URL::asset('assets/css/main.css') }}" rel="stylesheet">
