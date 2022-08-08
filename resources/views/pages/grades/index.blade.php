@@ -45,23 +45,86 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>{{ __('grade.name_ar') }}</th>
-                                <th>{{ __('grade.name_en') }}</th>
+                                <th>{{ __('grade.name') }}</th>
                                 <th>{{ __('trans.created_at') }}</th>
-                                <th>{{ __('grade.actions') }}</th>
+                                <th>{{ __('buttons.actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($grades as $grade)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $grade->getTranslation('name', 'ar') }}</td>
-                                    <td>{{ $grade->getTranslation('name', 'en') }}</td>
+                                    <td>{{ $grade->name }}</td>
                                     <td>{{ $grade->created_at }}</td>
                                     <td>
-
+                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                                            data-target="#editGrade{{ $grade->id }}"
+                                            title="{{ __('buttons.edit') }}">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
                                     </td>
                                 </tr>
+
+                                {{-- Edit The Grade --}}
+                                <div class="modal fade" id="editGrade{{ $grade->id }}" tabindex="-1" role="dialog"
+                                    aria-labelledby="editGradeLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
+                                                    id="editGradeLabel">
+                                                    {{ __('grade.update_grade') }}
+                                                </h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <form action="{{ route('grades.update', $grade) }}" method="POST">
+                                                <div class="modal-body">
+                                                    <!-- add_form -->
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <x-label for="name_ar" :value="__('grade.name_ar')" /> :
+                                                            <x-input type="text" name="name_ar" id="name_ar"
+                                                                class="form-control" :value="old(
+                                                                    'name_ar',
+                                                                    $grade->getTranslation('name', 'ar'),
+                                                                )" required
+                                                                autofocus />
+
+                                                        </div>
+                                                        <div class="col">
+                                                            <x-label for="name_en" :value="__('grade.name_en')" />
+                                                            <x-input type="text" name="name_en" class="form-control"
+                                                                id="name_en" :value="old(
+                                                                    'name_ar',
+                                                                    $grade->getTranslation('name', 'en'),
+                                                                )" required />
+                                                        </div>
+                                                    </div>
+                                                    <br>
+
+                                                    <div class="form-group">
+                                                        <x-label for="notes" :value="__('grade.notes')" />
+                                                        <textarea class="form-control" name="notes" id="notes" rows="3">{{ old('notes', $grade->notes) }}</textarea>
+                                                    </div>
+                                                    <br>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">{{ __('buttons.close') }}</button>
+                                                    <x-button class="btn btn-success">
+                                                        {{ __('buttons.update') }}
+                                                    </x-button>
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
                             @empty
                                 <tr class="text-center">
                                     <td colspan="4">{{ __('msgs.not_found_yet') }}</td>
@@ -74,6 +137,7 @@
         </div>
     </div>
 
+    {{-- Add A New Grade --}}
     <div class="modal fade" id="addNewGrade" tabindex="-1" role="dialog" aria-labelledby="addNewGradeLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -107,7 +171,7 @@
 
                         <div class="form-group">
                             <x-label for="notes" :value="__('grade.notes')" />
-                            <textarea class="form-control" name="notes" id="notes" rows="3"></textarea>
+                            <textarea class="form-control" name="notes" id="notes" rows="3">{{ old('notes') }}</textarea>
                         </div>
                         <br>
                     </div>

@@ -3,11 +3,12 @@
 return [
 
     'grades'                => 'Grades',
+    'grade'                 => 'Grade',
     'grades_list'           => 'Grades List',
     'home'                  => 'Home',
     'add_grade'             => 'Add Grade',
-    'edit_Grade'            => 'edit_Grade',
-    'delete_Grade'          => 'delete_Grade',
+    'update_grade'          => 'Update The Grade',
+    'delete_grade'          => 'Delete The Grade',
     'warning_Grade'         => 'Are Sure Of The Deleting Process ?',
     'name'                  => 'Name',
     'name_ar'               => 'Arabic Name',

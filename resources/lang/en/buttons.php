@@ -2,7 +2,7 @@
 
 return [
 
-    'edit'                  => 'Edit',
+    'update'                => 'Update',
     'delete'                => 'Delete',
     'close'                 => 'Close',
     'actions'               => 'Actions',

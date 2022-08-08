@@ -86,7 +86,22 @@ class GradeController extends Controller
      */
     public function update(UpdateGradeRequest $request, Grade $grade)
     {
-        //
+        $data = $request->only(['name_ar', 'name_en', 'notes']);
+
+        try {
+
+            $grade->update([
+                'name'      => [
+                    'ar'    => $data['name_ar'],
+                    'en'    => $data['name_en'],
+                ],
+                'notes'     => $data['notes']
+            ]);
+            toastr()->success(__('msgs.updated', ['name' => __('grade.grade')]));
+            return redirect()->route('grades.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**
