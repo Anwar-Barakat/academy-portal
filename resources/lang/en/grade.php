@@ -9,7 +9,6 @@ return [
     'add_grade'             => 'Add Grade',
     'update_grade'          => 'Update The Grade',
     'delete_grade'          => 'Delete The Grade',
-    'warning_Grade'         => 'Are Sure Of The Deleting Process ?',
     'name'                  => 'Name',
     'name_ar'               => 'Arabic Name',
     'name_en'               => 'English Name',

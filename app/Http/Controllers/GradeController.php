@@ -112,6 +112,8 @@ class GradeController extends Controller
      */
     public function destroy(Grade $grade)
     {
-        //
+        $grade->delete();
+        toastr()->info(__('msgs.deleted', ['name' => __('grade.grade')]));
+        return redirect()->route('grades.index');
     }
 }

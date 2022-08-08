@@ -11,5 +11,6 @@ return [
     'not_active'                    => ':name Not Active',
     'not_available'                 => ':name Not Avaliable',
 
-    'not_found_yet'                 => 'Not Found Yet !!'
+    'not_found_yet'                 => 'Not Found Yet !!',
+    'deleting_warning'              => 'Are Sure Of The Deleting Process ?',
 ];
