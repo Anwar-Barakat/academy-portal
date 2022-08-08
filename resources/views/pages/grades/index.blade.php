@@ -30,6 +30,16 @@
     <div class="col-xl-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
+                <button type="button" class="button x-small mb-3" data-toggle="modal" data-target="#addNewGrade">
+                    {{ __('grade.add_grade') }}
+                </button>
+                @if ($errors->any())
+                    <ul>
+                        @foreach ($error->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                @endif
                 <div class="table-responsive">
                     <table id="datatable" class="table table-striped table-bordered p-0">
                         <thead>
@@ -42,9 +52,17 @@
                         </thead>
                         <tbody>
                             @forelse ($grades as $grade)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $grade->name }}</td>
+                                    <td>{{ $grade->name }}</td>
+                                    <td>
+
+                                    </td>
+                                </tr>
                             @empty
                                 <tr class="text-center">
-                                    <td colspan="4">{{ __('not_found_yet!') }}</td>
+                                    <td colspan="4">{{ __('msgs.not_found_yet') }}</td>
                                 </tr>
                             @endforelse
                         </tbody>
@@ -53,7 +71,57 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="addNewGrade" tabindex="-1" role="dialog" aria-labelledby="addNewGradeLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="addNewGradeLabel">
+                        {{ __('grade.add_grade') }}
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ route('grades.store') }}" method="POST">
+                    <div class="modal-body">
+                        <!-- add_form -->
+                        @csrf
+                        <div class="row">
+                            <div class="col">
+                                <x-label for="name_ar" :value="__('grade.name_ar')" /> :
+                                <x-input type="text" name="name_ar" id="name_ar" class="form-control"
+                                    :value="old('name_ar')" required autofocus />
+
+                            </div>
+                            <div class="col">
+                                <x-label for="name_en" :value="__('grade.name_en')" />
+                                <x-input type="text" name="name_en" class="form-control" id="name_en"
+                                    :value="old('name_en')" required />
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="form-group">
+                            <label for="notes">{{ __('grade.notes') }}
+                                :</label>
+                            <textarea class="form-control" name="notes" id="notes" rows="3"></textarea>
+                        </div>
+                        <br><br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                            data-dismiss="modal">{{ __('buttons.close') }}</button>
+                        <button type="submit" class="btn btn-success">{{ __('buttons.submit') }}</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
 </div>
+
 
 
 <!-- row closed -->

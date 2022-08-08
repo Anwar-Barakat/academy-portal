@@ -16,10 +16,6 @@ return [
     'delete_Grade_Error'    => 'The Grade cannot be deleted because there are classes attached to it',
     'grade_exists'          => 'This field already exists',
 
-    'edit'                  => 'Edit',
-    'delete'                => 'Delete',
-    'close'                 => 'Close',
-    'actions'               => 'Actions',
-    'submit'                => 'Submit',
+
 
 ];

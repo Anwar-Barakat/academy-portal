@@ -37,7 +37,7 @@ class GradeController extends Controller
      */
     public function store(StoreGradeRequest $request)
     {
-        //
+
     }
 
     /**

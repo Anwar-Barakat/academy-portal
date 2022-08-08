@@ -1,3 +1,4 @@
+/* Global Settings */
 @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600");
 
 body {
@@ -31,3 +32,12 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background-color: #a8bbbf;
 }
+
+.form-control {
+    padding: 10px 15px;
+}
+
+textarea {
+    resize: none;
+}
+/* Global Settings */
