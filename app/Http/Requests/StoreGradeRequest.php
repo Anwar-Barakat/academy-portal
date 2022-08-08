@@ -13,7 +13,7 @@ class StoreGradeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,9 @@ class StoreGradeRequest extends FormRequest
      */
     public function rules()
     {
-        return [];
+        return [
+            'name_ar'       => 'required|min:3',
+            'name_en'       => 'required|min:3',
+        ];
     }
 }
