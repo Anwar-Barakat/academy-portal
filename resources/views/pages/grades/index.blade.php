@@ -16,7 +16,7 @@
             <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"
                         class="default-color">{{ __('grade.home') }}</a></li>
-                <li class="breadcrumb-item active">Page Title</li>
+                <li class="breadcrumb-item active">{{ __('grade.grades') }}</li>
             </ol>
         </div>
     </div>
@@ -35,7 +35,7 @@
                 </button>
                 @if ($errors->any())
                     <ul>
-                        @foreach ($error->all() as $error)
+                        @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
                         @endforeach
                     </ul>
@@ -47,6 +47,7 @@
                                 <th>#</th>
                                 <th>{{ __('grade.name_ar') }}</th>
                                 <th>{{ __('grade.name_en') }}</th>
+                                <th>{{ __('trans.created_at') }}</th>
                                 <th>{{ __('grade.actions') }}</th>
                             </tr>
                         </thead>
@@ -54,8 +55,9 @@
                             @forelse ($grades as $grade)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $grade->name }}</td>
-                                    <td>{{ $grade->name }}</td>
+                                    <td>{{ $grade->getTranslation('name', 'ar') }}</td>
+                                    <td>{{ $grade->getTranslation('name', 'en') }}</td>
+                                    <td>{{ $grade->created_at }}</td>
                                     <td>
 
                                     </td>
@@ -104,16 +106,17 @@
                         <br>
 
                         <div class="form-group">
-                            <label for="notes">{{ __('grade.notes') }}
-                                :</label>
+                            <x-label for="notes" :value="__('grade.notes')" />
                             <textarea class="form-control" name="notes" id="notes" rows="3"></textarea>
                         </div>
-                        <br><br>
+                        <br>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary"
                             data-dismiss="modal">{{ __('buttons.close') }}</button>
-                        <button type="submit" class="btn btn-success">{{ __('buttons.submit') }}</button>
+                        <x-button class="btn btn-success">
+                            {{ __('buttons.submit') }}
+                        </x-button>
                     </div>
                 </form>
 

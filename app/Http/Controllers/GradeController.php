@@ -39,16 +39,20 @@ class GradeController extends Controller
     {
         $data = $request->only(['name_ar', 'name_en', 'notes']);
 
-        Grade::create([
-            'name'      => [
-                'ar'    => $data['name_ar'],
-                'en'    => $data['name_en'],
-            ],
-            'notes'     => $data['notes']
-        ]);
+        try {
+            Grade::create([
+                'name'      => [
+                    'ar'    => $data['name_ar'],
+                    'en'    => $data['name_en'],
+                ],
+                'notes'     => $data['notes']
+            ]);
 
-        toastr()->success(__('msgs.added', ['name' => __('grade.grade')]));
-        return redirect()->route('grades.index');
+            toastr()->success(__('msgs.added', ['name' => __('grade.grade')]));
+            return redirect()->route('grades.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**

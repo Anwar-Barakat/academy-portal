@@ -38,6 +38,6 @@ body {
 }
 
 textarea {
-    resize: none;
+    resize: none !important;
 }
 /* Global Settings */

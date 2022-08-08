@@ -12,4 +12,7 @@ return [
     'components'                => 'Components',
     'grades_list'               => 'Grades List',
     'add_grade'                 => 'Add Grade',
+
+    'created_at'                => 'Created At'
+
 ];
