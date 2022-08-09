@@ -17,7 +17,8 @@ class ClassroomController extends Controller
     public function index()
     {
         $classrooms = Classroom::with(['grades'])->get();
-        return view('pages.classrooms.index', ['classrooms' => $classrooms]);
+        $grades     = Grade::all();
+        return view('pages.classrooms.index', ['classrooms' => $classrooms, 'grades' => $grades]);
     }
 
     /**
