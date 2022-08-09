@@ -5,6 +5,7 @@
     {{ __('grade.grades') }}
 @stop
 @endsection
+
 @section('page-header')
 <!-- breadcrumb -->
 <div class="page-title">
@@ -23,6 +24,7 @@
 </div>
 <!-- breadcrumb -->
 @endsection
+
 @section('content')
 <!-- row -->
 <!-- main body -->

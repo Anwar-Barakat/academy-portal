@@ -39,7 +39,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="calendar-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="calendar.html">{{ __('trans.classrooms_list') }} </a> </li>
+                            <li> <a href="{{ route('classrooms.index') }}">{{ __('trans.classrooms_list') }} </a> </li>
                         </ul>
                     </li>
                     <!-- menu item todo-->
