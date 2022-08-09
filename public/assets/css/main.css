@@ -40,4 +40,10 @@ body {
 textarea {
     resize: none !important;
 }
+
+div.dataTables_wrapper div.dataTables_length select {
+    height: auto !important;
+    padding: 5px 15px !important;
+    margin: 0 8px;
+}
 /* Global Settings */
