@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\GradeController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -35,8 +36,11 @@ Route::group(
                 return view('dashboard');
             })->name('dashboard');
 
-            //!!!!!!!!! Grades
+            //! ===================== Grades =====================
             Route::resource('grades',       GradeController::class);
+
+            //! ===================== Classrooms =====================
+            Route::resource('classrooms', ClassroomController::class);
         });
     }
 );

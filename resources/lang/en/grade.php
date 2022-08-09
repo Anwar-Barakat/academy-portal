@@ -13,8 +13,6 @@ return [
     'name_ar'               => 'Arabic Name',
     'name_en'               => 'English Name',
     'notes'                 => 'Notes',
-    'delete_Grade_Error'    => 'The Grade cannot be deleted because there are classes attached to it',
-    'grade_exists'          => 'This field already exists',
 
 
 

@@ -12,6 +12,8 @@ return [
     'components'                => 'Components',
     'grades_list'               => 'Grades List',
     'add_grade'                 => 'Add Grade',
+    'classrooms'                => 'Classrooms',
+    'classrooms_list'           => 'Classrooms List',
 
     'created_at'                => 'Created At'
 
