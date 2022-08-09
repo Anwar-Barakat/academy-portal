@@ -150,6 +150,7 @@ return [
         'name_ar'   => 'Arabic Name',
         'name_en'   => 'English Name',
         'notes'     => 'Notes',
+        'grade_id'  => 'Grade'
     ],
 
 ];

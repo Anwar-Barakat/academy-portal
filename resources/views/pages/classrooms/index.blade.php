@@ -97,7 +97,7 @@
                         @csrf
                         <div class="card-body">
                             <div class="repeater">
-                                <div data-repeater-list="List_Classes">
+                                <div data-repeater-list="classrooms_list">
                                     <div data-repeater-item>
                                         <div class="row">
                                             <div class="col">

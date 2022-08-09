@@ -39,7 +39,25 @@ class ClassroomController extends Controller
      */
     public function store(StoreClassroomRequest $request)
     {
-        //
+        try {
+
+            $data = $request->classrooms_list;
+
+            foreach ($data as $classroom) {
+                Classroom::create([
+                    'name'      => [
+                        'ar'    => $classroom['name_ar'],
+                        'en'    => $classroom['name_en'],
+                    ],
+                    'grade_id'  => $classroom['grade_id']
+                ]);
+            }
+
+            toastr()->success(__('msgs.added', ['name' => __('classroom.classrooms')]));
+            return redirect()->route('classrooms.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**
