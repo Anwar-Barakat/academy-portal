@@ -34,11 +34,9 @@
                     {{ __('grade.add_grade') }}
                 </button>
                 @if ($errors->any())
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger">{{ $error }}</div>
+                    @endforeach
                 @endif
                 <div class="table-responsive">
                     <table id="datatable" class="table table-striped table-bordered p-0">

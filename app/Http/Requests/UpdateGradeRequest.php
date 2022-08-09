@@ -24,7 +24,8 @@ class UpdateGradeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name_ar'       => 'required|min:3|regex:/^[\pL\s\-]+$/u|unique:grades,name->ar,' . $this->grade->id,
+            'name_en'       => 'required|min:3|regex:/^[\pL\s\-]+$/u|unique:grades,name->en,' . $this->grade->id,
         ];
     }
 }

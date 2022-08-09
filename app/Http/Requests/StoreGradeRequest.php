@@ -24,8 +24,8 @@ class StoreGradeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_ar'       => 'required|min:3',
-            'name_en'       => 'required|min:3',
+            'name_ar'       => 'required|min:3|unique:grades,name->ar|regex:/^[\pL\s\-]+$/u',
+            'name_en'       => 'required|min:3|unique:grades,name->en|regex:/^[\pL\s\-]+$/u',
         ];
     }
 }

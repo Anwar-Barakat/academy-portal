@@ -26,7 +26,6 @@
                         </a>
                         <ul id="elements" class="collapse" data-parent="#sidebarnav">
                             <li><a href="{{ route('grades.index') }}">{{ __('trans.grades_list') }}</a></li>
-                            <li><a href="{{ route('grades.create') }}">{{ __('trans.add_grade') }}</a></li>
                         </ul>
                     </li>
                     <!-- menu item calendar-->
