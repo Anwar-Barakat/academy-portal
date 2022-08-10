@@ -60,9 +60,83 @@
                                         <td>{{ $classroom->grades->name }}</td>
                                         <td>{{ $classroom->created_at }}</td>
                                         <td>
-                                            asdasd
+                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                                                data-target="#editClassroom{{ $classroom->id }}"
+                                                title="{{ __('buttons.edit') }}">
+                                                <i class="fa fa-edit"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                                data-target="#deleteClassroom{{ $classroom->id }}"
+                                                title="{{ __('buttons.delete') }}">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
                                         </td>
                                     </tr>
+                                    {{-- Edit The Classroom --}}
+                                    <div class="modal fade" id="editClassroom{{ $classroom->id }}" tabindex="-1"
+                                        role="dialog" aria-labelledby="editClassroomLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
+                                                        id="editClassroomLabel">
+                                                        {{ __('classroom.update_classroom') }}
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <form action="{{ route('classrooms.update', $classroom) }}" method="POST">
+                                                    <div class="modal-body">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <x-label for="name_ar" :value="__('grade.name_ar')" /> :
+                                                                <x-input type="text" name="name_ar" id="name_ar"
+                                                                    class="form-control" :value="old(
+                                                                        'name_ar',
+                                                                        $classroom->getTranslation('name', 'ar'),
+                                                                    )" required
+                                                                    autofocus />
+                                                            </div>
+                                                            <div class="col">
+                                                                <x-label for="name_en" :value="__('grade.name_en')" />
+                                                                <x-input type="text" name="name_en" class="form-control"
+                                                                    id="name_en" :value="old(
+                                                                        'name_ar',
+                                                                        $classroom->getTranslation('name', 'en'),
+                                                                    )" required />
+                                                            </div>
+                                                        </div>
+                                                        <br>
+
+                                                        <div class="form-group d-flex flex-column">
+                                                            <x-label for="grade_id" :value="__('classroom.grade_name')" />
+                                                            <select name="grade_id" id="grade_id" class="fancyselect">
+                                                                @foreach ($grades as $grade)
+                                                                    <option value="{{ $grade->id }}"
+                                                                        {{ $grade->id == $classroom->grade_id ? 'selected' : '' }}>
+
+                                                                        {{ $grade->name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                        <br>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">{{ __('buttons.close') }}</button>
+                                                        <x-button class="btn btn-success">
+                                                            {{ __('buttons.update') }}
+                                                        </x-button>
+                                                    </div>
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 @empty
                                     <tr class="text-center">
                                         <td colspan="5">{{ __('msgs.not_found_yet') }}</td>
@@ -100,22 +174,22 @@
                                         <div class="row">
                                             <div class="col">
                                                 <x-label for="name_ar" class="mr-sm-2" :value="__('classroom.name_ar')" />
-                                                <x-input type="text" id="name_ar" class="form-control" name="name_ar"
-                                                    :value="old('name_ar')" required autofocus />
+                                                <x-input type="text" id="name_ar" class="form-control"
+                                                    name="name_ar" :value="old('name_ar')" required autofocus />
 
                                             </div>
                                             <div class="col">
                                                 <x-label for="name_en" class="mr-sm-2" :value="__('classroom.name_en')" />
-                                                <x-input type="text" id="name_en" class="form-control" name="name_en"
-                                                    :value="old('name_en')" required autofocus />
+                                                <x-input type="text" id="name_en" class="form-control"
+                                                    name="name_en" :value="old('name_en')" required autofocus />
                                             </div>
                                             <div class="col">
                                                 <x-label for="grade_id" class="mr-sm-2" :value="__('classroom.grade_name')" />
 
                                                 <div class="box">
                                                     <select class="fancyselect" name="grade_id">
-                                                        @foreach ($grades as $grade)
-                                                            <option value="{{ $grade->id }}">{{ $grade->name }}
+                                                        @foreach ($classrooms as $classroom)
+                                                            <option value="{{ $classroom->id }}">{{ $classroom->name }}
                                                             </option>
                                                         @endforeach
                                                     </select>

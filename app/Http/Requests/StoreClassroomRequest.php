@@ -24,8 +24,8 @@ class StoreClassroomRequest extends FormRequest
     public function rules()
     {
         return [
-            'classrooms_list.*.name_ar'       => 'required|min:3|regex:/^[\pL\s\-]+$/u',
-            'classrooms_list.*.name_en'       => 'required|min:3|regex:/^[\pL\s\-]+$/u',
+            'classrooms_list.*.name_ar'       => 'required|min:3',
+            'classrooms_list.*.name_en'       => 'required|min:3',
             'classrooms_list.*.grade_id'      => 'required|numeric',
         ];
     }

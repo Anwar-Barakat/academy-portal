@@ -13,7 +13,7 @@ class UpdateClassroomRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class UpdateClassroomRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name_ar'       => 'required|min:3',
+            'name_en'       => 'required|min:3',
+            'grade_id'      => 'required|numeric'
         ];
     }
 }

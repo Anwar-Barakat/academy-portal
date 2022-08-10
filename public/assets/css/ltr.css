@@ -19871,25 +19871,25 @@ ul.list-unstyled li {
   background: #ffffff !important;
   border-color: #eeeeee;
   border-bottom: 0;
-  -webkit-box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1); }
+  -webkit-box-shadow:rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px 0px;
+  -moz-box-shadow:rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px 0px;
+  box-shadow:rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px 0px; }
   .shadow .nav.nav-tabs li a.active:focus {
     color: #84ba3f;
     background: #ffffff !important;
     border-color: #eeeeee;
     border-bottom: 0;
-    -webkit-box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1); }
+    -webkit-box-shadow:rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px 0px;
+    -moz-box-shadow:rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px 0px;
+    box-shadow:rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px 0px; }
   .shadow .nav.nav-tabs li a.active:hover {
     color: #84ba3f;
     background: #ffffff !important;
     border-color: #eeeeee;
     border-bottom: 0;
-    -webkit-box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1); }
+    -webkit-box-shadow:rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px 0px;
+    -moz-box-shadow:rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px 0px;
+    box-shadow:rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px 0px; }
 
 /*tab-vertical*/
 .tab-vertical .nav-tabs {
@@ -22116,9 +22116,9 @@ select.form-control-sm:not([size]):not([multiple]) {
   .form-control:focus {
     background: #ffffff;
     border: 0px;
-    -webkit-box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow:rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px 0px;
+    -moz-box-shadow:rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px 0px;
+    box-shadow:rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px 0px;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;

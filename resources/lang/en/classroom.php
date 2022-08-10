@@ -8,8 +8,9 @@ return [
     'name'                      => 'Name',
     'name_ar'                   => 'Arabic Name',
     'name_en'                   => 'English Name',
-
     'grade_name'                => 'Grade Name',
+    'update_classroom'          => 'Update classroom',
+
 
 
     'delete_row'                => 'Delete Row',

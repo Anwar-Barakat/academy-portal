@@ -37,7 +37,7 @@
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-language" aria-hidden="true"></i>
+                        <i class="fa fa-language language-toggle" aria-hidden="true"></i>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)

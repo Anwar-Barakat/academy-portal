@@ -91,7 +91,21 @@ class ClassroomController extends Controller
      */
     public function update(UpdateClassroomRequest $request, Classroom $classroom)
     {
-        //
+        try {
+
+            $data = $request->only(['name_ar', 'name_en', 'grade_id']);
+            $classroom->update([
+                'name'      => [
+                    'ar'    => $data['name_ar'],
+                    'en'    => $data['name_en'],
+                ],
+                'grade_id'  => $data['grade_id'],
+            ]);
+            toastr()->success(__('msgs.updated', ['name' => __('classroom.classrooms')]));
+            return redirect()->route('classrooms.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**
