@@ -86,7 +86,7 @@
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
-                                                        <form action="{{ route('grades.destroy', $classroom) }}"
+                                                        <form action="{{ route('classrooms.destroy', $classroom) }}"
                                                             method="POST">
                                                             <div class="modal-body">
                                                                 @csrf

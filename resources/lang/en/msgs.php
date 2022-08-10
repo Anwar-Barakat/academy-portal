@@ -15,6 +15,9 @@ return [
     'update'                        => 'Update :name',
     'delete'                        => 'Delete :name',
 
+    // Grades :
     'not_found_yet'                 => 'Not Found Yet !!',
     'deleting_warning'              => 'Are Sure Of The Deleting Process ?',
+    'delete_grade_error'            => 'It is not possible to delete the stage because there are classrooms belonging to it',
+
 ];

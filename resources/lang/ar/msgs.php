@@ -15,7 +15,11 @@ return [
     'update'                        => 'تعديل :name',
     'delete'                        => 'حذف :name',
 
-
+    // Grade :
     'not_found_yet'                 => 'لا يوجد حالاً !!',
-    'deleting_warning'              => 'هل انت متاكد من عملية الحذف ؟'
+    'deleting_warning'              => 'هل انت متاكد من عملية الحذف ؟',
+    'delete_grade_error'            => 'لا يمكن حذف المرحلة لوجود فصول تابعة لها',
+
+
+
 ];

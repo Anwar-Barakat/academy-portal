@@ -116,6 +116,7 @@ class ClassroomController extends Controller
      */
     public function destroy(Classroom $classroom)
     {
+        
         $classroom->delete();
         toastr()->info(__('msgs.deleted', ['name' => __('classroom.classroom')]));
         return redirect()->route('classrooms.index');

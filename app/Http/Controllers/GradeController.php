@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Grade;
 use App\Http\Requests\StoreGradeRequest;
 use App\Http\Requests\UpdateGradeRequest;
+use App\Models\Classroom;
 
 class GradeController extends Controller
 {
@@ -112,8 +113,14 @@ class GradeController extends Controller
      */
     public function destroy(Grade $grade)
     {
-        $grade->delete();
-        toastr()->info(__('msgs.deleted', ['name' => __('grade.grade')]));
+        $classrooms = Classroom::where('grade_id', $grade->id)->get();
+        if ($classrooms->count() > 0)
+            toastr()->error(__('msgs.delete_grade_error'));
+
+        else {
+            $grade->delete();
+            toastr()->info(__('msgs.deleted', ['name' => __('grade.grade')]));
+        }
         return redirect()->route('grades.index');
     }
 }
