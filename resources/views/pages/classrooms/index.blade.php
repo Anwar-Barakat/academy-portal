@@ -36,15 +36,23 @@
                         @endforeach
                     @endif
 
-                    <button type="button" class="button x-small" data-toggle="modal" data-target="#exampleModal">
-                        {{ __('classroom.add_class') }}
-                    </button>
-                    <br><br>
+                    <div class="d-flex mb-4 flex-wrap" style="gap: 10px">
+                        <button type="button" class="button x-small" data-toggle="modal" data-target="#exampleModal">
+                            {{ __('msgs.add', ['name' => __('classroom.classroom')]) }}
+                        </button>
+
+                        <button type="button" class="btn x-small btn-danger" id="deleteAllClassroomsBtn">
+                            {{ __('msgs.delete', ['name' => __('classroom.checked_classrooms')]) }}
+                        </button>
+                    </div>
 
                     <div class="table-responsive">
                         <table id="datatable" class="table table-striped table-bordered p-0">
                             <thead>
                                 <tr>
+                                    <th>
+                                        <x-input type="checkbox" class="checkbox" onclick="checkAllClassroom(this)" />
+                                    </th>
                                     <th>#</th>
                                     <th>{{ __('classroom.name') }}</th>
                                     <th>{{ __('classroom.grade_name') }}</th>
@@ -55,6 +63,9 @@
                             <tbody>
                                 @forelse ($classrooms as $classroom)
                                     <tr>
+                                        <td>
+                                            <x-input type="checkbox" :value="$classroom->id" class="box" />
+                                        </td>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $classroom->name }}</td>
                                         <td>{{ $classroom->grades->name }}</td>
@@ -142,11 +153,12 @@
                                                             </div>
                                                             <div class="col">
                                                                 <x-label for="name_en" :value="__('grade.name_en')" />
-                                                                <x-input type="text" name="name_en" class="form-control"
-                                                                    id="name_en" :value="old(
+                                                                <x-input type="text" name="name_en"
+                                                                    class="form-control" id="name_en" :value="old(
                                                                         'name_ar',
                                                                         $classroom->getTranslation('name', 'en'),
-                                                                    )" required />
+                                                                    )"
+                                                                    required />
                                                             </div>
                                                         </div>
                                                         <br>
@@ -154,11 +166,11 @@
                                                         <div class="form-group d-flex flex-column">
                                                             <x-label for="grade_id" :value="__('classroom.grade_name')" />
                                                             <select name="grade_id" id="grade_id" class="fancyselect">
-                                                                @foreach ($classrooms as $classroom)
-                                                                    <option value="{{ $classroom->id }}"
-                                                                        {{ $classroom->id == $classroom->grade_id ? 'selected' : '' }}>
+                                                                @foreach ($grades as $grade)
+                                                                    <option value="{{ $grade->id }}"
+                                                                        {{ $grade->id == $classroom->grade_id ? 'selected' : '' }}>
 
-                                                                        {{ $classroom->name }}</option>
+                                                                        {{ $grade->name }}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
@@ -179,7 +191,7 @@
 
                                 @empty
                                     <tr class="text-center">
-                                        <td colspan="5">{{ __('msgs.not_found_yet') }}</td>
+                                        <td colspan="6">{{ __('msgs.not_found_yet') }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>
@@ -228,8 +240,8 @@
 
                                                 <div class="box">
                                                     <select class="fancyselect" name="grade_id">
-                                                        @foreach ($classrooms as $classroom)
-                                                            <option value="{{ $classroom->id }}">{{ $classroom->name }}
+                                                        @foreach ($grades as $grade)
+                                                            <option value="{{ $grade->id }}">{{ $grade->name }}
                                                             </option>
                                                         @endforeach
                                                     </select>
@@ -238,7 +250,7 @@
                                             <div class="col">
                                                 <x-label for="actions" class="mr-sm-2" :value="__('buttons.actions')" />
                                                 <x-input type="text" class="btn btn-danger btn-block"
-                                                    data-repeater-delete type="button" :value="__('classroom.delete_row')" autofocus />
+                                                    data-repeater-delete type="button" :value="__('msgs.delete', ['name' => __('classroom.row')])" autofocus />
                                             </div>
                                         </div>
                                     </div>
@@ -246,7 +258,7 @@
                                 <div class="row mt-20">
                                     <div class="col-12">
                                         <x-input type="text" class="btn btn-success btn-block w-25 mb-2"
-                                            data-repeater-create type="button" :value="__('classroom.add_row')" autofocus />
+                                            data-repeater-create type="button" :value="__('msgs.add', ['name' => __('classroom.row')])" autofocus />
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -261,4 +273,76 @@
             </div>
         </div>
     </div>
+
+    {{-- Delete All Classrooms --}}
+    <div class="modal fade" id="classroomsDeleteModal" tabindex="-1" role="dialog"
+        aria-labelledby="classroomsDeleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="classroomsDeleteModalLabel">
+                        {{ __('msgs.delete', ['name' => __('classroom.checked_classrooms')]) }}
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ route('empty-classrooms') }}" method="POST">
+                    <div class="modal-body">
+                        @csrf
+                        <x-input type="hidden" name="classrooms_id" id="selectedClassrooms" />
+                        <div class="row">
+                            <div class="col">
+                                <h5>{{ __('msgs.deleting_warning') }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                            data-dismiss="modal">{{ __('buttons.close') }}</button>
+                        <x-button class="btn btn-danger">
+                            {{ __('buttons.delete') }}
+                        </x-button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('js')
+    {{-- Script To Toggle Checkbox Selecting --}}
+    <script>
+        function checkAllClassroom(el) {
+            var elements = document.querySelectorAll('.box');
+
+            if (el.checked) {
+                for (let i = 0; i < elements.length; i++)
+                    elements[i].checked = true
+            } else {
+                for (let i = 0; i < elements.length; i++)
+                    elements[i].checked = false
+            }
+        }
+    </script>
+
+
+    {{-- Push The Value Of Selected Checkbox Input --}}
+    <script>
+        let selectedArray = new Array();
+        let classroomsDeleteBtn = document.getElementById('deleteAllClassroomsBtn');
+
+        classroomsDeleteBtn.addEventListener('click', () => {
+            document.querySelectorAll('#datatable input[type=checkbox].box:checked').forEach((el) => {
+                selectedArray.push(el.value);
+            });
+
+            if (selectedArray.length > 0) {
+                $('#classroomsDeleteModal').modal('show')
+                document.getElementById('selectedClassrooms').value = selectedArray;
+            }
+        })
+    </script>
+
 @endsection

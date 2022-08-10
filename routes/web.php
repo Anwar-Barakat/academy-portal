@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\ClassroomController;
+use App\Http\Controllers\EmptyClassroomController;
 use App\Http\Controllers\GradeController;
+use App\Models\Classroom;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use PhpParser\Builder\Class_;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +43,8 @@ Route::group(
 
             //! ===================== Classrooms =====================
             Route::resource('classrooms', ClassroomController::class);
+
+            Route::post('/delete-all-classrooms', EmptyClassroomController::class)->name('empty-classrooms');
         });
     }
 );

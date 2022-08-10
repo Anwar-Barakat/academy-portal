@@ -6,6 +6,7 @@ use App\Models\Classroom;
 use App\Http\Requests\StoreClassroomRequest;
 use App\Http\Requests\UpdateClassroomRequest;
 use App\Models\Grade;
+use Flasher\Laravel\Http\Request;
 
 class ClassroomController extends Controller
 {
@@ -116,7 +117,6 @@ class ClassroomController extends Controller
      */
     public function destroy(Classroom $classroom)
     {
-        
         $classroom->delete();
         toastr()->info(__('msgs.deleted', ['name' => __('classroom.classroom')]));
         return redirect()->route('classrooms.index');
