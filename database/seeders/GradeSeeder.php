@@ -17,16 +17,24 @@ class GradeSeeder extends Seeder
     {
         $grades = [
             [
-                'en' => 'Primary Stage',
-                'ar' => 'المرحلة الأبتدائية',
-            ],
-            [
-                'en' => 'Secondary Stage',
-                'ar' => 'المرحلة الثانوية',
-            ],
-            [
                 'en' => 'First Year',
-                'ar' => 'سنة أولى جامعة',
+                'ar' => 'السنة الأولى',
+            ],
+            [
+                'en' => 'Second Year',
+                'ar' => 'السنة الثانية',
+            ],
+            [
+                'en' => 'Third Year',
+                'ar' => 'السنة الثالثة',
+            ],
+            [
+                'en' => 'Fourth Year',
+                'ar' => 'السنة الرابعة',
+            ],
+            [
+                'en' => 'Fifth Year',
+                'ar' => 'السنة الخامسة',
             ],
         ];
 

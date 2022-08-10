@@ -33,7 +33,7 @@
         <div class="card card-statistics h-100">
             <div class="card-body">
                 <button type="button" class="button x-small mb-3" data-toggle="modal" data-target="#addNewGrade">
-                    {{ __('grade.add_grade') }}
+                    {{  __('msgs.add', ['name' => __('grade.grade')]) }}
                 </button>
                 @if ($errors->any())
                     @foreach ($errors->all() as $error)
@@ -78,7 +78,7 @@
                                             <div class="modal-header">
                                                 <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
                                                     id="editGradeLabel">
-                                                    {{ __('grade.update_grade') }}
+                                                    {{ __('msgs.update', ['name' => __('grade.grade')]) }}
                                                 </h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
@@ -138,7 +138,7 @@
                                             <div class="modal-header">
                                                 <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
                                                     id="deleteGradeLabel">
-                                                    {{ __('grade.delete_grade') }}
+                                                    {{ __('msgs.delete', ['name' => __('grade.grade')]) }}
                                                 </h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
@@ -186,7 +186,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="addNewGradeLabel">
-                        {{ __('grade.add_grade') }}
+                        {{ __('msgs.add', ['name' => __('grade.grade')]) }}
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>

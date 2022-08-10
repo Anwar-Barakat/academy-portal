@@ -29,7 +29,6 @@ Route::group(
 
         require __DIR__ . '/auth.php';
 
-
         Route::group(['middleware' => 'auth'], function () {
 
             Route::get('/dashboard', function () {

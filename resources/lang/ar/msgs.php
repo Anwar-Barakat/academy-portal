@@ -11,6 +11,11 @@ return [
     'not_active'                    => ':name غير فعال ',
     'not_available'                 => ':name غير متاح ',
 
+    'add'                           => 'إضافة :name',
+    'update'                        => 'تعديل :name',
+    'delete'                        => 'حذف :name',
+
+
     'not_found_yet'                 => 'لا يوجد حالاً !!',
     'deleting_warning'              => 'هل انت متاكد من عملية الحذف ؟'
 ];

@@ -66,10 +66,49 @@
                                                 <i class="fa fa-edit"></i>
                                             </button>
                                             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                                data-target="#deleteClassroom{{ $classroom->id }}"
+                                                data-target="#delete{{ $classroom->id }}"
                                                 title="{{ __('buttons.delete') }}">
                                                 <i class="fa fa-trash"></i>
                                             </button>
+
+                                            {{-- Delete The Classroom --}}
+                                            <div class="modal fade" id="delete{{ $classroom->id }}" tabindex="-1"
+                                                role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 style="font-family: 'Cairo', sans-serif;"
+                                                                class="modal-title" id="deleteGradeLabel">
+                                                                {{ __('msgs.delete', ['name' => __('grade.grade')]) }}
+                                                            </h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <form action="{{ route('grades.destroy', $classroom) }}"
+                                                            method="POST">
+                                                            <div class="modal-body">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <div class="row">
+                                                                    <div class="col">
+                                                                        <h5>{{ __('msgs.deleting_warning') }}</h5>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">{{ __('buttons.close') }}</button>
+                                                                <x-button class="btn btn-danger">
+                                                                    {{ __('buttons.delete') }}
+                                                                </x-button>
+                                                            </div>
+                                                        </form>
+
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                     {{-- Edit The Classroom --}}
@@ -80,7 +119,7 @@
                                                 <div class="modal-header">
                                                     <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
                                                         id="editClassroomLabel">
-                                                        {{ __('classroom.update_classroom') }}
+                                                        {{ __('msgs.update', ['name' => __('classroom.classroom')]) }}
                                                     </h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
@@ -115,11 +154,11 @@
                                                         <div class="form-group d-flex flex-column">
                                                             <x-label for="grade_id" :value="__('classroom.grade_name')" />
                                                             <select name="grade_id" id="grade_id" class="fancyselect">
-                                                                @foreach ($grades as $grade)
-                                                                    <option value="{{ $grade->id }}"
-                                                                        {{ $grade->id == $classroom->grade_id ? 'selected' : '' }}>
+                                                                @foreach ($classrooms as $classroom)
+                                                                    <option value="{{ $classroom->id }}"
+                                                                        {{ $classroom->id == $classroom->grade_id ? 'selected' : '' }}>
 
-                                                                        {{ $grade->name }}</option>
+                                                                        {{ $classroom->name }}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
@@ -137,6 +176,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 @empty
                                     <tr class="text-center">
                                         <td colspan="5">{{ __('msgs.not_found_yet') }}</td>
@@ -158,7 +198,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
-                        {{ __('classroom.add_class') }}
+                        {{ __('msgs.add', ['name' => __('classroom.classrooms')]) }}
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
