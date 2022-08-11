@@ -12,6 +12,7 @@ return [
     'not_available'                 => ':name غير متاح ',
 
     'add'                           => 'إضافة :name',
+    'select'                        => 'أختر :name',
     'update'                        => 'تعديل :name',
     'delete'                        => 'حذف :name',
 

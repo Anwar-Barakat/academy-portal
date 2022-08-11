@@ -1,14 +1,12 @@
 @extends('layouts.master')
-@section('css')
-    @toastr_css
+
 @section('title')
-    {{ __('section.title_page') }}
+    {{ __('section.sections_list') }}
 @stop
-@endsection
 @section('page-header')
-<!-- breadcrumb -->
+    <!-- breadcrumb -->
 @section('PageTitle')
-    {{ __('section.title_page') }}
+    {{ __('section.sections_list') }}
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -18,7 +16,7 @@
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-                <a class="button x-small" href="#" data-toggle="modal" data-target="#exampleModal">
+                <a class="button x-small" href="#" data-toggle="modal" data-target="#addNewSection">
                     {{ __('msgs.add', ['name' => __('section.section')]) }}
                 </a>
             </div>
@@ -114,8 +112,107 @@
                     </div>
                 </div>
             </div>
+
+            <div class="modal fade" id="addNewSection" tabindex="-1" role="dialog"
+                aria-labelledby="addNewSectionLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" style="font-family: 'Cairo', sans-serif;" id="addNewSectionLabel">
+                                {{ __('msgs.add', ['name' => __('section.section')]) }}
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="{{ route('sections.store') }}" method="POST">
+                            <div class="modal-body">
+                                @csrf
+                                <div class="row">
+                                    <div class="col">
+                                        <x-input type="text" :value="old('name_ar')" id="name_ar" class="form-control"
+                                            placeholder="{{ __('section.name_ar') }}" required autofocus />
+                                    </div>
+
+                                    <div class="col">
+                                        <x-input type="text" :value="old('name_en')" id="name_en" class="form-control"
+                                            placeholder="{{ __('section.name_en') }}" required autofocus />
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col d-flex flex-column">
+                                        <x-label for="grade_id" :value="__('section.grade_name')" />
+                                        <select name="grade_id" class="fancyselect" id="grade_id">
+                                            <option value="" selected disabled>
+                                                {{ __('msgs.select', ['name' => __('section.grade_name')]) }}
+                                            </option>
+                                            @foreach ($grades as $grade)
+                                                <option value="{{ $grade->id }}"> {{ $grade->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col d-flex flex-column">
+                                        <x-label for="classroom_id" :value="__('section.classrrom_name')" />
+                                        <select name="classroom_id" id="get-classrooms" class="form-control">
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-dismiss="modal">{{ __('buttons.close') }}</button>
+                                <x-button class="btn btn-success">
+                                    {{ __('buttons.submit') }}
+                                </x-button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 <!-- row closed -->
 @endsection
+
+
+@section('js')
+
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('#grade_id').on('change', function() {
+            var grade_id = $(this).val()
+            if (grade_id) {
+                $.ajax({
+                    url: "{{ URL::to('get-classrooms') }}/" + grade_id,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#get-classrooms').empty();
+                        $.each(data, function(key, value) {
+                            console.log(key);
+                            console.log(value);
+                            $('#get-classrooms').append(
+                                '<option value="' + key + '">' + value +
+                                '</option>');
+                        });
+                    },
+                });
+            }
+        })
+    })
+</script>
+@stop

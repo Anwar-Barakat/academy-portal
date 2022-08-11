@@ -3,6 +3,7 @@
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\EmptyClassroomController;
 use App\Http\Controllers\FilterClassroomController;
+use App\Http\Controllers\GetClassroomController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\SectionController;
 use App\Models\Classroom;
@@ -55,6 +56,8 @@ Route::group(
 
             //! ===================== Sections =====================
             Route::resource('sections',             SectionController::class);
+
+            Route::get('/get-classrooms/{grade_id}', GetClassroomController::class)->name('get-classrooms');
         });
     }
 );

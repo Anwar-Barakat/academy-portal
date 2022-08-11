@@ -12,6 +12,7 @@ return [
     'not_available'                 => ':name Not Avaliable',
 
     'add'                           => 'Add :name',
+    'select'                        => 'Select :name',
     'update'                        => 'Update :name',
     'delete'                        => 'Delete :name',
 
