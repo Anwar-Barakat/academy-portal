@@ -13,6 +13,7 @@ return [
     'grade_name'                => 'اسم المرحلة',
     'row'                       => 'سطر',
     'checked_classrooms'        => 'الصفوف الدراسية المختارة',
+    'filter_using_grade'        => 'التصفية باستخدام المرحلة الدراسية'
 
 
 

@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+
+
 @section('title')
     {{ __('classroom.classrooms') }}
 @stop
@@ -44,6 +46,17 @@
                         <button type="button" class="btn x-small btn-danger" id="deleteAllClassroomsBtn">
                             {{ __('msgs.delete', ['name' => __('classroom.checked_classrooms')]) }}
                         </button>
+
+                        <form action="{{ route('filter-classrooms') }}" method="POST">
+                            @csrf
+                            <select name="grade_id" id="" class="fancyselect" onchange="this.form.submit()"
+                                required>
+                                <option value="" selected disabled>{{ __('classroom.filter_using_grade') }}</option>
+                                @foreach ($grades as $grade)
+                                    <option value="{{ $grade->id }}">{{ $grade->name }}</option>
+                                @endforeach
+                            </select>
+                        </form>
                     </div>
 
                     <div class="table-responsive">
@@ -61,6 +74,13 @@
                                 </tr>
                             </thead>
                             <tbody>
+
+                                @if ($classroomsSeached)
+                                    @php
+                                        $classrooms = $classroomsSeached;
+                                    @endphp
+                                @endif
+
                                 @forelse ($classrooms as $classroom)
                                     <tr>
                                         <td>
@@ -344,5 +364,4 @@
             }
         })
     </script>
-
 @endsection

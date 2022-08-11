@@ -10,6 +10,6 @@ return [
     'name_en'                   => 'English Name',
     'grade_name'                => 'Grade Name',
     'row'                       => 'Row',
-    'checked_classrooms'        => 'Checked Classrooms'
-
+    'checked_classrooms'        => 'Checked Classrooms',
+    'filter_using_grade'        => 'Filter Using Grade'
 ];

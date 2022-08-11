@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\EmptyClassroomController;
+use App\Http\Controllers\FilterClassroomController;
 use App\Http\Controllers\GradeController;
 use App\Models\Classroom;
 use Illuminate\Support\Facades\Route;
@@ -45,6 +46,8 @@ Route::group(
             Route::resource('classrooms', ClassroomController::class);
 
             Route::post('/delete-all-classrooms', EmptyClassroomController::class)->name('empty-classrooms');
+
+            Route::post('/filter-classrooms', FilterClassroomController::class)->name('filter-classrooms');
         });
     }
 );

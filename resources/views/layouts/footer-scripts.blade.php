@@ -26,7 +26,15 @@
 <script src="{{ URL::asset('assets/js/validation.js') }}"></script>
 <!-- lobilist -->
 <script src="{{ URL::asset('assets/js/lobilist.js') }}"></script>
+
+<script src="{{ URL::asset('assets/js/nicescroll/jquery.nicescroll.js') }}"></script>
+
+<script src="{{ URL::asset('assets/js/jquery-nice-select/jquery-nice-select.js') }}"></script>
+
+
+<script src="{{ asset('assets/js/bootstrap-datatables/jquery.dataTables.min.js') }}"></script>
+
+<script src="{{ asset('assets/js/bootstrap-datatables/dataTables.bootstrap4.min.js') }}"></script>
+
 <!-- custom -->
 <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
-
-
