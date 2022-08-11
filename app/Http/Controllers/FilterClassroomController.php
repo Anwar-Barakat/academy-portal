@@ -20,6 +20,6 @@ class FilterClassroomController extends Controller
         $grades     = Grade::all();
 
         $search = Classroom::where('grade_id', $grade_id)->get();
-        return view('pages.classrooms.index', ['grades' => $grades, 'classroomsSeached' => $search]);
+        return redirect()->back()->with(['classroomsSeached' => $search]);
     }
 }

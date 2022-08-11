@@ -14,6 +14,8 @@ return [
     'add_grade'                 => 'Add Grade',
     'classrooms'                => 'Classrooms',
     'classrooms_list'           => 'Classrooms List',
+    'sections'                  => 'Sections',
+    'sections_lost'             => 'Sections List',
 
     'created_at'                => 'Created At'
 

@@ -19,34 +19,43 @@
 
                     <!-- Grades-->
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#elements">
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#grades">
                             <div class="pull-left"><i class="fa fa-university"></i><span
                                     class="right-nav-text">{{ __('trans.grades') }}</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
-                        <ul id="elements" class="collapse" data-parent="#sidebarnav">
+                        <ul id="grades" class="collapse" data-parent="#sidebarnav">
                             <li><a href="{{ route('grades.index') }}">{{ __('trans.grades_list') }}</a></li>
                         </ul>
                     </li>
 
                     <!-- Classrooms-->
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#calendar-menu">
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#classrooms-menu">
                             <div class="pull-left"><i class="fa fa-building-o"></i><span
                                     class="right-nav-text">{{ __('trans.classrooms') }}</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
-                        <ul id="calendar-menu" class="collapse" data-parent="#sidebarnav">
+                        <ul id="classrooms-menu" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{ route('classrooms.index') }}">{{ __('trans.classrooms_list') }} </a> </li>
                         </ul>
                     </li>
-                    <!-- menu item todo-->
+
+                    <!-- Classrooms-->
                     <li>
-                        <a href="todo-list.html"><i class="ti-menu-alt"></i><span class="right-nav-text">Todo
-                                list</span> </a>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#sections-menu">
+                            <div class="pull-left"><i class="ti ti-menu-alt"></i><span
+                                    class="right-nav-text">{{ __('trans.sections') }}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="sections-menu" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('sections.index') }}">{{ __('trans.sections_lost') }} </a> </li>
+                        </ul>
                     </li>
+
                     <!-- menu item chat-->
                     <li>
                         <a href="chat-page.html"><i class="ti-comments"></i><span class="right-nav-text">Chat

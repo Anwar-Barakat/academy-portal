@@ -75,7 +75,7 @@
                             </thead>
                             <tbody>
 
-                                @if ($classroomsSeached)
+                                @if (isset($classroomsSeached))
                                     @php
                                         $classrooms = $classroomsSeached;
                                     @endphp

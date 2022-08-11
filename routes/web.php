@@ -4,6 +4,7 @@ use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\EmptyClassroomController;
 use App\Http\Controllers\FilterClassroomController;
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\SectionController;
 use App\Models\Classroom;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -40,14 +41,20 @@ Route::group(
             })->name('dashboard');
 
             //! ===================== Grades =====================
-            Route::resource('grades',       GradeController::class);
+            Route::resource('grades',               GradeController::class);
+
 
             //! ===================== Classrooms =====================
-            Route::resource('classrooms', ClassroomController::class);
+            Route::resource('classrooms',           ClassroomController::class);
 
-            Route::post('/delete-all-classrooms', EmptyClassroomController::class)->name('empty-classrooms');
+            Route::post('/delete-all-classrooms',   EmptyClassroomController::class)->name('empty-classrooms');
 
-            Route::post('/filter-classrooms', FilterClassroomController::class)->name('filter-classrooms');
+            Route::get('/filter-classrooms',        FilterClassroomController::class)->name('filter-classrooms');
+            Route::post('/filter-classrooms',       FilterClassroomController::class)->name('filter-classrooms');
+
+
+            //! ===================== Sections =====================
+            Route::resource('sections',             SectionController::class);
         });
     }
 );
