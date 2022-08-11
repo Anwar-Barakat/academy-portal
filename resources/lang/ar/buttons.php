@@ -7,4 +7,8 @@ return [
     'actions'               => 'العمليات',
     'submit'                => 'حفظ البيانات',
     'update'                => 'تحديث',
+
+
+    'active'                => 'فعال',
+    'disactive'             => 'غير فعال',
 ];

@@ -7,4 +7,7 @@ return [
     'close'                 => 'Close',
     'actions'               => 'Actions',
     'submit'                => 'Submit',
+
+    'active'                => 'Active',
+    'disactive'             => 'Disactive',
 ];

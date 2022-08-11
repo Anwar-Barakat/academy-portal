@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Section;
 use App\Http\Requests\StoreSectionRequest;
 use App\Http\Requests\UpdateSectionRequest;
+use App\Models\Grade;
 
 class SectionController extends Controller
 {
@@ -15,7 +16,8 @@ class SectionController extends Controller
      */
     public function index()
     {
-        //
+        $grades     = Grade::with(['sections'])->get();
+        return view('pages.sections.index', compact('grades'));
     }
 
     /**
