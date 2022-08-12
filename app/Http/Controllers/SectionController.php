@@ -88,7 +88,23 @@ class SectionController extends Controller
      */
     public function update(UpdateSectionRequest $request, Section $section)
     {
-        //
+        try {
+            $data   = $request->only(['name_ar', 'name_en', 'grade_id', 'classroom_id','status']);
+            $section->update([
+                'name'          => [
+                    'ar'        => $data['name_ar'],
+                    'en'        => $data['name_en'],
+                ],
+                'status'        => 1,
+                'grade_id'      => $data['grade_id'],
+                'classroom_id'  => $data['classroom_id']
+            ]);
+
+            toastr()->success(__('msgs.updated', ['name' => __('section.section')]));
+            return redirect()->route('sections.index');
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
     }
 
     /**

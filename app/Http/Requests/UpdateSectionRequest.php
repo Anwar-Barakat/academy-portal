@@ -13,7 +13,7 @@ class UpdateSectionRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class UpdateSectionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'grade_id'      => 'numeric',
+            'classroom_id'  => 'numeric',
+            'status'        => 'in:0,1'
         ];
     }
 }

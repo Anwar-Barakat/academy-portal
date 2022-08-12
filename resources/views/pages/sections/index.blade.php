@@ -93,6 +93,142 @@
                                                                                 data-target="#delete{{ $section->id }}">{{ __('buttons.delete') }}</a>
                                                                         </td>
                                                                     </tr>
+                                                                    {{-- Edit The Section --}}
+
+                                                                    <div class="modal fade"
+                                                                        id="edit{{ $section->id }}" tabindex="-1"
+                                                                        role="dialog" aria-labelledby="editSection"
+                                                                        aria-hidden="true">
+                                                                        <div class="modal-dialog" role="document">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title"
+                                                                                        style="font-family: 'Cairo', sans-serif;"
+                                                                                        id="editSection">
+                                                                                        {{ __('msgs.update', ['name' => __('section.section')]) }}
+                                                                                    </h5>
+                                                                                    <button type="button"
+                                                                                        class="close"
+                                                                                        data-dismiss="modal"
+                                                                                        aria-label="Close">
+                                                                                        <span
+                                                                                            aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <form
+                                                                                    action="{{ route('sections.update', $section) }}"
+                                                                                    method="POST">
+                                                                                    <div class="modal-body">
+                                                                                        @method('PUT')
+                                                                                        @csrf
+                                                                                        <div class="row">
+                                                                                            <div class="col">
+                                                                                                <x-input type="text"
+                                                                                                    name="name_ar"
+                                                                                                    class="form-control"
+                                                                                                    :value="old(
+                                                                                                        'name_ar',
+                                                                                                        $section->getTranslation(
+                                                                                                            'name',
+                                                                                                            'ar',
+                                                                                                        ),
+                                                                                                    )"
+                                                                                                    placeholder="{{ __('section.name_ar') }}" />
+                                                                                            </div>
+
+                                                                                            <div class="col">
+                                                                                                <x-input type="text"
+                                                                                                    name="name_en"
+                                                                                                    class="form-control"
+                                                                                                    :value="old(
+                                                                                                        'name_en',
+                                                                                                        $section->getTranslation(
+                                                                                                            'name',
+                                                                                                            'en',
+                                                                                                        ),
+                                                                                                    )"
+                                                                                                    placeholder="{{ __('section.name_en') }}" />
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <br>
+                                                                                        <div class="col">
+                                                                                            <x-label :value="__(
+                                                                                                'section.grade_name',
+                                                                                            )"
+                                                                                                for="grade_id"
+                                                                                                class="control-label" />
+                                                                                            <select name="grade_id"
+                                                                                                class="custom-select">
+                                                                                                <option
+                                                                                                    value="{{ $grade->id }}">
+                                                                                                    {{ $grade->name }}
+                                                                                                </option>
+                                                                                                @foreach ($grades as $grade)
+                                                                                                    <option
+                                                                                                        value="{{ $grade->id }}">
+                                                                                                        {{ $grade->name }}
+                                                                                                    </option>
+                                                                                                @endforeach
+                                                                                            </select>
+                                                                                        </div>
+                                                                                        <br>
+
+                                                                                        <div class="col">
+                                                                                            <x-label :value="__(
+                                                                                                'section.classrrom_name',
+                                                                                            )"
+                                                                                                for="classrrom_id"
+                                                                                                class="control-label" />
+                                                                                            <select name="classroom_id"
+                                                                                                class="custom-select">
+                                                                                                <option
+                                                                                                    value="{{ $section->classroom->id }}">
+                                                                                                    {{ $section->classroom->name }}
+                                                                                                </option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                        <br>
+
+                                                                                        <div class="col">
+                                                                                            <div class="form-check">
+                                                                                                @if ($section->status === 1)
+                                                                                                    <x-input
+                                                                                                        type="checkbox"
+                                                                                                        checked
+                                                                                                        class="form-check-input"
+                                                                                                        name="status"
+                                                                                                        :value="1"
+                                                                                                        id="status" />
+                                                                                                @else
+                                                                                                    <x-input
+                                                                                                        type="checkbox"
+                                                                                                        class="form-check-input"
+                                                                                                        name="status"
+                                                                                                        :value="0"
+                                                                                                        id="status" />
+                                                                                                @endif
+                                                                                                <x-label
+                                                                                                    :value="__(
+                                                                                                        'section.status',
+                                                                                                    )"
+                                                                                                    for="status"
+                                                                                                    class="control-label" />
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button"
+                                                                                            class="btn btn-secondary"
+                                                                                            data-dismiss="modal">{{ __('buttons.close') }}</button>
+                                                                                        <x-button
+                                                                                            class="btn btn-success">
+                                                                                            {{ __('buttons.submit') }}
+                                                                                        </x-button>
+                                                                                    </div>
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 @empty
                                                                     <tr class="text-center">
                                                                         <td colspan="5">
@@ -112,13 +248,14 @@
                     </div>
                 </div>
             </div>
-
+            {{-- Add A new Section --}}
             <div class="modal fade" id="addNewSection" tabindex="-1" role="dialog"
                 aria-labelledby="addNewSectionLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" style="font-family: 'Cairo', sans-serif;" id="addNewSectionLabel">
+                            <h5 class="modal-title" style="font-family: 'Cairo', sans-serif;"
+                                id="addNewSectionLabel">
                                 {{ __('msgs.add', ['name' => __('section.section')]) }}
                             </h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -176,6 +313,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
@@ -195,7 +333,7 @@
 
 <script>
     $(document).ready(function() {
-        $('#grade_id').on('change', function() {
+        $('select[name=grade_id]').on('change', function() {
             var grade_id = $(this).val()
             if (grade_id) {
                 $.ajax({
@@ -203,11 +341,11 @@
                     type: 'GET',
                     dataType: 'json',
                     success: function(data) {
-                        $('#get-classrooms').empty();
+                        $('select[name=classroom_id]').empty();
                         $.each(data, function(key, value) {
                             console.log(key);
                             console.log(value);
-                            $('#get-classrooms').append(
+                            $('select[name=classroom_id]').append(
                                 '<option value="' + key + '">' + value +
                                 '</option>');
                         });
