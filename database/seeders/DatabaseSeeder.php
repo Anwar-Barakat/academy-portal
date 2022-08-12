@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             GradeSeeder::class,
             ClassroomSeeder::class,
             BloodSeeder::class,
+            NationalitySeeder::class,
         ]);
     }
 }
