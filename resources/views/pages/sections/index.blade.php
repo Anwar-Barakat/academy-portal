@@ -130,13 +130,15 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col">
-                                        <x-input type="text" :value="old('name_ar')" id="name_ar" class="form-control"
-                                            placeholder="{{ __('section.name_ar') }}" required autofocus />
+                                        <x-input type="text" :value="old('name_ar')" id="name_ar" name="name_ar"
+                                            class="form-control" placeholder="{{ __('section.name_ar') }}" required
+                                            autofocus />
                                     </div>
 
                                     <div class="col">
-                                        <x-input type="text" :value="old('name_en')" id="name_en" class="form-control"
-                                            placeholder="{{ __('section.name_en') }}" required autofocus />
+                                        <x-input type="text" :value="old('name_en')" id="name_en" name="name_en"
+                                            class="form-control" placeholder="{{ __('section.name_en') }}" required
+                                            autofocus />
                                     </div>
                                 </div>
                                 <br>

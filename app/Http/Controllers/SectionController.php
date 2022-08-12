@@ -38,7 +38,23 @@ class SectionController extends Controller
      */
     public function store(StoreSectionRequest $request)
     {
-        //
+        try {
+            $data   = $request->only(['name_ar', 'name_en', 'grade_id', 'classroom_id']);
+            Section::create([
+                'name'          => [
+                    'ar'        => $data['name_ar'],
+                    'en'        => $data['name_en'],
+                ],
+                'status'        => 1,
+                'grade_id'      => $data['grade_id'],
+                'classroom_id'  => $data['classroom_id']
+            ]);
+
+            toastr()->success(__('msgs.added', ['name' => __('section.section')]));
+            return redirect()->route('sections.index');
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
     }
 
     /**

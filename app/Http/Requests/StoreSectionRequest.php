@@ -13,7 +13,7 @@ class StoreSectionRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class StoreSectionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name_ar'       => 'required|min:1',
+            'name_en'       => 'required|min:1',
+            'grade_id'      => 'required|numeric',
+            'classroom_id'  => 'required|numeric',
         ];
     }
 }
