@@ -20,6 +20,15 @@
 <!-- sweetalert2 -->
 <script src="{{ URL::asset('assets/js/sweetalert2.js') }}"></script>
 <!-- toastr -->
+
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
+
 @yield('js')
 <script src="{{ URL::asset('assets/js/toastr.js') }}"></script>
 <!-- validation -->

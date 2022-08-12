@@ -81,8 +81,7 @@
                                                                             @endif
 
                                                                         </td>
-                                                                        <td>
-
+                                                                        <td class="d-flex" style="gap: 5px">
                                                                             <a href="#"
                                                                                 class="btn btn-outline-info btn-sm"
                                                                                 data-toggle="modal"
@@ -231,8 +230,8 @@
 
                                                                     {{-- Delete The Section --}}
                                                                     <div class="modal fade"
-                                                                        id="delete{{ $section->id }}"
-                                                                        tabindex="-1" role="dialog"
+                                                                        id="delete{{ $section->id }}" tabindex="-1"
+                                                                        role="dialog"
                                                                         aria-labelledby="exampleModalLabel"
                                                                         aria-hidden="true">
                                                                         <div class="modal-dialog" role="document">
@@ -372,13 +371,7 @@
 
 @section('js')
 
-<script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-</script>
+
 
 <script>
     $(document).ready(function() {
