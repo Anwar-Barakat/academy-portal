@@ -89,7 +89,7 @@ class SectionController extends Controller
     public function update(UpdateSectionRequest $request, Section $section)
     {
         try {
-            $data   = $request->only(['name_ar', 'name_en', 'grade_id', 'classroom_id','status']);
+            $data   = $request->only(['name_ar', 'name_en', 'grade_id', 'classroom_id', 'status']);
             $section->update([
                 'name'          => [
                     'ar'        => $data['name_ar'],
@@ -115,6 +115,12 @@ class SectionController extends Controller
      */
     public function destroy(Section $section)
     {
-        //
+        try {
+            $section->delete();
+            toastr()->info(__('msgs.delete', ['name' => __('section.section')]));
+            return redirect()->route('sections.index');
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
     }
 }
