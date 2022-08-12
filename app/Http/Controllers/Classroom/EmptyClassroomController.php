@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Classroom;
 
 use App\Models\Classroom;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 
 class EmptyClassroomController extends Controller
 {

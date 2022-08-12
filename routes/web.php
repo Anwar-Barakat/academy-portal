@@ -1,12 +1,11 @@
 <?php
 
-use App\Http\Controllers\ClassroomController;
-use App\Http\Controllers\EmptyClassroomController;
-use App\Http\Controllers\FilterClassroomController;
-use App\Http\Controllers\GetClassroomController;
-use App\Http\Controllers\GradeController;
-use App\Http\Controllers\SectionController;
-use App\Models\Classroom;
+use App\Http\Controllers\Classroom\ClassroomController;
+use App\Http\Controllers\Classroom\EmptyClassroomController;
+use App\Http\Controllers\Classroom\FilterClassroomController;
+use App\Http\Controllers\Grade\GradeController;
+use App\Http\Controllers\Section\GetClassroomController;
+use App\Http\Controllers\Section\SectionController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use PhpParser\Builder\Class_;

@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Classroom;
 
 use App\Models\Classroom;
 use App\Http\Requests\StoreClassroomRequest;
 use App\Http\Requests\UpdateClassroomRequest;
 use App\Models\Grade;
 use Flasher\Laravel\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ClassroomController extends Controller
 {

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Classroom;
 
 use App\Models\Classroom;
 use App\Models\Grade;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class FilterClassroomController extends Controller
 {
