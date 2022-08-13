@@ -9,10 +9,10 @@
     <meta name="author" content="potenzaglobalsolutions.com" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     @include('layouts.head')
+    @livewireStyles
 </head>
 
 <body>
-
     <div class="wrapper">
 
         <!--================================= preloader -->
@@ -33,6 +33,23 @@
 
             @yield('page-header')
 
+            <!-- breadcrumb -->
+            <div class="page-title">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4 class="mb-0">@yield('breadcrum')</h4>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
+                            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"
+                                    class="default-color">{{ __('grade.home') }}</a></li>
+                            <li class="breadcrumb-item active">@yield('breadcrum_home')</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- breadcrumb -->
+
             @yield('content')
 
             <!--================================= wrapper -->
@@ -46,7 +63,7 @@
     <!--================================= footer -->
 
     @include('layouts.footer-scripts')
-
+    @livewireScripts
 </body>
 
 </html>

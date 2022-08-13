@@ -7,6 +7,7 @@ use App\Http\Controllers\Grade\GradeController;
 use App\Http\Controllers\MyParentController;
 use App\Http\Controllers\Section\GetClassroomController;
 use App\Http\Controllers\Section\SectionController;
+use App\Http\Livewire\AddParent;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use PhpParser\Builder\Class_;
@@ -61,7 +62,7 @@ Route::group(
 
 
             //! ===================== Parents =====================
-            Route::resource('parents',              MyParentController::class);
+            Route::get('/add-parents', AddParent::class)->name('add-parents');
         });
     }
 );

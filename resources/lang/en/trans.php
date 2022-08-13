@@ -17,7 +17,7 @@ return [
     'sections'                  => 'Sections',
     'sections_lost'             => 'Sections List',
     'parents'                   => 'Parents',
-    'parent_list'               => 'Parents List',
+    'parents_list'              => 'Parents List',
 
     'created_at'                => 'Created At'
 

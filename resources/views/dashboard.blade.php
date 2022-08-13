@@ -5,19 +5,15 @@
     {{ __('trans.dashboard') }}
 @endsection
 
+@section('breadcrum')
+    {{ __('trans.dashboard') }}
+@endsection
+
+@section('breadcrum_home')
+    {{ __('trans.dashboard') }}
+@endsection
+
 @section('content')
-    <!-- main-content -->
-    <div class="page-title">
-        <div class="row">
-            <div class="col-sm-6">
-                <h4 class="mb-0"> Dashboard</h4>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right">
-                </ol>
-            </div>
-        </div>
-    </div>
     <!-- widgets -->
     <div class="row">
         <div class="col-xl-3 col-lg-6 col-md-6 mb-30">

@@ -65,7 +65,10 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="parents-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('parents.index') }}">{{ __('trans.parent_list') }} </a> </li>
+                            <li>
+                                <a href="{{ route('add-parents') }}">{{ __('msgs.add', ['name' => __('parent.parents')]) }}
+                                </a>
+                            </li>
                         </ul>
                     </li>
 

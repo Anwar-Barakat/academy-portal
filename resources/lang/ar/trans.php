@@ -16,6 +16,6 @@ return [
     'classrooms_list'           => 'قائمة الصفوف الدراسية',
     'sections'                  => 'الأقسلم الدراسية',
     'sections_lost'             => 'قائمة الأقسام الدراسية',
-
+    'parents_list'              => 'قائمة الأبوين',
     'created_at'                => 'أُنشأت في'
 ];

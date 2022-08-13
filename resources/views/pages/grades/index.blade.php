@@ -6,24 +6,14 @@
 @stop
 @endsection
 
-@section('page-header')
-<!-- breadcrumb -->
-<div class="page-title">
-    <div class="row">
-        <div class="col-sm-6">
-            <h4 class="mb-0"> {{ __('grade.grades_list') }}</h4>
-        </div>
-        <div class="col-sm-6">
-            <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"
-                        class="default-color">{{ __('grade.home') }}</a></li>
-                <li class="breadcrumb-item active">{{ __('grade.grades') }}</li>
-            </ol>
-        </div>
-    </div>
-</div>
-<!-- breadcrumb -->
+@section('breadcrum')
+{{ __('grade.grades_list') }}
 @endsection
+
+@section('breadcrum_home')
+{{ __('grade.grades') }}
+@endsection
+
 
 @section('content')
 <!-- row -->
@@ -33,7 +23,7 @@
         <div class="card card-statistics h-100">
             <div class="card-body">
                 <button type="button" class="button x-small mb-3" data-toggle="modal" data-target="#addNewGrade">
-                    {{  __('msgs.add', ['name' => __('grade.grade')]) }}
+                    {{ __('msgs.add', ['name' => __('grade.grade')]) }}
                 </button>
                 @if ($errors->any())
                     @foreach ($errors->all() as $error)
