@@ -43,7 +43,7 @@
                         </ul>
                     </li>
 
-                    <!-- Classrooms-->
+                    <!-- Sections-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#sections-menu">
                             <div class="pull-left"><i class="ti ti-menu-alt"></i><span
@@ -55,6 +55,8 @@
                             <li> <a href="{{ route('sections.index') }}">{{ __('trans.sections_lost') }} </a> </li>
                         </ul>
                     </li>
+
+             
 
                     <!-- menu item chat-->
                     <li>
@@ -99,7 +101,8 @@
                     <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">Widgets, Forms & Tables </li>
                     <!-- menu item Widgets-->
                     <li>
-                        <a href="widgets.html"><i class="ti-blackboard"></i><span class="right-nav-text">Widgets</span>
+                        <a href="widgets.html"><i class="ti-blackboard"></i><span
+                                class="right-nav-text">Widgets</span>
                             <span class="badge badge-pill badge-danger float-right mt-1">59</span> </a>
                     </li>
                     <!-- menu item Form-->
