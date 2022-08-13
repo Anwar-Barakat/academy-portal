@@ -4,6 +4,7 @@ use App\Http\Controllers\Classroom\ClassroomController;
 use App\Http\Controllers\Classroom\EmptyClassroomController;
 use App\Http\Controllers\Classroom\FilterClassroomController;
 use App\Http\Controllers\Grade\GradeController;
+use App\Http\Controllers\MyParentController;
 use App\Http\Controllers\Section\GetClassroomController;
 use App\Http\Controllers\Section\SectionController;
 use Illuminate\Support\Facades\Route;
@@ -57,6 +58,10 @@ Route::group(
             Route::resource('sections',             SectionController::class);
 
             Route::get('/get-classrooms/{grade_id}', GetClassroomController::class)->name('get-classrooms');
+
+
+            //! ===================== Parents =====================
+            Route::resource('parents',              MyParentController::class);
         });
     }
 );

@@ -56,7 +56,22 @@
                         </ul>
                     </li>
 
-             
+                    <!-- Parents-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#parents-menu">
+                            <div class="pull-left"><i class="ti ti-user"></i><span
+                                    class="right-nav-text">{{ __('trans.parents') }}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="parents-menu" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('parents.index') }}">{{ __('trans.parent_list') }} </a> </li>
+                        </ul>
+                    </li>
+
+
+
+
 
                     <!-- menu item chat-->
                     <li>
