@@ -10,4 +10,7 @@ return [
 
     'active'                => 'Active',
     'disactive'             => 'Disactive',
+
+    'next'                  => 'Next',
+    'Previous'              => 'Previous',
 ];

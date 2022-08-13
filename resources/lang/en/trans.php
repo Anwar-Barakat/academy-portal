@@ -19,6 +19,9 @@ return [
     'parents'                   => 'Parents',
     'parents_list'              => 'Parents List',
 
-    'created_at'                => 'Created At'
+    'created_at'                => 'Created At',
+    'email'                     => 'Email',
+    'password'                  => 'Password',
+
 
 ];

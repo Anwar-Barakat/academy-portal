@@ -11,4 +11,8 @@ return [
 
     'active'                => 'فعال',
     'disactive'             => 'غير فعال',
+
+
+    'next'                  => 'التالي',
+    'Previous'              => 'السابق',
 ];

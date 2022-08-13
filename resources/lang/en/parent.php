@@ -31,8 +31,8 @@ return [
     'mother_religion_id'        => 'Mother Religion Type',
     'mother_address'            => 'Mother Address',
 
-
-
-
+    'step1'                     => 'Step1',
+    'step2'                     => 'Step2',
+    'step3'                     => 'Step3',
 
 ];
