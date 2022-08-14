@@ -31,6 +31,9 @@ return [
     'mother_religion_id'        => 'ديانة الأم',
     'mother_address'            => 'عنوان الأم',
 
+    'attachments'               => 'المرفقات',
+
+
     'step1'                     => 'الخطوة 1',
     'step2'                     => 'الخطوة 2',
     'step3'                     => 'الخطوة 3',

@@ -13,4 +13,5 @@ return [
 
     'next'                  => 'Next',
     'back'                  => 'Back',
+    'upload'                => 'Upload',
 ];

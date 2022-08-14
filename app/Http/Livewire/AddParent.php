@@ -5,13 +5,18 @@ namespace App\Http\Livewire;
 use App\Models\Blood;
 use App\Models\MyParent;
 use App\Models\Nationality;
+use App\Models\ParentAttachment;
 use App\Models\Religion;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
+use Livewire\WithFileUploads;
+use phpDocumentor\Reflection\Types\Parent_;
 
 class AddParent extends Component
 {
+    use WithFileUploads;
+
     public $successfulMsg = '';
 
     public $errorMsg = '';
@@ -43,6 +48,8 @@ class AddParent extends Component
         $mother_blood_id,
         $mother_religion_id,
         $mother_address;
+
+    public $photos = [], $parent_id;
 
 
 
@@ -79,40 +86,40 @@ class AddParent extends Component
 
     public function firstStepSubmit()
     {
-        $this->validate([
-            'email'                         => ['required', 'email', 'unique:my_parents,email,' . $this->id],
-            'password'                      => 'required|min:8',
-            'father_name_ar'                => 'required|min:3',
-            'father_name_en'                => 'required|min:3',
-            'father_job_ar'                 => 'required|min:3',
-            'father_job_en'                 => 'required|min:3',
-            'father_passport'               => ['required', 'min:10', 'max:10', 'unique:my_parents,father_passport,' . $this->id],
-            'father_identification'         => ['required', 'min:10', 'max:10', 'unique:my_parents,father_identification,' . $this->id],
-            'father_phone'                  => ['required', 'min:10', 'max:10', 'unique:my_parents,father_phone,' . $this->id],
-            'father_nationality_id'         => 'required',
-            'father_blood_id'               => 'required',
-            'father_religion_id'            => 'required:in:1,2,3',
-            'father_address'                => 'required|min:10',
-        ]);
+        // $this->validate([
+        //     'email'                         => ['required', 'email', 'unique:my_parents,email,' . $this->id],
+        //     'password'                      => 'required|min:8',
+        //     'father_name_ar'                => 'required|min:3',
+        //     'father_name_en'                => 'required|min:3',
+        //     'father_job_ar'                 => 'required|min:3',
+        //     'father_job_en'                 => 'required|min:3',
+        //     'father_passport'               => ['required', 'min:10', 'max:10', 'unique:my_parents,father_passport,' . $this->id],
+        //     'father_identification'         => ['required', 'min:10', 'max:10', 'unique:my_parents,father_identification,' . $this->id],
+        //     'father_phone'                  => ['required', 'min:10', 'max:10', 'unique:my_parents,father_phone,' . $this->id],
+        //     'father_nationality_id'         => 'required',
+        //     'father_blood_id'               => 'required',
+        //     'father_religion_id'            => 'required:in:1,2,3',
+        //     'father_address'                => 'required|min:10',
+        // ]);
 
         $this->currentStep = 2;
     }
 
     public function secondStepSubmit()
     {
-        $this->validate([
-            'mother_name_ar'                => 'required|min:3',
-            'mother_name_en'                => 'required|min:3',
-            'mother_job_ar'                 => 'required|min:3',
-            'mother_job_en'                 => 'required|min:3',
-            'mother_passport'               => ['required', 'min:10', 'max:10', 'unique:my_parents,mother_passport,' . $this->id],
-            'mother_identification'         => ['required', 'min:10', 'max:10', 'unique:my_parents,mother_identification,' . $this->id],
-            'mother_phone'                  => ['required', 'min:10', 'max:10', 'unique:my_parents,mother_phone,' . $this->id],
-            'mother_nationality_id'         => 'required',
-            'mother_blood_id'               => 'required',
-            'mother_religion_id'            => 'required:in:1,2,3',
-            'mother_address'                => 'required|min:10',
-        ]);
+        // $this->validate([
+        //     'mother_name_ar'                => 'required|min:3',
+        //     'mother_name_en'                => 'required|min:3',
+        //     'mother_job_ar'                 => 'required|min:3',
+        //     'mother_job_en'                 => 'required|min:3',
+        //     'mother_passport'               => ['required', 'min:10', 'max:10', 'unique:my_parents,mother_passport,' . $this->id],
+        //     'mother_identification'         => ['required', 'min:10', 'max:10', 'unique:my_parents,mother_identification,' . $this->id],
+        //     'mother_phone'                  => ['required', 'min:10', 'max:10', 'unique:my_parents,mother_phone,' . $this->id],
+        //     'mother_nationality_id'         => 'required',
+        //     'mother_blood_id'               => 'required',
+        //     'mother_religion_id'            => 'required:in:1,2,3',
+        //     'mother_address'                => 'required|min:10',
+        // ]);
         $this->currentStep = 3;
     }
 
@@ -148,7 +155,7 @@ class AddParent extends Component
                 'ar'    => $this->mother_name_ar,
                 'en'    => $this->mother_name_en,
             ];
-            $my_parent->mother_job           = [
+            $my_parent->mother_job              = [
                 'ar'    => $this->mother_job_ar,
                 'en'    => $this->mother_job_en,
             ];
@@ -160,6 +167,23 @@ class AddParent extends Component
             $my_parent->mother_religion_id      = $this->mother_religion_id;
             $my_parent->mother_address          = $this->mother_address;
             $my_parent->save();
+
+            if (!empty($this->photos)) {
+                foreach ($this->photos as $photo) {
+                    /*
+                        first   : folder name
+                        second  : file name
+                        third   : the disk
+                    */
+                    $photo->storeAs($this->father_identification, $photo->getClientOriginalName(), $disk = 'parent_attachments');
+                    ParentAttachment::create([
+                        'file_name'     => $photo->getClientOriginalName(),
+                        'parent_id'     => MyParent::latest()->first()->id
+                    ]);
+                }
+            }
+
+            $this->currentStep = 1;
 
             $this->reset();
 

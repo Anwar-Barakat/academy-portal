@@ -116,10 +116,10 @@
                </div>
                <hr>
                <div class="nextPrevBtns  mt-4">
-                   <button class="btn btn-warning btn-sm btn-lg pull-right" wire:click="back(1)"
+                   <button class="btn btn-warning pull-right" wire:click="back(1)"
                        type="button">{{ __('buttons.back') }}
                    </button>
-                   <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" wire:click="secondStepSubmit"
+                   <button class="btn btn-success nextBtn pull-right" wire:click="secondStepSubmit"
                        type="button">{{ __('buttons.next') }}
                    </button>
                </div>

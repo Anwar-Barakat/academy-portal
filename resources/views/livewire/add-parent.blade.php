@@ -43,13 +43,27 @@
 
     <div class="row setup-content {{ $currentStep != 3 ? 'displayNone' : '' }}" id="step-3">
         @if ($currentStep === 3)
+            <div class="col-md-6">
+                <h3 class="mt-5 mb-3">{{ __('parent.attachments') }}</h3>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupFileAddon01">{{ __('buttons.upload') }}</span>
+                    </div>
+                    <div class="custom-file">
+                        <x-input type="file" class="custom-file-input" wire:model="photos" accept="image/*" multiple
+                            id="photos" aria-describedby="inputGroupFileAddon01" />
+                        <x-input wire:model="parent_id" type="hidden" />
+                        <x-label class="custom-file-label" for="photos" :value="__('msgs.select', ['name' => __('parent.attachments')])" />
+                    </div>
+                </div>
+            </div>
             <div class="col-md-12">
                 <h3 class="mt-5">{{ __('msgs.save_data') }}</h3>
                 <hr>
                 <div class="nextPrevBtns  mt-4">
-                    <button class="btn btn-warning btn-sm nextBtn btn-lg pull-right" type="button"
+                    <button class="btn btn-warning nextBtn pull-right" type="button"
                         wire:click="back(2)">{{ __('buttons.back') }}</button>
-                    <button class="btn btn-success btn-sm btn-lg pull-right" wire:click="submitForm"
+                    <button class="btn btn-success pull-right" wire:click="submitForm"
                         type="button">{{ __('buttons.submit') }}</button>
                 </div>
             </div>

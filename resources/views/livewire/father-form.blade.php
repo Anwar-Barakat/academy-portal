@@ -134,7 +134,7 @@
                </div>
                <hr>
                <div class="nextPrevBtns  mt-4">
-                   <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" wire:click="firstStepSubmit"
+                   <button class="btn btn-success nextBtn pull-right" wire:click="firstStepSubmit"
                        type="button">{{ __('buttons.next') }}
                    </button>
                </div>
