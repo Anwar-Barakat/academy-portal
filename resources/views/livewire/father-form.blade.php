@@ -89,7 +89,7 @@
                    <div class="form-group col">
                        <x-label for="father_nationality_id" :value="__('parent.father_nationality_id')" />
                        <select class="custom-select my-1 mr-sm-2" wire:model="father_nationality_id">
-                           <option selected>{{ __('msgs.select', ['name' => '...']) }}</option>
+                           <option selected value="">{{ __('msgs.select', ['name' => '...']) }}</option>
                            @foreach ($nationalities as $nationality)
                                <option value="{{ $nationality->id }}">{{ $nationality->name }}</option>
                            @endforeach
@@ -101,7 +101,7 @@
                    <div class="form-group col">
                        <x-label for="father_blood_id" :value="__('parent.father_blood_id')" />
                        <select class="custom-select my-1 mr-sm-2" wire:model="father_blood_id">
-                           <option selected>{{ __('msgs.select', ['name' => '...']) }}</option>
+                           <option selected value="">{{ __('msgs.select', ['name' => '...']) }}</option>
                            @foreach ($bloods as $blood)
                                <option value="{{ $blood->id }}">{{ $blood->name }}</option>
                            @endforeach
@@ -113,7 +113,7 @@
                    <div class="form-group col">
                        <x-label for="father_religion_id" :value="__('parent.father_religion_id')" />
                        <select class="custom-select my-1 mr-sm-2" wire:model="father_religion_id">
-                           <option selected>{{ __('msgs.select', ['name' => '...']) }}</option>
+                           <option selected value="">{{ __('msgs.select', ['name' => '...']) }}</option>
                            @foreach ($religions as $religion)
                                <option value="{{ $religion->id }}">{{ $religion->name }}</option>
                            @endforeach
