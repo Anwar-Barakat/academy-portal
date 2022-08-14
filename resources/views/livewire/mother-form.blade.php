@@ -8,7 +8,7 @@
                        <x-input type="text" wire:model="mother_name_ar" class="form-control" id="mother_name_ar"
                            :value="old('mother_name_ar')" />
                        @error('mother_name_ar')
-                           <div class="alert alert-danger">{{ $message }}</div>
+                           <small class="text text-danger">{{ $message }}</small>
                        @enderror
                    </div>
                    <div class="col">
@@ -16,7 +16,7 @@
                        <x-input type="text" wire:model="mother_name_en" class="form-control" id="mother_name_en"
                            :value="old('mother_name_en')" />
                        @error('mother_name_en')
-                           <div class="alert alert-danger">{{ $message }}</div>
+                           <small class="text text-danger">{{ $message }}</small>
                        @enderror
                    </div>
                </div>
@@ -27,7 +27,7 @@
                        <x-input type="text" wire:model="mother_job_ar" class="form-control" id="mother_job_ar"
                            :value="old('mother_job_ar')" />
                        @error('mother_job_ar')
-                           <div class="alert alert-danger">{{ $message }}</div>
+                           <small class="text text-danger">{{ $message }}</small>
                        @enderror
                    </div>
                    <div class="col">
@@ -35,24 +35,24 @@
                        <x-input type="text" wire:model="mother_job_en" class="form-control" id="mother_job_en"
                            :value="old('mother_job_en')" />
                        @error('mother_job_en')
-                           <div class="alert alert-danger">{{ $message }}</div>
+                           <small class="text text-danger">{{ $message }}</small>
                        @enderror
                    </div>
                </div>
                <div class="row mb-4">
                    <div class="col">
-                       <x-label for="mother_nationality_id" :value="__('parent.mother_nationality_id')" />
-                       <input type="text" wire:model="mother_nationality_id" class="form-control">
-                       @error('mother_nationality_id')
-                           <div class="alert alert-danger">{{ $message }}</div>
+                       <x-label for="mother_identification" :value="__('parent.mother_identification')" />
+                       <input type="text" wire:model="mother_identification" class="form-control">
+                       @error('mother_identification')
+                           <small class="text text-danger">{{ $message }}</small>
                        @enderror
                    </div>
                    <div class="col">
                        <x-label for="mother_passport" :value="__('parent.mother_passport')" />
                        <x-input type="text" wire:model="mother_passport" class="form-control" id="mother_passport"
                            :value="old('mother_passport')" />
-                       @error('Passport_ID_mother')
-                           <div class="alert alert-danger">{{ $message }}</div>
+                       @error('mother_passport')
+                           <small class="text text-danger">{{ $message }}</small>
                        @enderror
                    </div>
 
@@ -60,8 +60,8 @@
                        <x-label for="mother_phone" :value="__('parent.mother_phone')" />
                        <x-input type="text" wire:model="mother_phone" class="form-control" id="mother_phone"
                            :value="old('mother_phone')" />
-                       @error('Phone_mother')
-                           <div class="alert alert-danger">{{ $message }}</div>
+                       @error('mother_phone')
+                           <small class="text text-danger">{{ $message }}</small>
                        @enderror
                    </div>
                </div>
@@ -77,7 +77,7 @@
                            @endforeach
                        </select>
                        @error('mother_nationality_id')
-                           <div class="alert alert-danger">{{ $message }}</div>
+                           <small class="text text-danger">{{ $message }}</small>
                        @enderror
                    </div>
                    <div class="form-group col">
@@ -89,7 +89,7 @@
                            @endforeach
                        </select>
                        @error('mother_blood_id')
-                           <div class="alert alert-danger">{{ $message }}</div>
+                           <small class="text text-danger">{{ $message }}</small>
                        @enderror
                    </div>
                    <div class="form-group col">
@@ -101,7 +101,7 @@
                            @endforeach
                        </select>
                        @error('mother_religion_id')
-                           <div class="alert alert-danger">{{ $message }}</div>
+                           <small class="text text-danger">{{ $message }}</small>
                        @enderror
                    </div>
                </div>
@@ -111,7 +111,7 @@
                    <x-label for="mother_address" :value="__('parent.mother_address')" />
                    <textarea class="form-control" wire:model="mother_address" id="mother_address" rows="4"></textarea>
                    @error('mother_address')
-                       <div class="alert alert-danger">{{ $message }}</div>
+                       <small class="text text-danger">{{ $message }}</small>
                    @enderror
                </div>
                <hr>
