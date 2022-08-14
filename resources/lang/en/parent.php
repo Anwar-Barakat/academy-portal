@@ -11,6 +11,7 @@ return [
     'father_identification'     => 'father Identification Number',
     'father_passport'           => 'father passport Number',
     'father_phone'              => 'Father Phone',
+    'father_job'                => 'Father Job ',
     'father_job_ar'             => 'Arabic Father Job ',
     'father_job_en'             => 'English Father Job ',
     'father_nationality_id'     => 'Father Nationality',

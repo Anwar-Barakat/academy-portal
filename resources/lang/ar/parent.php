@@ -11,6 +11,7 @@ return [
     'father_identification'     => 'رقم هوية الأب',
     'father_passport'           => 'رقم جواز سفر الأب',
     'father_phone'              => 'هاتف الأب',
+    'father_job'                => 'مهنة الأب',
     'father_job_ar'             => 'مهنة الأب بالعربي',
     'father_job_en'             => 'مهنة الأب بالأنكليزي',
     'father_nationality_id'     => 'جنسية الأب',

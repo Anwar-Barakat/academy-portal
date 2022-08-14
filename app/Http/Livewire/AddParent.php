@@ -51,6 +51,8 @@ class AddParent extends Component
 
     public $photos = [], $parent_id;
 
+    public $showTable = true;
+
 
 
     public function updated($propertyName)
@@ -78,6 +80,7 @@ class AddParent extends Component
             'nationalities'     => Nationality::all(),
             'bloods'            => Blood::all(),
             'religions'         => Religion::all(),
+            'my_parents'        => MyParent::latest()->get(),
         ])->layout(
             'layouts.master',
             ['header' => __('msgs.add', ['name' => __('parent.parent')])]
@@ -191,5 +194,10 @@ class AddParent extends Component
         } catch (\Throwable $th) {
             $this->errorMsg = $th->getMessage();
         }
+    }
+
+    public function showParentForm()
+    {
+        $this->showTable = false;
     }
 }
