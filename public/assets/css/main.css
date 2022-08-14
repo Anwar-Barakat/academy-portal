@@ -57,4 +57,14 @@ div.dataTables_wrapper div.dataTables_length select {
     line-height: 37.33px;
 }
 
+footer {
+    width: 100%;
+}
+.nextPrevBtns {
+    display: flex;
+    height: 100%;
+    width: 15%;
+    justify-content: space-between;
+    height: fit-content;
+}
 /* Global Settings */

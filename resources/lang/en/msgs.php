@@ -21,4 +21,6 @@ return [
     'deleting_warning'              => 'Are Sure Of The Deleting Process ?',
     'delete_grade_error'            => 'It is not possible to delete the stage because there are classrooms belonging to it',
 
+    // Parent :
+    'save_data'                     => 'Are you sure saving data ?'
 ];

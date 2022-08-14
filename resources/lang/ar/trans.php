@@ -16,7 +16,8 @@ return [
     'classrooms_list'           => 'قائمة الصفوف الدراسية',
     'sections'                  => 'الأقسلم الدراسية',
     'sections_lost'             => 'قائمة الأقسام الدراسية',
-    'parents_list'              => 'قائمة الأبوين',
+    'parents_list'              => 'قائمة أولياء الأمور',
+    'parents'                   => 'أولياء الأمور',
 
 
     'created_at'                => 'أُنشأت في',

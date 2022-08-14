@@ -12,5 +12,5 @@ return [
     'disactive'             => 'Disactive',
 
     'next'                  => 'Next',
-    'Previous'              => 'Previous',
+    'back'                  => 'Back',
 ];

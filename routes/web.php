@@ -62,7 +62,7 @@ Route::group(
 
 
             //! ===================== Parents =====================
-            Route::get('/add-parents', AddParent::class)->name('add-parents');
+            Route::view('/add-parents', 'livewire.show_parent_forms')->name('add-parents');
         });
     }
 );
