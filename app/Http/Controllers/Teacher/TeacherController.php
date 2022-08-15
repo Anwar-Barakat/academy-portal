@@ -6,9 +6,17 @@ use App\Models\Teacher;
 use App\Http\Requests\StoreTeacherRequest;
 use App\Http\Requests\UpdateTeacherRequest;
 use App\Http\Controllers\Controller;
+use App\Repositories\Interface\TeacherRepositoryInterface;
 
 class TeacherController extends Controller
 {
+    public $teacher;
+
+    public function __construct(TeacherRepositoryInterface $teacher)
+    {
+        $this->teacher = $teacher;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +24,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        //
+        return $this->teacher->index();
     }
 
     /**
