@@ -35,7 +35,7 @@
                             title="{{ __('buttons.update') }}">
                             <i class="fa fa-edit"></i>
                         </button>
-                        <button type="button" class="btn btn-danger btn-sm" title="{{ __('buttons.delete') }}">
+                        <button type="button" class="btn btn-danger btn-sm" wire:click="delete({{ $parent->id }})" title="{{ __('buttons.delete') }}">
                             <i class="fa fa-trash"></i>
                         </button>
                     </td>
