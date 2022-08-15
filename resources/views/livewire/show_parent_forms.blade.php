@@ -3,7 +3,7 @@
     @livewireStyles
 
 @section('title')
-    {{ __('msgs.add', ['name' => __('parent.parent')]) }}
+    {{ __('msgs.add/edit', ['name' => __('parent.parent')]) }}
 @stop
 
 @endsection
@@ -12,7 +12,7 @@
 @endsection
 
 @section('breadcrum_home')
-{{ __('msgs.add', ['name' => __('parent.parent')]) }}
+{{ __('msgs.add/edit', ['name' => __('parent.parent')]) }}
 @endsection
 
 @section('content')

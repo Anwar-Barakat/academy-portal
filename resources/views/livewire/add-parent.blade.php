@@ -65,8 +65,13 @@
                     <div class="nextPrevBtns  mt-4">
                         <button class="btn btn-warning nextBtn pull-right" type="button"
                             wire:click="back(2)">{{ __('buttons.back') }}</button>
-                        <button class="btn btn-success pull-right" wire:click="submitForm"
-                            type="button">{{ __('buttons.submit') }}</button>
+                        @if ($updateMode === true)
+                            <button class="btn btn-success pull-right" wire:click="updateForm({{ $parent_id }})"
+                                type="button">{{ __('buttons.update') }}</button>
+                        @else
+                            <button class="btn btn-success pull-right" wire:click="submitForm"
+                                type="button">{{ __('buttons.submit') }}</button>
+                        @endif
                     </div>
                 </div>
             @endif

@@ -31,7 +31,8 @@
                     <td>{{ $parent->father_phone }}</td>
                     <td>{{ $parent->created_at }}</td>
                     <td>
-                        <button type="button" class="btn btn-info btn-sm" title="{{ __('buttons.edit') }}">
+                        <button type="button" class="btn btn-info btn-sm" wire:click="edit({{ $parent->id }})"
+                            title="{{ __('buttons.update') }}">
                             <i class="fa fa-edit"></i>
                         </button>
                         <button type="button" class="btn btn-danger btn-sm" title="{{ __('buttons.delete') }}">

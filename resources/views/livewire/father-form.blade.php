@@ -134,9 +134,15 @@
                </div>
                <hr>
                <div class="nextPrevBtns  mt-4">
-                   <button class="btn btn-success nextBtn pull-right" wire:click="firstStepSubmit"
-                       type="button">{{ __('buttons.next') }}
-                   </button>
+                   @if ($updateMode === true)
+                       <button class="btn btn-success nextBtn pull-right" wire:click="firstStepEdit"
+                           type="button">{{ __('buttons.next') }}
+                       </button>
+                   @else
+                       <button class="btn btn-success nextBtn pull-right" wire:click="firstStepSubmit"
+                           type="button">{{ __('buttons.next') }}
+                       </button>
+                   @endif
                </div>
            </div>
        </div>

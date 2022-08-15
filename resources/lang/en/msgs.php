@@ -15,6 +15,8 @@ return [
     'select'                        => 'Select :name',
     'update'                        => 'Update :name',
     'delete'                        => 'Delete :name',
+    'add/edit'                      => 'Add / Edit :name',
+
 
     // Grades :
     'not_found_yet'                 => 'Not Found Yet !!',

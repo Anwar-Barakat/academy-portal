@@ -119,9 +119,15 @@
                    <button class="btn btn-warning pull-right" wire:click="back(1)"
                        type="button">{{ __('buttons.back') }}
                    </button>
-                   <button class="btn btn-success nextBtn pull-right" wire:click="secondStepSubmit"
-                       type="button">{{ __('buttons.next') }}
-                   </button>
+                   @if ($updateMode === true)
+                       <button class="btn btn-success nextBtn pull-right" wire:click="secondStepEdit"
+                           type="button">{{ __('buttons.next') }}
+                       </button>
+                   @else
+                       <button class="btn btn-success nextBtn pull-right" wire:click="secondStepSubmit"
+                           type="button">{{ __('buttons.next') }}
+                       </button>
+                   @endif
                </div>
            </div>
        </div>

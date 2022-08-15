@@ -81,7 +81,7 @@
                                         <td>
                                             <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
                                                 data-target="#editClassroom{{ $classroom->id }}"
-                                                title="{{ __('buttons.edit') }}">
+                                                title="{{ __('buttons.update') }}">
                                                 <i class="fa fa-edit"></i>
                                             </button>
                                             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"

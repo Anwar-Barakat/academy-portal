@@ -53,6 +53,9 @@ class AddParent extends Component
 
     public $showTable = true;
 
+    public $updateMode = false,
+        $my_parent_id;
+
 
 
     public function updated($propertyName)
@@ -131,6 +134,11 @@ class AddParent extends Component
         $this->currentStep = $step;
     }
 
+    public function showParentForm()
+    {
+        $this->showTable = false;
+    }
+
     public function submitForm()
     {
         try {
@@ -196,8 +204,99 @@ class AddParent extends Component
         }
     }
 
-    public function showParentForm()
+    public function edit($id)
     {
         $this->showTable = false;
+        $this->updateMode = true;
+
+        $my_parent = MyParent::where('id', $id)->first();
+        $this->parent_id                = $my_parent->id;
+
+        $this->email                    = $my_parent->email;
+        $this->password                 = $my_parent->password;
+        $this->father_name_ar           = $my_parent->getTranslation('father_name', 'ar');
+        $this->father_name_en           = $my_parent->getTranslation('father_name', 'ar');
+        $this->father_job_ar            = $my_parent->getTranslation('father_job', 'ar');
+        $this->father_job_en            = $my_parent->getTranslation('father_job', 'ar');
+        $this->father_passport          = $my_parent->father_passport;
+        $this->father_identification    = $my_parent->father_identification;
+        $this->father_phone             = $my_parent->father_phone;
+        $this->father_nationality_id    = $my_parent->father_nationality_id;
+        $this->father_blood_id          = $my_parent->father_blood_id;
+        $this->father_religion_id       = $my_parent->father_religion_id;
+        $this->father_address           = $my_parent->father_address;
+
+        $this->mother_name_ar           = $my_parent->getTranslation('mother_name', 'ar');
+        $this->mother_name_en           = $my_parent->getTranslation('mother_name', 'ar');
+        $this->mother_job_ar            = $my_parent->getTranslation('mother_job', 'ar');
+        $this->mother_job_en            = $my_parent->getTranslation('mother_job', 'ar');
+        $this->mother_passport          = $my_parent->mother_passport;
+        $this->mother_identification    = $my_parent->mother_identification;
+        $this->mother_phone             = $my_parent->mother_phone;
+        $this->mother_nationality_id    = $my_parent->mother_nationality_id;
+        $this->mother_blood_id          = $my_parent->mother_blood_id;
+        $this->mother_religion_id       = $my_parent->mother_religion_id;
+        $this->mother_address           = $my_parent->mother_address;
+    }
+
+    public function firstStepEdit()
+    {
+        $this->currentStep = 2;
+        $this->updateMode = true;
+    }
+
+    public function secondStepEdit()
+    {
+        $this->currentStep = 3;
+        $this->updateMode = true;
+    }
+
+    public function updateForm($id)
+    {
+
+        $this->parent_id = $id;
+        if (!empty($this->parent_id)) {
+            MyParent::findOrFail($this->parent_id)->update([
+                'email'                      => $this->email,
+                'password'                   => Hash::make($this->password),
+                'father_name'                => [
+                    'ar'    => $this->father_name_ar,
+                    'en'    => $this->father_name_en,
+                ],
+                'father_job'             => [
+                    'ar'    => $this->father_job_ar,
+                    'en'    => $this->father_job_en,
+                ],
+                'father_passport'            => $this->father_passport,
+                'father_identification'      => $this->father_identification,
+                'father_phone'               => $this->father_phone,
+                'father_nationality_id'      => $this->father_nationality_id,
+                'father_blood_id'            => $this->father_blood_id,
+                'father_religion_id'         => $this->father_religion_id,
+                'father_address'             => $this->father_address,
+
+                'mother_name'                => [
+                    'ar'    => $this->mother_name_ar,
+                    'en'    => $this->mother_name_en,
+                ],
+                'mother_job'                 => [
+                    'ar'    => $this->mother_job_ar,
+                    'en'    => $this->mother_job_en,
+                ],
+                'mother_passport'            => $this->mother_passport,
+                'mother_identification'      => $this->mother_identification,
+                'mother_phone'               => $this->mother_phone,
+                'mother_nationality_id'      => $this->mother_nationality_id,
+                'mother_blood_id'            => $this->mother_blood_id,
+                'mother_religion_id'         => $this->mother_religion_id,
+                'mother_address'             => $this->mother_address,
+            ]);
+
+            $this->showTable = true;
+
+            $this->reset();
+
+            $this->successfulMsg = __('msgs.updated', ['name' => __('parent.parent')]);
+        }
     }
 }

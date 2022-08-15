@@ -15,6 +15,7 @@ return [
     'select'                        => 'أختر :name',
     'update'                        => 'تعديل :name',
     'delete'                        => 'حذف :name',
+    'add/edit'                      => 'إضافة / تعديل ولي الأمر',
 
     // Grade :
     'not_found_yet'                 => 'لا يوجد حالاً !!',
