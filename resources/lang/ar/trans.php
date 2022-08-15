@@ -18,6 +18,11 @@ return [
     'sections_lost'             => 'قائمة الأقسام الدراسية',
     'parents_list'              => 'قائمة أولياء الأمور',
     'parents'                   => 'أولياء الأمور',
+    'teachers'                  => 'المدرسين',
+    'teachers_list'             => 'قائمة المدرسين',
+    'specializations'           => 'التخصصات الدراسية',
+    'specializations_list'      => 'قائمةالتخصصات الدراسية',
+    'specialization'            => 'التخصص الدراسي',
 
 
     'created_at'                => 'أُنشأت في',

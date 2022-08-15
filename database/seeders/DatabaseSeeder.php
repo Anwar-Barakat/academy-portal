@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             ClassroomSeeder::class,
             BloodSeeder::class,
             NationalitySeeder::class,
+            SpecializationSeeder::class,
         ]);
     }
 }

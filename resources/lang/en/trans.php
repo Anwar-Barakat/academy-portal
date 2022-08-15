@@ -18,6 +18,11 @@ return [
     'sections_lost'             => 'Sections List',
     'parents'                   => 'Parents',
     'parents_list'              => 'Parents List',
+    'teachers'                  => 'Teachers',
+    'teachers_list'             => 'Teachers List',
+    'specializations'           => 'Specializations',
+    'specializations_list'      => 'Specializations List',
+    'specialization'            => 'Specialization',
 
     'created_at'                => 'Created At',
     'email'                     => 'Email',
