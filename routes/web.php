@@ -7,6 +7,7 @@ use App\Http\Controllers\Grade\GradeController;
 use App\Http\Controllers\MyParentController;
 use App\Http\Controllers\Section\GetClassroomController;
 use App\Http\Controllers\Section\SectionController;
+use App\Http\Controllers\Teacher\TeacherController;
 use App\Http\Livewire\AddParent;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -43,26 +44,30 @@ Route::group(
             })->name('dashboard');
 
             //! ===================== Grades =====================
-            Route::resource('grades',               GradeController::class);
+            Route::resource('grades',                   GradeController::class);
 
 
             //! ===================== Classrooms =====================
-            Route::resource('classrooms',           ClassroomController::class);
+            Route::resource('classrooms',               ClassroomController::class);
 
-            Route::post('/delete-all-classrooms',   EmptyClassroomController::class)->name('empty-classrooms');
+            Route::post('/delete-all-classrooms',       EmptyClassroomController::class)->name('empty-classrooms');
 
-            Route::get('/filter-classrooms',        FilterClassroomController::class)->name('filter-classrooms');
-            Route::post('/filter-classrooms',       FilterClassroomController::class)->name('filter-classrooms');
+            Route::get('/filter-classrooms',            FilterClassroomController::class)->name('filter-classrooms');
+            Route::post('/filter-classrooms',           FilterClassroomController::class)->name('filter-classrooms');
 
 
             //! ===================== Sections =====================
-            Route::resource('sections',             SectionController::class);
+            Route::resource('sections',                 SectionController::class);
 
-            Route::get('/get-classrooms/{grade_id}', GetClassroomController::class)->name('get-classrooms');
+            Route::get('/get-classrooms/{grade_id}',    GetClassroomController::class)->name('get-classrooms');
 
 
             //! ===================== Parents =====================
-            Route::view('/add-parents', 'livewire.show_parent_forms')->name('add-parents');
+            Route::view('/add-parents',                 'livewire.show_parent_forms')->name('add-parents');
+
+
+            //! ===================== Teachers =====================
+            Route::resource('teachers',                 TeacherController::class);
         });
     }
 );

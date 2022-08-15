@@ -69,7 +69,18 @@
                         </ul>
                     </li>
 
-
+                    <!-- Teachers-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#teachers-menu">
+                            <div class="pull-left"><i class="fa fa-bookmark-o"></i><span
+                                    class="right-nav-text">{{ __('trans.teachers') }}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="teachers-menu" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{ route('teachers.index') }}">{{ __('trans.teachers_list') }}</a></li>
+                        </ul>
+                    </li>
 
 
 
