@@ -11,6 +11,7 @@ return [
     'name_en'                   => 'English Name',
     'classrrom_name'            => 'Classroom name',
     'grade_name'                => 'Grade Name',
+    'teachers'                  => 'Teachers',
     'status'                    => 'Status',
 
 ];

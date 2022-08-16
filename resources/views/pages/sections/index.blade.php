@@ -84,7 +84,8 @@
                                                                                 @endif
 
                                                                             </td>
-                                                                            <td class="d-flex" style="gap: 5px">
+                                                                            <td class="d-flex justify-content-center"
+                                                                                style="gap: 5px">
                                                                                 <a href="#"
                                                                                     class="btn btn-outline-info btn-sm"
                                                                                     data-toggle="modal"
@@ -349,6 +350,21 @@
                                             <x-label for="classroom_id" :value="__('section.classrrom_name')" />
                                             <select name="classroom_id" id="get-classrooms" class="form-control">
                                                 <option value=""></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col d-flex flex-column">
+                                            <x-label for="teacher_id" :value="__('teacher.teachers')" />
+                                            <select name="teacher_id[]" class="form-control form-select form-multiselect"
+                                                id="teacher_id" multiple>
+                                                <option value="" selected disabled>
+                                                    {{ __('msgs.select', ['name' => __('teacher.teachers')]) }}
+                                                </option>
+                                                @foreach ($teachers as $teacher)
+                                                    <option value="{{ $teacher->id }}"> {{ $teacher->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>

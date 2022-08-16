@@ -7,7 +7,7 @@ use App\Http\Requests\StoreSectionRequest;
 use App\Http\Requests\UpdateSectionRequest;
 use App\Models\Grade;
 use App\Http\Controllers\Controller;
-
+use App\Models\Teacher;
 
 class SectionController extends Controller
 {
@@ -19,7 +19,8 @@ class SectionController extends Controller
     public function index()
     {
         $grades     = Grade::with(['sections'])->get();
-        return view('pages.sections.index', compact('grades'));
+        $teachers   = Teacher::latest()->get();
+        return view('pages.sections.index', ['grades' => $grades, 'teachers' => $teachers]);
     }
 
     /**
@@ -41,8 +42,8 @@ class SectionController extends Controller
     public function store(StoreSectionRequest $request)
     {
         try {
-            $data   = $request->only(['name_ar', 'name_en', 'grade_id', 'classroom_id']);
-            Section::create([
+            $data       = $request->only(['name_ar', 'name_en', 'grade_id', 'classroom_id', 'teacher_id']);
+            $section    = Section::create([
                 'name'          => [
                     'ar'        => $data['name_ar'],
                     'en'        => $data['name_en'],
@@ -51,6 +52,8 @@ class SectionController extends Controller
                 'grade_id'      => $data['grade_id'],
                 'classroom_id'  => $data['classroom_id']
             ]);
+            $section->teachers()->attach($data['teacher_id']);
+
 
             toastr()->success(__('msgs.added', ['name' => __('section.section')]));
             return redirect()->route('sections.index');
