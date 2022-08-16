@@ -47,7 +47,7 @@ class TeacherController extends Controller
      */
     public function store(StoreTeacherRequest $request)
     {
-        //
+        return $this->teacher->store($request);
     }
 
     /**

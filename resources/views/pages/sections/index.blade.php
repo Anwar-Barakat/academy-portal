@@ -56,7 +56,7 @@
                                                         </div>
                                                         <div class="table-responsive mt-15">
                                                             <table
-                                                                class="table center-aligned-table mb-0 table-hover table-sm">
+                                                                class="table center-aligned-table text-center mb-0 table-hover table-sm">
                                                                 <thead>
                                                                     <tr class="text-dark">
                                                                         <th>#</th>

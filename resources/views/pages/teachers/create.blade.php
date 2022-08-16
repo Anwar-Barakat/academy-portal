@@ -22,14 +22,13 @@
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-
                 @if (session()->has('error'))
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <small class="text text-danger font-weight-bold alert-dismissible fade show" role="alert">
                         <strong>{{ session()->get('error') }}</strong>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                    </div>
+                    </small>
                 @endif
                 <div class="col-xs-12">
                     <div class="col-md-12">
@@ -42,15 +41,15 @@
                                     <x-input type="email" name="email" class="form-control" :value="old('email')"
                                         id="email" required />
                                     @error('email')
-                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        <small class="text text-danger font-weight-bold">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="col">
                                     <x-label for="password" :value="__('trans.password')" />
-                                    <x-input type="password" name="password" class="form-control" :value="old('password')"
-                                        id="password" required />
+                                    <x-input type="password" name="password" class="form-control" id="password"
+                                        required />
                                     @error('password')
-                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        <small class="text text-danger font-weight-bold">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>
@@ -61,7 +60,7 @@
                                     <x-input type="text" name="name_ar" class="form-control" :value="old('name_ar')"
                                         id="name_ar" required />
                                     @error('name_ar')
-                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        <small class="text text-danger font-weight-bold">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="col">
@@ -69,7 +68,7 @@
                                     <x-input type="text" name="name_en" class="form-control" :value="old('name_en')"
                                         id="name_en" required />
                                     @error('name_en')
-                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        <small class="text text-danger font-weight-bold">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>
@@ -86,7 +85,7 @@
                                         @endforeach
                                     </select>
                                     @error('specialization_id')
-                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        <small class="text text-danger font-weight-bold">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="form-group col">
@@ -98,7 +97,7 @@
                                         <option value="1">{{ __('trans.female') }}</option>
                                     </select>
                                     @error('gender')
-                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        <small class="text text-danger font-weight-bold">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>
@@ -108,11 +107,11 @@
                                 <div class="col">
                                     <x-label for="datepicker-action" :value="__('teacher.joining_data')" />
                                     <div class='input-group date'>
-                                        <input class="form-control" type="text" id="datepicker-action"
-                                            name="joining_data" data-date-format="yyyy-mm-dd" required>
+                                        <input class="form-control" type="text" id="datepicker-action" name="joining"
+                                            data-date-format="yyyy-mm-dd" required :value="old('joining')">
                                     </div>
-                                    @error('joining_data')
-                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @error('joining')
+                                        <small class="text text-danger font-weight-bold">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>
@@ -120,9 +119,9 @@
 
                             <div class="form-group">
                                 <x-label for="address" :value="__('teacher.address')" />
-                                <textarea class="form-control" name="address" id="address" rows="4"></textarea>
+                                <textarea class="form-control" name="address" id="address" rows="4">{{ old('address') }}</textarea>
                                 @error('address')
-                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
                                 @enderror
                             </div>
                             <x-button class="btn btn-success btn-sm nextBtn btn-lg pull-right">

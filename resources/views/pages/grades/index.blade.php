@@ -31,7 +31,7 @@
                     @endforeach
                 @endif
                 <div class="table-responsive">
-                    <table id="datatable" class="table table-striped table-bordered p-0 table-hover table-sm">
+                    <table id="datatable" class="table table-striped table-bordered text-center p-0 table-hover table-sm">
                         <thead>
                             <tr>
                                 <th>#</th>

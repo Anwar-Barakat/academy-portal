@@ -37,7 +37,7 @@
                                 <th>{{ __('teacher.name') }}</th>
                                 <th>{{ __('teacher.gender') }}</th>
                                 <th>{{ __('teacher.joining_data') }}</th>
-                                <th>{{ __('teacher.specilization') }}</th>
+                                <th>{{ __('teacher.specialization') }}</th>
                                 <th>{{ __('buttons.actions') }}</th>
                             </tr>
                         </thead>
@@ -45,12 +45,10 @@
                             @forelse ($teachers as $teacher)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $teacher->email }}</td>
-                                    <td>{{ $teacher->father_name }}</td>
-                                    <td>{{ $teacher->father_identification }}</td>
-                                    <td>{{ $teacher->father_passport }}</td>
-                                    <td>{{ $teacher->father_phone }}</td>
-                                    <td>{{ $teacher->created_at }}</td>
+                                    <td>{{ $teacher->name }}</td>
+                                    <td>{{ __('trans.' . $teacher->gender) }}</td>
+                                    <td>{{ $teacher->joining }}</td>
+                                    <td>{{ $teacher->specialization->name }}</td>
                                     <td>
                                         <button type="button" class="btn btn-info btn-sm"
                                             title="{{ __('buttons.update') }}">
