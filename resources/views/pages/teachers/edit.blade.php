@@ -33,8 +33,9 @@
                 <div class="col-xs-12">
                     <div class="col-md-12">
                         <br>
-                        <form action="{{ route('teachers.store') }}" method="post">
+                        <form action="{{ route('teachers.update', $teacher) }}" method="post">
                             @csrf
+                            @method('PUT')
                             <div class="form-row">
                                 <div class="col">
                                     <x-label for="email" :value="__('trans.email')" />
@@ -133,7 +134,7 @@
                             </div>
                             <hr>
                             <x-button class="btn btn-success btn-sm nextBtn btn-lg">
-                                {{ __('buttons.submit') }}
+                                {{ __('buttons.update') }}
                             </x-button>
                         </form>
                     </div>

@@ -12,5 +12,7 @@ interface  TeacherRepositoryInterface
 
     public function update($request, $teacher);
 
+    public function delete($teacher);
+
     public function getSpecializations();
 }

@@ -83,7 +83,7 @@ class TeacherController extends Controller
      */
     public function update(UpdateTeacherRequest $request, Teacher $teacher)
     {
-        //
+        return $this->teacher->update($request, $teacher);
     }
 
     /**
@@ -94,6 +94,6 @@ class TeacherController extends Controller
      */
     public function destroy(Teacher $teacher)
     {
-        //
+        return $this->teacher->delete($teacher);
     }
 }

@@ -50,6 +50,14 @@ class TeacherRepository implements TeacherRepositoryInterface
         }
     }
 
+    public function delete($teacher)
+    {
+        Teacher::findOrFail($teacher->id)->delete();
+
+        toastr()->info(__('msgs.deleted', ['name' => __('teacher.teacher')]));
+        return redirect()->route('teachers.index');
+    }
+
     public function getSpecializations()
     {
         return Specialization::all();
