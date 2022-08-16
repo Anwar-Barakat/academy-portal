@@ -35,14 +35,15 @@
                             title="{{ __('buttons.update') }}">
                             <i class="fa fa-edit"></i>
                         </button>
-                        <button type="button" class="btn btn-danger btn-sm" wire:click="delete({{ $parent->id }})" title="{{ __('buttons.delete') }}">
+                        <button type="button" class="btn btn-danger btn-sm" wire:click="delete({{ $parent->id }})"
+                            title="{{ __('buttons.delete') }}">
                             <i class="fa fa-trash"></i>
                         </button>
                     </td>
                 </tr>
             @empty
                 <tr class="text-center">
-                    <td colspan="4">{{ __('msgs.not_found_yet') }}</td>
+                    <td colspan="8">{{ __('msgs.not_found_yet') }}</td>
                 </tr>
             @endforelse
         </tbody>

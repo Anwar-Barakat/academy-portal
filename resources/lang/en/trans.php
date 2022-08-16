@@ -27,6 +27,11 @@ return [
     'created_at'                => 'Created At',
     'email'                     => 'Email',
     'password'                  => 'Password',
+    'name'                      => 'Name',
+    'name_ar'                   => 'Arabic Name',
+    'name_en'                   => 'English Name',
 
+    'male'                      => 'Male',
+    'female'                    => 'Female',
 
 ];

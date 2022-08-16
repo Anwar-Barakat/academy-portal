@@ -33,7 +33,7 @@
                     <!-- Classrooms-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#classrooms-menu">
-                            <div class="pull-left"><i class="fa fa-building-o"></i><span
+                            <div class="pull-left"><i class="fas fa-users-class"></i></i><span
                                     class="right-nav-text">{{ __('trans.classrooms') }}</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
@@ -46,7 +46,7 @@
                     <!-- Sections-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#sections-menu">
-                            <div class="pull-left"><i class="ti ti-menu-alt"></i><span
+                            <div class="pull-left"><i class="fas fa-temperature-frigid"></i><span
                                     class="right-nav-text">{{ __('trans.sections') }}</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
@@ -59,7 +59,7 @@
                     <!-- Parents-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#parents-menu">
-                            <div class="pull-left"><i class="ti ti-user"></i><span
+                            <div class="pull-left"><i class="fas fa-user-tie"></i><span
                                     class="right-nav-text">{{ __('trans.parents') }}</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
@@ -72,7 +72,7 @@
                     <!-- Teachers-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#teachers-menu">
-                            <div class="pull-left"><i class="fa fa-bookmark-o"></i><span
+                            <div class="pull-left"><i class="fas fa-chalkboard-teacher"></i><span
                                     class="right-nav-text">{{ __('trans.teachers') }}</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>

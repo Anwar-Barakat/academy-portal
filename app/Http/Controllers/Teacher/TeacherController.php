@@ -24,7 +24,8 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        return $this->teacher->index();
+        $teachers   = $this->teacher->index();
+        return view('pages.teachers.index', ['teachers' => $teachers]);
     }
 
     /**
@@ -34,7 +35,8 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //
+        $specializations    = $this->teacher->getSpecializations();
+        return view('pages.teachers.create', ['specializations' => $specializations]);
     }
 
     /**
