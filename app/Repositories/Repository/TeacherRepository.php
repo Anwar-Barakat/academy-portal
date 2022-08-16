@@ -29,6 +29,27 @@ class TeacherRepository implements TeacherRepositoryInterface
         }
     }
 
+    public function edit($teacher)
+    {
+        return Teacher::findOrFail($teacher->id);
+    }
+
+
+    public function update($request, $teacher)
+    {
+        try {
+            $data = $request->only(['email', 'password', 'gender', 'specialization_id', 'joining', 'address']);
+            $data['name']['ar'] = $request->name_ar;
+            $data['name']['en'] = $request->name_en;
+            $teacher->update($data);
+
+            toastr()->success(__('msgs.updated', ['name' => __('teacher.teacher')]));
+            return redirect()->route('teachers.index');
+        } catch (\Throwable $th) {
+            return redirect()->back();
+        }
+    }
+
     public function getSpecializations()
     {
         return Specialization::all();

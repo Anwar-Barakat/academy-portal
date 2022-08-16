@@ -8,5 +8,9 @@ interface  TeacherRepositoryInterface
 
     public function store($request);
 
+    public function edit($teacher);
+
+    public function update($request, $teacher);
+
     public function getSpecializations();
 }

@@ -3,16 +3,16 @@
     @livewireStyles
 
 @section('title')
-    {{ __('msgs.add', ['name' => __('teacher.teacher')]) }}
+    {{ __('msgs.update', ['name' => __('teacher.teacher')]) }}
 @stop
 
 @endsection
 @section('breadcrum')
-{{ __('msgs.add', ['name' => __('teacher.teacher')]) }}
+{{ __('msgs.update', ['name' => __('teacher.teacher')]) }}
 @endsection
 
 @section('breadcrum_home')
-{{ __('msgs.add', ['name' => __('teacher.teacher')]) }}
+{{ __('msgs.update', ['name' => __('teacher.teacher')]) }}
 @endsection
 
 
@@ -38,7 +38,7 @@
                             <div class="form-row">
                                 <div class="col">
                                     <x-label for="email" :value="__('trans.email')" />
-                                    <x-input type="email" name="email" class="form-control" :value="old('email')"
+                                    <x-input type="email" name="email" class="form-control" :value="old('email', $teacher->email)"
                                         id="email" required />
                                     @error('email')
                                         <small class="text text-danger font-weight-bold">{{ $message }}</small>
@@ -57,7 +57,7 @@
                             <div class="form-row">
                                 <div class="col">
                                     <x-label for="name_ar" :value="__('teacher.name_ar')" />
-                                    <x-input type="text" name="name_ar" class="form-control" :value="old('name_ar')"
+                                    <x-input type="text" name="name_ar" class="form-control" :value="old('name_ar', $teacher->getTranslation('name', 'ar'))"
                                         id="name_ar" required />
                                     @error('name_ar')
                                         <small class="text text-danger font-weight-bold">{{ $message }}</small>
@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="col">
                                     <x-label for="name_en" :value="__('teacher.name_en')" />
-                                    <x-input type="text" name="name_en" class="form-control" :value="old('name_en')"
+                                    <x-input type="text" name="name_en" class="form-control" :value="old('name_ar', $teacher->getTranslation('name', 'en'))"
                                         id="name_en" required />
                                     @error('name_en')
                                         <small class="text text-danger font-weight-bold">{{ $message }}</small>
@@ -80,7 +80,9 @@
                                         <option selected disabled value="">
                                             {{ __('msgs.select', ['name' => '...']) }}</option>
                                         @foreach ($specializations as $specialization)
-                                            <option value="{{ $specialization->id }}">{{ $specialization->name }}
+                                            <option value="{{ $specialization->id }}"
+                                                {{ $teacher->specialization_id == $specialization->id ? 'selected' : '' }}>
+                                                {{ $specialization->name }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -93,8 +95,12 @@
                                     <select class="custom-select my-1 mr-sm-2" name="gender">
                                         <option selected disabled value="">
                                             {{ __('msgs.select', ['name' => '...']) }}</option>
-                                        <option value="0">{{ __('trans.male') }}</option>
-                                        <option value="1">{{ __('trans.female') }}</option>
+                                        <option value="0" {{ $teacher->gender == 'male' ? 'selected' : '' }}>
+                                            {{ __('trans.male') }}
+                                        </option>
+                                        <option value="1" {{ $teacher->gender == 'female' ? 'selected' : '' }}>
+                                            {{ __('trans.female') }}
+                                        </option>
                                     </select>
                                     @error('gender')
                                         <small class="text text-danger font-weight-bold">{{ $message }}</small>
@@ -108,7 +114,8 @@
                                     <x-label for="datepicker-action" :value="__('teacher.joining_data')" />
                                     <div class='input-group date'>
                                         <input class="form-control" type="text" id="datepicker-action" name="joining"
-                                            data-date-format="yyyy-mm-dd" required :value="old('joining')">
+                                            data-date-format="yyyy-mm-dd" required
+                                            value="{{ old('joining', $teacher->joining) }}">
                                     </div>
                                     @error('joining')
                                         <small class="text text-danger font-weight-bold">{{ $message }}</small>
@@ -119,7 +126,7 @@
 
                             <div class="form-group">
                                 <x-label for="address" :value="__('teacher.address')" />
-                                <textarea class="form-control" name="address" id="address" rows="4">{{ old('address') }}</textarea>
+                                <textarea class="form-control" name="address" id="address" rows="4">{{ old('address', $teacher->address) }}</textarea>
                                 @error('address')
                                     <small class="text text-danger font-weight-bold">{{ $message }}</small>
                                 @enderror

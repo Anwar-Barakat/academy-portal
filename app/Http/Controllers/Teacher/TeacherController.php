@@ -69,7 +69,9 @@ class TeacherController extends Controller
      */
     public function edit(Teacher $teacher)
     {
-        //
+        $teacher =  $this->teacher->edit($teacher);
+        $specializations    = $this->teacher->getSpecializations();
+        return view('pages.teachers.edit', ['teacher' => $teacher, 'specializations' => $specializations]);
     }
 
     /**

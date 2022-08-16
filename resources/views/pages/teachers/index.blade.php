@@ -50,14 +50,14 @@
                                     <td>{{ $teacher->joining }}</td>
                                     <td>{{ $teacher->specialization->name }}</td>
                                     <td>
-                                        <button type="button" class="btn btn-info btn-sm"
+                                        <a href="{{ route('teachers.edit', $teacher) }}" class="btn btn-info btn-sm"
                                             title="{{ __('buttons.update') }}">
                                             <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-danger btn-sm"
+                                        </a>
+                                        <a href="{{ route('teachers.edit', $teacher) }}" class="btn btn-danger btn-sm"
                                             title="{{ __('buttons.delete') }}">
                                             <i class="fa fa-trash"></i>
-                                        </button>
+                                        </a>
                                     </td>
                                 </tr>
                             @empty
