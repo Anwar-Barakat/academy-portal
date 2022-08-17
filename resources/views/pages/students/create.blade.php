@@ -19,7 +19,6 @@
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -29,11 +28,11 @@
                         </ul>
                     </div>
                 @endif
-
-                <form method="post" action="{{ route('students.store') }}" autocomplete="off">
+                <form method="post" action="{{ route('students.store') }}" autocomplete="off"
+                    enctype="multipart/form-data">
                     @csrf
-                    <h6 class="text text-info">
-                        {{ __('student.personal_information') }}</h6><br>
+                    <h5 class="text text-info">
+                        {{ __('student.personal_information') }}</h5><br>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -161,6 +160,9 @@
                                 <select class="custom-select mr-sm-2" name="classroom_id">
 
                                 </select>
+                                @error('classroom_id')
+                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
 
@@ -170,6 +172,9 @@
                                 <select class="custom-select mr-sm-2" name="section_id">
 
                                 </select>
+                                @error('section_id')
+                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
 
@@ -199,7 +204,26 @@
                                 </select>
                             </div>
                         </div>
-                    </div><br>
+                    </div>
+                    <hr>
+                    <h5 class="text text-info">{{ __('parent.attachments') }}</h5>
+                    <div class="row">
+                        <div class="col-xl-6 col-md-6">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                        id="inputGroupFileAddon01">{{ __('buttons.upload') }}</span>
+                                </div>
+                                <div class="custom-file">
+                                    <x-input type="file" name="images[]" multiple class="custom-file"
+                                        accept="image/*" id="photos" aria-describedby="inputGroupFileAddon01" />
+                                    <x-label class="custom-file-label" for="photos" :value="__('msgs.select', ['name' => __('parent.attachments')])" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <hr>
                     <x-button class="btn btn-success btn-sm nextBtn btn-lg pull-right">
                         {{ __('buttons.submit') }}
                     </x-button>

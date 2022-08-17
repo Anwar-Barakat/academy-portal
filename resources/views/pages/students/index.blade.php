@@ -28,7 +28,7 @@
 
                     <div class="d-flex mb-4 flex-wrap" style="gap: 10px">
                         <a href="{{ route('students.create') }}" class="button x-small">
-                            {{ __('msgs.add', ['name' => __('classroom.classroom')]) }}
+                            {{ __('msgs.add', ['name' => __('student.student')]) }}
                         </a>
                     </div>
 

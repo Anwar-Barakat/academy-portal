@@ -30,7 +30,8 @@
                     </div>
                 @endif
 
-                <form method="post" action="{{ route('students.update', $student) }}" autocomplete="off">
+                <form method="post" action="{{ route('students.update', $student) }}" autocomplete="off"
+                    enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <h6 class="text text-info">

@@ -79,4 +79,11 @@ class Student extends Model
     {
         return $this->belongsTo(Blood::class, 'blood');
     }
+
+
+    public function images()
+    {
+        // imageable is the name of relationship in Image model
+        return $this->morphMany(Image::class, 'imageable');
+    }
 }

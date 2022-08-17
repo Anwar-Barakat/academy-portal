@@ -5,11 +5,13 @@ namespace App\Repositories\Repository;
 use App\Models\Blood;
 use App\Models\Classroom;
 use App\Models\Grade;
+use App\Models\Image;
 use App\Models\MyParent;
 use App\Models\Nationality;
 use App\Models\Section;
 use App\Models\Student;
 use App\Repositories\Interface\StudentPepositoryInterface;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class StudentPepository implements StudentPepositoryInterface
@@ -33,6 +35,8 @@ class StudentPepository implements StudentPepositoryInterface
 
     public function store($request)
     {
+        DB::beginTransaction();
+
         try {
             $data               = $request->only([
                 'name_ar', 'name_en', 'email', 'password', 'gender', 'birthday', 'nationality_id',
@@ -41,11 +45,27 @@ class StudentPepository implements StudentPepositoryInterface
             $data['name']['ar'] = $data['name_ar'];
             $data['name']['en'] = $data['name_en'];
             $data['password'] = Hash::make($data['password']);
-            Student::create($data);
+            $student = Student::create($data);
+
+            if ($request->hasFile('images')) {
+                foreach ($request->file('images') as $photo) {
+                    $name   = $photo->getClientOriginalName();
+                    $photo->storeAs('attachments/students/' . $student->getTranslation('name', 'en'), $name, 'students_attachments');
+
+                    $image                  = new Image();
+                    $image->file_name       = $name;
+                    $image->imageable_id    = $student->id;
+                    $image->imageable_type  = 'App\Models\Student';
+                    $image->save();
+                }
+            }
+
+            DB::commit();
 
             toastr()->success(__('msgs.added', ['name' => __('student.student')]));
             return redirect()->route('students.index');
         } catch (\Throwable $th) {
+            DB::rollBack();
             return redirect()->back()->withErrors(['error' => $th->getMessage()]);
         }
     }
