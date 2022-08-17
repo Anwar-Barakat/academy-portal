@@ -106,7 +106,7 @@
                                 <div class="col">
                                     <x-label for="datepicker-action" :value="__('teacher.joining_data')" />
                                     <div class='input-group date'>
-                                        <input class="form-control" type="text" id="datepicker-action" name="joining"
+                                        <input class="form-control" type="date" id="datepicker-action" name="joining"
                                             data-date-format="yyyy-mm-dd" required :value="old('joining')">
                                     </div>
                                     @error('joining')

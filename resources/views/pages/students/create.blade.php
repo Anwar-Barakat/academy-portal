@@ -72,7 +72,7 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <x-label for="password" :value="__('student.password')" />
+                                <x-label for="password" :value="__('trans.password')" />
                                 <x-input type="password" name="password" class="form-control" name="password"
                                     :value="old('password')" />
                                 @error('password')
@@ -115,8 +115,8 @@
                                 <x-label for="blood_id" :value="__('student.blood_type')" />
                                 <select class="custom-select mr-sm-2" name="blood_id">
                                     <option selected disabled>{{ __('msgs.select', ['name' => '...']) }}</option>
-                                    @foreach ($bloods as $bg)
-                                        <option value="{{ $bg->id }}">{{ $bg->Name }}</option>
+                                    @foreach ($bloods as $blood)
+                                        <option value="{{ $blood->id }}">{{ $blood->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('blood_id')
@@ -128,7 +128,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <x-label for="birthday" :value="__('student.birthday')" />
-                                <x-input class="form-control" type="text" id="datepicker-action" name="birthday"
+                                <x-input class="form-control" type="date" id="datepicker-action" name="birthday"
                                     data-date-format="yyyy-mm-dd" :value="old('birthday')" />
                                 @error('birthday')
                                     <small class="text text-danger font-weight-bold">{{ $message }}</small>
