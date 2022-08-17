@@ -7,6 +7,7 @@ use App\Http\Controllers\Grade\GradeController;
 use App\Http\Controllers\MyParentController;
 use App\Http\Controllers\Section\GetClassroomController;
 use App\Http\Controllers\Section\SectionController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Teacher\TeacherController;
 use App\Http\Livewire\AddParent;
 use Illuminate\Support\Facades\Route;
@@ -68,6 +69,10 @@ Route::group(
 
             //! ===================== Teachers =====================
             Route::resource('teachers',                 TeacherController::class);
+
+
+            //! ===================== Students =====================
+            Route::resource('students',                 StudentController::class);
         });
     }
 );

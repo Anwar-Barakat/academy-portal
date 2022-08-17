@@ -190,6 +190,36 @@
                                                                                                 </select>
                                                                                             </div>
                                                                                             <br>
+                                                                                            <div class="row">
+                                                                                                <div
+                                                                                                    class="col d-flex flex-column">
+                                                                                                    <x-label
+                                                                                                        for="teacher_id"
+                                                                                                        :value="__(
+                                                                                                            'teacher.teachers',
+                                                                                                        )" />
+                                                                                                    <select
+                                                                                                        name="teacher_id[]"
+                                                                                                        class="form-control form-select form-multiselect"
+                                                                                                        id="teachers"
+                                                                                                        multiple>
+                                                                                                        <option
+                                                                                                            value=""
+                                                                                                            disabled>
+                                                                                                            {{ __('msgs.select', ['name' => __('teacher.teachers')]) }}
+                                                                                                        </option>
+                                                                                                        @foreach ($teachers as $teacher)
+                                                                                                            <option
+                                                                                                                value="{{ $teacher->id }}"
+                                                                                                                @foreach ($section->teachers as $t) {{ $t->id == $teacher->id ? 'selected' : '' }} @endforeach>
+                                                                                                                {{ $teacher->name }}
+                                                                                                            </option>
+                                                                                                        @endforeach
+
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <br>
 
                                                                                             <div class="col">
                                                                                                 <div class="form-check">
@@ -224,7 +254,7 @@
                                                                                                 data-dismiss="modal">{{ __('buttons.close') }}</button>
                                                                                             <x-button
                                                                                                 class="btn btn-success">
-                                                                                                {{ __('buttons.submit') }}
+                                                                                                {{ __('buttons.update') }}
                                                                                             </x-button>
                                                                                         </div>
                                                                                     </form>
@@ -359,7 +389,7 @@
                                             <x-label for="teacher_id" :value="__('teacher.teachers')" />
                                             <select name="teacher_id[]" class="form-control form-select form-multiselect"
                                                 id="teacher_id" multiple>
-                                                <option value="" selected disabled>
+                                                <option value="" disabled>
                                                     {{ __('msgs.select', ['name' => __('teacher.teachers')]) }}
                                                 </option>
                                                 @foreach ($teachers as $teacher)

@@ -46,8 +46,9 @@
                     <!-- Sections-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#sections-menu">
-                            <div class="pull-left"><i class="fas fa-temperature-frigid"></i><span
-                                    class="right-nav-text">{{ __('trans.sections') }}</span></div>
+                            <div class="pull-left"><i class="fas fa-th-large" aria-hidden="true"></i><span
+                                    class="right-nav-text">{{ __('trans.sections') }}</span>
+                            </div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
@@ -82,6 +83,24 @@
                         </ul>
                     </li>
 
+                    <!-- Students-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#students-menu">
+                            <div class="pull-left"><i class="fas fa-user-graduate"></i><span
+                                    class="right-nav-text">{{ __('trans.students') }}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="students-menu" class="collapse" data-parent="#sidebarnav">
+                            <li>
+                                <a href="{{ route('sections.create') }}">
+                                    {{ __('msgs.add', ['name' => __('student.student')]) }}
+                                </a>
+                            </li>
+                            <li><a href="{{ route('students.index') }}">{{ __('trans.students_list') }}</a></li>
+                        </ul>
+                    </li>
+
 
 
                     <!-- menu item chat-->
@@ -92,7 +111,8 @@
                     <!-- menu item mailbox-->
                     <li>
                         <a href="mail-box.html"><i class="ti-email"></i><span class="right-nav-text">Mail
-                                box</span> <span class="badge badge-pill badge-warning float-right mt-1">HOT</span> </a>
+                                box</span> <span class="badge badge-pill badge-warning float-right mt-1">HOT</span>
+                        </a>
                     </li>
                     <!-- menu item Charts-->
                     <li>

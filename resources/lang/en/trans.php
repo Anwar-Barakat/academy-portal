@@ -30,6 +30,8 @@ return [
     'name'                      => 'Name',
     'name_ar'                   => 'Arabic Name',
     'name_en'                   => 'English Name',
+    'students'                  => 'Students',
+    'students_list'             => 'Students List',
 
     'male'                      => 'Male',
     'female'                    => 'Female',
