@@ -3,8 +3,9 @@
 use App\Http\Controllers\Classroom\ClassroomController;
 use App\Http\Controllers\Classroom\EmptyClassroomController;
 use App\Http\Controllers\Classroom\FilterClassroomController;
+use App\Http\Controllers\Classroom\GetClassroomController;
 use App\Http\Controllers\Grade\GradeController;
-use App\Http\Controllers\Section\GetClassroomController;
+use App\Http\Controllers\Section\GetSectionController;
 use App\Http\Controllers\Section\SectionController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Teacher\TeacherController;
@@ -54,11 +55,13 @@ Route::group(
             Route::get('/filter-classrooms',            FilterClassroomController::class)->name('filter-classrooms');
             Route::post('/filter-classrooms',           FilterClassroomController::class)->name('filter-classrooms');
 
+            Route::get('/get-classrooms/{grade_id}',    GetClassroomController::class)->name('get-classrooms');
+
 
             //! ===================== Sections =====================
             Route::resource('sections',                 SectionController::class);
 
-            Route::get('/get-classrooms/{grade_id}',    GetClassroomController::class)->name('get-classrooms');
+            Route::get('/get-sections/{classroom_id}',  GetSectionController::class)->name('get-sections');
 
 
             //! ===================== Parents =====================

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->foreignId('gender');
+            $table->tinyInteger('gender');
             $table->date('birthday');
             $table->foreignId('nationality_id')->constrained('nationalities')->cascadeOnUpdate();
             $table->foreignId('blood_id')->constrained('bloods')->cascadeOnUpdate();

@@ -5,10 +5,10 @@ return [
     'students'                  => 'الطلاب',
     'student'                   => 'طالب',
     'students_list'             => 'قائمة الطلاب',
-    'name'                      => 'Name',
-    'name_ar'                   => 'Arabic Name',
-    'name_en'                   => 'English Name',
-
-
+    'name'                      => 'اسم الطالب',
+    'name_ar'                   => 'اسم الطالب بالعربي',
+    'name_en'                   => 'اسم الطالب بالأنكليزي',
+    'birthday'                  => 'تاريخ الميلاد',
+    'academic_year'             => 'سنة الأكاديمية',
 
 ];

@@ -6,9 +6,15 @@ use App\Models\Student;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Http\Controllers\Controller;
+use App\Repositories\Interface\StudentPepositoryInterface;
 
 class StudentController extends Controller
 {
+    public $student;
+    public function __construct(StudentPepositoryInterface $student)
+    {
+        $this->student = $student;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +22,6 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -26,7 +31,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return $this->student->create();
     }
 
     /**

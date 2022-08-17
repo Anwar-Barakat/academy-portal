@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('css')
-    @livewireStyles
 
 @section('title')
     {{ __('msgs.add', ['name' => __('teacher.teacher')]) }}

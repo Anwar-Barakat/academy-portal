@@ -93,7 +93,7 @@
                         </a>
                         <ul id="students-menu" class="collapse" data-parent="#sidebarnav">
                             <li>
-                                <a href="{{ route('sections.create') }}">
+                                <a href="{{ route('students.create') }}">
                                     {{ __('msgs.add', ['name' => __('student.student')]) }}
                                 </a>
                             </li>
