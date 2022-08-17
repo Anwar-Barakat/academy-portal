@@ -65,7 +65,7 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        //
+        return $this->student->edit($student);
     }
 
     /**
@@ -77,7 +77,7 @@ class StudentController extends Controller
      */
     public function update(UpdateStudentRequest $request, Student $student)
     {
-        //
+        return $this->student->update($request, $student);
     }
 
     /**
@@ -88,6 +88,6 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        return $this->student->delete($student);
     }
 }

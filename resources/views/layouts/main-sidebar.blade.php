@@ -92,12 +92,12 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="students-menu" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{ route('students.index') }}">{{ __('trans.students_list') }}</a></li>
                             <li>
                                 <a href="{{ route('students.create') }}">
                                     {{ __('msgs.add', ['name' => __('student.student')]) }}
                                 </a>
                             </li>
-                            <li><a href="{{ route('students.index') }}">{{ __('trans.students_list') }}</a></li>
                         </ul>
                     </li>
 

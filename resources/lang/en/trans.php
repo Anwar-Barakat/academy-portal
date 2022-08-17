@@ -20,19 +20,20 @@ return [
     'parents_list'              => 'Parents List',
     'teachers'                  => 'Teachers',
     'teachers_list'             => 'Teachers List',
+    'students'                  => 'Students',
+    'students_list'             => 'Students List',
+
+
     'specializations'           => 'Specializations',
     'specializations_list'      => 'Specializations List',
     'specialization'            => 'Specialization',
-
     'created_at'                => 'Created At',
     'email'                     => 'Email',
     'password'                  => 'Password',
     'name'                      => 'Name',
     'name_ar'                   => 'Arabic Name',
     'name_en'                   => 'English Name',
-    'students'                  => 'Students',
-    'students_list'             => 'Students List',
-
+    'gender'                    => 'Gender',
     'male'                      => 'Male',
     'female'                    => 'Female',
 

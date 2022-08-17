@@ -10,5 +10,8 @@ return [
     'name_en'                   => 'اسم الطالب بالأنكليزي',
     'birthday'                  => 'تاريخ الميلاد',
     'academic_year'             => 'سنة الأكاديمية',
-
+    'personal_information'      => 'المعلومات الشخصية',
+    'nationality'               => 'الجنسية',
+    'blood_type'                => 'فصيلة الدم',
+    'student_information'       => 'المعلومات الأضافية',
 ];

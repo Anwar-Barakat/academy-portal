@@ -25,7 +25,7 @@ class StudentPepository implements StudentPepositoryInterface
         $data['grades']             = Grade::all();
         $data['classrooms']         = Classroom::all();
         $data['parents']            = MyParent::all();
-        $data['sections']           = Section::all();
+        $data['sections']           = Section::where(['status' => 1])->get();
         $data['nationalities']      = Nationality::all();
         $data['bloods']             = Blood::all();
         return view('pages.students.create', $data);
@@ -50,10 +50,43 @@ class StudentPepository implements StudentPepositoryInterface
         }
     }
 
-    // public function edit($student)
-    // {
-    //     $student = Student::findOrFail($student->id);
-    //     if ($student)
-    //         return view('pages.students.edit', ['student' => $student]);
-    // }
+    public function edit($student)
+    {
+        $data['student']        = Student::findOrFail($student->id);
+        $data['nationalities']  = Nationality::all();
+        $data['bloods']         = Blood::all();
+        $data['grades']         = Grade::with(['classrooms', 'sections'])->get();
+        $data['parents']        = MyParent::all();
+        if ($student)
+            return view('pages.students.edit', $data);
+    }
+
+
+    public function update($request, $student)
+    {
+        try {
+            $data               = $request->only([
+                'name_ar', 'name_en', 'email', 'password', 'gender', 'birthday', 'nationality_id',
+                'blood_id', 'grade_id', 'classroom_id', 'section_id', 'parent_id', 'academic_year',
+            ]);
+            $data['name']['ar'] = $data['name_ar'];
+            $data['name']['en'] = $data['name_en'];
+            $data['password'] = Hash::make($data['password']);
+            $student->update($data);
+
+
+            toastr()->success(__('msgs.updated', ['name' => __('student.student')]));
+            return redirect()->route('students.index');
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
+    }
+
+    public function delete($student)
+    {
+
+        $student->delete();
+        toastr()->info(__('msgs.deleted', ['name' => __('student.student')]));
+        return redirect()->route('students.index');
+    }
 }

@@ -27,9 +27,9 @@
                     @endif
 
                     <div class="d-flex mb-4 flex-wrap" style="gap: 10px">
-                        <button type="button" class="button x-small" data-toggle="modal" data-target="#exampleModal">
+                        <a href="{{ route('students.create') }}" class="button x-small">
                             {{ __('msgs.add', ['name' => __('classroom.classroom')]) }}
-                        </button>
+                        </a>
                     </div>
 
                     <div class="table-responsive">

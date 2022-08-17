@@ -10,5 +10,9 @@ interface StudentPepositoryInterface
 
     public function store($request);
 
-    // public function edit($student);
+    public function edit($student);
+
+    public function update($request, $student);
+
+    public function delete($student);
 }
