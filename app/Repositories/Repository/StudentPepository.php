@@ -16,6 +16,8 @@ class StudentPepository implements StudentPepositoryInterface
 {
     public function index()
     {
+        $students = Student::latest()->get();
+        return view('pages.students.index', ['students' => $students]);
     }
 
     public function create()
@@ -47,4 +49,11 @@ class StudentPepository implements StudentPepositoryInterface
             return redirect()->back()->withErrors(['error' => $th->getMessage()]);
         }
     }
+
+    // public function edit($student)
+    // {
+    //     $student = Student::findOrFail($student->id);
+    //     if ($student)
+    //         return view('pages.students.edit', ['student' => $student]);
+    // }
 }

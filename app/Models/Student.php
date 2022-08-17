@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
@@ -26,4 +28,55 @@ class Student extends Model
     ];
 
     protected $translatable = ['name'];
+
+    public function createdAt(): Attribute
+    {
+        return new Attribute(
+            get: function ($value) {
+                return Carbon::parse($this->attributes['created_at'])->format('Y-m-d');
+            }
+        );
+    }
+
+    public function gender(): Attribute
+    {
+        return new Attribute(
+            get: function ($value) {
+                if ($value === 0)
+                    return 'male';
+                else
+                    return 'female';
+            }
+        );
+    }
+
+    public function grade()
+    {
+        return $this->belongsTo(Grade::class, 'grade_id');
+    }
+
+    public function classroom()
+    {
+        return $this->belongsTo(Classroom::class, 'classroom_id');
+    }
+
+    public function section()
+    {
+        return $this->belongsTo(Section::class, 'section_id');
+    }
+
+    public function myParent()
+    {
+        return $this->belongsTo(MyParent::class, 'parent_id');
+    }
+
+    public function nationality()
+    {
+        return $this->belongsTo(Nationality::class, 'nationality_id');
+    }
+
+    public function blood()
+    {
+        return $this->belongsTo(Blood::class, 'blood');
+    }
 }

@@ -14,5 +14,4 @@ return [
     'nationality'               => 'Nationality',
     'blood_type'                => 'Blood Type',
     'student_information'       => 'Student Information',
-
 ];
