@@ -36,7 +36,8 @@ return [
     'gender'                    => 'الجنس',
     'male'                      => 'ذكر',
     'female'                    => 'أنثى',
-    'attchments'                => 'المرفقات',
+    'attachments'               => 'المرفقات',
+    'attachment'                => 'المرفق',
 
 
 ];

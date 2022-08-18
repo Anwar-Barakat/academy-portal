@@ -7,7 +7,10 @@ use App\Http\Controllers\Classroom\GetClassroomController;
 use App\Http\Controllers\Grade\GradeController;
 use App\Http\Controllers\Section\GetSectionController;
 use App\Http\Controllers\Section\SectionController;
+use App\Http\Controllers\Student\DeleteAttachmentController;
+use App\Http\Controllers\Student\DownloadAttachmentController;
 use App\Http\Controllers\Student\StudentController;
+use App\Http\Controllers\Student\UploadAttachmentController;
 use App\Http\Controllers\Teacher\TeacherController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -49,18 +52,14 @@ Route::group(
 
             //! ===================== Classrooms =====================
             Route::resource('classrooms',               ClassroomController::class);
-
             Route::post('/delete-all-classrooms',       EmptyClassroomController::class)->name('empty-classrooms');
-
             Route::get('/filter-classrooms',            FilterClassroomController::class)->name('filter-classrooms');
             Route::post('/filter-classrooms',           FilterClassroomController::class)->name('filter-classrooms');
-
             Route::get('/get-classrooms/{grade_id}',    GetClassroomController::class)->name('get-classrooms');
 
 
             //! ===================== Sections =====================
             Route::resource('sections',                 SectionController::class);
-
             Route::get('/get-sections/{classroom_id}',  GetSectionController::class)->name('get-sections');
 
 
@@ -73,7 +72,10 @@ Route::group(
 
 
             //! ===================== Students =====================
-            Route::resource('students',                 StudentController::class);
+            Route::resource('students',                                 StudentController::class);
+            Route::post('upload-attachments',                           UploadAttachmentController::class)->name('student_upload_attachment');
+            Route::get('download-attachment/{studname}/{filename}',     DownloadAttachmentController::class)->name('download_student_attachment');
+            Route::delete('delete-attachment',                          DeleteAttachmentController::class)->name('delete_student_attachment');
         });
     }
 );

@@ -20,7 +20,7 @@
     <div class="col-xl-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-                <a href="{{ route('teachers.create') }}" type="button" class="button x-small mb-3">
+                <a href="{{ route('teachers.create') }}" type="button"class="button button-border x-small mb-3">
                     {{ __('msgs.add', ['name' => __('teacher.teacher')]) }}
                 </a>
                 @if ($errors->any())
@@ -75,7 +75,8 @@
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
-                                                <form action="{{ route('teachers.destroy', $teacher) }}" method="POST">
+                                                <form action="{{ route('teachers.destroy', $teacher) }}"
+                                                    method="POST">
                                                     <div class="modal-body">
                                                         @csrf
                                                         @method('DELETE')

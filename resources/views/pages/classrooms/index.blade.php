@@ -27,7 +27,8 @@
                     @endif
 
                     <div class="d-flex mb-4 flex-wrap" style="gap: 10px">
-                        <button type="button" class="button x-small" data-toggle="modal" data-target="#exampleModal">
+                        <button type="button" class="button button-border x-small" data-toggle="modal"
+                            data-target="#exampleModal">
                             {{ __('msgs.add', ['name' => __('classroom.classroom')]) }}
                         </button>
 
@@ -48,7 +49,8 @@
                     </div>
 
                     <div class="table-responsive">
-                        <table id="datatable" class="table table-striped table-bordered text-center p-0 table-hover table-sm">
+                        <table id="datatable"
+                            class="table table-striped table-bordered text-center p-0 table-hover table-sm">
                             <thead>
                                 <tr>
                                     <th>

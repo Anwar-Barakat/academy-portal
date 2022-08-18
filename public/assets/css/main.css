@@ -82,4 +82,8 @@ h5 {
     justify-content: flex-start;
     column-gap: 1rem;
 }
+
+.button.x-small {
+    padding: 5px 20px;
+}
 /* Global Settings */

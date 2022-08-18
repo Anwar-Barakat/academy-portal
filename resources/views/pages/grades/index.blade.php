@@ -22,7 +22,7 @@
     <div class="col-xl-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-                <button type="button" class="button x-small mb-3" data-toggle="modal" data-target="#addNewGrade">
+                <button type="button" class="button button-border x-small mb-3" data-toggle="modal" data-target="#addNewGrade">
                     {{ __('msgs.add', ['name' => __('grade.grade')]) }}
                 </button>
                 @if ($errors->any())

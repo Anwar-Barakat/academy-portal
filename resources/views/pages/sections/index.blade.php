@@ -18,7 +18,8 @@
         <div class="col-md-12 mb-30">
             <div class="card card-statistics h-100">
                 <div class="card-body">
-                    <a class="button x-small" href="#" data-toggle="modal" data-target="#addNewSection">
+                    <a class="button button-border x-small mb-3" href="#" data-toggle="modal"
+                        data-target="#addNewSection">
                         {{ __('msgs.add', ['name' => __('section.section')]) }}
                     </a>
                 </div>
