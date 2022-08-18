@@ -21,4 +21,16 @@ return [
     'promotion'                 => 'Promotion',
     'old_grade'                 => 'Old Grade',
     'new_grade'                 => 'New Grade',
+
+
+    // Promotions :
+    'old_grade'                 => 'Old Grade',
+    'old_classroom'             => 'Old Classroom',
+    'old_section'               => 'Old Section',
+    'old_academic_year'         => 'Old Academic Year',
+    'new_grade'                 => 'New Grade',
+    'new_classroom'             => 'New Classroom',
+    'new_section'               => 'New Section',
+    'new_academic_year'         => 'New Academic Year',
+
 ];

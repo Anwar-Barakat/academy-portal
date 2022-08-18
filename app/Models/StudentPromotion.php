@@ -21,8 +21,38 @@ class StudentPromotion extends Model
         'new_academic_year',
     ];
 
-    protected $casts = [
-        'academic_year'     => 'datetime',
-        'new_academic_year' => 'datetime',
-    ];
+    public function student()
+    {
+        return $this->belongsTo(Student::class, 'student_id');
+    }
+
+    public function oldGrade()
+    {
+        return $this->belongsTo(Grade::class, 'from_grade');
+    }
+
+    public function oldClassroom()
+    {
+        return $this->belongsTo(Classroom::class, 'from_classroom');
+    }
+
+    public function oldSection()
+    {
+        return $this->belongsTo(Section::class, 'from_section');
+    }
+
+    public function newGrade()
+    {
+        return $this->belongsTo(Grade::class, 'to_grade');
+    }
+
+    public function newClassroom()
+    {
+        return $this->belongsTo(Classroom::class, 'to_classroom');
+    }
+
+    public function newSection()
+    {
+        return $this->belongsTo(Section::class, 'to_section');
+    }
 }

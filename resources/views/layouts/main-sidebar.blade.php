@@ -99,8 +99,8 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('students-promotions.index') }}">
-                                    {{ __('trans.students_promotion') }}
+                                <a href="{{ route('students-promotions.create') }}">
+                                    {{ __('trans.managmenet_promotion') }}
                                 </a>
                             </li>
                         </ul>

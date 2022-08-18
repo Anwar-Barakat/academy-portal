@@ -16,6 +16,12 @@ class  StudentPromotionRepository implements StudentPromotionRepositoryInterface
         return view('pages.students.promotions.index', ['grades' => $grades]);
     }
 
+    public function create()
+    {
+        $promotions   = StudentPromotion::latest()->get();
+        return view('pages.students.promotions.managment', ['promotions' => $promotions]);
+    }
+
 
     public function store($request)
     {
@@ -34,6 +40,11 @@ class  StudentPromotionRepository implements StudentPromotionRepositoryInterface
                     'academic_year' => $data['academic_year']
                 ]
             )->get();
+
+            if ($students->count() < 1) {
+                toastr()->error(__('msgs.not_available'));
+                return redirect()->route('students.index');
+            }
 
 
             foreach ($students as $student) {

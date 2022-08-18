@@ -32,7 +32,7 @@ class StudentPromotionController extends Controller
      */
     public function create()
     {
-        //
+        return $this->promotion->create();
     }
 
     /**

@@ -27,6 +27,8 @@ return [
 
 
     // Parent :
-    'save_data'                     => 'هل أنت متأكد من حفظ البيانات ؟'
+    'save_data'                     => 'هل أنت متأكد من حفظ البيانات ؟',
 
+    // Student Promotion :
+    'not_students'                  => 'لا يوجد أي طالب حتى الآن !!',
 ];
