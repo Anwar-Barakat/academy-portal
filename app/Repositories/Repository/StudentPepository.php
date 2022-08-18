@@ -70,6 +70,13 @@ class StudentPepository implements StudentPepositoryInterface
         }
     }
 
+    public function show($student)
+    {
+        $student = Student::findOrFail($student->id);
+        if ($student)
+            return view('pages.students.show', ['student' => $student]);
+    }
+
     public function edit($student)
     {
         $data['student']        = Student::findOrFail($student->id);

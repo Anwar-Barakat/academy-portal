@@ -7,6 +7,8 @@ return [
     'close'                 => 'Close',
     'actions'               => 'Actions',
     'submit'                => 'Submit',
+    'show'                  => 'Show',
+    'download'              => 'Download',
 
     'active'                => 'Active',
     'disactive'             => 'Disactive',

@@ -14,4 +14,7 @@ return [
     'nationality'               => 'الجنسية',
     'blood_type'                => 'فصيلة الدم',
     'student_information'       => 'المعلومات الأضافية',
+    'student_details'           => 'تفاصيل الطالب',
+    'filename'                  => 'اسم الملف',
+
 ];

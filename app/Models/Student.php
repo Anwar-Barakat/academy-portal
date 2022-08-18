@@ -77,7 +77,7 @@ class Student extends Model
 
     public function blood()
     {
-        return $this->belongsTo(Blood::class, 'blood');
+        return $this->belongsTo(Blood::class, 'blood_id');
     }
 
 

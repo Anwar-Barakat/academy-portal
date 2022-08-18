@@ -10,6 +10,8 @@ interface StudentPepositoryInterface
 
     public function store($request);
 
+    public function show($student);
+
     public function edit($student);
 
     public function update($request, $student);

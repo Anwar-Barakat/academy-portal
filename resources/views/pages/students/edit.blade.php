@@ -7,7 +7,7 @@
 
 @endsection
 @section('breadcrum')
-{{ __('msgs.update', ['name' => __('student.student')]) }}
+{{ __('student.students') }}
 @endsection
 
 @section('breadcrum_home')

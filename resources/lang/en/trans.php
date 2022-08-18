@@ -36,5 +36,6 @@ return [
     'gender'                    => 'Gender',
     'male'                      => 'Male',
     'female'                    => 'Female',
+    'attchments'                => 'Attchments',
 
 ];

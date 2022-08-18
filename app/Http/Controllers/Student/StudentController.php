@@ -54,7 +54,7 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+        return $this->student->show($student);
     }
 
     /**

@@ -75,4 +75,11 @@ table.dataTable.table-sm > thead > tr > th {
 h5 {
     text-align: initial;
 }
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 1rem;
+}
 /* Global Settings */

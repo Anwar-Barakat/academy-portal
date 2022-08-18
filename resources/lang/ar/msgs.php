@@ -11,11 +11,13 @@ return [
     'not_active'                    => ':name غير فعال ',
     'not_available'                 => ':name غير متاح ',
 
+
     'add'                           => 'إضافة :name',
     'select'                        => 'أختر :name',
     'update'                        => 'تعديل :name',
     'delete'                        => 'حذف :name',
     'add/edit'                      => 'إضافة / تعديل ولي الأمر',
+    'show'                          => 'عرض :name',
 
     // Grade :
     'not_found_yet'                 => 'لا يوجد حالاً !!',

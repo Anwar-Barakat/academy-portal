@@ -7,12 +7,13 @@
 
 @endsection
 @section('breadcrum')
-{{ __('msgs.add', ['name' => __('student.student')]) }}
+{{ __('student.students') }}
 @endsection
 
 @section('breadcrum_home')
 {{ __('msgs.add', ['name' => __('student.student')]) }}
 @endsection
+
 @section('content')
 <!-- row -->
 <div class="row">

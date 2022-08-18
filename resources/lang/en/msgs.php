@@ -16,6 +16,7 @@ return [
     'update'                        => 'Update :name',
     'delete'                        => 'Delete :name',
     'add/edit'                      => 'Add / Edit :name',
+    'show'                          => 'Show :name',
 
 
     // Grades :
