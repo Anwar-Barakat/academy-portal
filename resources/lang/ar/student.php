@@ -17,4 +17,6 @@ return [
     'student_details'           => 'تفاصيل الطالب',
     'filename'                  => 'اسم الملف',
 
+    'promotion'                 => 'ترقية',
+
 ];

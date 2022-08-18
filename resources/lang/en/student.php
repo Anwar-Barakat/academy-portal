@@ -17,4 +17,6 @@ return [
 
     'student_details'           => 'Student Details',
     'filename'                  => 'File Name',
+
+    'promotion'                 => 'Promotion',
 ];

@@ -23,6 +23,7 @@ return [
     'specializations'           => 'التخصصات الدراسية',
     'specializations_list'      => 'قائمةالتخصصات الدراسية',
     'specialization'            => 'التخصص الدراسي',
+    'students_promotion'        => 'ترقية الطلاب',
 
 
     'created_at'                => 'أُنشأت في',

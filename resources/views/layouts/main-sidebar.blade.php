@@ -98,6 +98,11 @@
                                     {{ __('msgs.add', ['name' => __('student.student')]) }}
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('students-promotions.index') }}">
+                                    {{ __('trans.students_promotion') }}
+                                </a>
+                            </li>
                         </ul>
                     </li>
 

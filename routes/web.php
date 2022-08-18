@@ -10,6 +10,7 @@ use App\Http\Controllers\Section\SectionController;
 use App\Http\Controllers\Student\DeleteAttachmentController;
 use App\Http\Controllers\Student\DownloadAttachmentController;
 use App\Http\Controllers\Student\StudentController;
+use App\Http\Controllers\Student\StudentPromotionController;
 use App\Http\Controllers\Student\UploadAttachmentController;
 use App\Http\Controllers\Teacher\TeacherController;
 use Illuminate\Support\Facades\Route;
@@ -76,6 +77,9 @@ Route::group(
             Route::post('upload-attachments',                           UploadAttachmentController::class)->name('student_upload_attachment');
             Route::get('download-attachment/{studname}/{filename}',     DownloadAttachmentController::class)->name('download_student_attachment');
             Route::delete('delete-attachment',                          DeleteAttachmentController::class)->name('delete_student_attachment');
+
+            //? =====================
+            Route::resource('students-promotions',                               StudentPromotionController::class);
         });
     }
 );

@@ -22,6 +22,7 @@ return [
     'teachers_list'             => 'Teachers List',
     'students'                  => 'Students',
     'students_list'             => 'Students List',
+    'students_promotion'        => 'Students Promotion',
 
 
     'specializations'           => 'Specializations',
