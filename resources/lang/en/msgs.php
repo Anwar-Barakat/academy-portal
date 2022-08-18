@@ -10,6 +10,8 @@ return [
     'not_valid'                     => ':name Not Valid',
     'not_active'                    => ':name Not Active',
     'not_available'                 => ':name Not Avaliable',
+    'promoted'                      => ':name Has Been Promoted',
+
 
     'add'                           => 'Add :name',
     'select'                        => 'Select :name',

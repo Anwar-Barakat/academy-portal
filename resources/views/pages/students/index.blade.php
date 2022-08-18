@@ -118,7 +118,7 @@
                                     </tr>
                                 @empty
                                     <tr class="text-center">
-                                        <td colspan="6">{{ __('msgs.not_found_yet') }}</td>
+                                        <td colspan="7">{{ __('msgs.not_found_yet') }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>

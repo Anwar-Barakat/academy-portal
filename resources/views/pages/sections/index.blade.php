@@ -208,9 +208,6 @@
 
 
 @section('js')
-
-
-
     <script>
         $(document).ready(function() {
             $('select[name=grade_id]').on('change', function() {
@@ -222,9 +219,11 @@
                         dataType: 'json',
                         success: function(data) {
                             $('select[name=classroom_id]').empty();
+                            $('select[name=classroom_id]').append(
+                                '<option disabled  value="" selected>{{ __('msgs.select', ['name' => '...']) }}</option>'
+                            );
                             $.each(data, function(key, value) {
-                                console.log(key);
-                                console.log(value);
+
                                 $('select[name=classroom_id]').append(
                                     '<option value="' + key + '">' + value +
                                     '</option>');

@@ -10,6 +10,7 @@ return [
     'not_valid'                     => ':name غير صالح ',
     'not_active'                    => ':name غير فعال ',
     'not_available'                 => ':name غير متاح ',
+    'promoted'                      => 'تم ترقية :name ',
 
 
     'add'                           => 'إضافة :name',

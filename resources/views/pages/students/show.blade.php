@@ -141,7 +141,7 @@
                                                 </div>
                                             </div>
                                             <button type="submit" class="button button-border x-small">
-                                                {{ trans('buttons.upload') }}
+                                                {{ __('buttons.upload') }}
                                             </button>
                                         </form>
                                     </div>

@@ -20,10 +20,12 @@ return new class extends Migration
             $table->foreignId('from_grade')->constrained('grades')->cascadeOnUpdate();
             $table->foreignId('from_classroom')->constrained('classrooms')->cascadeOnUpdate();
             $table->foreignId('from_section')->constrained('sections')->cascadeOnUpdate();
+            $table->date('academic_year');
 
             $table->foreignId('to_grade')->constrained('grades')->cascadeOnUpdate();
             $table->foreignId('to_classroom')->constrained('classrooms')->cascadeOnUpdate();
             $table->foreignId('to_section')->constrained('sections')->cascadeOnUpdate();
+            $table->date('new_academic_year');
 
             $table->timestamps();
         });

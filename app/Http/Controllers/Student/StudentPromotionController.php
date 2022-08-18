@@ -6,9 +6,15 @@ use App\Models\StudentPromotion;
 use App\Http\Requests\StoreStudentPromotionRequest;
 use App\Http\Requests\UpdateStudentPromotionRequest;
 use App\Http\Controllers\Controller;
+use App\Repositories\Interface\StudentPromotionRepositoryInterface;
 
 class StudentPromotionController extends Controller
 {
+    public $promotion;
+    public function __construct(StudentPromotionRepositoryInterface $promotion)
+    {
+        $this->promotion = $promotion;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +22,7 @@ class StudentPromotionController extends Controller
      */
     public function index()
     {
-        //
+        return $this->promotion->index();
     }
 
     /**
@@ -37,7 +43,7 @@ class StudentPromotionController extends Controller
      */
     public function store(StoreStudentPromotionRequest $request)
     {
-        //
+        return $this->promotion->store($request);
     }
 
     /**

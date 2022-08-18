@@ -249,7 +249,7 @@
                     success: function(response) {
                         $('select[name=classroom_id]').empty();
                         $('select[name=classroom_id]').append(
-                            '<option disabled>{{ __('msgs.select', ['name' => '...']) }}</option>'
+                            '<option disabled  value="" selected>{{ __('msgs.select', ['name' => '...']) }}</option>'
                         );
                         $.each(response, function(index, value) {
                             $('select[name=classroom_id]').append(
@@ -277,7 +277,7 @@
                     success: function(response) {
                         $('select[name=section_id]').empty();
                         $('select[name=section_id]').append(
-                            '<option disabled>{{ __('msgs.select', ['name' => '...']) }}</option>'
+                            '<option disabled  value="" selected>{{ __('msgs.select', ['name' => '...']) }}</option>'
                         );
                         $.each(response, function(index, value) {
                             $('select[name=section_id]').append(

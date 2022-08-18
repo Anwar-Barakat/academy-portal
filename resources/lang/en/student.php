@@ -19,4 +19,6 @@ return [
     'filename'                  => 'File Name',
 
     'promotion'                 => 'Promotion',
+    'old_grade'                 => 'Old Grade',
+    'new_grade'                 => 'New Grade',
 ];
