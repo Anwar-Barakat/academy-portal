@@ -28,12 +28,6 @@
 @endsection
 
 @section('js')
-<script>
-    $(".custom-file-input").on("change", function() {
-        var filename = $(this).val().split("\\").pop();
-        alert('hi')
-        $(this).siblings(".custom-file-label").addClass("selected").html(filename);
-    });
-</script>
 
+@livewireScripts
 @endsection

@@ -10,6 +10,7 @@ use App\Http\Controllers\Section\SectionController;
 use App\Http\Controllers\Student\DeleteAttachmentController;
 use App\Http\Controllers\Student\DownloadAttachmentController;
 use App\Http\Controllers\Student\StudentController;
+use App\Http\Controllers\Student\StudentGraduatedController;
 use App\Http\Controllers\Student\StudentPromotionController;
 use App\Http\Controllers\Student\UploadAttachmentController;
 use App\Http\Controllers\Teacher\TeacherController;
@@ -79,7 +80,10 @@ Route::group(
             Route::delete('delete-attachment',                          DeleteAttachmentController::class)->name('delete_student_attachment');
 
             //? =====================
-            Route::resource('students-promotions',                               StudentPromotionController::class);
+            Route::resource('students-promotions',                              StudentPromotionController::class);
+
+            //? =====================
+            Route::resource('students-graduated',                               StudentGraduatedController::class);
         });
     }
 );

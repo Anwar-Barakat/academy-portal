@@ -25,6 +25,9 @@ return [
     'students_promotion'        => 'Students Promotion',
     'managmenet_promotion'      => 'Managmenet Promotion',
     'promotions_list'           => "Promotions List",
+    'graduations_list'          => 'Graduations List',
+    'graduation'                => 'Graduation',
+    'graduations_students'      => 'Graduations Students',
 
 
     'specializations'           => 'Specializations',

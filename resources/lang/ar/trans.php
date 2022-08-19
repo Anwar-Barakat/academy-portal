@@ -26,7 +26,9 @@ return [
     'students_promotion'        => 'ترقية الطلاب',
     'managmenet_promotion'      => 'إدارة الترقية',
     'promotions_list'           => "قائمة الترقيات",
-
+    'graduations_list'          => 'قائمة المتخرجين',
+    'graduation'                => 'تخرج',
+    'graduations_students'      => 'الطلاب المتخرجين',
 
     'created_at'                => 'أُنشأت في',
     'email'                     => 'البريد الألكتروني',

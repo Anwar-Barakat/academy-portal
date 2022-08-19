@@ -116,10 +116,25 @@
                                 </a>
                                 <ul id="students_promotion" class="collapse">
                                     <li> <a
-                                            href="{{ route('students-promotions.index') }}">{{ __('msgs.add', ['name' => __('student.promotion')]) }}</a>
+                                            href="{{ route('students-promotions.index') }}">{{ __('trans.promotions_list') }}</a>
                                     </li>
                                     <li> <a
-                                            href="{{ route('students-promotions.create') }}">{{ __('trans.promotions_list') }}</a>
+                                            href="{{ route('students-promotions.create') }}">{{ __('msgs.add', ['name' => __('student.promotion')]) }}</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" data-toggle="collapse"
+                                    data-target="#graduations_students">{{ __('trans.graduations_students') }}<div
+                                        class="pull-right"><i class="ti-plus"></i></div>
+                                    <div class="clearfix"></div>
+                                </a>
+                                <ul id="graduations_students" class="collapse">
+                                    <li> <a
+                                            href="{{ route('students-graduated.index') }}">{{ __('trans.graduations_list') }}</a>
+                                    </li>
+                                    <li> <a
+                                            href="{{ route('students-graduated.create') }}">{{ __('msgs.add', ['name' => __('trans.graduation')]) }}</a>
                                     </li>
                                 </ul>
                             </li>

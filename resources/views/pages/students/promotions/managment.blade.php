@@ -66,12 +66,10 @@
                                         <td>{{ $promotion->new_academic_year }}</td>
                                         <td class="students-promotions-buttons">
                                             <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal"
-                                                data-target="#deleteImage"
-                                                title="{{ __('buttons.delete') }}">{{ __('msgs.graduate', ['name' => __('student.student')]) }}
+                                                data-target="#deleteImage">{{ __('msgs.graduated') }}
                                             </button>
                                             <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal"
-                                                data-target="#returnStudent{{ $promotion->student_id }}"
-                                                title="{{ __('buttons.delete') }}">{{ __('msgs.return', ['name' => __('student.student')]) }}
+                                                data-target="#returnStudent{{ $promotion->student_id }}">{{ __('msgs.returned') }}
                                             </button>
                                         </td>
 

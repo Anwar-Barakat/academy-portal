@@ -11,8 +11,8 @@ return [
     'not_active'                    => ':name غير فعال ',
     'not_available'                 => ':name غير متاح ',
     'promoted'                      => 'تم ترقية :name ',
-    'graduate'                      => 'تم تخريج :name',
-    'return'                        => 'تم إرجاع :name',
+    'has_graduated'                 => 'تم تخريج :name',
+    'has_returned'                  => 'تم إرجاع :name',
 
 
     'add'                           => 'إضافة :name',
@@ -22,6 +22,7 @@ return [
     'add/edit'                      => 'إضافة / تعديل ولي الأمر',
     'show'                          => 'عرض :name',
     'returned'                      => 'إرجاع',
+    'graduated'                     => 'تخريج',
 
     // Grade :
     'not_found_yet'                 => 'لا يوجد حالاً !!',

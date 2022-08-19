@@ -59,8 +59,6 @@
     <!--================================= footer -->
 
     @include('layouts.footer-scripts')
-    @livewireScripts
-
 </body>
 
 </html>

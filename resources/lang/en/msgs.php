@@ -12,8 +12,8 @@ return [
     'not_available'                 => ':name Not Avaliable',
     'promoted'                      => ':name Has Been Promoted',
     'undone'                        => ':name Has Been undone',
-    'graduate'                      => ':name Has Been graduated',
-    'return'                        => ':name Has Been returned',
+    'has_graduated'                 => ':name Has Been graduated',
+    'has_returned'                  => ':name Has Been returned',
 
     'add'                           => 'Add :name',
     'select'                        => 'Select :name',
@@ -21,6 +21,7 @@ return [
     'delete'                        => 'Delete :name',
     'add/edit'                      => 'Add / Edit :name',
     'show'                          => 'Show :name',
+    'graduated'                     => 'Graduated',
     'returned'                      => 'Returned',
 
 
