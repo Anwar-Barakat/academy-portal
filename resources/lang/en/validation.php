@@ -178,6 +178,9 @@ return [
         'mother_blood_id'           => 'Mother BLood Type',
         'mother_religion_id'        => 'Mother Religion Type',
         'mother_address'            => 'Mother Address',
+
+        'section_id'                => 'Section',
+        'classroom_id'              => 'Classroom',
     ],
 
 ];

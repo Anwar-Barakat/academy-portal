@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\Student;
 
-use App\Models\Student;
-use App\Http\Requests\StoreStudentRequest;
-use App\Http\Requests\UpdateStudentRequest;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Interface\StudentGraduatedRepositoryInterface;
 
 class StudentGraduatedController extends Controller
 {
     public $graduated;
+
     public function __construct(StudentGraduatedRepositoryInterface $graduated)
     {
         $this->graduated = $graduated;
@@ -22,7 +21,7 @@ class StudentGraduatedController extends Controller
      */
     public function index()
     {
-        $this->graduated->index();
+        return $this->graduated->index();
     }
 
     /**
@@ -32,27 +31,32 @@ class StudentGraduatedController extends Controller
      */
     public function create()
     {
-        $this->graduated->create();
+        return $this->graduated->create();
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreStudentRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreStudentRequest $request)
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            'grade_id'      => 'required',
+            'classroom_id'  => 'required',
+            'section_id'    => 'required',
+        ]);
+        return $this->graduated->graduated($request);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Student  $student
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Student $student)
+    public function show($id)
     {
         //
     }
@@ -60,10 +64,10 @@ class StudentGraduatedController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Student  $student
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit($id)
     {
         //
     }
@@ -71,11 +75,11 @@ class StudentGraduatedController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateStudentRequest  $request
-     * @param  \App\Models\Student  $student
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateStudentRequest $request, Student $student)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -83,11 +87,12 @@ class StudentGraduatedController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Student  $student
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy($id)
     {
         //
+
     }
 }

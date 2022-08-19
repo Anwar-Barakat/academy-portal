@@ -131,10 +131,10 @@
                                 </a>
                                 <ul id="graduations_students" class="collapse">
                                     <li> <a
-                                            href="{{ route('students-graduated.index') }}">{{ __('trans.graduations_list') }}</a>
+                                            href="{{ route('students-graduations.index') }}">{{ __('trans.graduations_list') }}</a>
                                     </li>
                                     <li> <a
-                                            href="{{ route('students-graduated.create') }}">{{ __('msgs.add', ['name' => __('trans.graduation')]) }}</a>
+                                            href="{{ route('students-graduations.create') }}">{{ __('msgs.add', ['name' => __('trans.graduation')]) }}</a>
                                     </li>
                                 </ul>
                             </li>

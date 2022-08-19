@@ -7,4 +7,6 @@ interface StudentGraduatedRepositoryInterface
     public function index();
 
     public function create();
+
+    public function graduated($request);
 }

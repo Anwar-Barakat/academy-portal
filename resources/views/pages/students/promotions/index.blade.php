@@ -1,14 +1,14 @@
 @extends('layouts.master')
 
 @section('title')
-    {{ __('trans.students_promotion') }}
+    {{ __('msgs.add', ['name' => __('student.promotion')]) }}
 @stop
 
 @section('breadcrum')
-    {{ __('student.students') }}@endsection
+    {{ __('trans.students_promotion') }}@endsection
 
 @section('breadcrum_home')
-    {{ __('trans.students_promotion') }}
+    {{ __('msgs.add', ['name' => __('student.promotion')]) }}
 @endsection
 
 @section('content')
@@ -17,16 +17,6 @@
         <div class="col-md-12 mb-30">
             <div class="card card-statistics h-100">
                 <div class="card-body">
-
-                    @if (Session::has('error_promotions'))
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>{{ Session::get('error_promotions') }}</strong>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    @endif
-
                     <h5 class="text text-info">{{ __('student.old_grade') }}</h5>
                     <br>
                     <form method="post" action="{{ route('students-promotions.store') }}">

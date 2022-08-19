@@ -3,14 +3,14 @@
 
 
 @section('title')
-    {{ __('student.students') }}
+    {{ __('student.students_list') }}
 @stop
 
 @section('breadcrum')
     {{ __('student.students') }}@endsection
 
 @section('breadcrum_home')
-    {{ __('student.students') }}
+    {{ __('student.students_list') }}
 @endsection
 
 @section('content')

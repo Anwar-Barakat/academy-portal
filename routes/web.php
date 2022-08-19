@@ -83,7 +83,7 @@ Route::group(
             Route::resource('students-promotions',                              StudentPromotionController::class);
 
             //? =====================
-            Route::resource('students-graduated',                               StudentGraduatedController::class);
+            Route::resource('students-graduations',                             StudentGraduatedController::class);
         });
     }
 );

@@ -3,14 +3,14 @@
 
 
 @section('title')
-    {{ __('trans.managmenet_promotion') }}
+    {{ __('trans.promotions_list') }}
 @stop
 
 @section('breadcrum')
     {{ __('trans.students_promotion') }}@endsection
 
 @section('breadcrum_home')
-    {{ __('trans.managmenet_promotion') }}
+    {{ __('trans.promotions_list') }}
 @endsection
 
 @section('content')

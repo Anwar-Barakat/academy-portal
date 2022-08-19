@@ -25,7 +25,7 @@ return new class extends Migration
             $table->foreignId('grade_id')->constrained('grades')->cascadeOnUpdate();
             $table->foreignId('classroom_id')->constrained('classrooms')->cascadeOnUpdate();
             $table->foreignId('section_id')->constrained('sections')->cascadeOnUpdate();
-            $table->foreignId('parent_id')->constrained('my_parents')->cascadeOnUpdate();
+            $table->foreignId('parent_id')->constrained('my_parents')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('academic_year');
             $table->softDeletes();
             $table->timestamps();
