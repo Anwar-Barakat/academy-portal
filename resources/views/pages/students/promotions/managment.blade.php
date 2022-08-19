@@ -24,10 +24,12 @@
                             <div class="alert alert-danger">{{ $error }}</div>
                         @endforeach
                     @endif
-                    <button type="button" class="button button-border x-small mb-3" data-toggle="modal"
-                        data-target="#undoPromotion" title="{{ __('student.undo_the_promotion') }}">
-                        {{ __('student.undo_the_promotion') }}
-                    </button>
+                    @if ($promotions->count() > 0)
+                        <button type="button" class="button button-border x-small mb-3" data-toggle="modal"
+                            data-target="#undoPromotion" title="{{ __('student.undo_the_promotion') }}">
+                            {{ __('student.undo_the_promotion') }}
+                        </button>
+                    @endif
                     <br>
 
                     <div class="table-responsive">
@@ -62,9 +64,18 @@
                                         <td>{{ $promotion->newClassroom->name }}</td>
                                         <td>{{ $promotion->newSection->name }}</td>
                                         <td>{{ $promotion->new_academic_year }}</td>
-                                        <td>
-
+                                        <td class="students-promotions-buttons">
+                                            <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal"
+                                                data-target="#deleteImage"
+                                                title="{{ __('buttons.delete') }}">{{ __('msgs.graduate', ['name' => __('student.student')]) }}
+                                            </button>
+                                            <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal"
+                                                data-target="#returnStudent{{ $promotion->student_id }}"
+                                                title="{{ __('buttons.delete') }}">{{ __('msgs.return', ['name' => __('student.student')]) }}
+                                            </button>
                                         </td>
+
+                                        @include('pages.students.promotions.return-student-modal')
                                     </tr>
                                 @empty
                                     <tr class="text-center">

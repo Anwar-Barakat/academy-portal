@@ -11,6 +11,8 @@ return [
     'not_active'                    => ':name غير فعال ',
     'not_available'                 => ':name غير متاح ',
     'promoted'                      => 'تم ترقية :name ',
+    'graduate'                      => 'تم تخريج :name',
+    'return'                        => 'تم إرجاع :name',
 
 
     'add'                           => 'إضافة :name',
@@ -19,12 +21,14 @@ return [
     'delete'                        => 'حذف :name',
     'add/edit'                      => 'إضافة / تعديل ولي الأمر',
     'show'                          => 'عرض :name',
+    'returned'                      => 'إرجاع',
 
     // Grade :
     'not_found_yet'                 => 'لا يوجد حالاً !!',
     'deleting_warning'              => 'هل انت متاكد من عملية الحذف ؟',
     'delete_grade_error'            => 'لا يمكن حذف المرحلة لوجود فصول تابعة لها',
     'undoing_promotion_warning'     => 'هل أنت متأكد من عملية التراجع عن جميع الترقيات ؟',
+    'return_student_warning'        => 'هل أنت متأكد من عودة الطالب ؟',
 
     // Parent :
     'save_data'                     => 'هل أنت متأكد من حفظ البيانات ؟',

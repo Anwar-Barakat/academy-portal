@@ -99,13 +99,27 @@ class  StudentPromotionRepository implements StudentPromotionRepositoryInterface
 
                 StudentPromotion::truncate();
 
+                DB::commit();
+
                 toastr()->info(__('msgs.undone', ['name' => __('student.promotion')]));
                 return redirect()->route('students.index');
             } else {
-                return 'badP';
-            }
+                $promotion = StudentPromotion::findOrFail($request->id);
 
-            DB::commit();
+                Student::where('id', $promotion->student_id)->update([
+                    'grade_id'      => $promotion->from_grade,
+                    'classroom_id'  => $promotion->from_classroom,
+                    'section_id'    => $promotion->from_section,
+                    'academic_year' => $promotion->academic_year
+                ]);
+
+                StudentPromotion::destroy($promotion->id);
+
+                DB::commit();
+
+                toastr()->info(__('msgs.return', ['name' => __('student.student')]));
+                return redirect()->back();
+            }
         } catch (\Throwable $th) {
             DB::rollBack();
             return redirect()->back()->withErrors(['error' => $th->getMessage()]);

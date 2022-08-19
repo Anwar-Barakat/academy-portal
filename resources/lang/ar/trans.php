@@ -25,6 +25,7 @@ return [
     'specialization'            => 'التخصص الدراسي',
     'students_promotion'        => 'ترقية الطلاب',
     'managmenet_promotion'      => 'إدارة الترقية',
+    'promotions_list'           => "قائمة الترقيات",
 
 
     'created_at'                => 'أُنشأت في',

@@ -86,4 +86,13 @@ h5 {
 .button.x-small {
     padding: 5px 20px;
 }
+
+.students-promotions-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    row-gap: 0.5rem;
+    column-gap: 0.5rem;
+}
 /* Global Settings */

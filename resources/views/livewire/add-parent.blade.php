@@ -53,7 +53,7 @@
                         </div>
                         <div class="custom-file">
                             <x-input type="file" class="custom-file-input" wire:model="photos" accept="image/*"
-                                multiple id="photos" aria-describedby="inputGroupFileAddon01" />
+                                multiple id="photos" />
                             <x-input wire:model="parent_id" type="hidden" />
                             <x-label class="custom-file-label" for="photos" :value="__('msgs.select', ['name' => __('parent.attachments')])" />
                         </div>
