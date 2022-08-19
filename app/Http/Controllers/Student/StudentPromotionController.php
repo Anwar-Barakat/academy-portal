@@ -7,6 +7,7 @@ use App\Http\Requests\StoreStudentPromotionRequest;
 use App\Http\Requests\UpdateStudentPromotionRequest;
 use App\Http\Controllers\Controller;
 use App\Repositories\Interface\StudentPromotionRepositoryInterface;
+use Illuminate\Http\Request;
 
 class StudentPromotionController extends Controller
 {
@@ -86,8 +87,8 @@ class StudentPromotionController extends Controller
      * @param  \App\Models\StudentPromotion  $studentPromotion
      * @return \Illuminate\Http\Response
      */
-    public function destroy(StudentPromotion $studentPromotion)
+    public function destroy(Request $request)
     {
-        //
+        return $this->promotion->destroy($request);
     }
 }

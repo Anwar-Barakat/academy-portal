@@ -9,4 +9,6 @@ interface StudentPromotionRepositoryInterface
     public function create();
 
     public function store($request);
+
+    public function destroy($request);
 }

@@ -11,6 +11,7 @@ return [
     'not_active'                    => ':name Not Active',
     'not_available'                 => ':name Not Avaliable',
     'promoted'                      => ':name Has Been Promoted',
+    'undone'                        => ':name Has Been undone',
 
 
     'add'                           => 'Add :name',
@@ -25,6 +26,7 @@ return [
     'not_found_yet'                 => 'Not Found Yet !!',
     'deleting_warning'              => 'Are Sure Of The Deleting Process ?',
     'delete_grade_error'            => 'It is not possible to delete the stage because there are classrooms belonging to it',
+    'undoing_promotion_warning'     => 'Are Sure Of The Undoing all Promotions Process ?',
 
     // Parent :
     'save_data'                     => 'Are you sure saving data ?',

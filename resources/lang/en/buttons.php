@@ -9,6 +9,7 @@ return [
     'submit'                => 'Submit',
     'show'                  => 'Show',
     'download'              => 'Download',
+    'undo'                  => 'Undo',
 
     'active'                => 'Active',
     'disactive'             => 'Disactive',

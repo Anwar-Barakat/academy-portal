@@ -32,5 +32,5 @@ return [
     'new_classroom'             => 'New Classroom',
     'new_section'               => 'New Section',
     'new_academic_year'         => 'New Academic Year',
-
+    'undo_the_promotion'      => 'Undoing on Promotion'
 ];

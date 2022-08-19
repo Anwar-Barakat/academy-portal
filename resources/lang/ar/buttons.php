@@ -9,6 +9,7 @@ return [
     'update'                => 'تحديث',
     'show'                  => 'عرض',
     'download'              => "تحميل",
+    'undo'                  => 'تراجع',
 
 
     'active'                => 'فعال',
