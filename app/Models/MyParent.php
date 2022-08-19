@@ -18,4 +18,9 @@ class MyParent extends Model
     ];
 
     protected $guarded = [];
+
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
 }

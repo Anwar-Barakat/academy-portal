@@ -45,6 +45,38 @@
 
         <div class="row setup-content {{ $currentStep != 3 ? 'displayNone' : '' }}" id="step-3">
             @if ($currentStep === 3)
+                @if ($updateMode == true)
+                    <div class="table-responsive mt-5">
+                        <table class="table center-aligned-table mb-0 table table-hover" style="text-align:center">
+                            <thead>
+                                <tr class="table-secondary">
+                                    <th scope="col">#</th>
+                                    <th scope="col">{{ __('student.filename') }}</th>
+                                    <th scope="col">{{ __('trans.created_at') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php
+                                    $myParent = App\Models\MyParent::where('id', $parent_id)->first();
+                                @endphp
+                                @forelse ($myParent->images as $img)
+                                    <tr class="text-center">
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>
+                                            <img src="{{ asset('attachments/parents/' . $img->imageable->father_name . '/' . $img->file_name) }}"
+                                                alt="" width="100" class="img img-thumbnail">
+                                        </td>
+                                        <td>{{ $img->created_at->diffForHumans() }}</td>
+                                    </tr>
+                                @empty
+                                    <tr class="text-center">
+                                        <td colspan="3">{{ __('msgs.not_found_yet') }}</td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                @endif
                 <div class="col-md-6">
                     <h3 class="mt-5 mb-3">{{ __('parent.attachments') }}</h3>
                     <div class="input-group">

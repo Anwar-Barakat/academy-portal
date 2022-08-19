@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Blood;
+use App\Models\Image;
 use App\Models\MyParent;
 use App\Models\Nationality;
 use App\Models\ParentAttachment;
@@ -181,17 +182,16 @@ class AddParent extends Component
             $my_parent->save();
 
             if (!empty($this->photos)) {
+                $father_id = MyParent::latest()->first()->id;
                 foreach ($this->photos as $photo) {
-                    /*
-                        first   : folder name
-                        second  : file name
-                        third   : the disk
-                    */
-                    $photo->storeAs($this->father_identification, $photo->getClientOriginalName(), $disk = 'parent_attachments');
-                    ParentAttachment::create([
-                        'file_name'     => $photo->getClientOriginalName(),
-                        'parent_id'     => MyParent::latest()->first()->id
-                    ]);
+                    $name   = $photo->getClientOriginalName();
+                    $photo->storeAs('attachments/parents/' . $my_parent->father_name, $name, 'parents_attachments');
+
+                    $image                  = new Image();
+                    $image->file_name       = $name;
+                    $image->imageable_id    =  $father_id;
+                    $image->imageable_type  = 'App\Models\MyParent';
+                    $image->save();
                 }
             }
 
