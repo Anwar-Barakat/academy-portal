@@ -9,4 +9,8 @@ interface StudentGraduatedRepositoryInterface
     public function create();
 
     public function graduated($request);
+
+    public function returned($request);
+
+    public function destroy($id);
 }

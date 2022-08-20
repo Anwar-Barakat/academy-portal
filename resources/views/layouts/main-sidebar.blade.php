@@ -125,11 +125,11 @@
                             </li>
                             <li>
                                 <a href="javascript:void(0);" data-toggle="collapse"
-                                    data-target="#graduations_students">{{ __('trans.graduations_students') }}<div
+                                    data-target="#graduation_students">{{ __('trans.graduation_students') }}<div
                                         class="pull-right"><i class="ti-plus"></i></div>
                                     <div class="clearfix"></div>
                                 </a>
-                                <ul id="graduations_students" class="collapse">
+                                <ul id="graduation_students" class="collapse">
                                     <li> <a
                                             href="{{ route('students-graduations.index') }}">{{ __('trans.graduations_list') }}</a>
                                     </li>

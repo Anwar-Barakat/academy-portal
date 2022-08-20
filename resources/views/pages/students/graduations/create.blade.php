@@ -5,7 +5,7 @@
 @stop
 
 @section('breadcrum')
-    {{ __('trans.graduations_students') }}@endsection
+    {{ __('trans.graduation_students') }}@endsection
 
 @section('breadcrum_home')
     {{ __('msgs.add', ['name' => __('trans.graduation')]) }}
