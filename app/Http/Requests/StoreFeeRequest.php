@@ -13,7 +13,7 @@ class StoreFeeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,13 @@ class StoreFeeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title_ar'      => 'required|min:3',
+            'title_en'      => 'required|min:3',
+            'amount'        => 'required|digits:3',
+            'grade_id'      => 'required',
+            'classroom_id'  => 'required',
+            'description'   => 'required|min:10',
+            'year'          => 'required',
         ];
     }
 }

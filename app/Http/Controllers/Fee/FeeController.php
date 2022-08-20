@@ -33,7 +33,7 @@ class FeeController extends Controller
      */
     public function create()
     {
-        //
+        return $this->fee->create();
     }
 
     /**
@@ -44,7 +44,7 @@ class FeeController extends Controller
      */
     public function store(StoreFeeRequest $request)
     {
-        //
+        return $this->fee->store($request);
     }
 
     /**
