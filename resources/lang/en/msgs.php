@@ -30,7 +30,8 @@ return [
     'deleting_warning'              => 'Are Sure Of The Deleting Process ?',
     'delete_grade_error'            => 'It is not possible to delete the stage because there are classrooms belonging to it',
     'undoing_promotion_warning'     => 'Are Sure Of The Undoing all Promotions Process ?',
-    'return_student_warning'        => 'Are you sure the student will return?',
+    'return_student_warning'        => 'Are you sure the student will return ?',
+    'graduate_student_warning'      => 'Are you sure the student will graduate ?',
 
     // Parent :
     'save_data'                     => 'Are you sure saving data ?',

@@ -116,4 +116,12 @@ class StudentPepository implements StudentPepositoryInterface
         toastr()->info(__('msgs.deleted', ['name' => __('student.student')]));
         return redirect()->route('students.index');
     }
+
+
+    public function forceDelete($student)
+    {
+        Student::where('id', $student->id)->first()->forceDelete();
+        toastr()->info(__('msgs.deleted', ['name' => __('student.student')]));
+        return redirect()->back();
+    }
 }

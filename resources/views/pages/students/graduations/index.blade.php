@@ -7,7 +7,7 @@
 @stop
 
 @section('breadcrum')
-    {{ __('trans.graduation_students') }}@endsection
+    {{ __('trans.graduations_students') }}@endsection
 
 @section('breadcrum_home')
     {{ __('trans.graduations_list') }}
@@ -113,8 +113,7 @@
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <form
-                                                        action="{{ route('students-graduations.destroy', $student->id) }}"
+                                                    <form action="{{ route('students-graduations.destroy', 'test') }}"
                                                         method="POST">
                                                         <div class="modal-body">
                                                             @csrf

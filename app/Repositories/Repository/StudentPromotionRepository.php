@@ -73,7 +73,7 @@ class  StudentPromotionRepository implements StudentPromotionRepositoryInterface
             DB::commit();
 
             toastr()->success(__('msgs.promoted', ['name' => __('student.students')]));
-            return redirect()->route('students.index');
+            return redirect()->route('students-promotions.index');
         } catch (\Throwable $th) {
             DB::rollBack();
             return redirect()->back()->withErrors(['error' => $th->getMessage()]);

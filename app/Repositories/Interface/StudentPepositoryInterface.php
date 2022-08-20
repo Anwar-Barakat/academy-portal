@@ -17,4 +17,6 @@ interface StudentPepositoryInterface
     public function update($request, $student);
 
     public function delete($student);
+
+    public function forceDelete($student);
 }

@@ -30,6 +30,7 @@ return [
     'delete_grade_error'            => 'لا يمكن حذف المرحلة لوجود فصول تابعة لها',
     'undoing_promotion_warning'     => 'هل أنت متأكد من عملية التراجع عن جميع الترقيات ؟',
     'return_student_warning'        => 'هل أنت متأكد من عودة الطالب ؟',
+    'graduate_student_warning'      => 'هل أنت متأكد من عودة تخرج الطالب ؟',
 
     // Parent :
     'save_data'                     => 'هل أنت متأكد من حفظ البيانات ؟',

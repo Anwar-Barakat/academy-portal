@@ -90,4 +90,9 @@ class StudentController extends Controller
     {
         return $this->student->delete($student);
     }
+
+    public function forceDelete(Student $student)
+    {
+        return $this->student->forceDelete($student);
+    }
 }
