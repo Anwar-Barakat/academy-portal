@@ -28,6 +28,8 @@ return [
     'graduations_list'          => 'Graduations List',
     'graduation'                => 'Graduation',
     'graduation_students'       => 'Graduation Students',
+    'fees_list'                 => 'Fees List',
+    'fees'                      => 'Fees',
 
 
     'specializations'           => 'Specializations',

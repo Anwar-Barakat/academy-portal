@@ -29,6 +29,9 @@ return [
     'graduations_list'          => 'قائمة المتخرجين',
     'graduation'                => 'تخرج',
     'graduation_students'      => 'الطلاب المتخرجين',
+    'fees_list'                 => 'قائمة الرسوم',
+    'fees'                      => "رسوم",
+
 
     'created_at'                => 'أُنشأت في',
     'email'                     => 'البريد الألكتروني',
