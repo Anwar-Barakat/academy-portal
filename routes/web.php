@@ -4,6 +4,7 @@ use App\Http\Controllers\Classroom\ClassroomController;
 use App\Http\Controllers\Classroom\EmptyClassroomController;
 use App\Http\Controllers\Classroom\FilterClassroomController;
 use App\Http\Controllers\Classroom\GetClassroomController;
+use App\Http\Controllers\Fee\FeeController;
 use App\Http\Controllers\Grade\GradeController;
 use App\Http\Controllers\Section\GetSectionController;
 use App\Http\Controllers\Section\SectionController;
@@ -85,6 +86,11 @@ Route::group(
 
             //? =====================
             Route::resource('students-graduations',                             StudentGraduatedController::class);
+
+
+
+            //! ===================== Fees =====================
+            Route::resource('fees',                 FeeController::class);
         });
     }
 );

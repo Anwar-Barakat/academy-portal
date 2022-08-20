@@ -46,5 +46,8 @@ return [
     'female'                    => 'Female',
     'attachments'               => 'Attachments',
     'attachment'                => 'Attachment',
+    'title'                      => 'Title',
+    'title_ar'                   => 'Arabic Title',
+    'title_en'                   => 'English Title',
 
 ];

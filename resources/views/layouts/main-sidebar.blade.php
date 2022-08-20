@@ -146,13 +146,15 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#fees-menu">
                             <div class="pull-left"><i class="fas fa-money"></i><span
-                                    class="right-nav-text">{{ __('trans.fees') }}</span></div>
+                                    class="right-nav-text">{{ __('fee.fees') }}</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="fees-menu" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="">{{ __('trans.fees_list') }}</a></li>
-                            <li><a href="">{{ __('msgs.add', ['name' => __('trans.fees')]) }}</a></li>
+                            <li><a href="{{ route('fees.index') }}">{{ __('trans.fees_list') }}</a></li>
+                            <li><a
+                                    href="{{ route('fees.create') }}">{{ __('msgs.add', ['name' => __('trans.fees')]) }}</a>
+                            </li>
                         </ul>
                     </li>
 

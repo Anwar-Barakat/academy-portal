@@ -47,5 +47,4 @@ return [
     'attachments'               => 'المرفقات',
     'attachment'                => 'المرفق',
 
-
 ];

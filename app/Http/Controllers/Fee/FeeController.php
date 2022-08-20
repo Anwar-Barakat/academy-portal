@@ -1,13 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Fee;
 
 use App\Models\Fee;
 use App\Http\Requests\StoreFeeRequest;
 use App\Http\Requests\UpdateFeeRequest;
+use App\Http\Controllers\Controller;
+use App\Repositories\Interface\FeeRepositoryInterface;
 
 class FeeController extends Controller
 {
+    public $fee;
+
+    public function __construct(FeeRepositoryInterface $fee)
+    {
+        $this->fee = $fee;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +23,7 @@ class FeeController extends Controller
      */
     public function index()
     {
-        //
+        return $this->fee->index();
     }
 
     /**
