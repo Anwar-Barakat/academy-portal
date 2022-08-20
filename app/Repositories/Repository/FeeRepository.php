@@ -30,7 +30,40 @@ class  FeeRepository implements FeeRepositoryInterface
             Fee::create($data);
 
             toastr()->success(__('msgs.added', ['name' => __('fee.fees')]));
-            return redirect()->back();
+            return redirect()->route('fees.index');
+        }
+    }
+
+
+    public function edit($fee)
+    {
+        $grades = Grade::all();
+        return view('pages.fees.edit', ['grades' => $grades, 'fee' => $fee]);
+    }
+
+    public function update($request, $fee)
+    {
+        try {
+            $data                   = $request->only(['title_ar', 'title_en', 'amount', 'grade_id', 'classroom_id', 'description', 'year']);
+            $data['title']['ar']    = $data['title_ar'];
+            $data['title']['en']    = $data['title_en'];
+            $fee->update($data);
+
+            toastr()->success(__('msgs.updated', ['name' => __('fee.fees')]));
+            return redirect()->route('fees.index');
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
+    }
+
+    public function destroy($fee)
+    {
+        try {
+            $fee->delete();
+            toastr()->info(__('msgs.deleted', ['name' => __('fee.fees')]));
+            return redirect()->route('fees.index');
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
         }
     }
 }

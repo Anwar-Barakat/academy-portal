@@ -48,13 +48,13 @@
                                             <a href="{{ route('fees.edit', $fee) }}" class="btn btn-info btn-sm"
                                                 role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
                                             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                                data-target="#Delete_Fee{{ $fee->id }}"
+                                                data-target="#delete{{ $fee->id }}"
                                                 title="{{ __('buttons.delete') }}"><i class="fa fa-trash"></i></button>
                                             <a href="#" class="btn btn-warning btn-sm" role="button"
                                                 aria-pressed="true"><i class="far fa-eye"></i></a>
                                         </td>
                                     </tr>
-                                    {{-- @include('pages.Fees.Delete') --}}
+                                    @include('pages.fees.delete')
                                 @empty
                                     <tr class="text-center">
                                         <td colspan="7">{{ __('msgs.not_found_yet') }}</td>

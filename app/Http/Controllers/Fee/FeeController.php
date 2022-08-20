@@ -66,7 +66,7 @@ class FeeController extends Controller
      */
     public function edit(Fee $fee)
     {
-        //
+        return $this->fee->edit($fee);
     }
 
     /**
@@ -78,7 +78,7 @@ class FeeController extends Controller
      */
     public function update(UpdateFeeRequest $request, Fee $fee)
     {
-        //
+        return $this->fee->update($request, $fee);
     }
 
     /**
@@ -89,6 +89,6 @@ class FeeController extends Controller
      */
     public function destroy(Fee $fee)
     {
-        //
+        return $this->fee->destroy($fee);
     }
 }
