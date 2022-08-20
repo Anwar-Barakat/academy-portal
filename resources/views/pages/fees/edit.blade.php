@@ -63,8 +63,8 @@
                         </div>
 
 
-                        <div class="form-row">
-                            <div class="form-group col">
+                        <div class="row">
+                            <div class="form-group col-md-12 col-lg-6">
                                 <x-label for="grade_id" :value="__('grade.grades')" />
                                 <select class="custom-select mr-sm-2" name="grade_id">
                                     <option selected disabled>{{ __('msgs.select', ['name' => '...']) }}</option>
@@ -75,8 +75,7 @@
                                     @endforeach
                                 </select>
                             </div>
-
-                            <div class="form-group col">
+                            <div class="form-group col-md-12 col-lg-6">
                                 <x-label for="classroom_id" :value="__('classroom.classrooms')" />
                                 <select class="custom-select mr-sm-2" name="classroom_id">
                                     @foreach ($grades as $grade)
@@ -90,7 +89,9 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="form-group col">
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12 col-lg-6">
                                 <x-label for="classroom_id" :value="__('student.academic_year')" />
                                 <select class="custom-select mr-sm-2" name="year">
                                     <option selected disabled>{{ __('msgs.select', ['name' => '...']) }}</option>
@@ -101,6 +102,16 @@
                                         <option value="{{ $year }}" {{ $year == $fee->year ? 'selected' : '' }}>
                                             {{ $year }}</option>
                                     @endfor
+                                </select>
+                            </div>
+                            <div class="form-group col-md-12 col-lg-6">
+                                <x-label for="type" :value="__('fee.fees_type')" />
+                                <select class="custom-select mr-sm-2" name="type">
+                                    <option selected disabled>{{ __('msgs.select', ['name' => '...']) }}</option>
+                                    <option value="0" {{ $fee->type == 'study' ? 'selected' : '' }}>
+                                        {{ __('fee.study') }}</option>
+                                    <option value="1" {{ $fee->type == 'bus' ? 'selected' : '' }}>{{ __('fee.bus') }}
+                                    </option>
                                 </select>
                             </div>
                         </div>

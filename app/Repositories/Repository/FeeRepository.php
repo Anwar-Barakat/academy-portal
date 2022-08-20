@@ -23,7 +23,7 @@ class  FeeRepository implements FeeRepositoryInterface
     public function store($request)
     {
         if ($request->isMethod('post')) {
-            $data                   = $request->only(['title_ar', 'title_en', 'amount', 'grade_id', 'classroom_id', 'description', 'year']);
+            $data                   = $request->only(['title_ar', 'title_en', 'amount', 'type', 'grade_id', 'classroom_id', 'description', 'year']);
             $data['title']['ar']    = $data['title_ar'];
             $data['title']['en']    = $data['title_en'];
 
@@ -44,7 +44,7 @@ class  FeeRepository implements FeeRepositoryInterface
     public function update($request, $fee)
     {
         try {
-            $data                   = $request->only(['title_ar', 'title_en', 'amount', 'grade_id', 'classroom_id', 'description', 'year']);
+            $data                   = $request->only(['title_ar', 'title_en', 'amount', 'type', 'grade_id', 'classroom_id', 'description', 'year']);
             $data['title']['ar']    = $data['title_ar'];
             $data['title']['en']    = $data['title_en'];
             $fee->update($data);
