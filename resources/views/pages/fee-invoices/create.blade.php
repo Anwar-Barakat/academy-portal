@@ -37,14 +37,14 @@
                                         <div class="row">
 
                                             <div class="col">
-                                                <label for="Name" class="mr-sm-2">{{ __('fee.student_name') }} </label>
+                                                <x-label for="student_id" class="mr-sm-2" :value="__('fee.student_name')" />
                                                 <select class="fancyselect" name="student_id" required>
                                                     <option value="{{ $student->id }}">{{ $student->name }}</option>
                                                 </select>
                                             </div>
 
                                             <div class="col">
-                                                <label for="Name_en" class="mr-sm-2">{{ __('fee.fees_type') }}</label>
+                                                <x-label for="fee_id" class="mr-sm-2" :value="__('fee.fees_type')" />
                                                 <div class="box">
                                                     <select class="fancyselect" name="fee_id" required>
                                                         <option disabled value="" selected>
@@ -59,7 +59,7 @@
                                             </div>
 
                                             <div class="col">
-                                                <label for="Name_en" class="mr-sm-2">{{ __('fee.amount') }}</label>
+                                                <x-label for="amount" class="mr-sm-2" :value="__('fee.amount')" />
                                                 <div class="box">
                                                     <select class="fancyselect" name="amount" required>
                                                         <option disabled value="" selected>
@@ -73,7 +73,7 @@
                                             </div>
 
                                             <div class="col">
-                                                <label for="description" class="mr-sm-2">{{ __('fee.report') }}</label>
+                                                <x-label for="description" class="mr-sm-2" :value="__('fee.report')" />
                                                 <div class="box">
                                                     <input type="text" class="form-control" name="description" required>
                                                 </div>

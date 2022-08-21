@@ -23,7 +23,7 @@ class FeeInvoiceController extends Controller
      */
     public function index()
     {
-        //
+        return $this->feeInvoice->index();
     }
 
     /**
@@ -43,7 +43,7 @@ class FeeInvoiceController extends Controller
      */
     public function store(StoreFeeInvoiceRequest $request)
     {
-        //
+        return $this->feeInvoice->store($request);
     }
 
     /**
