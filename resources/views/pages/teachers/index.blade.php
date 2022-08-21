@@ -66,8 +66,7 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
-                                                        id="deleteLabel">
+                                                    <h5 class="modal-title" id="deleteLabel">
                                                         {{ __('msgs.delete', ['name' => __('teacher.teacher')]) }}
                                                     </h5>
                                                     <button type="button" class="close" data-dismiss="modal"

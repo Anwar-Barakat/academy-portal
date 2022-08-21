@@ -87,7 +87,7 @@ class FeeInvoiceController extends Controller
      */
     public function destroy(FeeInvoice $feeInvoice)
     {
-        //
+        return $this->feeInvoice->destroy($feeInvoice);
     }
 
     public function addStudentInvoice($id)

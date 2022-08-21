@@ -50,9 +50,12 @@
                                                             class="btn btn-outline-info btn-sm" role="button"
                                                             aria-pressed="true"><i class="fas fa-edit"></i></a>
                                                         <button type="button" class="btn btn-outline-danger btn-sm"
-                                                            data-toggle="modal" data-target="#"><i
+                                                            data-toggle="modal"
+                                                            data-target="#delete{{ $feeInvoice->id }}"><i
                                                                 class="fas fa-trash-alt"></i></button>
                                                     </td>
+
+                                                    @include('pages.fee-invoices.delete')
                                                 </tr>
                                             @endforeach
                                     </table>

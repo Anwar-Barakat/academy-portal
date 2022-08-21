@@ -22,7 +22,8 @@
     <div class="col-xl-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-                <button type="button" class="button button-border x-small mb-3" data-toggle="modal" data-target="#addNewGrade">
+                <button type="button" class="button button-border x-small mb-3" data-toggle="modal"
+                    data-target="#addNewGrade">
                     {{ __('msgs.add', ['name' => __('grade.grade')]) }}
                 </button>
                 @if ($errors->any())
@@ -31,7 +32,8 @@
                     @endforeach
                 @endif
                 <div class="table-responsive">
-                    <table id="datatable" class="table table-striped table-bordered text-center p-0 table-hover table-sm">
+                    <table id="datatable"
+                        class="table table-striped table-bordered text-center p-0 table-hover table-sm">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -66,8 +68,7 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
-                                                    id="editGradeLabel">
+                                                <h5 class="modal-title" id="editGradeLabel">
                                                     {{ __('msgs.update', ['name' => __('grade.grade')]) }}
                                                 </h5>
                                                 <button type="button" class="close" data-dismiss="modal"
@@ -126,8 +127,7 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
-                                                    id="deleteGradeLabel">
+                                                <h5 class="modal-title" id="deleteGradeLabel">
                                                     {{ __('msgs.delete', ['name' => __('grade.grade')]) }}
                                                 </h5>
                                                 <button type="button" class="close" data-dismiss="modal"
@@ -175,7 +175,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="addNewGradeLabel">
+                    <h5 class="modal-title" id="addNewGradeLabel">
                         {{ __('msgs.add', ['name' => __('grade.grade')]) }}
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">

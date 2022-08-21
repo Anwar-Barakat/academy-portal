@@ -1,24 +1,23 @@
-{{-- Delete The Section --}}
-<div class="modal fade" id="returnStudent{{ $promotion->student_id }}" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{-- Delete The Fee Invoice --}}
+<div class="modal fade" id="delete{{ $feeInvoice->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="deleteGradeLabel">
-                    {{ __('msgs.return', ['name' => __('student.student')]) }}
+                    {{ __('msgs.delete', ['name' => __('fee.fees_invoices')]) }}
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('students-promotions.destroy', 'test') }}" method="POST">
+            <form action="{{ route('fee-invoices.destroy', $feeInvoice) }}" method="POST">
                 <div class="modal-body">
                     @csrf
                     @method('DELETE')
-                    <input type="hidden" name="id" value="{{ $promotion->id }}">
                     <div class="row">
                         <div class="col">
-                            <h5>{{ __('msgs.return_student_warning') }}
+                            <h5>{{ __('msgs.deleting_warning') }}
                             </h5>
                         </div>
                     </div>
@@ -27,7 +26,7 @@
                     <button type="button" class="btn btn-secondary"
                         data-dismiss="modal">{{ __('buttons.close') }}</button>
                     <x-button class="btn btn-danger">
-                        {{ __('msgs.returned') }}
+                        {{ __('buttons.delete') }}
                     </x-button>
                 </div>
             </form>

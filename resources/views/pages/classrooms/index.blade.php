@@ -98,8 +98,7 @@
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 style="font-family: 'Cairo', sans-serif;"
-                                                                class="modal-title" id="deleteGradeLabel">
+                                                            <h5 class="modal-title" id="deleteGradeLabel">
                                                                 {{ __('msgs.delete', ['name' => __('classroom.classroom')]) }}
                                                             </h5>
                                                             <button type="button" class="close" data-dismiss="modal"
@@ -138,8 +137,7 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
-                                                        id="editClassroomLabel">
+                                                    <h5 class="modal-title" id="editClassroomLabel">
                                                         {{ __('msgs.update', ['name' => __('classroom.classroom')]) }}
                                                     </h5>
                                                     <button type="button" class="close" data-dismiss="modal"
@@ -163,12 +161,11 @@
                                                             </div>
                                                             <div class="col">
                                                                 <x-label for="name_en" :value="__('grade.name_en')" />
-                                                                <x-input type="text" name="name_en"
-                                                                    class="form-control" id="name_en" :value="old(
+                                                                <x-input type="text" name="name_en" class="form-control"
+                                                                    id="name_en" :value="old(
                                                                         'name_ar',
                                                                         $classroom->getTranslation('name', 'en'),
-                                                                    )"
-                                                                    required />
+                                                                    )" required />
                                                             </div>
                                                         </div>
                                                         <br>
@@ -219,7 +216,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
+                    <h5 class="modal-title" id="exampleModalLabel">
                         {{ __('msgs.add', ['name' => __('classroom.classrooms')]) }}
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -290,7 +287,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="classroomsDeleteModalLabel">
+                    <h5 class="modal-title" id="classroomsDeleteModalLabel">
                         {{ __('msgs.delete', ['name' => __('classroom.checked_classrooms')]) }}
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">

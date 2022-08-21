@@ -4,7 +4,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" style="font-family: 'Cairo', sans-serif;" id="editSection">
+                <h5 class="modal-title" id="editSection">
                     {{ __('msgs.update', ['name' => __('section.section')]) }}
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">

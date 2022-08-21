@@ -99,8 +99,7 @@
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 style="font-family: 'Cairo', sans-serif;"
-                                                                class="modal-title" id="deleteGradeLabel">
+                                                            <h5 class="modal-title" id="deleteGradeLabel">
                                                                 {{ __('msgs.graduated', ['name' => __('student.student')]) }}
                                                             </h5>
                                                             <button type="button" class="close" data-dismiss="modal"
@@ -138,8 +137,7 @@
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 style="font-family: 'Cairo', sans-serif;"
-                                                                class="modal-title" id="deleteGradeLabel">
+                                                            <h5 class="modal-title" id="deleteGradeLabel">
                                                                 {{ __('msgs.delete', ['name' => __('classroom.classroom')]) }}
                                                             </h5>
                                                             <button type="button" class="close" data-dismiss="modal"

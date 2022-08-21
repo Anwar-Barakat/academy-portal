@@ -96,8 +96,8 @@ h5 {
     column-gap: 0.5rem;
 }
 
-.btn-secondary:hover,
-.btn-secondary {
+.btn-secondary.dropdown-toggle:hover,
+.btn-secondary.dropdown-toggle {
     color: #fff;
     background-color: #84ba3f;
     border-color: #84ba3f;
