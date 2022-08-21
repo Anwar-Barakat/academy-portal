@@ -14,4 +14,6 @@ return [
     'fees_invoices'             => 'فواتير الرسوم',
     'report'                    => 'البيان',
     'student_name'              => 'اسم الطالب',
+    'fees_invoices_list'        => 'قائمة فواتير الرسوم',
+
 ];

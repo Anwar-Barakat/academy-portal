@@ -14,6 +14,6 @@ return [
     'student_invoice'           => 'Student Invoice',
     'report'                    => 'Report',
     'student_name'              => 'Student Name',
-
+    'fees_invoices_list'        => 'Fees Invoices List',
 
 ];
