@@ -88,6 +88,13 @@ class FeeInvoiceRepository implements FeeInvoiceRepositoryInterface
         DB::beginTransaction();
         try {
             if ($request->isMethod('put')) {
+                $FeeFounded = FeeInvoice::where('student_id', $feeInvoice->student_id)->where('fee_id', $feeInvoice->fee_id);
+
+                if ($FeeFounded->count() > 0) {
+                    toastr()->error('msgs.student_has_this_fee');
+                    return redirect()->back();
+                }
+
                 $feeInvoice->update([
                     'fee_id'        => $request->fee_id,
                     'amount'        => $request->amount,

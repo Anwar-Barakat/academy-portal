@@ -60,22 +60,15 @@
                                             <div class="col mb-2">
                                                 <x-label for="amount" class="mr-sm-2" :value="__('fee.amount')" />
                                                 <div class="box">
-                                                    <select class="fancyselect" name="amount" required>
-                                                        <option disabled value="" selected>
-                                                            {{ __('msgs.select', ['name' => '...']) }}</option>
-                                                        @foreach ($fees as $fee)
-                                                            <option value="{{ $fee->amount }}">{{ $fee->amount }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
+                                                    <select class="form-control" name="amount" id="amount"></select>
                                                 </div>
                                             </div>
 
                                             <div class="col mb-2">
                                                 <x-label for="description" class="mr-sm-2" :value="__('fee.report')" />
                                                 <div class="box">
-                                                    <input type="text" class="form-control" name="description"
-                                                        max="20" required>
+                                                    <input type="text" class="form-control"
+                                                        name="description"max="20" required>
                                                 </div>
                                             </div>
 
@@ -108,8 +101,27 @@
     </div>
     <!-- row closed -->
 @endsection
-@section('js')
-    @toastr_js
-    @toastr_render
 
-@endsection
+
+@section('js')
+    <script>
+        $(document).ready(function() {
+            $('select[name=fee_id]').on('change', function() {
+                var fee_id = $(this).val()
+                if (fee_id) {
+                    $.ajax({
+                        url: "{{ URL::to('get-fee-amount') }}/" + fee_id,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            console.log(data);
+                            $('#amount').empty();
+                            $('#amount').append('<option selected disabled value="' + data +
+                                '">' + data + '</option>');
+                        },
+                    });
+                }
+            })
+        })
+    </script>
+@stop

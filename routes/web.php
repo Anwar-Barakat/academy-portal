@@ -5,6 +5,7 @@ use App\Http\Controllers\Classroom\EmptyClassroomController;
 use App\Http\Controllers\Classroom\FilterClassroomController;
 use App\Http\Controllers\Classroom\GetClassroomController;
 use App\Http\Controllers\Fee\FeeController;
+use App\Http\Controllers\Fee\GetFeeAmountController;
 use App\Http\Controllers\FeeInvoice\FeeInvoiceController;
 use App\Http\Controllers\Grade\GradeController;
 use App\Http\Controllers\Section\GetSectionController;
@@ -94,7 +95,7 @@ Route::group(
 
             //! ===================== Fees =====================
             Route::resource('fees',                                     FeeController::class);
-
+            Route::get('/get-fee-amount/{id}',                          GetFeeAmountController::class)->name('get-fee-amount');
 
             //! ===================== Fee Invoices =====================
             Route::resource('fee-invoices',                             FeeInvoiceController::class);
