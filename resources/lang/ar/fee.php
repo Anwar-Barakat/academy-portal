@@ -9,4 +9,9 @@ return [
     'fees_type'                 => 'نوع الرسوم',
     'study'                     => 'رسوم الدراسة',
     'bus'                       => 'رسوم الحافلات',
+    'invoice'                   => 'فاتورة',
+    'student_invoice'           => 'فاتورة الطالب',
+    'fees_invoices'             => 'فواتير الرسوم',
+    'report'                    => 'البيان',
+    'student_name'              => 'اسم الطالب',
 ];

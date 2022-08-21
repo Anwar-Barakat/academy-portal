@@ -1,13 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\FeeInvoice;
 
 use App\Models\FeeInvoice;
 use App\Http\Requests\StoreFeeInvoiceRequest;
 use App\Http\Requests\UpdateFeeInvoiceRequest;
+use App\Http\Controllers\Controller;
+use App\Models\Student;
+use App\Repositories\Interface\FeeInvoiceRepositoryInterface;
 
 class FeeInvoiceController extends Controller
 {
+    public $feeInvoice;
+    public function __construct(FeeInvoiceRepositoryInterface $feeInvoice)
+    {
+        $this->feeInvoice = $feeInvoice;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +33,6 @@ class FeeInvoiceController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -45,9 +52,8 @@ class FeeInvoiceController extends Controller
      * @param  \App\Models\FeeInvoice  $feeInvoice
      * @return \Illuminate\Http\Response
      */
-    public function show(FeeInvoice $feeInvoice)
+    public function show(Student $student)
     {
-        //
     }
 
     /**
@@ -82,5 +88,10 @@ class FeeInvoiceController extends Controller
     public function destroy(FeeInvoice $feeInvoice)
     {
         //
+    }
+
+    public function addStudentInvoice($id)
+    {
+        return $this->feeInvoice->create($id);
     }
 }

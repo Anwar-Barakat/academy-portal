@@ -102,8 +102,7 @@
 
                         <div class="form-group">
                             <x-label for="classroom_id" :value="__('fee.notes')" />
-                            <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="4">{{ old('notes') }}
-                            </textarea>
+                            <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="4">{{ old('notes') }}</textarea>
                         </div>
                         <br>
 

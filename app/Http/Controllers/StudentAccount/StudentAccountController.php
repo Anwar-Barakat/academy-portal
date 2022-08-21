@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\StudentAccount;
 
 use App\Models\StudentAccount;
 use App\Http\Requests\StoreStudentAccountRequest;
 use App\Http\Requests\UpdateStudentAccountRequest;
+use App\Http\Controllers\Controller;
 
 class StudentAccountController extends Controller
 {

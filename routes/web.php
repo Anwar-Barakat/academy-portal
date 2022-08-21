@@ -5,6 +5,7 @@ use App\Http\Controllers\Classroom\EmptyClassroomController;
 use App\Http\Controllers\Classroom\FilterClassroomController;
 use App\Http\Controllers\Classroom\GetClassroomController;
 use App\Http\Controllers\Fee\FeeController;
+use App\Http\Controllers\FeeInvoice\FeeInvoiceController;
 use App\Http\Controllers\Grade\GradeController;
 use App\Http\Controllers\Section\GetSectionController;
 use App\Http\Controllers\Section\SectionController;
@@ -14,7 +15,9 @@ use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Student\StudentGraduatedController;
 use App\Http\Controllers\Student\StudentPromotionController;
 use App\Http\Controllers\Student\UploadAttachmentController;
+use App\Http\Controllers\StudentAccount\StudentAccountController;
 use App\Http\Controllers\Teacher\TeacherController;
+use App\Models\FeeInvoice;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use PhpParser\Builder\Class_;
@@ -90,7 +93,12 @@ Route::group(
 
 
             //! ===================== Fees =====================
-            Route::resource('fees',                 FeeController::class);
+            Route::resource('fees',                                     FeeController::class);
+
+
+            //! ===================== Fee Invoices =====================
+            Route::resource('fee-invoices',                             FeeInvoiceController::class);
+            Route::get('add-student-invoice/{id}',                      [FeeInvoiceController::class, 'addStudentInvoice'])->name('add_student_invoice');
         });
     }
 );

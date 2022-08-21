@@ -9,5 +9,11 @@ return [
     'fees_type'                 => 'Fees Type',
     'study'                     => 'Study Fees',
     'bus'                       => 'Bus Fees',
+    'invoice'                   => 'Invoice',
+    'fees_invoices'             => 'Fees invoices',
+    'student_invoice'           => 'Student Invoice',
+    'report'                    => 'Report',
+    'student_name'              => 'Student Name',
+
 
 ];

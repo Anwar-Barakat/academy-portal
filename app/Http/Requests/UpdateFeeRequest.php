@@ -26,7 +26,7 @@ class UpdateFeeRequest extends FormRequest
         return [
             'title_ar'      => 'required|min:3',
             'title_en'      => 'required|min:3',
-            'amount'        => 'required|digits:2',
+            'amount'        => 'required|digits_between:2,5',
             'type'          => 'required|in:0,1',
             'grade_id'      => 'required',
             'classroom_id'  => 'required',
