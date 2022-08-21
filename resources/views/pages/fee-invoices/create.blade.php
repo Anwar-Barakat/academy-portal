@@ -14,7 +14,7 @@
 @section('content')
     <!-- row -->
     <div class="row">
-        <div class="col-md-12 col-lg-6 mb-2-md-12 mb-30">
+        <div class="col-md-12 mb-30">
             <div class="card card-statistics h-100">
                 <div class="card-body">
 
@@ -36,14 +36,14 @@
                                     <div data-repeater-item>
                                         <div class="row">
 
-                                            <div class="col-md-12 col-lg-6 mb-2">
+                                            <div class="col mb-2">
                                                 <x-label for="student_id" class="mr-sm-2" :value="__('fee.student_name')" />
                                                 <select class="fancyselect" name="student_id" required>
                                                     <option value="{{ $student->id }}">{{ $student->name }}</option>
                                                 </select>
                                             </div>
 
-                                            <div class="col-md-12 col-lg-6 mb-2">
+                                            <div class="col mb-2">
                                                 <x-label for="fee_id" class="mr-sm-2" :value="__('fee.fees_type')" />
                                                 <div class="box">
                                                     <select class="fancyselect" name="fee_id" required>
@@ -55,10 +55,9 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
-
                                             </div>
 
-                                            <div class="col-md-12 col-lg-6 mb-2">
+                                            <div class="col mb-2">
                                                 <x-label for="amount" class="mr-sm-2" :value="__('fee.amount')" />
                                                 <div class="box">
                                                     <select class="fancyselect" name="amount" required>
@@ -72,7 +71,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-12 col-lg-6 mb-2">
+                                            <div class="col mb-2">
                                                 <x-label for="description" class="mr-sm-2" :value="__('fee.report')" />
                                                 <div class="box">
                                                     <input type="text" class="form-control" name="description"
@@ -80,7 +79,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-12 col-lg-6 mb-2">
+                                            <div class="col mb-2">
                                                 <label for="Name_en" class="mr-sm-2">{{ __('buttons.actions') }}:</label>
                                                 <input class="btn btn-danger btn-block" data-repeater-delete type="button"
                                                     value="{{ __('msgs.delete', ['name' => __('classroom.row')]) }}" />

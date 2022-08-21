@@ -35,6 +35,13 @@ class FeeInvoiceRepository implements FeeInvoiceRepositoryInterface
         try {
             if ($request->isMethod('post')) {
                 foreach ($request->List_Fees as $list) {
+                    $FeeFounded = FeeInvoice::where('student_id', $list['student_id'])->where('fee_id', $list['fee_id']);
+
+                    if ($FeeFounded->count() > 0) {
+                        toastr()->error('msgs.student_has_this_fee');
+                        return redirect()->back();
+                    }
+
                     FeeInvoice::create([
                         'date'          => date('Y-m-d'),
                         'student_id'    => $list['student_id'],

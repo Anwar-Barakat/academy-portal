@@ -24,6 +24,7 @@ return [
     'returned'                      => 'إرجاع',
     'graduated'                     => 'تخريج',
 
+
     // Grade :
     'not_found_yet'                 => 'لا يوجد حالاً !!',
     'deleting_warning'              => 'هل انت متاكد من عملية الحذف ؟',
@@ -32,9 +33,15 @@ return [
     'return_student_warning'        => 'هل أنت متأكد من عودة الطالب ؟',
     'graduate_student_warning'      => 'هل أنت متأكد من عودة تخرج الطالب ؟',
 
+
     // Parent :
     'save_data'                     => 'هل أنت متأكد من حفظ البيانات ؟',
 
+
     // Student Promotion :
     'not_students'                  => 'لا يوجد أي طالب حتى الآن !!',
+
+    // Fee Invoices:
+    'student_has_this_fee'          => 'هذا الطالب لديه بالفعل هذه الرسوم !!',
+
 ];

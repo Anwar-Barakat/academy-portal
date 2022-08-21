@@ -38,4 +38,7 @@ return [
 
     // Student Promotion :
     'not_students'                  => 'There is no student yet !!',
+
+    // Fee Invoices :
+    'student_has_this_fee'          => 'This student has already this fee !!',
 ];
