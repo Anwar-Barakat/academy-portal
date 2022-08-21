@@ -158,6 +158,21 @@
                         </ul>
                     </li>
 
+                    <!-- Fees -->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#fee-invoices-menu">
+                            <div class="pull-left"><i class="fas fa-file-invoice-dollar"></i><span
+                                    class="right-nav-text">{{ __('fee.fees_invoices') }}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="fee-invoices-menu" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{ route('fee-invoices.index') }}">{{ __('fee.fees_invoices_list') }}</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
 
                     <!-- menu item chat-->
                     <li>

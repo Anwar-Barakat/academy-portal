@@ -9,4 +9,8 @@ interface FeeInvoiceRepositoryInterface
     public function create($student_id);
 
     public function store($request);
+
+    public function edit($feeInvoice);
+
+    public function update($request, $feeInvoice);
 }

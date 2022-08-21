@@ -64,7 +64,7 @@ class FeeInvoiceController extends Controller
      */
     public function edit(FeeInvoice $feeInvoice)
     {
-        //
+        return $this->feeInvoice->edit($feeInvoice);
     }
 
     /**
@@ -76,7 +76,7 @@ class FeeInvoiceController extends Controller
      */
     public function update(UpdateFeeInvoiceRequest $request, FeeInvoice $feeInvoice)
     {
-        //
+        return $this->feeInvoice->update($request, $feeInvoice);
     }
 
     /**

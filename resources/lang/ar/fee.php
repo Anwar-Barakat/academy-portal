@@ -15,5 +15,6 @@ return [
     'report'                    => 'البيان',
     'student_name'              => 'اسم الطالب',
     'fees_invoices_list'        => 'قائمة فواتير الرسوم',
+    'fee_invoice_type'          => 'توع فاتورة الرسوم',
 
 ];

@@ -95,4 +95,11 @@ h5 {
     row-gap: 0.5rem;
     column-gap: 0.5rem;
 }
+
+.btn-secondary:hover,
+.btn-secondary {
+    color: #fff;
+    background-color: #84ba3f;
+    border-color: #84ba3f;
+}
 /* Global Settings */

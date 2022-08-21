@@ -26,13 +26,13 @@
                                         <thead>
                                             <tr class="alert-success">
                                                 <th>#</th>
-                                                <th>الاسم</th>
-                                                <th>نوع الرسوم</th>
-                                                <th>المبلغ</th>
-                                                <th>المرحلة الدراسية</th>
-                                                <th>الصف الدراسي</th>
-                                                <th>البيان</th>
-                                                <th>العمليات</th>
+                                                <th>{{ __('fee.student_name') }}</th>
+                                                <th>{{ __('fee.fees_type') }}</th>
+                                                <th>{{ __('fee.amount') }}</th>
+                                                <th>{{ __('grade.grade') }}</th>
+                                                <th>{{ __('classroom.classroom') }}</th>
+                                                <th>{{ __('fee.fee_invoice_type') }}</th>
+                                                <th>{{ __('buttons.actions') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -46,7 +46,8 @@
                                                     <td>{{ $feeInvoice->classroom->name }}</td>
                                                     <td>{{ $feeInvoice->description }}</td>
                                                     <td>
-                                                        <a href="#" class="btn btn-outline-info btn-sm" role="button"
+                                                        <a href="{{ route('fee-invoices.edit', $feeInvoice) }}"
+                                                            class="btn btn-outline-info btn-sm" role="button"
                                                             aria-pressed="true"><i class="fas fa-edit"></i></a>
                                                         <button type="button" class="btn btn-outline-danger btn-sm"
                                                             data-toggle="modal" data-target="#"><i
