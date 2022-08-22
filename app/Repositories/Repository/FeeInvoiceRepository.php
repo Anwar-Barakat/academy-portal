@@ -21,11 +21,13 @@ class FeeInvoiceRepository implements FeeInvoiceRepositoryInterface
 
     public function create($student_id)
     {
-        $student    = Student::findorfail($student_id);
-        $fees       = Fee::where('classroom_id', $student->classroom_id)->get();
+        $student                = Student::findorfail($student_id);
+        $fees                   = Fee::where('classroom_id', $student->classroom_id)->get();
+        $studentFeeInvoices     = FeeInvoice::with(['student', 'fee'])->where('student_id', $student_id)->get();
         return view('pages.fee-invoices.create', [
-            'student'   => $student,
-            'fees'      => $fees
+            'student'               => $student,
+            'fees'                  => $fees,
+            'studentFeeInvoices'    => $studentFeeInvoices
         ]);
     }
 
@@ -34,36 +36,34 @@ class FeeInvoiceRepository implements FeeInvoiceRepositoryInterface
         DB::beginTransaction();
         try {
             if ($request->isMethod('post')) {
-                foreach ($request->List_Fees as $list) {
-                    $FeeFounded = FeeInvoice::where('student_id', $list['student_id'])->where('fee_id', $list['fee_id']);
+                $list = $request->only(['student_id', 'grade_id', 'classroom_id', 'fee_id', 'amount', 'description']);
 
-                    if ($FeeFounded->count() > 0) {
-                        toastr()->error('msgs.student_has_this_fee');
-                        return redirect()->back();
-                    }
+                $FeeFounded = FeeInvoice::where('student_id', $list['student_id'])->where('fee_id', $list['fee_id']);
 
-                    FeeInvoice::create([
-                        'date'          => date('Y-m-d'),
-                        'student_id'    => $list['student_id'],
-                        'grade_id'      => $request->grade_id,
-                        'classroom_id'  => $request->classroom_id,
-                        'fee_id'        => $list['fee_id'],
-                        'amount'        => $list['amount'],
-                        'description'   => $list['description'],
-                    ]);
-
-                    StudentAccount::create([
-                        'feeInvoice_id' => FeeInvoice::latest()->first()->id,
-                        'student_id'    => $list['student_id'],
-                        'student_id'    => $list['student_id'],
-                        'grade_id'      => $request->grade_id,
-                        'classroom_id'  => $request->classroom_id,
-                        'type'          => 'invoice',
-                        'debit'         => $list['amount'],
-                        'credit'        => 0.00,
-                        'description'   => $list['description'],
-                    ]);
+                if ($FeeFounded->count() > 0) {
+                    toastr()->error('msgs.student_has_this_fee');
+                    return redirect()->back();
                 }
+
+                FeeInvoice::create([
+                    'date'          => date('Y-m-d'),
+                    'student_id'    => $list['student_id'],
+                    'grade_id'      => $request->grade_id,
+                    'classroom_id'  => $request->classroom_id,
+                    'fee_id'        => $list['fee_id'],
+                    'amount'        => $list['amount'],
+                    'description'   => $list['description'],
+                ]);
+
+                StudentAccount::create([
+                    'date'          => date('Y-m-d'),
+                    'type'          => 'invoice',
+                    'feeInvoice_id' => FeeInvoice::latest()->first()->id,
+                    'student_id'    => $list['student_id'],
+                    'debit'         => $list['amount'],
+                    'credit'        => 0.00,
+                    'description'   => $list['description'],
+                ]);
 
                 DB::commit();
 

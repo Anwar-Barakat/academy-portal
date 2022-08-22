@@ -75,7 +75,11 @@
                                                         <i class="fas fa-file-invoice text-gray-600"></i>
                                                         {{ __('msgs.add', ['name' => __('fee.invoice')]) }}
                                                     </a>
-
+                                                    <a class="dropdown-item" title="{{ __('buttons.show') }}"
+                                                        href="{{ route('add_student_invoice', $student->id) }}">
+                                                        <i class="fas fa-money-bill-wave-alt text-gray-600"></i>
+                                                        {{ __('msgs.add', ['name' => __('fee.receipt')]) }}
+                                                    </a>
                                                     <button type="button" class="btn btn-danger btn-sm dropdown-item"
                                                         data-toggle="modal" data-target="#graduated{{ $student->id }}"
                                                         title="{{ __('msgs.graduated') }}">

@@ -17,10 +17,6 @@
         <div class="col-md-12 mb-30">
             <div class="card card-statistics h-100">
                 <div class="card-body">
-                    <a href="{{ route('fee-invoices.create') }}" class="button button-border x-small">
-                        {{ __('msgs.add', ['name' => __('fee.fees_invoices')]) }}
-                    </a>
-                    <br><br>
                     <div class="table-responsive">
                         <table id="datatable" class="table  table-hover table-sm table-bordered p-0" data-page-length="50"
                             style="text-align: center">

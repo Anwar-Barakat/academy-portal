@@ -11,11 +11,12 @@ class StudentAccount extends Model
     use HasFactory;
 
     protected $fillable = [
+        'type',
+        'date',
         'feeInvoice_id',
         'student_id',
         'grade_id',
         'classroom_id',
-        'type',
         'debit',
         'credit',
         'description',
