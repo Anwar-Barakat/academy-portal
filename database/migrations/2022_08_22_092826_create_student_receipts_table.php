@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('student_receipts', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
             $table->foreignId('student_id')->constrained('students')->cascadeOnDelete()->cascadeOnDelete();
             $table->decimal('debit', 8, 2);
             $table->string('description');

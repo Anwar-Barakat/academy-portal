@@ -56,7 +56,6 @@ class FeeInvoiceRepository implements FeeInvoiceRepositoryInterface
                 ]);
 
                 StudentAccount::create([
-                    'date'          => date('Y-m-d'),
                     'type'          => 'invoice',
                     'feeInvoice_id' => FeeInvoice::latest()->first()->id,
                     'student_id'    => $list['student_id'],

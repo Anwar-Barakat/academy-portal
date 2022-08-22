@@ -181,6 +181,11 @@ return [
 
         'section_id'                => 'Section',
         'classroom_id'              => 'Classroom',
+
+
+
+        'amount'                    => 'Amount',
+        'description'               => 'Description',
     ],
 
 ];

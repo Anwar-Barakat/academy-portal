@@ -25,7 +25,6 @@ class StudentGraduatedRepository implements StudentGraduatedRepositoryInterface
 
     public function graduated($request)
     {
-
         try {
             $data       = $request->only(['grade_id', 'classroom_id', 'section_id']);
             $students   = Student::where(['grade_id' => $data['grade_id'], 'classroom_id' => $data['classroom_id'], 'section_id' => $data['section_id']])->get();

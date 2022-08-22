@@ -17,5 +17,7 @@ return [
     'fees_invoices_list'        => 'قائمة فواتير الرسوم',
     'fee_invoice_type'          => 'توع فاتورة الرسوم',
     'receipt'                   => 'سند قبض',
-    'student_fees_invoices'     => 'الرسوم الدراسية لهذا الطالب'
+    'student_fees_invoices'     => 'الرسوم الدراسية لهذا الطالب',
+    'receipts'                  => 'سندات القبض من الطلاب',
+
 ];

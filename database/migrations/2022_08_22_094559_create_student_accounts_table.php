@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('student_accounts', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
             $table->string('type');
             $table->foreignId('feeInvoice_id')->nullable()->constrained('fee_invoices')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('studentReceipt_id')->nullable()->constrained('student_receipts')->cascadeOnDelete()->cascadeOnUpdate();

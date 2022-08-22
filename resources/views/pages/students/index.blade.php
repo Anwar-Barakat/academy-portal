@@ -1,7 +1,5 @@
 @extends('layouts.master')
 
-
-
 @section('title')
     {{ __('student.students_list') }}
 @stop
@@ -70,14 +68,16 @@
                                                         <i class="fas fa-eye text-warning"></i>
                                                         {{ __('buttons.show') }}
                                                     </a>
-                                                    <a class="dropdown-item" title="{{ __('buttons.show') }}"
+                                                    <a class="dropdown-item"
+                                                        title="{{ __('msgs.add', ['name' => __('fee.invoice')]) }}"
                                                         href="{{ route('add_student_invoice', $student->id) }}">
                                                         <i class="fas fa-file-invoice text-gray-600"></i>
                                                         {{ __('msgs.add', ['name' => __('fee.invoice')]) }}
                                                     </a>
-                                                    <a class="dropdown-item" title="{{ __('buttons.show') }}"
-                                                        href="{{ route('add_student_invoice', $student->id) }}">
-                                                        <i class="fas fa-money-bill-wave-alt text-gray-600"></i>
+                                                    <a class="dropdown-item"
+                                                        title=" {{ __('msgs.add', ['name' => __('fee.receipt')]) }}"
+                                                        href="{{ route('add_student_receipt', $student->id) }}">
+                                                        <i class="fas fa-money-bill-wave-alt text-secondary"></i>
                                                         {{ __('msgs.add', ['name' => __('fee.receipt')]) }}
                                                     </a>
                                                     <button type="button" class="btn btn-danger btn-sm dropdown-item"

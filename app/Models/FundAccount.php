@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class FundAccount extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'studentReceipt_id',
+        'debit',
+        'credit',
+        'description',
+    ];
 }

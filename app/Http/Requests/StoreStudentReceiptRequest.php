@@ -13,7 +13,7 @@ class StoreStudentReceiptRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class StoreStudentReceiptRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'student_id'    => 'required',
+            'debit'         => 'required|digits_between:1,4',
+            'description'   => 'required|min:10',
         ];
     }
 }

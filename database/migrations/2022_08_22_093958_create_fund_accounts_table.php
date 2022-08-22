@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('fund_accounts', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
             $table->foreignId('studentReceipt_id')->constrained('student_receipts')->cascadeOnDelete()->cascadeOnDelete();
             $table->decimal('debit', 8, 2);
             $table->decimal('credit', 8, 2);

@@ -179,6 +179,11 @@ return [
         'mother_blood_id'           => 'فصيلة دم الأم',
         'mother_religion_id'        => 'ديانة الأم',
         'mother_address'            => 'عنوان الأم',
+
+
+
+        'amount'                    => 'المبلغ',
+        'description'               => 'الوصف',
     ],
 
 ];

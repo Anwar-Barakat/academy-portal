@@ -6,9 +6,15 @@ use App\Models\StudentReceipt;
 use App\Http\Requests\StoreStudentReceiptRequest;
 use App\Http\Requests\UpdateStudentReceiptRequest;
 use App\Http\Controllers\Controller;
+use App\Repositories\Interface\ReceiptStudentRepositoryInterface;
 
 class StudentReceiptController extends Controller
 {
+    public $receipt;
+    public function __construct(ReceiptStudentRepositoryInterface $receipt)
+    {
+        $this->receipt = $receipt;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +22,7 @@ class StudentReceiptController extends Controller
      */
     public function index()
     {
-        //
+        return $this->receipt->index();
     }
 
     /**
@@ -26,7 +32,6 @@ class StudentReceiptController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -37,7 +42,7 @@ class StudentReceiptController extends Controller
      */
     public function store(StoreStudentReceiptRequest $request)
     {
-        //
+        return $this->receipt->store($request);
     }
 
     /**
@@ -83,5 +88,10 @@ class StudentReceiptController extends Controller
     public function destroy(StudentReceipt $studentReceipt)
     {
         //
+    }
+
+    public function addStudentReceipt($student_id)
+    {
+        return $this->receipt->addStudentReceipt($student_id);
     }
 }

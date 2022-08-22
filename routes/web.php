@@ -17,6 +17,7 @@ use App\Http\Controllers\Student\StudentGraduatedController;
 use App\Http\Controllers\Student\StudentPromotionController;
 use App\Http\Controllers\Student\UploadAttachmentController;
 use App\Http\Controllers\StudentAccount\StudentAccountController;
+use App\Http\Controllers\StudentReceipt\StudentReceiptController;
 use App\Http\Controllers\Teacher\TeacherController;
 use App\Models\FeeInvoice;
 use Illuminate\Support\Facades\Route;
@@ -97,9 +98,15 @@ Route::group(
             Route::resource('fees',                                     FeeController::class);
             Route::get('/get-fee-amount/{id}',                          GetFeeAmountController::class)->name('get-fee-amount');
 
+
             //! ===================== Fee Invoices =====================
             Route::resource('fee-invoices',                             FeeInvoiceController::class);
             Route::get('add-student-invoice/{id}',                      [FeeInvoiceController::class, 'addStudentInvoice'])->name('add_student_invoice');
+
+
+            //! ===================== Student Receipts =====================
+            Route::resource('student-receipts',                         StudentReceiptController::class);
+            Route::get('add-student-receipt/{id}',                      [StudentReceiptController::class, 'addStudentReceipt'])->name('add_student_receipt');
         });
     }
 );
