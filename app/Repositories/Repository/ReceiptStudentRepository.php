@@ -53,13 +53,50 @@ class ReceiptStudentRepository implements ReceiptStudentRepositoryInterface
             return redirect()->back()->withErrors(['error' => $th->getMessage()]);
         }
     }
-
-    public function edit()
+    public function edit($studentReceipt)
     {
+        return view('pages.student-receipts.edit', ['studentReceipt' => $studentReceipt]);
     }
 
-    public function update()
+    public function update($request, $studentReceipt)
     {
+        DB::beginTransaction();
+        try {
+            if ($request->isMethod('put')) {
+                $data   = $request->only(['student_id', 'debit', 'description']);
+
+                $studentReceipt->update([
+                    'debit'         => $data['debit'],
+                    'description'   => $data['description'],
+                ]);
+
+                FundAccount::where('studentReceipt_id', $studentReceipt->id)->update([
+                    'debit'         => $data['debit'],
+                ]);
+
+                StudentAccount::where('student_id', $data['student_id'])->where('studentReceipt_id', $studentReceipt->id)->update([
+                    'credit'        => $data['debit'],
+                ]);
+
+                DB::commit();
+                toastr()->success(__('msgs.updated', ['name' => __('fee.receipt')]));
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
+    }
+
+    public function destroy($studentReceipt)
+    {
+        try {
+            $studentReceipt->delete();
+            toastr()->info(__('msgs.deleted', ['name' => __('fee.receipt')]));
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
     }
 
     public function addStudentReceipt($student_id)

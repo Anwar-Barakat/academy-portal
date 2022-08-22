@@ -8,9 +8,11 @@ interface ReceiptStudentRepositoryInterface
 
     public function store($request);
 
-    public function edit();
+    public function edit($studentReceipt);
 
-    public function update();
+    public function update($request, $studentReceipt);
+
+    public function destroy($studentReceipt);
 
     public function addStudentReceipt($student_id);
 }

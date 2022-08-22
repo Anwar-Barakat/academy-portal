@@ -64,7 +64,7 @@ class StudentReceiptController extends Controller
      */
     public function edit(StudentReceipt $studentReceipt)
     {
-        //
+        return $this->receipt->edit($studentReceipt);
     }
 
     /**
@@ -76,7 +76,7 @@ class StudentReceiptController extends Controller
      */
     public function update(UpdateStudentReceiptRequest $request, StudentReceipt $studentReceipt)
     {
-        //
+        return $this->receipt->update($request, $studentReceipt);
     }
 
     /**
@@ -87,7 +87,7 @@ class StudentReceiptController extends Controller
      */
     public function destroy(StudentReceipt $studentReceipt)
     {
-        //
+        return $this->receipt->destroy($studentReceipt);
     }
 
     public function addStudentReceipt($student_id)

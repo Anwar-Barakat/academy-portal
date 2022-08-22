@@ -1,14 +1,14 @@
 @extends('layouts.master')
 
 @section('title')
-    {{ __('msgs.add', ['name' => __('fee.receipt')]) }}
+    {{ __('msgs.update', ['name' => __('fee.receipt')]) }}
 @stop
 
 @section('breadcrum')
     {{ __('fee.receipts') }}@endsection
 
 @section('breadcrum_home')
-    {{ __('msgs.add', ['name' => __('fee.receipt')]) }}
+    {{ __('msgs.update', ['name' => __('fee.receipt')]) }}
 @endsection
 
 @section('content')
@@ -26,15 +26,16 @@
                             </ul>
                         </div>
                     @endif
-                    <h5 class="text text-info mb-4">{{ __('student.student') }} ({{ $student->name }})</h5>
-                    <form method="post" action="{{ route('student-receipts.store') }}" autocomplete="off">
+                    <h5 class="text text-info mb-4">{{ __('student.student') }} ({{ $studentReceipt->student->name }})</h5>
+                    <form method="post" action="{{ route('student-receipts.update', $studentReceipt) }}" autocomplete="off">
                         @csrf
-                        <x-input type="hidden" name="student_id" :value="$student->id" />
+                        @method('PUT')
+                        <x-input type="hidden" name="student_id" :value="$studentReceipt->student->id" />
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <x-label for="debit" :value="__('fee.amount')" />
-                                    <x-input type="number" id="debit" name="debit" :value="old('debit')"
+                                    <x-input type="number" id="debit" name="debit" :value="old('debit', $studentReceipt->debit)"
                                         class="form-control" />
                                     @error('debit')
                                         <small class="text text-danger font-weight-bold">{{ $message }}</small>
@@ -46,7 +47,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <x-label for="description" :value="__('fee.report')" />
-                                    <textarea class="form-control" name="description" id="description" rows="3">{{ old('description') }}</textarea>
+                                    <textarea class="form-control" name="description" id="description" rows="3">{{ old('description', $studentReceipt->description) }}</textarea>
                                     @error('description')
                                         <small class="text text-danger font-weight-bold">{{ $message }}</small>
                                     @enderror
@@ -55,7 +56,7 @@
                         </div>
                         <hr>
                         <button class="button button-border x-small mb-3" type="submit">
-                            {{ __('buttons.submit') }}
+                            {{ __('buttons.update') }}
                         </button>
                     </form>
 

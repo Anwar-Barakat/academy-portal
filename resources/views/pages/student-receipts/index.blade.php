@@ -17,6 +17,15 @@
         <div class="col-md-12 mb-30">
             <div class="card card-statistics h-100">
                 <div class="card-body">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="table-responsive">
                         <table id="datatable" class="table  table-hover table-sm table-bordered p-0" data-page-length="50"
                             style="text-align: center">
@@ -30,22 +39,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($studentReceipts as $studentReceipts)
+                                @foreach ($studentReceipts as $studentReceipt)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $studentReceipts->student->name }}</td>
-                                        <td>{{ number_format($studentReceipts->debit, 2) }}</td>
-                                        <td>{{ $studentReceipts->description }}</td>
+                                        <td>{{ $studentReceipt->student->name }}</td>
+                                        <td>{{ number_format($studentReceipt->debit, 2) }}</td>
+                                        <td>{{ $studentReceipt->description }}</td>
                                         <td>
-                                            <a href="{{ route('student-receipts.edit', $studentReceipts) }}"
+                                            <a href="{{ route('student-receipts.edit', $studentReceipt) }}"
                                                 class="btn btn-outline-info btn-sm" role="button" aria-pressed="true"><i
                                                     class="fas fa-edit"></i></a>
                                             <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal"
-                                                data-target="#delete{{ $studentReceipts }}"><i
+                                                data-target="#delete{{ $studentReceipt->id }}"><i
                                                     class="fas fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
-                                    {{-- @include('pages.Receipt.Delete') --}}
+                                    @include('pages.student-receipts.delete')
                                 @endforeach
                         </table>
                     </div>
