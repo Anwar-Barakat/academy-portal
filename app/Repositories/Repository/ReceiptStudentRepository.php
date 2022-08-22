@@ -13,6 +13,8 @@ class ReceiptStudentRepository implements ReceiptStudentRepositoryInterface
 {
     public function index()
     {
+        $studentReceipts                = StudentReceipt::latest()->get();
+        return view('pages.student-receipts.index', ['studentReceipts' => $studentReceipts]);
     }
 
     public function store($request)
@@ -31,7 +33,6 @@ class ReceiptStudentRepository implements ReceiptStudentRepositoryInterface
                     'studentReceipt_id' => $studentReceipt->id,
                     'debit'             => $data['debit'],
                     'credit'            => 0.00,
-                    'description'       => $data['description'],
                 ]);
 
                 StudentAccount::create([

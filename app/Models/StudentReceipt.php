@@ -14,4 +14,9 @@ class StudentReceipt extends Model
         'debit',
         'description',
     ];
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class, 'student_id');
+    }
 }

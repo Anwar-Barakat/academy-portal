@@ -141,7 +141,6 @@
                         </ul>
                     </li>
 
-
                     <!-- Fees -->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#fees-menu">
@@ -158,7 +157,7 @@
                         </ul>
                     </li>
 
-                    <!-- Fees -->
+                    <!-- Fees Invoices -->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#fee-invoices-menu">
                             <div class="pull-left"><i class="fas fa-file-invoice-dollar"></i><span
@@ -170,6 +169,20 @@
                             <li><a href="{{ route('fee-invoices.index') }}">{{ __('fee.fees_invoices_list') }}</a>
                             </li>
 
+                        </ul>
+                    </li>
+
+                    <!-- Student Receipts -->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#student-receipts-menu">
+                            <div class="pull-left"><i class="fas fa-money-bill-wave-alt"></i><span
+                                    class="right-nav-text">{{ __('fee.receipts') }}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="student-receipts-menu" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{ route('student-receipts.index') }}">{{ __('fee.receipts_list') }}</a>
+                            </li>
                         </ul>
                     </li>
 
