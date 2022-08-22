@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('student_receipts', function (Blueprint $table) {
+        Schema::create('fund_accounts', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->foreignId('student_id')->constrained('students')->cascadeOnDelete()->cascadeOnDelete();
+            $table->foreignId('studentReceipt_id')->constrained('student_receipts')->cascadeOnDelete()->cascadeOnDelete();
             $table->decimal('debit', 8, 2);
+            $table->decimal('credit', 8, 2);
             $table->string('description');
             $table->timestamps();
         });
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('student_receipts');
+        Schema::dropIfExists('fund_accounts');
     }
 };
