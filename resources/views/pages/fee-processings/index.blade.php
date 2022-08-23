@@ -46,7 +46,7 @@
                                         <td>{{ number_format($feeProcessing->amount, 2) }}</td>
                                         <td>{{ $feeProcessing->description }}</td>
                                         <td>
-                                            <a href="{{ route('student-receipts.edit', $feeProcessing) }}"
+                                            <a href="{{ route('fee-processings.edit', $feeProcessing) }}"
                                                 class="btn btn-outline-info btn-sm" role="button" aria-pressed="true"><i
                                                     class="fas fa-edit"></i></a>
                                             <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal"
@@ -54,7 +54,7 @@
                                                     class="fas fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
-                                    {{-- @include('pages.student-receipts.delete') --}}
+                                    @include('pages.fee-processings.delete')
                                 @endforeach
                         </table>
                     </div>

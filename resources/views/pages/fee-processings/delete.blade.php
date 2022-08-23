@@ -1,6 +1,6 @@
-{{-- Delete The Student Receipt --}}
-<div class="modal fade" id="delete{{ $studentReceipt->id }}" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{-- Delete The Fee Exclusion --}}
+<div class="modal fade" id="delete{{ $feeProcessing->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -11,7 +11,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('student-receipts.destroy', $studentReceipt) }}" method="POST">
+            <form action="{{ route('fee-processings.destroy', $feeProcessing) }}" method="POST">
                 <div class="modal-body">
                     @csrf
                     @method('DELETE')
