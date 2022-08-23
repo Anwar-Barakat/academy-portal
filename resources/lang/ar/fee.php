@@ -21,6 +21,7 @@ return [
 
 
     'receipt'                   => 'سند قبض',
+'receipts'                  => 'سندات قبض',
     'student_fees_invoices'     => 'الرسوم الدراسية لهذا الطالب',
     'receipts'                  => 'سندات القبض',
     'receipts_list'             => 'قائمة سندات القبض',
@@ -30,4 +31,7 @@ return [
     'fee_exclusion_list'        => 'قائمة استبعاد الرسوم',
     'student_funds'             => 'رصيد الطالب',
 
+    'payments'                  => 'سندات صرف',
+    'payment'                   => 'سند صرف',
+    'payments_list'             => 'قائمة سندات الصرف',
 ];

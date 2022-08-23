@@ -16,6 +16,7 @@ return [
     'student_information'       => 'المعلومات الأضافية',
     'student_details'           => 'تفاصيل الطالب',
     'filename'                  => 'اسم الملف',
+    'email'                     => 'البريد الألكتروني',
 
     'promotion'                 => 'ترقية',
     'old_grade'                 => 'المرحلة الدراسية القديمة',

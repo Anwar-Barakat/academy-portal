@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('fund_accounts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('studentReceipt_id')->constrained('student_receipts')->cascadeOnDelete()->cascadeOnDelete();
+            $table->foreignId('studentReceipt_id')->nullable()->constrained('student_receipts')->cascadeOnDelete()->cascadeOnDelete();
+            $table->foreignId('studentPayment_id')->nullable()->constrained('student_payments')->cascadeOnDelete()->cascadeOnDelete();
             $table->decimal('debit', 8, 2);
             $table->decimal('credit', 8, 2);
             $table->timestamps();

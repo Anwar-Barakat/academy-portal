@@ -22,7 +22,7 @@ class StudentPaymentController extends Controller
      */
     public function index()
     {
-        //
+        return $this->payment->index();
     }
 
     /**
@@ -43,7 +43,7 @@ class StudentPaymentController extends Controller
      */
     public function store(StoreStudentPaymentRequest $request)
     {
-        //
+        return $this->payment->store($request);
     }
 
     /**
@@ -89,5 +89,11 @@ class StudentPaymentController extends Controller
     public function destroy(StudentPayment $studentPayment)
     {
         //
+    }
+
+
+    public function addStudentPayment($student_id)
+    {
+        return $this->payment->addStudentPayment($student_id);
     }
 }

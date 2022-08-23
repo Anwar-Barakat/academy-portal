@@ -86,6 +86,12 @@
                                                         <i class="fas fa-money-check-alt text-secondary"></i>
                                                         {{ __('msgs.add', ['name' => __('fee.fee_exclusion')]) }}
                                                     </a>
+                                                    <a class="dropdown-item"
+                                                        title=" {{ __('msgs.add', ['name' => __('fee.payment')]) }}"
+                                                        href="{{ route('add_student_payment', $student->id) }}">
+                                                        <i class="fas fa-donate text-googleplus"></i>
+                                                        {{ __('msgs.add', ['name' => __('fee.payment')]) }}
+                                                    </a>
                                                     <button type="button" class="btn btn-danger btn-sm dropdown-item"
                                                         data-toggle="modal" data-target="#graduated{{ $student->id }}"
                                                         title="{{ __('msgs.graduated') }}">

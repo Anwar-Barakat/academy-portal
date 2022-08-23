@@ -11,6 +11,7 @@ class FundAccount extends Model
 
     protected $fillable = [
         'studentReceipt_id',
+        'studentPayment_id',
         'debit',
         'credit',
         'description',

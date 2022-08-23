@@ -14,6 +14,8 @@ return [
     'nationality'               => 'Nationality',
     'blood_type'                => 'Blood Type',
     'student_information'       => 'Student Information',
+    'email'                     => 'E-maill Address',
+
 
     'student_details'           => 'Student Details',
     'filename'                  => 'File Name',

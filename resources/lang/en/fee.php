@@ -20,6 +20,7 @@ return [
 
 
     'receipt'                   => 'Receipt',
+    'receipts'                  => 'Receipts',
     'student_fees_invoices'     => 'The Student\'s Fee Invoices',
     'receipts'                  => 'Students Receipts',
     'receipts_list'             => 'Receipts List',
@@ -31,6 +32,7 @@ return [
     'student_funds'             => 'Student Funds',
 
 
-    'payments'                  => 'payments',
+    'payment'                   => 'Payment',
+    'payments'                  => 'Payments',
     'payments_list'             => 'Payments List',
 ];

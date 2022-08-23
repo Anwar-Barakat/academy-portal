@@ -106,4 +106,9 @@ h5 {
 .side-menu-fixed .side-menu {
     background-color: #121212;
 }
+
+.dropdown-menu.show {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
 /* Global Settings */

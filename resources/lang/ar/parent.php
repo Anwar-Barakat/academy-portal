@@ -7,7 +7,7 @@ return [
     'parents_list'              => 'قائمة أولياء الأمور',
     'father_name'               => 'اسم الأب',
     'father_name_ar'            => 'اسم الأب بالعربي',
-    'father_name_en'            => 'اسم الأب بالعربي',
+    'father_name_en'            => 'اسم الأب بالأنكليزي',
     'father_identification'     => 'رقم هوية الأب',
     'father_passport'           => 'رقم جواز سفر الأب',
     'father_phone'              => 'هاتف الأب',
@@ -21,7 +21,7 @@ return [
 
     'mother_name'               => 'اسم الأم',
     'mother_name_ar'            => 'اسم الأم بالعربي',
-    'mother_name_en'            => 'اسم الأم بالعربي',
+    'mother_name_en'            => 'اسم الأم بالأنكليزي',
     'mother_identification'     => 'رقم هوية الأم',
     'mother_passport'           => 'رقم جواز سفر الأم',
     'mother_phone'              => 'هاتف الأم',
