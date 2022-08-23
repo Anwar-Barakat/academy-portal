@@ -1,13 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\StudentPayment;
 
 use App\Models\StudentPayment;
 use App\Http\Requests\StoreStudentPaymentRequest;
 use App\Http\Requests\UpdateStudentPaymentRequest;
+use App\Http\Controllers\Controller;
+use App\Repositories\Interface\StudentPaymentRepositoryInterface;
 
 class StudentPaymentController extends Controller
 {
+    public $payment;
+    public function __construct(StudentPaymentRepositoryInterface $payment)
+    {
+        $this->payment = $payment;
+    }
     /**
      * Display a listing of the resource.
      *

@@ -31,6 +31,8 @@ return [
     'graduation_students'      => 'الطلاب المتخرجين',
     'fees_list'                 => 'قائمة الرسوم',
     'fees'                      => "رسوم",
+    'accounts'                  => 'الحسابات',
+
 
 
     'created_at'                => 'أُنشأت في',

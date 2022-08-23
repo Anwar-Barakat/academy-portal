@@ -29,4 +29,8 @@ return [
     'fee_exclusion'             => 'Fee Exclusion',
     'fee_exclusion_list'        => 'Fee Exclusions List',
     'student_funds'             => 'Student Funds',
+
+
+    'payments'                  => 'payments',
+    'payments_list'             => 'Payments List',
 ];

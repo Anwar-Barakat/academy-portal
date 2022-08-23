@@ -30,6 +30,7 @@ return [
     'graduation_students'       => 'Graduation Students',
     'fees_list'                 => 'Fees List',
     'fees'                      => 'Fees',
+    'accounts'                  => 'Accounts',
 
 
     'specializations'           => 'Specializations',

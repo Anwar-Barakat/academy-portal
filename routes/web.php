@@ -18,6 +18,7 @@ use App\Http\Controllers\Student\StudentGraduatedController;
 use App\Http\Controllers\Student\StudentPromotionController;
 use App\Http\Controllers\Student\UploadAttachmentController;
 use App\Http\Controllers\StudentAccount\StudentAccountController;
+use App\Http\Controllers\StudentPayment\StudentPaymentController;
 use App\Http\Controllers\StudentReceipt\StudentReceiptController;
 use App\Http\Controllers\Teacher\TeacherController;
 use App\Models\FeeInvoice;
@@ -88,10 +89,10 @@ Route::group(
             Route::delete('student-force-delete/{student}',             [StudentController::class, 'forceDelete'])->name('students.force_delete');
 
             //? =====================
-            Route::resource('students-promotions',                              StudentPromotionController::class);
+            Route::resource('students-promotions',                      StudentPromotionController::class);
 
             //? =====================
-            Route::resource('students-graduations',                             StudentGraduatedController::class);
+            Route::resource('students-graduations',                     StudentGraduatedController::class);
 
 
 
@@ -110,9 +111,14 @@ Route::group(
             Route::get('add-student-receipt/{id}',                      [StudentReceiptController::class, 'addStudentReceipt'])->name('add_student_receipt');
 
 
-            //! ===================== Fee Processing =====================
-            Route::resource('fee-processings',                           FeeProcessingController::class);
+            //! ===================== Fee Processings =====================
+            Route::resource('fee-processings',                          FeeProcessingController::class);
             Route::get('add-fee-exclusion/{id}',                        [FeeProcessingController::class, 'addFeeExclusion'])->name('add_fee_exclusion');
+
+
+            //! ===================== Student Payments =====================
+            Route::resource('student-payments',                         StudentPaymentController::class);
+            Route::get('add-student-payment/{id}',                      [StudentPaymentController::class, 'addStudentPayment'])->name('add_student_payment');
         });
     }
 );

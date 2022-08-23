@@ -141,6 +141,7 @@
                         </ul>
                     </li>
 
+                    <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">{{ __('trans.accounts') }} </li>
                     <!-- Fees -->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#fees-menu">
@@ -199,6 +200,25 @@
                             </li>
                         </ul>
                     </li>
+
+
+                    <!-- Fees Invoices -->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#student-payments-menu">
+                            <div class="pull-left"><i class="fas fa-money-bill"></i><span
+                                    class="right-nav-text">{{ __('fee.payments') }}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="student-payments-menu" class="collapse" data-parent="#sidebarnav">
+                            <li>
+                                <a href="{{ route('student-payments.index') }}">{{ __('fee.payments_list') }}</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+
 
                     <!-- menu item chat-->
                     <li>
