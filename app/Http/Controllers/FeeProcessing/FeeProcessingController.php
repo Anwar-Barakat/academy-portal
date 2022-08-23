@@ -1,13 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\FeeProcessing;
 
 use App\Models\FeeProcessing;
 use App\Http\Requests\StoreFeeProcessingRequest;
 use App\Http\Requests\UpdateFeeProcessingRequest;
+use App\Http\Controllers\Controller;
+use App\Repositories\Interface\FeeProcessingRepositoryInterface;
 
 class FeeProcessingController extends Controller
 {
+    public $processing;
+    public function __construct(FeeProcessingRepositoryInterface $processing)
+    {
+        $this->processing = $processing;
+    }
     /**
      * Display a listing of the resource.
      *

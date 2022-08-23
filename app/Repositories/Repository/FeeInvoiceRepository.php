@@ -67,7 +67,7 @@ class FeeInvoiceRepository implements FeeInvoiceRepositoryInterface
                 DB::commit();
 
                 toastr()->success(__('msgs.added', ['name' => __('fee.student_invoice')]));
-                return redirect()->route('fee-invoices.index');
+                return redirect()->back();
             }
         } catch (\Throwable $th) {
             DB::rollBack();

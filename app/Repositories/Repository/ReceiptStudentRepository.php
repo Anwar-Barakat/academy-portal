@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Repository;
 
+use App\Models\FeeInvoice;
 use App\Models\FundAccount;
 use App\Models\Student;
 use App\Models\StudentAccount;
@@ -101,7 +102,13 @@ class ReceiptStudentRepository implements ReceiptStudentRepositoryInterface
 
     public function addStudentReceipt($student_id)
     {
-        $student    = Student::findOrFail($student_id);
-        return view('pages.student-receipts.create', ['student' => $student]);
+        $student                = Student::findOrFail($student_id);
+        $studentReceipts        = StudentReceipt::where('student_id', $student_id)->get();
+        $studentFeeInvoices     = FeeInvoice::with(['student', 'fee'])->where('student_id', $student_id)->get();
+        return view('pages.student-receipts.create', [
+            'student'               => $student,
+            'studentReceipts'       => $studentReceipts,
+            'studentFeeInvoices'    => $studentFeeInvoices
+        ]);
     }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\Classroom\GetClassroomController;
 use App\Http\Controllers\Fee\FeeController;
 use App\Http\Controllers\Fee\GetFeeAmountController;
 use App\Http\Controllers\FeeInvoice\FeeInvoiceController;
+use App\Http\Controllers\FeeProcessing\FeeProcessingController;
 use App\Http\Controllers\Grade\GradeController;
 use App\Http\Controllers\Section\GetSectionController;
 use App\Http\Controllers\Section\SectionController;
@@ -107,6 +108,10 @@ Route::group(
             //! ===================== Student Receipts =====================
             Route::resource('student-receipts',                         StudentReceiptController::class);
             Route::get('add-student-receipt/{id}',                      [StudentReceiptController::class, 'addStudentReceipt'])->name('add_student_receipt');
+
+
+            //! ===================== Fee Processing =====================
+            Route::resource('fee-processings',                         FeeProcessingController::class);
         });
     }
 );

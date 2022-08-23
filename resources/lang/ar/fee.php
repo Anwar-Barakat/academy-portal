@@ -24,5 +24,7 @@ return [
     'student_fees_invoices'     => 'الرسوم الدراسية لهذا الطالب',
     'receipts'                  => 'سندات القبض',
     'receipts_list'             => 'قائمة سندات القبض',
+    'been_paid'                 => 'تم الدفع',
+
 
 ];

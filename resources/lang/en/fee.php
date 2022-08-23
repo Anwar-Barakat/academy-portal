@@ -23,4 +23,5 @@ return [
     'student_fees_invoices'     => 'The Student\'s Fee Invoices',
     'receipts'                  => 'Students Receipts',
     'receipts_list'             => 'Receipts List',
+    'been_paid'                 => 'Been Paid',
 ];
