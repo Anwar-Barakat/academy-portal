@@ -14,4 +14,9 @@ class FeeProcessing extends Model
         'amount',
         'description',
     ];
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class, 'student_id');
+    }
 }

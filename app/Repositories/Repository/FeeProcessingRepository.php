@@ -14,6 +14,8 @@ class FeeProcessingRepository implements FeeProcessingRepositoryInterface
 {
     public function index()
     {
+        $feeProcessings     = FeeProcessing::latest()->get();
+        return view('pages.fee-processings.index', ['feeProcessings' => $feeProcessings]);
     }
 
     public function store($request)
@@ -26,7 +28,6 @@ class FeeProcessingRepository implements FeeProcessingRepositoryInterface
                 $data           = $request->only(['student_id', 'amount', 'student_funds', 'description',]);
                 $studentFunds   = StudentAccount::where('student_id', $data['student_id'])->sum('debit') - StudentAccount::where('student_id', $data['student_id'])->sum('credit');
                 if ($studentFunds == $data['student_funds']) {
-
 
                     if ($data['amount'] > $studentFunds && $studentFunds != 0) {
 
@@ -85,11 +86,13 @@ class FeeProcessingRepository implements FeeProcessingRepositoryInterface
     {
         $student                = Student::findOrFail($student_id);
         $studentReceipts        = StudentReceipt::where('student_id', $student_id)->get();
+        $feeProcessings         = FeeProcessing::where('student_id', $student_id)->get();
         $studentFeeInvoices     = FeeInvoice::with(['student', 'fee'])->where('student_id', $student_id)->get();
         return view('pages.fee-processings.create', [
             'student'               => $student,
             'studentReceipts'       => $studentReceipts,
-            'studentFeeInvoices'    => $studentFeeInvoices
+            'studentFeeInvoices'    => $studentFeeInvoices,
+            'feeProcessings'        => $feeProcessings
         ]);
     }
 }

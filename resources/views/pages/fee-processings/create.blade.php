@@ -61,7 +61,7 @@
             <div class="card card-statistics h-100">
                 <div class="card-body">
                     <h5 class="text text-info mb-4">
-                        {{ __('fee.student_fees_invoices') }}</h5>
+                        {{ __('fee.receipt') }}</h5>
                     <div class="table-responsive mt-15">
                         <table class="table center-aligned-table  text-center mb-0 table-hover table-sm">
                             <thead>
@@ -79,6 +79,46 @@
                                         <td>{{ $studentReceipt->student->name }}</td>
                                         <td>{{ $studentReceipt->debit }}</td>
                                         <td>{{ $studentReceipt->created_at }}</td>
+                                    </tr>
+                                @empty
+                                    <tr class="text-center">
+                                        <td colspan="5">
+                                            {{ __('msgs.not_found_yet') }}
+                                        </td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- row -->
+    <div class="row">
+        <div class="col-md-12 mb-30">
+            <div class="card card-statistics h-100">
+                <div class="card-body">
+                    <h5 class="text text-info mb-4">
+                        {{ __('fee.fee_exclusion') }}</h5>
+                    <div class="table-responsive mt-15">
+                        <table class="table center-aligned-table  text-center mb-0 table-hover table-sm">
+                            <thead>
+                                <tr class="text-dark">
+                                    <th class="alert alert-info">#</th>
+                                    <th class="alert alert-info">{{ __('student.name') }}</th>
+                                    <th class="alert alert-info">{{ __('fee.been_paid') }}</th>
+                                    <th class="alert alert-info">{{ __('trans.created_at') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($feeProcessings as $feeProcessing)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $feeProcessing->student->name }}</td>
+                                        <td>{{ $feeProcessing->amount }}</td>
+                                        <td>{{ $feeProcessing->created_at }}</td>
                                     </tr>
                                 @empty
                                     <tr class="text-center">

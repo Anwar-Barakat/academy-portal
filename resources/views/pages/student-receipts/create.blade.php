@@ -17,15 +17,6 @@
         <div class="col-md-12 mb-30">
             <div class="card card-statistics h-100">
                 <div class="card-body">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
                     <h5 class="text text-info mb-4">
                         {{ __('fee.student_fees_invoices') }}</h5>
                     <div class="table-responsive mt-15">
@@ -69,17 +60,8 @@
         <div class="col-md-12 mb-30">
             <div class="card card-statistics h-100">
                 <div class="card-body">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
                     <h5 class="text text-info mb-4">
-                        {{ __('fee.student_fees_invoices') }}</h5>
+                        {{ __('fee.receipt') }}</h5>
                     <div class="table-responsive mt-15">
                         <table class="table center-aligned-table  text-center mb-0 table-hover table-sm">
                             <thead>
