@@ -61,7 +61,7 @@
             <div class="card card-statistics h-100">
                 <div class="card-body">
                     <h5 class="text text-info mb-4">
-                        {{ __('fee.receipt') }}</h5>
+                        {{ __('fee.receipts') }}</h5>
                     <div class="table-responsive mt-15">
                         <table class="table center-aligned-table  text-center mb-0 table-hover table-sm">
                             <thead>
@@ -135,7 +135,6 @@
         </div>
     </div>
 
-
     <!-- row -->
     <div class="row">
         <div class="col-md-12 mb-30">
@@ -190,7 +189,7 @@
                         </div>
                     @endif
                     <h5 class="text text-info mb-4">{{ __('student.student') }} ({{ $student->name }})</h5>
-                    <form method="post" action="{{ route('fee-processings.store') }}" autocomplete="off">
+                    <form method="post" action="{{ route('student-payments.store') }}" autocomplete="off">
                         @csrf
                         <x-input type="hidden" name="student_id" :value="$student->id" />
                         <div class="row">

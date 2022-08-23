@@ -56,7 +56,15 @@ class ReceiptStudentRepository implements ReceiptStudentRepositoryInterface
     }
     public function edit($studentReceipt)
     {
-        return view('pages.student-receipts.edit', ['studentReceipt' => $studentReceipt]);
+        $student                = Student::findOrFail($studentReceipt->student_id);
+        $studentFeeInvoices     = FeeInvoice::with(['student', 'fee'])->where('student_id', $studentReceipt->student_id)->get();
+        $studentReceipts        = StudentReceipt::where('student_id', $studentReceipt->student_id)->get();
+        return view('pages.student-receipts.edit', [
+            'studentReceipt'        => $studentReceipt,
+            'student'               => $student,
+            'studentReceipts'       => $studentReceipts,
+            'studentFeeInvoices'    => $studentFeeInvoices
+        ]);
     }
 
     public function update($request, $studentReceipt)

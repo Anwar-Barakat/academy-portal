@@ -37,6 +37,40 @@ class StudentPaymentRepository implements StudentPaymentRepositoryInterface
 
     public function store($request)
     {
+        DB::beginTransaction();
+        try {
+            if ($request->isMethod('post')) {
 
+                $data = $request->only(['student_id', 'amount', 'description']);
+
+                StudentPayment::create([
+                    'student_id'            => $data['student_id'],
+                    'amount'                => $data['amount'],
+                    'description'           => $data['description'],
+                ]);
+
+                FundAccount::create([
+                    'studentPayment_id'     => StudentPayment::latest()->first()->id,
+                    'credit'                => $data['amount'],
+
+                ]);
+
+                StudentAccount::create([
+                    'student_id'            => $data['student_id'],
+                    'studentPayment_id'     => StudentPayment::latest()->first()->id,
+                    'type'                  => 'payment',
+                    'debit'                 => $data['amount'],
+                    'description'           => $data['description']
+                ]);
+
+
+                DB::commit();
+                toastr()->success(__('msgs.updated', ['name' => __('fee.payment')]));
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
     }
 }

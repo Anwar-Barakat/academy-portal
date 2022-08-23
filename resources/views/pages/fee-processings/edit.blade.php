@@ -61,7 +61,7 @@
             <div class="card card-statistics h-100">
                 <div class="card-body">
                     <h5 class="text text-info mb-4">
-                        {{ __('fee.receipt') }}</h5>
+                        {{ __('fee.receipts') }}</h5>
                     <div class="table-responsive mt-15">
                         <table class="table center-aligned-table  text-center mb-0 table-hover table-sm">
                             <thead>

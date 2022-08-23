@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('studentReceipt_id')->nullable()->constrained('student_receipts')->cascadeOnDelete()->cascadeOnDelete();
             $table->foreignId('studentPayment_id')->nullable()->constrained('student_payments')->cascadeOnDelete()->cascadeOnDelete();
-            $table->decimal('debit', 8, 2);
-            $table->decimal('credit', 8, 2);
+            $table->decimal('debit', 8, 2)->default(0);
+            $table->decimal('credit', 8, 2)->default(0);
             $table->timestamps();
         });
     }
