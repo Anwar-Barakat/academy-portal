@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class FeeProcessing extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'student_id',
+        'amount',
+        'description',
+    ];
 }

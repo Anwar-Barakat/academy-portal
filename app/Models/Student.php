@@ -86,7 +86,11 @@ class Student extends Model
 
     public function images()
     {
-        // imageable is the name of relationship in Image model
         return $this->morphMany(Image::class, 'imageable');
+    }
+
+    public function studentAccounts()
+    {
+        return $this->hasMany(StudentAccount::class, 'student_id');
     }
 }

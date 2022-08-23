@@ -41,4 +41,8 @@ return [
 
     // Fee Invoices :
     'student_has_this_fee'          => 'This student has already this fee !!',
+
+    // Fee Processing :
+    'amount_warning'                => 'Amount must be less than :amount',
+    'student_funds_is_zero'         => 'Student account is now zero',
 ];

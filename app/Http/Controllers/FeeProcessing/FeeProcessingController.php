@@ -22,7 +22,7 @@ class FeeProcessingController extends Controller
      */
     public function index()
     {
-        //
+        return $this->processing->index();
     }
 
     /**
@@ -43,7 +43,7 @@ class FeeProcessingController extends Controller
      */
     public function store(StoreFeeProcessingRequest $request)
     {
-        //
+        return $this->processing->store($request);
     }
 
     /**
@@ -65,7 +65,7 @@ class FeeProcessingController extends Controller
      */
     public function edit(FeeProcessing $feeProcessing)
     {
-        //
+        return $this->processing->edit($feeProcessing);
     }
 
     /**
@@ -77,7 +77,7 @@ class FeeProcessingController extends Controller
      */
     public function update(UpdateFeeProcessingRequest $request, FeeProcessing $feeProcessing)
     {
-        //
+        return $this->processing->update($request, $feeProcessing);
     }
 
     /**
@@ -88,6 +88,11 @@ class FeeProcessingController extends Controller
      */
     public function destroy(FeeProcessing $feeProcessing)
     {
-        //
+        return $this->processing->destroy($feeProcessing);
+    }
+
+    public function addFeeExclusion($student_id)
+    {
+        return $this->processing->addFeeExclusion($student_id);
     }
 }

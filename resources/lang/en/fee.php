@@ -24,4 +24,9 @@ return [
     'receipts'                  => 'Students Receipts',
     'receipts_list'             => 'Receipts List',
     'been_paid'                 => 'Been Paid',
+
+
+    'fee_exclusion'             => 'Fee Exclusion',
+    'fee_exclusion_list'        => 'Fee Exclusions List',
+    'student_funds'             => 'Student Funds',
 ];

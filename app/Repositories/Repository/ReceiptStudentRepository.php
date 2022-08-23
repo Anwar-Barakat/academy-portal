@@ -38,7 +38,7 @@ class ReceiptStudentRepository implements ReceiptStudentRepositoryInterface
 
                 StudentAccount::create([
                     'type'              => 'receipt',
-                    'studentReceipt_id' => $studentReceipt->id,
+                    'studentReceipt_id' =>  StudentReceipt::latest()->first()->id,
                     'student_id'        => $data['student_id'],
                     'debit'             => 0,
                     'credit'            => $data['debit'],

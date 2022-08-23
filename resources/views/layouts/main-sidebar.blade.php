@@ -186,6 +186,19 @@
                         </ul>
                     </li>
 
+                    <!-- Fee exclusion -->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#fee-exclusion-menu">
+                            <div class="pull-left"><i class="fas fa-money-check-alt"></i><span
+                                    class="right-nav-text">{{ __('fee.fee_exclusion') }}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="fee-exclusion-menu" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{ route('fee-processings.index') }}">{{ __('fee.fee_exclusion_list') }}</a>
+                            </li>
+                        </ul>
+                    </li>
 
                     <!-- menu item chat-->
                     <li>

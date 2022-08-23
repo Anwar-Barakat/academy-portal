@@ -111,7 +111,8 @@ Route::group(
 
 
             //! ===================== Fee Processing =====================
-            Route::resource('fee-processings',                         FeeProcessingController::class);
+            Route::resource('fee-processings',                           FeeProcessingController::class);
+            Route::get('add-fee-exclusion/{id}',                        [FeeProcessingController::class, 'addFeeExclusion'])->name('add_fee_exclusion');
         });
     }
 );
