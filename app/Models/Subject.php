@@ -11,11 +11,27 @@ class Subject extends Model
     use HasFactory, HasTranslations;
 
     protected $fillable = [
+        'name',
         'grade_id',
         'classroom_id',
-        'section_id',
         'teacher_id',
     ];
 
     public $translatable = ['name'];
+
+
+    public function grade()
+    {
+        return $this->belongsTo(Grade::class, 'grade_id');
+    }
+
+    public function classroom()
+    {
+        return $this->belongsTo(Classroom::class);
+    }
+
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class, 'teacher_id');
+    }
 }
