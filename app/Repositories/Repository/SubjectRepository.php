@@ -42,13 +42,38 @@ class SubjectRepository implements SubjectRepositoryInterface
 
     public function edit($subject)
     {
+        $grades     = Grade::all();
+        $teachers   = Teacher::with('specialization')->get();
+        return view('pages.subjects.edit', ['grades' => $grades, 'teachers' => $teachers, 'subject' => $subject]);
     }
 
     public function update($request, $subject)
     {
+        try {
+            if ($request->isMethod('put')) {
+                $data               = $request->only(['name_ar', 'name_en', 'grade_id', 'classroom_id', 'teacher_id']);
+                $data['name']['ar'] = $data['name_ar'];
+                $data['name']['en'] = $data['name_en'];
+                $subject->update($data);
+
+
+                toastr()->success(__('msgs.updated', ['name' => __('trans.subject')]));
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
     }
 
     public function destroy($subject)
     {
+        try {
+            $subject->delete();
+
+            toastr()->info(__('msgs.deleted', ['name' => __('trans.subject')]));
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
     }
 }

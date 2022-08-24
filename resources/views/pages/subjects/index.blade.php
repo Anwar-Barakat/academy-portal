@@ -51,6 +51,7 @@
                                                 data-target="#delete{{ $subject->id }}"><i
                                                     class="fas fa-trash-alt"></i></button>
                                         </td>
+                                        @include('pages.subjects.delete')
                                     </tr>
                                 @empty
                                     <tr class="text-center">
