@@ -30,6 +30,8 @@ class Student extends Model
 
     protected $hidden = ["deleted_at"];
 
+
+
     protected $translatable = ['name'];
 
     public function createdAt(): Attribute

@@ -43,7 +43,7 @@ class AttendanceController extends Controller
      */
     public function store(StoreAttendanceRequest $request)
     {
-        //
+        return $this->attendance->store($request);
     }
 
     /**

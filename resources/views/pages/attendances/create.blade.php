@@ -63,7 +63,8 @@
                                                                 <input name="attendences[{{ $student->id }}]" disabled
                                                                     {{ $student->attendances()->first()->status == 1 ? 'checked' : '' }}
                                                                     class="leading-tight" type="radio" value="presence">
-                                                                <span class="text-success">حضور</span>
+                                                                <span
+                                                                    class="text-success">{{ __('trans.attendance') }}</span>
                                                             </label>
                                                         </div>
 
@@ -72,7 +73,8 @@
                                                                 <input name="attendences[{{ $student->id }}]" disabled
                                                                     {{ $student->attendances()->first()->status == 0 ? 'checked' : '' }}
                                                                     class="leading-tight" type="radio" value="absent">
-                                                                <span class="text-danger">غياب</span>
+                                                                <span
+                                                                    class="text-danger">{{ __('trans.nonAttendance') }}</span>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -82,14 +84,16 @@
                                                             <label class="block text-gray-500 font-semibold">
                                                                 <input name="attendences[{{ $student->id }}]"
                                                                     class="leading-tight" type="radio" value="presence">
-                                                                <span class="text-success">حضور</span>
+                                                                <span
+                                                                    class="text-success">{{ __('trans.attendance') }}</span>
                                                             </label>
                                                         </div>
                                                         <div>
                                                             <label class="ml-4 block text-gray-500 font-semibold">
                                                                 <input name="attendences[{{ $student->id }}]"
                                                                     class="leading-tight" type="radio" value="absent">
-                                                                <span class="text-danger">غياب</span>
+                                                                <span
+                                                                    class="text-danger">{{ __('trans.nonAttendance') }}</span>
                                                             </label>
                                                         </div>
                                                     </div>
