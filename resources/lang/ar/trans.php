@@ -28,10 +28,12 @@ return [
     'promotions_list'           => "قائمة الترقيات",
     'graduations_list'          => 'قائمة المتخرجين',
     'graduation'                => 'تخرج',
-    'graduation_students'      => 'الطلاب المتخرجين',
+    'graduation_students'       => 'الطلاب المتخرجين',
     'fees_list'                 => 'قائمة الرسوم',
     'fees'                      => "رسوم",
     'accounts'                  => 'الحسابات',
+    'attendances'               => 'الحضورات',
+    'attendances_list'          => 'قائمة الحضورات',
 
 
 
@@ -48,5 +50,9 @@ return [
     'female'                    => 'أنثى',
     'attachments'               => 'المرفقات',
     'attachment'                => 'المرفق',
+
+    'today_data'                => 'تاريخ اليوم',
+    'attendance'                => 'حضور',
+    'nonAttendance'             => 'غياب',
 
 ];

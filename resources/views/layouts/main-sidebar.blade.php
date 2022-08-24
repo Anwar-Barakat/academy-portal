@@ -201,7 +201,6 @@
                         </ul>
                     </li>
 
-
                     <!-- Student Payments -->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#student-payments-menu">
@@ -218,19 +217,26 @@
                         </ul>
                     </li>
 
-
-
-                    <!-- menu item chat-->
+                    <!-- Attendances -->
                     <li>
-                        <a href="chat-page.html"><i class="ti-comments"></i><span class="right-nav-text">Chat
-                            </span></a>
-                    </li>
-                    <!-- menu item mailbox-->
-                    <li>
-                        <a href="mail-box.html"><i class="ti-email"></i><span class="right-nav-text">Mail
-                                box</span> <span class="badge badge-pill badge-warning float-right mt-1">HOT</span>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#attendances-menu">
+                            <div class="pull-left"><i class="fas fa-calendar-alt"></i><span
+                                    class="right-nav-text">{{ __('trans.attendances') }}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
                         </a>
+                        <ul id="attendances-menu" class="collapse" data-parent="#sidebarnav">
+                            <li>
+                                <a href="{{ route('attendances.index') }}">{{ __('trans.attendances_list') }}</a>
+                            </li>
+
+                        </ul>
                     </li>
+
+
+
+
+
                     <!-- menu item Charts-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart">

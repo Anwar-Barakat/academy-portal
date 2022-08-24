@@ -31,7 +31,8 @@ return [
     'fees_list'                 => 'Fees List',
     'fees'                      => 'Fees',
     'accounts'                  => 'Accounts',
-
+    'attendances'               => 'Attendances',
+    'attendances_list'          => 'Attendances List',
 
     'specializations'           => 'Specializations',
     'specializations_list'      => 'Specializations List',
@@ -47,8 +48,11 @@ return [
     'female'                    => 'Female',
     'attachments'               => 'Attachments',
     'attachment'                => 'Attachment',
-    'title'                      => 'Title',
-    'title_ar'                   => 'Arabic Title',
-    'title_en'                   => 'English Title',
+    'title'                     => 'Title',
+    'title_ar'                  => 'Arabic Title',
+    'title_en'                  => 'English Title',
 
+    'today_data'                => 'Today\'s Date',
+    'attendance'                => 'Attendance',
+    'nonAttendance'             => 'Non-Attendance',
 ];

@@ -5,11 +5,11 @@
 @stop
 
 @section('breadcrum')
-    {{ __('section.sections_list') }}
+    {{ __('section.sections') }}
 @endsection
 
 @section('breadcrum_home')
-    {{ __('section.sections') }}
+    {{ __('section.sections_list') }}
 @endsection
 
 @section('content')

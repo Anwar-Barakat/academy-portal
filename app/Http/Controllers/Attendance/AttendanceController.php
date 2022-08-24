@@ -1,13 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Attendance;
 
 use App\Models\Attendance;
 use App\Http\Requests\StoreAttendanceRequest;
 use App\Http\Requests\UpdateAttendanceRequest;
+use App\Http\Controllers\Controller;
+use App\Repositories\Interface\AttendanceRepositoryInterface;
 
 class AttendanceController extends Controller
 {
+    public $attendance;
+    public function __construct(AttendanceRepositoryInterface $attendance)
+    {
+        $this->attendance = $attendance;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +22,7 @@ class AttendanceController extends Controller
      */
     public function index()
     {
-        //
+        return $this->attendance->index();
     }
 
     /**
@@ -82,5 +89,10 @@ class AttendanceController extends Controller
     public function destroy(Attendance $attendance)
     {
         //
+    }
+
+    public function addAttendance($section_id)
+    {
+        return $this->attendance->addAttendance($section_id);
     }
 }

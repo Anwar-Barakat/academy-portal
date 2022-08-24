@@ -83,7 +83,6 @@ class Student extends Model
         return $this->belongsTo(Blood::class, 'blood_id');
     }
 
-
     public function images()
     {
         return $this->morphMany(Image::class, 'imageable');
@@ -92,5 +91,10 @@ class Student extends Model
     public function studentAccounts()
     {
         return $this->hasMany(StudentAccount::class, 'student_id');
+    }
+
+    public function attendances()
+    {
+        return $this->hasMany(Attendance::class, 'student_id');
     }
 }

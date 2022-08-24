@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Attendance\AttendanceController;
 use App\Http\Controllers\Classroom\ClassroomController;
 use App\Http\Controllers\Classroom\EmptyClassroomController;
 use App\Http\Controllers\Classroom\FilterClassroomController;
@@ -119,6 +120,11 @@ Route::group(
             //! ===================== Student Payments =====================
             Route::resource('student-payments',                         StudentPaymentController::class);
             Route::get('add-student-payment/{id}',                      [StudentPaymentController::class, 'addStudentPayment'])->name('add_student_payment');
+
+
+            //! ===================== Attendances =====================
+            Route::resource('attendances',                              AttendanceController::class);
+            Route::get('add-attendances/{id}',                          [AttendanceController::class, 'addAttendance'])->name('add_attendances');
         });
     }
 );
