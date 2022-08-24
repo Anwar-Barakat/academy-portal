@@ -13,7 +13,7 @@ class UpdateSubjectRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class UpdateSubjectRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'grade_id'      => 'required',
+            'classroom_id'  => 'required',
+            'section_id'    => 'required',
+            'teacher_id'    => 'required',
         ];
     }
 }

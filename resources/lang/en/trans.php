@@ -51,8 +51,17 @@ return [
     'title'                     => 'Title',
     'title_ar'                  => 'Arabic Title',
     'title_en'                  => 'English Title',
+    'equipments'                => 'Equipments',
 
+
+    // Attendaces :
     'today_data'                => 'Today\'s Date',
     'attendance'                => 'Attendance',
     'nonAttendance'             => 'Non-Attendance',
+
+
+    // Subjects :
+    'subjects'                  => 'Subjects',
+    'subject'                   => 'Subject',
+    'subjects_list'             => 'Subjects Lists',
 ];

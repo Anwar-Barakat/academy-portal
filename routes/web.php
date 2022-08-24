@@ -21,6 +21,7 @@ use App\Http\Controllers\Student\UploadAttachmentController;
 use App\Http\Controllers\StudentAccount\StudentAccountController;
 use App\Http\Controllers\StudentPayment\StudentPaymentController;
 use App\Http\Controllers\StudentReceipt\StudentReceiptController;
+use App\Http\Controllers\Subject\SubjectController;
 use App\Http\Controllers\Teacher\TeacherController;
 use App\Models\FeeInvoice;
 use Illuminate\Support\Facades\Route;
@@ -125,6 +126,10 @@ Route::group(
             //! ===================== Attendances =====================
             Route::resource('attendances',                              AttendanceController::class);
             Route::get('add-attendances/{id}',                          [AttendanceController::class, 'addAttendance'])->name('add_attendances');
+
+
+            //! ===================== Subjects =====================
+            Route::resource('subjects',                                 SubjectController::class);
         });
     }
 );

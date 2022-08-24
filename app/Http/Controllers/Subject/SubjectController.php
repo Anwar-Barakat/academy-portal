@@ -1,13 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Subject;
 
 use App\Models\Subject;
 use App\Http\Requests\StoreSubjectRequest;
 use App\Http\Requests\UpdateSubjectRequest;
+use App\Http\Controllers\Controller;
+use App\Repositories\Interface\SubjectRepositoryInterface;
 
 class SubjectController extends Controller
 {
+    public $subject;
+    public function __construct(SubjectRepositoryInterface $subject)
+    {
+        $this->subject = $subject;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +22,7 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        //
+        return $this->subject->index();
     }
 
     /**
@@ -25,7 +32,7 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        //
+        return $this->subject->create();
     }
 
     /**
@@ -36,7 +43,7 @@ class SubjectController extends Controller
      */
     public function store(StoreSubjectRequest $request)
     {
-        //
+        return $this->subject->store($request);
     }
 
     /**
@@ -58,7 +65,7 @@ class SubjectController extends Controller
      */
     public function edit(Subject $subject)
     {
-        //
+        return $this->subject->edit($subject);
     }
 
     /**
@@ -70,7 +77,7 @@ class SubjectController extends Controller
      */
     public function update(UpdateSubjectRequest $request, Subject $subject)
     {
-        //
+        return $this->subject->update($request, $subject);
     }
 
     /**
@@ -81,6 +88,6 @@ class SubjectController extends Controller
      */
     public function destroy(Subject $subject)
     {
-        //
+        return $this->subject->destroy($subject);
     }
 }

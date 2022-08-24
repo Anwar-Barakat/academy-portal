@@ -13,4 +13,9 @@ class Specialization extends Model
     protected $fillable = ['name'];
 
     public $translatable = ['name'];
+
+    public function teachers()
+    {
+        return $this->hasMany(Teacher::class, 'teacher_id');
+    }
 }

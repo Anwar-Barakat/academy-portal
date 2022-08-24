@@ -83,7 +83,7 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <x-label for="gender" :value="__('student.gender')" />
+                                <x-label for="gender" :value="__('trans.gender')" />
                                 <select class="custom-select mr-sm-2" name="gender">
                                     <option disabled value="">{{ __('msgs.select', ['name' => '...']) }}</option>
                                     <option value="0">{{ __('trans.male') }}</option>
@@ -225,9 +225,9 @@
                     </div>
                     <br>
                     <hr>
-                    <x-button class="btn btn-success btn-sm nextBtn btn-lg pull-right">
+                    <button type="submit" class="button button-border x-small">
                         {{ __('buttons.submit') }}
-                    </x-button>
+                    </button>
                 </form>
             </div>
         </div>

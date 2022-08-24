@@ -233,6 +233,27 @@
                         </ul>
                     </li>
 
+                    <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">{{ __('trans.equipments') }} </li>
+                    <!-- Subjects -->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#subjects-menu">
+                            <div class="pull-left"><i class="fas fa-book-open"></i><span
+                                    class="right-nav-text">{{ __('trans.subjects') }}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="subjects-menu" class="collapse" data-parent="#sidebarnav">
+                            <li>
+                                <a href="{{ route('subjects.index') }}">{{ __('trans.subjects_list') }}</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('subjects.create') }}">
+                                    {{ __('msgs.add', ['name' => __('trans.subject')]) }}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
 
 
 

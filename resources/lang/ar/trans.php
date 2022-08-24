@@ -50,9 +50,17 @@ return [
     'female'                    => 'أنثى',
     'attachments'               => 'المرفقات',
     'attachment'                => 'المرفق',
+    'equipments'                => 'التجهيزات',
 
+    // Attendaces :
     'today_data'                => 'تاريخ اليوم',
     'attendance'                => 'حضور',
     'nonAttendance'             => 'غياب',
+
+    // Subjects :
+    'subjects'                  => 'المواد الدراسية',
+    'subject'                   => 'مادة دراسية',
+    'subjects_list'             => 'قائمة المواد الدراسية',
+
 
 ];
