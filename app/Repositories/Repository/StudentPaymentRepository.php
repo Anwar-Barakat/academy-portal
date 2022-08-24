@@ -67,6 +67,57 @@ class StudentPaymentRepository implements StudentPaymentRepositoryInterface
 
 
                 DB::commit();
+                toastr()->success(__('msgs.added', ['name' => __('fee.payment')]));
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
+    }
+
+
+    public function edit($studentPayment)
+    {
+        $student                = Student::findOrFail($studentPayment->student_id);
+        $studentFeeInvoices     = FeeInvoice::with(['student', 'fee'])->where('student_id', $studentPayment->student_id)->get();
+        $studentReceipts        = StudentReceipt::where('student_id', $studentPayment->student_id)->get();
+        $feeProcessings         = FeeProcessing::where('student_id', $studentPayment->student_id)->get();
+        $studentPayments        = StudentPayment::where('student_id', $studentPayment->student_id)->get();
+        return view('pages.student-payments.edit', [
+            'studentPayment'        => $studentPayment,
+            'student'               => $student,
+            'studentFeeInvoices'    => $studentFeeInvoices,
+            'studentReceipts'       => $studentReceipts,
+            'feeProcessings'        => $feeProcessings,
+            'studentPayments'       => $studentPayments,
+        ]);
+    }
+
+    public function update($request, $studentPayment)
+    {
+        DB::beginTransaction();
+        try {
+            if ($request->isMethod('put')) {
+
+                $data = $request->only(['amount', 'description']);
+
+                $studentPayment->update([
+                    'amount'                => $data['amount'],
+                    'description'           => $data['description'],
+                ]);
+
+                FundAccount::where('studentPayment_id', $studentPayment->id)->update([
+                    'credit'                => $data['amount'],
+                ]);
+
+                StudentAccount::where('student_id', $studentPayment->student_id,)->where('studentPayment_id', $studentPayment->id)->update([
+                    'debit'                 => $data['amount'],
+                    'description'           => $data['description']
+                ]);
+
+
+                DB::commit();
                 toastr()->success(__('msgs.updated', ['name' => __('fee.payment')]));
                 return redirect()->back();
             }
@@ -76,4 +127,14 @@ class StudentPaymentRepository implements StudentPaymentRepositoryInterface
         }
     }
 
+    public function destroy($studentPayment)
+    {
+        try {
+            $studentPayment->delete();
+            toastr()->info(__('msgs.deleted', ['name' => __('fee.payment')]));
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
+    }
 }

@@ -39,22 +39,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($studentPayments as $studentPayments)
+                                @foreach ($studentPayments as $studentPayment)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $studentPayments->student->name }}</td>
-                                        <td>{{ number_format($studentPayments->amount, 2) }}</td>
-                                        <td>{{ $studentPayments->description }}</td>
+                                        <td>{{ $studentPayment->student->name }}</td>
+                                        <td>{{ number_format($studentPayment->amount, 2) }}</td>
+                                        <td>{{ $studentPayment->description }}</td>
                                         <td>
-                                            <a href="{{ route('fee-processings.edit', $studentPayments) }}"
+                                            <a href="{{ route('student-payments.edit', $studentPayment) }}"
                                                 class="btn btn-outline-info btn-sm" role="button" aria-pressed="true"><i
                                                     class="fas fa-edit"></i></a>
                                             <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal"
-                                                data-target="#delete{{ $studentPayments->id }}"><i
+                                                data-target="#delete{{ $studentPayment->id }}"><i
                                                     class="fas fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
-                                    {{-- @include('pages.fee-processings.delete') --}}
+                                    @include('pages.student-payments.delete')
                                 @endforeach
                         </table>
                     </div>

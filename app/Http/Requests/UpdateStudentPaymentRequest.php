@@ -13,7 +13,7 @@ class UpdateStudentPaymentRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class UpdateStudentPaymentRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'student_id'    => 'required',
+            'amount'        => 'required',
+            'description'   => 'required',
         ];
     }
 }

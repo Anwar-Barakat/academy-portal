@@ -65,7 +65,7 @@ class StudentPaymentController extends Controller
      */
     public function edit(StudentPayment $studentPayment)
     {
-        //
+        return $this->payment->edit($studentPayment);
     }
 
     /**
@@ -77,7 +77,7 @@ class StudentPaymentController extends Controller
      */
     public function update(UpdateStudentPaymentRequest $request, StudentPayment $studentPayment)
     {
-        //
+        return $this->payment->update($request, $studentPayment);
     }
 
     /**
@@ -88,7 +88,7 @@ class StudentPaymentController extends Controller
      */
     public function destroy(StudentPayment $studentPayment)
     {
-        //
+        return $this->payment->destroy($studentPayment);
     }
 
 
