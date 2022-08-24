@@ -16,6 +16,8 @@ class StudentPaymentRepository implements StudentPaymentRepositoryInterface
 {
     public function index()
     {
+        $studentPayments        = StudentPayment::latest()->get();
+        return view('pages.student-payments.index', ['studentPayments' => $studentPayments]);
     }
 
     public function addStudentPayment($student_id)
@@ -73,4 +75,5 @@ class StudentPaymentRepository implements StudentPaymentRepositoryInterface
             return redirect()->back()->withErrors(['error' => $th->getMessage()]);
         }
     }
+
 }
