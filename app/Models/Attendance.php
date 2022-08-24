@@ -21,12 +21,12 @@ class Attendance extends Model
     ];
     protected $dateFormat = 'Y-m-d';
 
-    // public function createdAt(): Attribute
-    // {
-    //     return new Attribute(
-    //         get: function ($value) {
-    //             return Carbon::parse($this->attributes['created_at'])->format('Y-m-d');
-    //         }
-    //     );
-    // }
+    public function createdAt(): Attribute
+    {
+        return new Attribute(
+            get: function ($value) {
+                return Carbon::parse($this->attributes['created_at'])->format('Y-m-d');
+            }
+        );
+    }
 }

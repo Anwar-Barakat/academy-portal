@@ -31,21 +31,23 @@ class AttendanceRepository implements AttendanceRepositoryInterface
         $status = '';
         try {
 
-            foreach ($request->attendences as $studentId => $attendace) {
-                $attendace == 'presence' ? $status = true : $status = false;
+            if ($request->isMethod('post')) {
+                foreach ($request->attendences as $studentId => $attendace) {
+                    $attendace == 'presence' ? $status = true : $status = false;
 
-                Attendance::create([
-                    'student_id'    => $studentId,
-                    'status'        => $status,
-                    'grade_id'      => $request->grade_id,
-                    'classroom_id'  => $request->classroom_id,
-                    'section_id'    => $request->section_id,
-                    'teacher_id'    => 1,
-                ]);
+                    Attendance::create([
+                        'student_id'    => $studentId,
+                        'status'        => $status,
+                        'grade_id'      => $request->grade_id,
+                        'classroom_id'  => $request->classroom_id,
+                        'section_id'    => $request->section_id,
+                        'teacher_id'    => 1,
+                    ]);
+                }
+
+                toastr()->success(__('msgs.added', ['name' => __('trans.attendances')]));
+                return redirect()->back();
             }
-
-            toastr()->success(__('msgs.added', ['name' => __('trans.attendances')]));
-            return redirect()->back();
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['error' => $th->getMessage()]);
         }
