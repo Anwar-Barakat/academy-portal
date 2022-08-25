@@ -255,17 +255,22 @@
                         </ul>
                     </li>
 
-                    <!-- Exames -->
+                    <!-- Quizzes -->
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#exams-menu">
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#quizzes-menu">
                             <div class="pull-left"><i class="fas fa-folder-open"></i><span
-                                    class="right-nav-text">{{ __('trans.exams') }}</span></div>
+                                    class="right-nav-text">{{ __('trans.quizzes') }}</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
-                        <ul id="exams-menu" class="collapse" data-parent="#sidebarnav">
+                        <ul id="quizzes-menu" class="collapse" data-parent="#sidebarnav">
                             <li>
-                                <a href="{{ route('exams.index') }}">{{ __('trans.exams_list') }}</a>
+                                <a href="{{ route('quizzes.index') }}">{{ __('trans.quizzes_list') }}</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('quizzes.create') }}">
+                                    {{ __('msgs.add', ['name' => __('trans.quiz')]) }}
+                                </a>
                             </li>
                         </ul>
                     </li>
@@ -273,36 +278,6 @@
 
 
 
-                    <!-- menu item Charts-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart">
-                            <div class="pull-left"><i class="ti-pie-chart"></i><span
-                                    class="right-nav-text">Charts</span>
-                            </div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="chart" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="chart-js.html">Chart.js</a> </li>
-                            <li> <a href="chart-morris.html">Chart morris </a> </li>
-                            <li> <a href="chart-sparkline.html">Chart Sparkline</a> </li>
-                        </ul>
-                    </li>
-
-                    <!-- menu font icon-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#font-icon">
-                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">font
-                                    icon</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="font-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
-                        </ul>
-                    </li>
                     <!-- menu title -->
                     <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">Widgets, Forms & Tables </li>
                     <!-- menu item Widgets-->

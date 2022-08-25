@@ -11,6 +11,7 @@ use App\Http\Controllers\Fee\GetFeeAmountController;
 use App\Http\Controllers\FeeInvoice\FeeInvoiceController;
 use App\Http\Controllers\FeeProcessing\FeeProcessingController;
 use App\Http\Controllers\Grade\GradeController;
+use App\Http\Controllers\Quiz\QuizController;
 use App\Http\Controllers\Section\GetSectionController;
 use App\Http\Controllers\Section\SectionController;
 use App\Http\Controllers\Student\DeleteAttachmentController;
@@ -131,6 +132,10 @@ Route::group(
 
             //! ===================== Subjects =====================
             Route::resource('subjects',                                 SubjectController::class);
+
+
+            //! ===================== Quizzes =====================
+            Route::resource('quizzes',                                  QuizController::class);
         });
     }
 );

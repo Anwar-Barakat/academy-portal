@@ -66,10 +66,9 @@ return [
     'subjects_list'             => 'Subjects Lists',
 
 
-    // Exams :
-    'exams'                     => 'Exams',
-    'exam'                      => 'Exam',
-    'exams_list'                => 'Exams List',
-    'exam_name'                 => 'Exam Name',
-    'term'                      => 'Term',
+    // quizzes :
+    'quizzes'                   => 'Quizzes',
+    'quiz'                      => 'Quiz',
+    'quizzes_list'              => 'Quizzes List',
+    'quiz_name'                 => 'Quiz Name',
 ];

@@ -6,9 +6,15 @@ use App\Models\Quiz;
 use App\Http\Requests\StoreQuizRequest;
 use App\Http\Requests\UpdateQuizRequest;
 use App\Http\Controllers\Controller;
+use App\Repositories\Interface\QuizRepositoryInterface;
 
 class QuizController extends Controller
 {
+    public $quiz;
+    public function __construct(QuizRepositoryInterface $quiz)
+    {
+        $this->quiz = $quiz;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +22,7 @@ class QuizController extends Controller
      */
     public function index()
     {
-        //
+        return $this->quiz->index();
     }
 
     /**
@@ -26,7 +32,7 @@ class QuizController extends Controller
      */
     public function create()
     {
-        //
+        return $this->quiz->create();
     }
 
     /**
@@ -37,7 +43,7 @@ class QuizController extends Controller
      */
     public function store(StoreQuizRequest $request)
     {
-        //
+        return $this->quiz->store($request);
     }
 
     /**
@@ -59,7 +65,7 @@ class QuizController extends Controller
      */
     public function edit(Quiz $quiz)
     {
-        //
+        return $this->quiz->edit($quiz);
     }
 
     /**
@@ -71,7 +77,7 @@ class QuizController extends Controller
      */
     public function update(UpdateQuizRequest $request, Quiz $quiz)
     {
-        //
+        return $this->quiz->update($request, $quiz);
     }
 
     /**
@@ -82,6 +88,6 @@ class QuizController extends Controller
      */
     public function destroy(Quiz $quiz)
     {
-        //
+        return $this->quiz->destroy($quiz);
     }
 }

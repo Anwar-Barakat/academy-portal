@@ -7,6 +7,7 @@ use App\Repositories\Interface\ExamRepositoryInterface;
 use App\Repositories\Interface\FeeInvoiceRepositoryInterface;
 use App\Repositories\Interface\FeeProcessingRepositoryInterface;
 use App\Repositories\Interface\FeeRepositoryInterface;
+use App\Repositories\Interface\QuizRepositoryInterface;
 use App\Repositories\Interface\ReceiptStudentRepositoryInterface;
 use App\Repositories\Interface\StudentGraduatedRepositoryInterface;
 use App\Repositories\Interface\StudentPaymentRepositoryInterface;
@@ -19,6 +20,7 @@ use App\Repositories\Repository\ExamRepository;
 use App\Repositories\Repository\FeeInvoiceRepository;
 use App\Repositories\Repository\FeeProcessingRepository;
 use App\Repositories\Repository\FeeRepository;
+use App\Repositories\Repository\QuizRepository;
 use App\Repositories\Repository\ReceiptStudentRepository;
 use App\Repositories\Repository\StudentGraduatedRepository;
 use App\Repositories\Repository\StudentPaymentRepository;
@@ -59,7 +61,7 @@ class RepoServiceProvider extends ServiceProvider
 
         $this->app->bind(SubjectRepositoryInterface::class,                     SubjectRepository::class);
 
-        $this->app->bind(ExamRepositoryInterface::class,                        ExamRepository::class);
+        $this->app->bind(QuizRepositoryInterface::class,                        QuizRepository::class);
     }
 
     /**
