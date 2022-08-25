@@ -234,6 +234,7 @@
                     </li>
 
                     <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">{{ __('trans.equipments') }} </li>
+
                     <!-- Subjects -->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#subjects-menu">
@@ -254,6 +255,20 @@
                         </ul>
                     </li>
 
+                    <!-- Exames -->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#exams-menu">
+                            <div class="pull-left"><i class="fas fa-folder-open"></i><span
+                                    class="right-nav-text">{{ __('trans.exams') }}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="exams-menu" class="collapse" data-parent="#sidebarnav">
+                            <li>
+                                <a href="{{ route('exams.index') }}">{{ __('trans.exams_list') }}</a>
+                            </li>
+                        </ul>
+                    </li>
 
 
 

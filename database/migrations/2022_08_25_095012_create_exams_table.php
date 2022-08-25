@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('exams', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('team');
+            $table->tinyInteger('term');
             $table->string('academic_year');
             $table->timestamps();
         });

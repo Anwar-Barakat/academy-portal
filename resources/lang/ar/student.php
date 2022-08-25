@@ -9,7 +9,7 @@ return [
     'name_ar'                   => 'اسم الطالب بالعربي',
     'name_en'                   => 'اسم الطالب بالأنكليزي',
     'birthday'                  => 'تاريخ الميلاد',
-    'academic_year'             => 'سنة الأكاديمية',
+    'academic_year'             => 'سنة الدراسية',
     'personal_information'      => 'المعلومات الشخصية',
     'nationality'               => 'الجنسية',
     'blood_type'                => 'فصيلة الدم',

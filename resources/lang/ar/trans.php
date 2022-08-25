@@ -52,15 +52,25 @@ return [
     'attachment'                => 'المرفق',
     'equipments'                => 'التجهيزات',
 
+
     // Attendaces :
     'today_data'                => 'تاريخ اليوم',
     'attendance'                => 'حضور',
     'nonAttendance'             => 'غياب',
 
+
     // Subjects :
     'subjects'                  => 'المواد الدراسية',
     'subject'                   => 'مادة دراسية',
     'subjects_list'             => 'قائمة المواد الدراسية',
+
+
+    // Exams :
+    'exams'                     => 'الأمتحانات',
+    'exam'                      => 'أمتحان',
+    'exams_list'                => 'قائمة الأمتحانات',
+    'exam_name'                 => 'اسم الأمتحان',
+    'term'                      => 'الفصل',
 
 
 ];

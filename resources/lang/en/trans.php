@@ -64,4 +64,12 @@ return [
     'subjects'                  => 'Subjects',
     'subject'                   => 'Subject',
     'subjects_list'             => 'Subjects Lists',
+
+
+    // Exams :
+    'exams'                     => 'Exams',
+    'exam'                      => 'Exam',
+    'exams_list'                => 'Exams List',
+    'exam_name'                 => 'Exam Name',
+    'term'                      => 'Term',
 ];

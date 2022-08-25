@@ -5,6 +5,7 @@ use App\Http\Controllers\Classroom\ClassroomController;
 use App\Http\Controllers\Classroom\EmptyClassroomController;
 use App\Http\Controllers\Classroom\FilterClassroomController;
 use App\Http\Controllers\Classroom\GetClassroomController;
+use App\Http\Controllers\Exam\ExamController;
 use App\Http\Controllers\Fee\FeeController;
 use App\Http\Controllers\Fee\GetFeeAmountController;
 use App\Http\Controllers\FeeInvoice\FeeInvoiceController;
@@ -130,6 +131,10 @@ Route::group(
 
             //! ===================== Subjects =====================
             Route::resource('subjects',                                 SubjectController::class);
+
+
+            //! ===================== Exams  =====================
+            Route::resource('exams',                                   ExamController::class);
         });
     }
 );
