@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Exam;
+use App\Models\Quiz;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ExamPolicy
+class QuizPolicy
 {
     use HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class ExamPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Exam  $exam
+     * @param  \App\Models\Quiz  $quiz
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Exam $exam)
+    public function view(User $user, Quiz $quiz)
     {
         //
     }
@@ -48,10 +48,10 @@ class ExamPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Exam  $exam
+     * @param  \App\Models\Quiz  $quiz
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Exam $exam)
+    public function update(User $user, Quiz $quiz)
     {
         //
     }
@@ -60,10 +60,10 @@ class ExamPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Exam  $exam
+     * @param  \App\Models\Quiz  $quiz
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Exam $exam)
+    public function delete(User $user, Quiz $quiz)
     {
         //
     }
@@ -72,10 +72,10 @@ class ExamPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Exam  $exam
+     * @param  \App\Models\Quiz  $quiz
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Exam $exam)
+    public function restore(User $user, Quiz $quiz)
     {
         //
     }
@@ -84,10 +84,10 @@ class ExamPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Exam  $exam
+     * @param  \App\Models\Quiz  $quiz
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Exam $exam)
+    public function forceDelete(User $user, Quiz $quiz)
     {
         //
     }
