@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Mockery\Matcher\Subset;
 use Spatie\Translatable\HasTranslations;
 
 class Grade extends Model
@@ -31,5 +32,10 @@ class Grade extends Model
     public function sections()
     {
         return $this->hasMany(Section::class, 'grade_id');
+    }
+
+    public function subjects()
+    {
+        return $this->hasMany(Subject::class, 'grade_id');
     }
 }

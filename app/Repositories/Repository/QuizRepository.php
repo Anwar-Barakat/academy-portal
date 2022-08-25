@@ -44,6 +44,11 @@ class QuizRepository implements QuizRepositoryInterface
 
     public function edit($quiz)
     {
+        $data['grades']     = Grade::all();
+        $data['subjects']   = Subject::all();
+        $data['teachers']   = Teacher::all();
+        $data['quiz']       = $quiz;
+        return view('pages.quizzes.edit', $data);
     }
 
     public function update($request, $quiz)

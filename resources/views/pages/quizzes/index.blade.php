@@ -33,6 +33,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>{{ __('trans.quiz_name') }}</th>
+                                    <th>{{ __('trans.subject') }}</th>
                                     <th>{{ __('grade.grade') }}</th>
                                     <th>{{ __('classroom.classroom') }}</th>
                                     <th>{{ __('section.section') }}</th>
@@ -47,12 +48,19 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $quiz->name }}</td>
+                                        <td>{{ $quiz->subject->name }}</td>
                                         <td>{{ $quiz->grade->name }}</td>
                                         <td>{{ $quiz->classroom->name }}</td>
                                         <td>{{ $quiz->section->name }}</td>
                                         <td>{{ $quiz->teacher->name }}</td>
                                         <td>{{ $quiz->created_at }}</td>
                                         <td>
+                                            <a href="{{ route('quizzes.edit', $quiz) }}"
+                                                class="btn btn-outline-info btn-sm" role="button" aria-pressed="true"><i
+                                                    class="fas fa-edit"></i></a>
+                                            <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal"
+                                                data-target="#delete{{ $quiz->id }}"><i
+                                                    class="fas fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
                                 @empty
