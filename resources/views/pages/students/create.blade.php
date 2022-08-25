@@ -181,13 +181,16 @@
 
                         <div class="col-xl-6">
                             <div class="form-group">
-                                <x-label for="classroom_id" :value="__('parent.parents')" />
+                                <x-label for="parent_id" :value="__('parent.parents')" />
                                 <select class="custom-select mr-sm-2" name="parent_id">
                                     <option selected disabled>{{ __('msgs.select', ['name' => '...']) }}</option>
                                     @foreach ($parents as $parent)
                                         <option value="{{ $parent->id }}">{{ $parent->father_name }}</option>
                                     @endforeach
                                 </select>
+                                @error('parent_id')
+                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
 
@@ -203,6 +206,9 @@
                                         <option value="{{ $year }}">{{ $year }}</option>
                                     @endfor
                                 </select>
+                                @error('academic_year')
+                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
                     </div>

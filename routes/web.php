@@ -24,6 +24,7 @@ use App\Http\Controllers\StudentAccount\StudentAccountController;
 use App\Http\Controllers\StudentPayment\StudentPaymentController;
 use App\Http\Controllers\StudentReceipt\StudentReceiptController;
 use App\Http\Controllers\Subject\SubjectController;
+use App\Http\Controllers\Teacher\GetTeacherController;
 use App\Http\Controllers\Teacher\TeacherController;
 use App\Models\FeeInvoice;
 use Illuminate\Support\Facades\Route;
@@ -83,6 +84,7 @@ Route::group(
 
             //! ===================== Teachers =====================
             Route::resource('teachers',                 TeacherController::class);
+            Route::get('/get-teachers/{section_id}',    GetTeacherController::class)->name('get-teachers');
 
 
             //! ===================== Students =====================
