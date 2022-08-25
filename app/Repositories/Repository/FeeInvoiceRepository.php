@@ -75,7 +75,6 @@ class FeeInvoiceRepository implements FeeInvoiceRepositoryInterface
         }
     }
 
-
     public function edit($feeInvoice)
     {
         $fees   = Fee::where('classroom_id', $feeInvoice->classroom_id)->get();

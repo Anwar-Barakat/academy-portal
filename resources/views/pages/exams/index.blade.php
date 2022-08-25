@@ -57,8 +57,7 @@
                                         </button>
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
                                             data-target="#delete{{ $exam->id }}"
-                                            title="{{ __('buttons.delete') }}">
-                                            <i class="fas fa-trash"></i>
+                                            title="{{ __('buttons.delete') }}"><i class="fas fa-trash-alt"></i>
                                         </button>
                                     </td>
                                 </tr>

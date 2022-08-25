@@ -30,7 +30,7 @@
                     <div class="row mb-3">
                         <div class="col">
                             <x-label for="term" :value="__('trans.term')" />
-                            <x-input type="text" name="term" class="form-control" id="term" :value="old('term', $exam->term)"
+                            <x-input type="number" name="term" class="form-control" id="term" :value="old('term', $exam->term)"
                                 required />
                         </div>
                     </div>
