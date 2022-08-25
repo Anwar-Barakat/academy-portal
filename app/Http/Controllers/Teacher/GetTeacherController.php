@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
 use App\Models\Section;
+use App\Models\Subject;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 
@@ -15,11 +16,22 @@ class GetTeacherController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke($section_id)
+    public function __invoke($grade_id, $classroom_id, $subject_id)
     {
-        $teachers   = Section::where('id', $section_id)->with('teachers')->whereHas('teachers', function ($query) {
+        // $teachers   = Section::where('id', $section_id)->with('teachers')->whereHas('teachers', function ($query) {
+        //     $query->select('teachers.id', 'teachers.name');
+        // })->get()->pluck('teachers');
+        // return $teachers;
+
+
+        $teachers   = Subject::with('teacher')->whereHas('teacher', function ($query) {
             $query->select('teachers.id', 'teachers.name');
-        })->get()->pluck('teachers');
+        })->where([
+            'id'            => $subject_id,
+            'grade_id'      => $grade_id,
+            'classroom_id'  => $classroom_id
+        ])->get()->pluck('teacher');
+
 
         return $teachers;
     }

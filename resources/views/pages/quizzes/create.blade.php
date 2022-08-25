@@ -86,9 +86,7 @@
                         <div class="col-xl-4">
                             <div class="form-group">
                                 <x-label for="section_id" :value="__('section.section')" />
-                                <select class="custom-select mr-sm-2" name="section_id">
-
-                                </select>
+                                <select class="custom-select mr-sm-2" name="section_id"></select>
                                 @error('section_id')
                                     <small class="text text-danger font-weight-bold">{{ $message }}</small>
                                 @enderror
@@ -97,11 +95,9 @@
 
                         <div class="col-xl-6">
                             <div class="form-group">
-                                <x-label for="teacher_id" :value="__('trans.teachers')" />
-                                <select class="custom-select mr-sm-2" name="teacher_id">
-
-                                </select>
-                                @error('teacher_id')
+                                <x-label for="subject_id" :value="__('trans.subjects')" />
+                                <select class="custom-select mr-sm-2" name="subject_id"></select>
+                                @error('subject_id')
                                     <small class="text text-danger font-weight-bold">{{ $message }}</small>
                                 @enderror
                             </div>
@@ -109,37 +105,14 @@
 
                         <div class="col-xl-6">
                             <div class="form-group">
-                                <x-label for="academic_year" :value="__('student.academic_year')" />
-                                <select class="custom-select mr-sm-2" name="academic_year">
-                                    <option selected disabled>{{ __('msgs.select', ['name' => '...']) }}</option>
-                                    @php
-                                        $current_year = date('Y');
-                                    @endphp
-                                    @for ($year = $current_year; $year <= $current_year + 1; $year++)
-                                        <option value="{{ $year }}">{{ $year }}</option>
-                                    @endfor
-                                </select>
+                                <x-label for="teacher_id" :value="__('trans.teachers')" />
+                                <select class="custom-select mr-sm-2" name="teacher_id"></select>
+                                @error('teacher_id')
+                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
                     </div>
-                    <hr>
-                    <h5 class="text text-info">{{ __('parent.attachments') }}</h5>
-                    <div class="row mb-3">
-                        <div class="col-xl-6 col-md-6">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                        id="inputGroupFileAddon01">{{ __('buttons.upload') }}</span>
-                                </div>
-                                <div class="custom-file">
-                                    <x-input type="file" name="images[]" multiple class="custom-file"
-                                        accept="image/*" id="photos" aria-describedby="inputGroupFileAddon01" />
-                                    <x-label class="custom-file-label" for="photos" :value="__('msgs.select', ['name' => __('parent.attachments')])" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
                     <hr>
                     <button type="submit" class="button button-border x-small">
                         {{ __('buttons.submit') }}
@@ -208,10 +181,70 @@
     });
 </script>
 
+{{-- Get Classroom's Subjects --}}
+<script>
+    $(function() {
+        $('select[name=classroom_id]').on('change', function() {
+            var grade_id = $('select[name=grade_id]').val();
+            var classroom_id = $(this).val();
+            if (classroom_id) {
+                $.ajax({
+                    type: "get",
+                    url: "/get-subjects/" + grade_id + '/' + classroom_id,
+                    dataType: "json",
+                    success: function(response) {
+                        $('select[name=subject_id]').empty();
+                        $('select[name=subject_id]').append(
+                            '<option disabled  value="" selected>{{ __('msgs.select', ['name' => '...']) }}</option>'
+                        );
+                        $.each(response, function(index, value) {
+                            $('select[name=subject_id]').append(
+                                '<option value="' + index + '">' + value +
+                                '</option>'
+                            );
+                        });
+                    }
+                });
+            }
+        })
+    });
+</script>
+
+{{-- Get Subject's Teacher --}}
+<script>
+    $(function() {
+        $('select[name=subject_id]').on('change', function() {
+            var grade_id = $('select[name=grade_id]').val();
+            var classroom_id = $('select[name=classroom_id]').val();
+            var subject_id = $('select[name=subject_id]').val();
+            if (classroom_id) {
+                $.ajax({
+                    type: "get",
+                    url: "/get-teachers/" + grade_id + '/' + classroom_id + '/' + subject_id,
+                    dataType: "json",
+                    success: function(response) {
+                        $('select[name=teacher_id]').empty();
+                        $('select[name=teacher_id]').append(
+                            '<option disabled  value="" selected>{{ __('msgs.select', ['name' => '...']) }}</option>'
+                        );
+                        console.log(response);
+                        response.forEach((teacher) => {
+                            document.querySelector(
+                                    'select[name=teacher_id]')
+                                .innerHTML +=
+                                `<option value=${teacher['id']}>${teacher['name']['en']}</option>`;
+                        });
+                    }
+                });
+            }
+        })
+    });
+</script>
+
 
 
 {{-- Get Section's Teachers --}}
-<script>
+{{-- <script>
     $(function() {
         $('select[name=section_id]').on('change', function() {
             var section_id = $(this).val();
@@ -225,7 +258,6 @@
                         $('select[name=teacher_id]').append(
                             '<option disabled  value="" selected>{{ __('msgs.select', ['name' => '...']) }}</option>'
                         );
-
                         response.forEach((teachers) => {
                             teachers.forEach((teacher) => {
                                 document.querySelector(
@@ -239,5 +271,5 @@
             }
         })
     });
-</script>
+</script> --}}
 @endsection

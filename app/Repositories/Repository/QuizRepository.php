@@ -26,6 +26,20 @@ class QuizRepository implements QuizRepositoryInterface
 
     public function store($request)
     {
+        try {
+            if ($request->isMethod('post')) {
+                $data               = $request->only(['grade_id', 'classroom_id', 'section_id', 'teacher_id', 'subject_id']);
+                $data['name']['ar'] = $request->name_ar;
+                $data['name']['en'] = $request->name_en;
+
+                Quiz::create($data);
+
+                toastr()->success(__('msgs.added', ['name' => __('trans.quiz')]));
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
     }
 
     public function edit($quiz)

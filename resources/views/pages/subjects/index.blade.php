@@ -25,7 +25,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>{{ __('student.name') }}</th>
+                                    <th>{{ __('trans.subject') }}</th>
                                     <th>{{ __('grade.grade') }}</th>
                                     <th>{{ __('classroom.classroom') }}</th>
                                     <th>{{ __('teacher.name') }}</th>

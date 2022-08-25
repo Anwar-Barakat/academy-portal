@@ -23,6 +23,7 @@ use App\Http\Controllers\Student\UploadAttachmentController;
 use App\Http\Controllers\StudentAccount\StudentAccountController;
 use App\Http\Controllers\StudentPayment\StudentPaymentController;
 use App\Http\Controllers\StudentReceipt\StudentReceiptController;
+use App\Http\Controllers\Subject\GetSubjectController;
 use App\Http\Controllers\Subject\SubjectController;
 use App\Http\Controllers\Teacher\GetTeacherController;
 use App\Http\Controllers\Teacher\TeacherController;
@@ -83,8 +84,10 @@ Route::group(
 
 
             //! ===================== Teachers =====================
-            Route::resource('teachers',                 TeacherController::class);
-            Route::get('/get-teachers/{section_id}',    GetTeacherController::class)->name('get-teachers');
+            Route::resource('teachers',                                             TeacherController::class);
+            Route::get('/get-teachers/{grade_id}/{classroom_id}/{subject_id}',      GetTeacherController::class)->name('get-teachers');
+            // Route::get('/get-teachers/{section_id}',    GetTeacherController::class)->name('get-teachers');
+
 
 
             //! ===================== Students =====================
@@ -134,6 +137,7 @@ Route::group(
 
             //! ===================== Subjects =====================
             Route::resource('subjects',                                 SubjectController::class);
+            Route::get('/get-subjects/{grade_id}/{classroom_id}',       GetSubjectController::class)->name('get-subjects');
 
 
             //! ===================== Quizzes =====================
