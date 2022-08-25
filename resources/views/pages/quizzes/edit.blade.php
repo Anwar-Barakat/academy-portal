@@ -29,8 +29,9 @@
                         </ul>
                     </div>
                 @endif
-                <form method="post" action="{{ route('quizzes.store') }}" autocomplete="off">
+                <form method="post" action="{{ route('quizzes.update', $quiz) }}" autocomplete="off">
                     @csrf
+                    @method('PUT')
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <div class="form-group">

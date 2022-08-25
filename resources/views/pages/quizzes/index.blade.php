@@ -62,6 +62,8 @@
                                                 data-target="#delete{{ $quiz->id }}"><i
                                                     class="fas fa-trash-alt"></i></button>
                                         </td>
+
+                                        @include('pages.quizzes.delete')
                                     </tr>
                                 @empty
                                     <tr class="text-center">

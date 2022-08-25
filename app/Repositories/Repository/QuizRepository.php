@@ -53,9 +53,30 @@ class QuizRepository implements QuizRepositoryInterface
 
     public function update($request, $quiz)
     {
+        try {
+            if ($request->isMethod('put')) {
+                $data               = $request->only(['grade_id', 'classroom_id', 'section_id', 'teacher_id', 'subject_id']);
+                $data['name']['ar'] = $request->name_ar;
+                $data['name']['en'] = $request->name_en;
+
+                $quiz->update($data);
+
+                toastr()->success(__('msgs.updated', ['name' => __('trans.quiz')]));
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
     }
 
     public function destroy($quiz)
     {
+        try {
+            $quiz->delete();
+            toastr()->info(__('msgs.deleted', ['name' => __('trans.quiz')]));
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
     }
 }
