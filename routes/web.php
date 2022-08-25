@@ -131,10 +131,6 @@ Route::group(
 
             //! ===================== Subjects =====================
             Route::resource('subjects',                                 SubjectController::class);
-
-
-            //! ===================== Exams  =====================
-            Route::resource('exams',                                   ExamController::class);
         });
     }
 );
