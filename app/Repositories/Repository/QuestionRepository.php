@@ -40,13 +40,37 @@ class QuestionRepository implements QuestionRepositoryInterface
 
     public function edit($question)
     {
+        $data['question']   = $question;
+        $data['quizzes']    = Quiz::latest()->get();
+        return view('pages.question.edit', $data);
     }
 
     public function update($request, $question)
     {
+        try {
+            if ($request->isMethod('put')) {
+                $data                   = $request->only(['title_ar', 'title_en', 'all_answers', 'right_answer', 'degrees', 'quiz_id']);
+                $data['title']['ar']    = $data['title_ar'];
+                $data['title']['en']    = $data['title_en'];
+
+                $question->update($data);
+
+                toastr()->success(__('msgs.updated', ['name' => __('trans.question')]));
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
     }
 
     public function destroy($question)
     {
+        try {
+            $question->delete();
+            toastr()->info(__('msgs.deleted', ['name' => __('trans.question')]));
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
     }
 }

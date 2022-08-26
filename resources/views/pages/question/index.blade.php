@@ -57,7 +57,7 @@
                                         <td>{{ $question->quiz->teacher->name }}</td>
                                         <td>{{ $question->created_at }}</td>
                                         <td>
-                                            <a href="{{ route('quizzes.edit', $question) }}"
+                                            <a href="{{ route('questions.edit', $question) }}"
                                                 class="btn btn-outline-info btn-sm" role="button" aria-pressed="true"><i
                                                     class="fas fa-edit"></i></a>
                                             <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal"
@@ -65,7 +65,7 @@
                                                     class="fas fa-trash-alt"></i></button>
                                         </td>
 
-                                        {{-- @include('pages.quizzes.delete') --}}
+                                        @include('pages.question.delete')
                                     </tr>
                                 @empty
                                     <tr class="text-center">
