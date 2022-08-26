@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-    {{ __('msgs.add', ['name' => __('trans.quiz')]) }}
+    {{ __('msgs.add', ['name' => __('trans.question')]) }}
 @stop
 
 @endsection
@@ -11,7 +11,7 @@
 @endsection
 
 @section('breadcrum_home')
-{{ __('msgs.add', ['name' => __('trans.quiz')]) }}
+{{ __('msgs.add', ['name' => __('trans.question')]) }}
 @endsection
 
 @section('content')
@@ -29,15 +29,15 @@
                         </ul>
                     </div>
                 @endif
-                <form method="post" action="{{ route('quizzes.store') }}" autocomplete="off">
+                <form method="post" action="{{ route('questions.store') }}" autocomplete="off">
                     @csrf
                     <div class="row mb-3">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <x-label for="name_ar" :value="__('trans.name_ar')" />
-                                <x-input type="text" name="name_ar" class="form-control" name="name_ar"
-                                    :value="old('name_ar')" />
-                                @error('name_ar')
+                                <x-label for="title_ar" :value="__('trans.arabic_question')" />
+                                <x-input type="text" name="title_ar" class="form-control" name="title_ar"
+                                    :value="old('title_ar')" aria-required="" />
+                                @error('title_ar')
                                     <small class="text text-danger font-weight-bold">{{ $message }}</small>
                                 @enderror
                             </div>
@@ -45,10 +45,31 @@
 
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <x-label for="name_en" :value="__('student.name_en')" />
-                                <x-input type="text" name="name_en" class="form-control" name="name_en"
-                                    :value="old('name_en')" />
-                                @error('name_en')
+                                <x-label for="title_en" :value="__('trans.english_question')" />
+                                <x-input type="text" name="title_en" class="form-control" name="title_en"
+                                    :value="old('title_en')" aria-required="" />
+                                @error('title_en')
+                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <x-label for="all_answers" :value="__('trans.all_answers')" />
+                                <textarea id="all_answers" class="form-control w-100" name="all_answers" rows="3" required>{{ old('all_answers') }}</textarea>
+                                @error('all_answers')
+                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <x-label for="right_answer" :value="__('trans.right_answer')" />
+                                <x-input type="text" name="right_answer" class="form-control" name="right_answer"
+                                    :value="old('right_answer')" aria-required="" />
+                                @error('right_answer')
                                     <small class="text text-danger font-weight-bold">{{ $message }}</small>
                                 @enderror
                             </div>
@@ -56,58 +77,33 @@
                     </div>
 
                     <div class="row mb-3">
-                        <div class="col-xl-4">
+                        <div class="col-xl-6">
                             <div class="form-group">
-                                <x-label for="grade_id" :value="__('grade.grades')" />
-                                <select class="custom-select mr-sm-2" name="grade_id">
-                                    <option selected disabled>{{ __('msgs.select', ['name' => '...']) }}</option>
-                                    @foreach ($grades as $grade)
-                                        <option value="{{ $grade->id }}">{{ $grade->name }}</option>
+                                <x-label for="degrees" :value="__('trans.degrees')" />
+                                <select class="custom-select mr-sm-2" name="degrees">
+                                    <option value="" disabled selected>
+                                        {{ __('msgs.select', ['name' => __('...')]) }}
+                                    </option>
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                    <option value="20">20</option>
+                                    <option value="25">25</option>
+                                </select>
+                                @error('degrees')
+                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="form-group">
+                                <x-label for="quiz_id" :value="__('trans.quizzes')" />
+                                <select class="custom-select mr-sm-2" name="quiz_id">
+                                    @foreach ($quizzes as $quiz)
+                                        <option value="{{ $quiz->id }}">{{ $quiz->name }}</option>
                                     @endforeach
                                 </select>
-                                @error('grade_id')
-                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="col-xl-4">
-                            <div class="form-group">
-                                <x-label for="classroom_id" :value="__('classroom.classrooms')" />
-                                <select class="custom-select mr-sm-2" name="classroom_id">
-
-                                </select>
-                                @error('classroom_id')
-                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="col-xl-4">
-                            <div class="form-group">
-                                <x-label for="section_id" :value="__('section.section')" />
-                                <select class="custom-select mr-sm-2" name="section_id"></select>
-                                @error('section_id')
-                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="col-xl-6">
-                            <div class="form-group">
-                                <x-label for="subject_id" :value="__('trans.subjects')" />
-                                <select class="custom-select mr-sm-2" name="subject_id"></select>
-                                @error('subject_id')
-                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="col-xl-6">
-                            <div class="form-group">
-                                <x-label for="teacher_id" :value="__('trans.teachers')" />
-                                <select class="custom-select mr-sm-2" name="teacher_id"></select>
-                                @error('teacher_id')
+                                @error('quiz_id')
                                     <small class="text text-danger font-weight-bold">{{ $message }}</small>
                                 @enderror
                             </div>

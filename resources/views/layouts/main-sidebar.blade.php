@@ -275,6 +275,26 @@
                         </ul>
                     </li>
 
+                    <!-- Questions -->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#questions-menu">
+                            <div class="pull-left"><i class="fas fa-question"></i><span
+                                    class="right-nav-text">{{ __('trans.questions') }}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="questions-menu" class="collapse" data-parent="#sidebarnav">
+                            <li>
+                                <a href="{{ route('questions.index') }}">{{ __('trans.questions_list') }}</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('questions.create') }}">
+                                    {{ __('msgs.add', ['name' => __('trans.quiz')]) }}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
 
 
 

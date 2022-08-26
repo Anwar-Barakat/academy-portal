@@ -54,21 +54,41 @@ return [
     'equipments'                => 'Equipments',
 
 
+    // ===========
     // Attendaces :
+    // ===========
     'today_data'                => 'Today\'s Date',
     'attendance'                => 'Attendance',
     'nonAttendance'             => 'Non-Attendance',
 
 
+    // ===========
     // Subjects :
+    // ===========
     'subjects'                  => 'Subjects',
     'subject'                   => 'Subject',
     'subjects_list'             => 'Subjects Lists',
 
 
+    // ===========
     // quizzes :
+    // ===========
     'quizzes'                   => 'Quizzes',
     'quiz'                      => 'Quiz',
     'quizzes_list'              => 'Quizzes List',
     'quiz_name'                 => 'Quiz Name',
+
+
+    // ===========
+    // Questions :
+    // ===========
+    'questions'                 => 'Questions',
+    'question'                  => 'Question',
+    'questions_list'            => 'Questions List',
+    'arabic_question'           => 'Arabic Question',
+    'english_question'          => 'English Question',
+    'right_answer'              => 'Right Answer',
+    'all_answers'               => 'All Answers',
+    'degrees'                   => 'Degrees',
+
 ];

@@ -1,15 +1,15 @@
 @extends('layouts.master')
 
 @section('title')
-    {{ __('trans.quizzes_list') }}
+    {{ __('trans.questions_list') }}
 @stop
 
 @section('breadcrum')
-    {{ __('trans.quizzes') }}
+    {{ __('trans.questions') }}
 @endsection
 
 @section('breadcrum_home')
-    {{ __('trans.quizzes_list') }}
+    {{ __('trans.questions_list') }}
 @endsection
 
 @section('content')
@@ -23,7 +23,7 @@
                             <div class="alert alert-danger">{{ $error }}</div>
                         @endforeach
                     @endif
-                    <a href="{{ route('quizzes.create') }}" class="button button-border x-small mb-3">
+                    <a href="{{ route('questions.create') }}" class="button button-border x-small mb-3">
                         {{ __('msgs.add', ['name' => __('trans.quiz')]) }}
                     </a>
 
@@ -32,8 +32,9 @@
                             <thead>
                                 <tr>
                                     <th class="alert-info">#</th>
-                                    <th class="alert-info">{{ __('trans.quiz_name') }}</th>
-                                    <th class="alert-info">{{ __('trans.subject') }}</th>
+                                    <th class="alert-info">{{ __('trans.question') }}</th>
+                                    <th class="alert-success">{{ __('trans.quiz_name') }}</th>
+                                    <th class="alert-success">{{ __('trans.subject') }}</th>
                                     <th class="alert-success">{{ __('grade.grade') }}</th>
                                     <th class="alert-success">{{ __('classroom.classroom') }}</th>
                                     <th class="alert-success">{{ __('section.section') }}</th>
@@ -44,30 +45,31 @@
                             </thead>
                             <tbody>
 
-                                @forelse ($quizzes as $quiz)
+                                @forelse ($questions as $question)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $quiz->name }}</td>
-                                        <td>{{ $quiz->subject->name }}</td>
-                                        <td>{{ $quiz->grade->name }}</td>
-                                        <td>{{ $quiz->classroom->name }}</td>
-                                        <td>{{ $quiz->section->name }}</td>
-                                        <td>{{ $quiz->teacher->name }}</td>
-                                        <td>{{ $quiz->created_at }}</td>
+                                        <td>{{ $question->title }}</td>
+                                        <td>{{ $question->quiz->name }}</td>
+                                        <td>{{ $question->quiz->subject->name }}</td>
+                                        <td>{{ $question->quiz->grade->name }}</td>
+                                        <td>{{ $question->quiz->classroom->name }}</td>
+                                        <td>{{ $question->quiz->section->name }}</td>
+                                        <td>{{ $question->quiz->teacher->name }}</td>
+                                        <td>{{ $question->created_at }}</td>
                                         <td>
-                                            <a href="{{ route('quizzes.edit', $quiz) }}"
+                                            <a href="{{ route('quizzes.edit', $question) }}"
                                                 class="btn btn-outline-info btn-sm" role="button" aria-pressed="true"><i
                                                     class="fas fa-edit"></i></a>
                                             <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal"
-                                                data-target="#delete{{ $quiz->id }}"><i
+                                                data-target="#delete{{ $question->id }}"><i
                                                     class="fas fa-trash-alt"></i></button>
                                         </td>
 
-                                        @include('pages.quizzes.delete')
+                                        {{-- @include('pages.quizzes.delete') --}}
                                     </tr>
                                 @empty
                                     <tr class="text-center">
-                                        <td colspan="8">{{ __('msgs.not_found_yet') }}</td>
+                                        <td colspan="10">{{ __('msgs.not_found_yet') }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>

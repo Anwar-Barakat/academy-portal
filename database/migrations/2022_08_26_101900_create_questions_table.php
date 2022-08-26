@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->text('title');
+            $table->longText('title');
             $table->longText('all_answers');
             $table->longText('right_answer');
-            $table->integer('score');
+            $table->integer('degrees');
             $table->foreignId('quiz_id')->constrained('quizzes')->cascadeOnUpdate();
             $table->timestamps();
         });

@@ -56,4 +56,9 @@ class Quiz extends Model
     {
         return $this->belongsTo(Teacher::class, 'teacher_id');
     }
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class, 'quiz_id');
+    }
 }

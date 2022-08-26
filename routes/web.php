@@ -11,6 +11,7 @@ use App\Http\Controllers\Fee\GetFeeAmountController;
 use App\Http\Controllers\FeeInvoice\FeeInvoiceController;
 use App\Http\Controllers\FeeProcessing\FeeProcessingController;
 use App\Http\Controllers\Grade\GradeController;
+use App\Http\Controllers\Question\QuestionController;
 use App\Http\Controllers\Quiz\QuizController;
 use App\Http\Controllers\Section\GetSectionController;
 use App\Http\Controllers\Section\SectionController;
@@ -63,30 +64,29 @@ Route::group(
             })->name('dashboard');
 
             //! ===================== Grades =====================
-            Route::resource('grades',                   GradeController::class);
+            Route::resource('grades',                                   GradeController::class);
 
 
             //! ===================== Classrooms =====================
-            Route::resource('classrooms',               ClassroomController::class);
-            Route::post('/delete-all-classrooms',       EmptyClassroomController::class)->name('empty-classrooms');
-            Route::get('/filter-classrooms',            FilterClassroomController::class)->name('filter-classrooms');
-            Route::post('/filter-classrooms',           FilterClassroomController::class)->name('filter-classrooms');
-            Route::get('/get-classrooms/{grade_id}',    GetClassroomController::class)->name('get-classrooms');
+            Route::resource('classrooms',                               ClassroomController::class);
+            Route::post('/delete-all-classrooms',                       EmptyClassroomController::class)->name('empty-classrooms');
+            Route::get('/filter-classrooms',                            FilterClassroomController::class)->name('filter-classrooms');
+            Route::post('/filter-classrooms',                           FilterClassroomController::class)->name('filter-classrooms');
+            Route::get('/get-classrooms/{grade_id}',                    GetClassroomController::class)->name('get-classrooms');
 
 
             //! ===================== Sections =====================
-            Route::resource('sections',                 SectionController::class);
-            Route::get('/get-sections/{classroom_id}',  GetSectionController::class)->name('get-sections');
+            Route::resource('sections',                                 SectionController::class);
+            Route::get('/get-sections/{classroom_id}',                  GetSectionController::class)->name('get-sections');
 
 
             //! ===================== Parents =====================
-            Route::view('/add-parents',                 'livewire.show_parent_forms')->name('add-parents');
+            Route::view('/add-parents',                                 'livewire.show_parent_forms')->name('add-parents');
 
 
             //! ===================== Teachers =====================
             Route::resource('teachers',                                             TeacherController::class);
             Route::get('/get-teachers/{grade_id}/{classroom_id}/{subject_id}',      GetTeacherController::class)->name('get-teachers');
-            // Route::get('/get-teachers/{section_id}',    GetTeacherController::class)->name('get-teachers');
 
 
 
@@ -142,6 +142,10 @@ Route::group(
 
             //! ===================== Quizzes =====================
             Route::resource('quizzes',                                  QuizController::class);
+
+
+            //! ===================== Questions =====================
+            Route::resource('questions',                                QuestionController::class);
         });
     }
 );

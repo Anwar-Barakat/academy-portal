@@ -52,23 +52,40 @@ return [
     'attachment'                => 'المرفق',
     'equipments'                => 'التجهيزات',
 
-
+    // ===========
     // Attendaces :
+    // ===========
     'today_data'                => 'تاريخ اليوم',
     'attendance'                => 'حضور',
     'nonAttendance'             => 'غياب',
 
-
+    // ===========
     // Subjects :
+    // ===========
     'subjects'                  => 'المواد الدراسية',
     'subject'                   => 'مادة دراسية',
     'subjects_list'             => 'قائمة المواد الدراسية',
 
 
+    // ===========
     // quizzes :
+    // ===========
     'quizzes'                   => 'الأختبارات',
     'quiz'                      => 'أختبار',
     'quizzes_list'              => 'قائمة الأختبارات',
     'quiz_name'                 => 'اسم الأختبار',
+
+
+    // ===========
+    // Questions :
+    // ===========
+    'questions'                 => 'الأسألة',
+    'question'                  => 'السؤال',
+    'questions_list'            => 'قائمة الأسألة',
+    'arabic_question'           => 'السؤال بالعربي',
+    'english_question'          => 'السؤال بالأنكليزي',
+    'right_answer'              => 'الأجابة الصحيحة',
+    'all_answers'               => 'جميع الأجابات',
+    'degrees'                   => 'الدرجات',
 
 ];

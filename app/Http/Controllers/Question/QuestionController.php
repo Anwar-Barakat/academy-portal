@@ -1,13 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Question;
 
 use App\Models\Question;
 use App\Http\Requests\StoreQuestionRequest;
 use App\Http\Requests\UpdateQuestionRequest;
+use App\Http\Controllers\Controller;
+use App\Repositories\Interface\QuestionRepositoryInterface;
 
 class QuestionController extends Controller
 {
+    public $question;
+    public function __construct(QuestionRepositoryInterface $question)
+    {
+        $this->question = $question;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +22,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
+        return $this->question->index();
     }
 
     /**
@@ -25,7 +32,7 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        //
+        return $this->question->create();
     }
 
     /**
@@ -36,7 +43,7 @@ class QuestionController extends Controller
      */
     public function store(StoreQuestionRequest $request)
     {
-        //
+        return $this->question->store($request);
     }
 
     /**
@@ -47,7 +54,6 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        //
     }
 
     /**
@@ -58,7 +64,7 @@ class QuestionController extends Controller
      */
     public function edit(Question $question)
     {
-        //
+        return $this->question->edit($question);
     }
 
     /**
@@ -70,7 +76,7 @@ class QuestionController extends Controller
      */
     public function update(UpdateQuestionRequest $request, Question $question)
     {
-        //
+        return $this->question->update($request, $question);
     }
 
     /**
@@ -81,6 +87,6 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
-        //
+        return $this->question->destroy($question);
     }
 }

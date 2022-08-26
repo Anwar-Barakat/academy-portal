@@ -33,7 +33,7 @@
                     @csrf
                     @method('PUT')
                     <div class="row mb-3">
-                        <div class="col-md-6">
+                        <div class="col-lg-6">
                             <div class="form-group">
                                 <x-label for="name_ar" :value="__('trans.name_ar')" />
                                 <x-input type="text" name="name_ar" class="form-control" name="name_ar"
@@ -44,7 +44,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-lg-6">
                             <div class="form-group">
                                 <x-label for="name_en" :value="__('student.name_en')" />
                                 <x-input type="text" name="name_en" class="form-control" name="name_en"
