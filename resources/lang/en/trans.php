@@ -2,6 +2,9 @@
 
 return [
 
+    'list'                      => ':name List',
+
+
     // ===========
     // Sidebar :
     // ===========
@@ -99,4 +102,9 @@ return [
     'online_classes'            => 'Online Classes',
     'zoom_direct'               => 'Direct contact with Zoom',
     'zoom_indirect'             => 'In Direct contact with Zoom',
+    'duration'                  => 'Duration',
+    'link'                      => 'Link',
+    'start_at'                  => 'Start At',
+    'duration_in_min'           => 'Duration In Minutes',
+    'join'                      => 'Join',
 ];

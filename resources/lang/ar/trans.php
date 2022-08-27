@@ -2,6 +2,8 @@
 
 return [
 
+    'list'                      => 'قائمة :name',
+
     // ===========
     // Sidebar :
     // ===========
@@ -51,6 +53,7 @@ return [
     'attachments'               => 'المرفقات',
     'attachment'                => 'المرفق',
     'equipments'                => 'التجهيزات',
+    'title'                     => 'العنوان',
 
     // ===========
     // Attendaces :
@@ -95,5 +98,12 @@ return [
     'online_class'              => 'حصة أونلاين',
     'online_classes'            => 'حصص أونلاين',
     'zoom_direct'               => 'الأتصال مباشر مع زوم',
-    'zoom_direct'               => 'الأتصال غير مباشر مع زوم',
+    'zoom_indirect'             => 'الأتصال غير مباشر مع زوم',
+    'duration'                  => 'المُدة',
+    'link'                      => 'الرابط',
+    'start_at'                  => 'تبدأ ب',
+    'duration_in_min'           => 'المدة بالدقائق',
+    'join'                      => 'أنصم',
+
+
 ];

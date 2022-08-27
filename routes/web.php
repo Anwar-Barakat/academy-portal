@@ -5,12 +5,12 @@ use App\Http\Controllers\Classroom\ClassroomController;
 use App\Http\Controllers\Classroom\EmptyClassroomController;
 use App\Http\Controllers\Classroom\FilterClassroomController;
 use App\Http\Controllers\Classroom\GetClassroomController;
-use App\Http\Controllers\Exam\ExamController;
 use App\Http\Controllers\Fee\FeeController;
 use App\Http\Controllers\Fee\GetFeeAmountController;
 use App\Http\Controllers\FeeInvoice\FeeInvoiceController;
 use App\Http\Controllers\FeeProcessing\FeeProcessingController;
 use App\Http\Controllers\Grade\GradeController;
+use App\Http\Controllers\OnlineClass\OnlineClassController;
 use App\Http\Controllers\Question\QuestionController;
 use App\Http\Controllers\Quiz\QuizController;
 use App\Http\Controllers\Section\GetSectionController;
@@ -21,17 +21,14 @@ use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Student\StudentGraduatedController;
 use App\Http\Controllers\Student\StudentPromotionController;
 use App\Http\Controllers\Student\UploadAttachmentController;
-use App\Http\Controllers\StudentAccount\StudentAccountController;
 use App\Http\Controllers\StudentPayment\StudentPaymentController;
 use App\Http\Controllers\StudentReceipt\StudentReceiptController;
 use App\Http\Controllers\Subject\GetSubjectController;
 use App\Http\Controllers\Subject\SubjectController;
 use App\Http\Controllers\Teacher\GetTeacherController;
 use App\Http\Controllers\Teacher\TeacherController;
-use App\Models\FeeInvoice;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
-use PhpParser\Builder\Class_;
 
 /*
 |--------------------------------------------------------------------------
@@ -146,6 +143,10 @@ Route::group(
 
             //! ===================== Questions =====================
             Route::resource('questions',                                QuestionController::class);
+
+
+            //! ===================== Online Classes =====================
+            Route::resource('online-classes',                           OnlineClassController::class);
         });
     }
 );
