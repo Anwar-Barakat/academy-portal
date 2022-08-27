@@ -91,4 +91,12 @@ return [
     'all_answers'               => 'All Answers',
     'degrees'                   => 'Degrees',
 
+
+    // ===========
+    // Zooms :
+    // ===========
+    'online_class'              => 'Online Class',
+    'online_classes'            => 'Online Classes',
+    'zoom_direct'               => 'Direct contact with Zoom',
+    'zoom_indirect'             => 'In Direct contact with Zoom',
 ];

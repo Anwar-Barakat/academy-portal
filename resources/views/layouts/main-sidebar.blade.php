@@ -295,6 +295,25 @@
                         </ul>
                     </li>
 
+                    <!-- Zoom -->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#zooms-menu">
+                            <div class="pull-left"><i class="fas fa-video-camera"></i><span
+                                    class="right-nav-text">{{ __('trans.online_classes') }}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="zooms-menu" class="collapse" data-parent="#sidebarnav">
+                            <li>
+                                <a href="">{{ __('trans.zoom_direct') }}</a>
+                            </li>
+                            <li>
+                                <a href="">{{ __('trans.zoom_indirect') }}</a>
+                            </li>
+                        </ul>
+                    </li>
+
+
 
 
 
