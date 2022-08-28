@@ -32,7 +32,6 @@
                                 <tr>
                                     <th class="alert-success">#</th>
                                     <th class="alert-success">{{ __('trans.title') }}</th>
-                                    <th class="alert-success">{{ __('student.filename') }}</th>
                                     <th class="alert-info">{{ __('grade.grade') }}</th>
                                     <th class="alert-info">{{ __('classroom.classroom') }}</th>
                                     <th class="alert-info">{{ __('section.section') }}</th>
@@ -45,26 +44,17 @@
                                 @forelse ($library as $book)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $loop->title }}</td>
-                                        <td>{{ $loop->file_name }}</td>
+                                        <td>{{ $book->title }}</td>
                                         <td>{{ $book->grade->name }}</td>
                                         <td>{{ $book->classroom->name }}</td>
                                         <td>{{ $book->section->name }}</td>
                                         <td>{{ $book->teacher->name }}</td>
-                                        <td>
-                                            <a class="text text-success font-weight-bold" target="_blank"
-                                                href="{{ $book->start_url }}">{{ __('join') }}</a>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal"
-                                                data-target="#delete{{ $book->id }}"><i
-                                                    class="fas fa-trash-alt"></i></button>
-                                        </td>
+                                        <td></td>
                                     </tr>
-                                    @include('pages.online-classes.delete')
+                                    {{-- @include('pages.online-classes.delete') --}}
                                 @empty
                                     <tr class="text-center">
-                                        <td colspan="9">{{ __('msgs.not_found_yet') }}</td>
+                                        <td colspan="8">{{ __('msgs.not_found_yet') }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>
