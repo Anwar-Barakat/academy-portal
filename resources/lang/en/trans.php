@@ -112,4 +112,12 @@ return [
     'link_for_students'         => 'Link For Students',
     'meeting_number'            => 'Meeting Number',
 
+
+    // ===========
+    // Library :
+    // ===========
+    'library'                   => 'Library',
+    'Books'                     => 'Books',
+    'Book'                      => 'Books',
+
 ];
