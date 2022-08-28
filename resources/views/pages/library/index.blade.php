@@ -49,9 +49,21 @@
                                         <td>{{ $book->classroom->name }}</td>
                                         <td>{{ $book->section->name }}</td>
                                         <td>{{ $book->teacher->name }}</td>
-                                        <td></td>
+                                        <td>
+                                            <a href="{{ route('library.edit', $book) }}"
+                                                class="btn btn-outline-success btn-sm" title="{{ __('buttons.update') }}">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a href="{{ route('download_book_attachment', $book->file_name) }}"
+                                                class="btn btn-outline-info btn-sm" title="{{ __('buttons.download') }}">
+                                                <i class="fas fa-download"></i>
+                                            </a>
+                                            <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal"
+                                                data-target="#delete" title="{{ __('buttons.delete') }}">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </td>
                                     </tr>
-                                    {{-- @include('pages.online-classes.delete') --}}
                                 @empty
                                     <tr class="text-center">
                                         <td colspan="8">{{ __('msgs.not_found_yet') }}</td>

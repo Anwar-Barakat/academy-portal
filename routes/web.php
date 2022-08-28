@@ -10,6 +10,7 @@ use App\Http\Controllers\Fee\GetFeeAmountController;
 use App\Http\Controllers\FeeInvoice\FeeInvoiceController;
 use App\Http\Controllers\FeeProcessing\FeeProcessingController;
 use App\Http\Controllers\Grade\GradeController;
+use App\Http\Controllers\Library\DownloadBookController;
 use App\Http\Controllers\Library\LibraryController;
 use App\Http\Controllers\OnlineClass\IndirectClassController;
 use App\Http\Controllers\OnlineClass\OnlineClassController;
@@ -154,6 +155,7 @@ Route::group(
 
             //! ===================== Library =====================
             Route::resource('library',                                  LibraryController::class);
+            Route::get('download-book-attachment/{file_name}',          DownloadBookController::class)->name('download_book_attachment');
         });
     }
 );
