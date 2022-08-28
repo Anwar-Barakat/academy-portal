@@ -18,6 +18,7 @@ use App\Http\Controllers\Question\QuestionController;
 use App\Http\Controllers\Quiz\QuizController;
 use App\Http\Controllers\Section\GetSectionController;
 use App\Http\Controllers\Section\SectionController;
+use App\Http\Controllers\Setting\SettingController;
 use App\Http\Controllers\Student\DeleteAttachmentController;
 use App\Http\Controllers\Student\DownloadAttachmentController;
 use App\Http\Controllers\Student\StudentController;
@@ -52,7 +53,7 @@ Route::group(
     function () {
 
         Route::get('/', function () {
-            return view('welcome');
+            return view('auth.login');
         });
 
         require __DIR__ . '/auth.php';
@@ -156,6 +157,10 @@ Route::group(
             //! ===================== Library =====================
             Route::resource('library',                                  LibraryController::class);
             Route::get('download-book-attachment/{file_name}',          DownloadBookController::class)->name('download_book_attachment');
+
+
+            //! ===================== Settings =====================
+            Route::resource('settings',                                 SettingController::class);
         });
     }
 );

@@ -328,6 +328,15 @@
                             </li>
                         </ul>
                     </li>
+
+                    <!-- Settings -->
+                    <li>
+                        <a href="{{ route('settings.index') }}" data-target="#settings-menu">
+                            <div class="pull-left"><i class="fas fa-cogs"></i><span
+                                    class="right-nav-text">{{ __('trans.settings') }}</span></div>
+                            <div class="clearfix"></div>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

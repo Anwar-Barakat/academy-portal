@@ -120,4 +120,10 @@ return [
     'books'                     => 'Books',
     'book'                      => 'Book',
 
+
+    // ===========
+    // Settings :
+    // ===========
+    'settings'                  => 'Settings'
+
 ];
