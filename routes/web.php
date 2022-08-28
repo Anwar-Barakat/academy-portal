@@ -152,8 +152,8 @@ Route::group(
             Route::resource('indirect-classes',                         IndirectClassController::class)->only(['create', 'store']);
 
 
-            //! ===================== Libraries =====================
-            Route::resource('libraries',                                LibraryController::class);
+            //! ===================== Library =====================
+            Route::resource('library',                                  LibraryController::class);
         });
     }
 );

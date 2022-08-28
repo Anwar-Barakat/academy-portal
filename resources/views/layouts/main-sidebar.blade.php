@@ -322,7 +322,7 @@
                         </a>
                         <ul id="library-menu" class="collapse" data-parent="#sidebarnav">
                             <li>
-                                <a href="{{ route('libraries.index') }}">
+                                <a href="{{ route('library.index') }}">
                                     {{ __('trans.list', ['name' => __('trans.books')]) }}
                                 </a>
                             </li>

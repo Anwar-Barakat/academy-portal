@@ -215,7 +215,7 @@
                     <hr>
                     <h5 class="text text-info">{{ __('parent.attachments') }}</h5>
                     <div class="row">
-                        <div class="col-xl-6 col-md-6">
+                        <div class="col-xl-6 col-md-12">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"

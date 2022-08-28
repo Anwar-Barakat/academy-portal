@@ -23,7 +23,7 @@
                             <div class="alert alert-danger">{{ $error }}</div>
                         @endforeach
                     @endif
-                    <a href="{{ route('online-classes.create') }}" class="button button-border x-small mb-3">
+                    <a href="{{ route('library.create') }}" class="button button-border x-small mb-3">
                         {{ __('msgs.add', ['name' => __('trans.book')]) }}
                     </a>
                     <div class="table-responsive">
