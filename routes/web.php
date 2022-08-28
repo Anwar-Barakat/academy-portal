@@ -10,6 +10,8 @@ use App\Http\Controllers\Fee\GetFeeAmountController;
 use App\Http\Controllers\FeeInvoice\FeeInvoiceController;
 use App\Http\Controllers\FeeProcessing\FeeProcessingController;
 use App\Http\Controllers\Grade\GradeController;
+use App\Http\Controllers\OnlineClass\IndirectClassController;
+use App\Http\Controllers\OnlineClass\OfflineClassController;
 use App\Http\Controllers\OnlineClass\OnlineClassController;
 use App\Http\Controllers\Question\QuestionController;
 use App\Http\Controllers\Quiz\QuizController;
@@ -147,6 +149,7 @@ Route::group(
 
             //! ===================== Online Classes =====================
             Route::resource('online-classes',                           OnlineClassController::class);
+            Route::resource('indirect-classes',                         IndirectClassController::class)->only(['create', 'store']);
         });
     }
 );

@@ -305,10 +305,9 @@
                         </a>
                         <ul id="zooms-menu" class="collapse" data-parent="#sidebarnav">
                             <li>
-                                <a href="{{ route('online-classes.index') }}">{{ __('trans.zoom_direct') }}</a>
-                            </li>
-                            <li>
-                                <a href="">{{ __('trans.zoom_indirect') }}</a>
+                                <a href="{{ route('online-classes.index') }}">
+                                    {{ __('trans.list', ['name' => __('trans.online_classes')]) }}
+                                </a>
                             </li>
                         </ul>
                     </li>

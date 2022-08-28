@@ -96,6 +96,7 @@ return [
     // Zooms :
     // ===========
     'online_class'              => 'حصة أونلاين',
+    'new_class'                 => 'حصة جديدة',
     'online_classes'            => 'حصص أونلاين',
     'zoom_direct'               => 'الأتصال مباشر مع زوم',
     'zoom_indirect'             => 'الأتصال غير مباشر مع زوم',
@@ -104,6 +105,7 @@ return [
     'start_at'                  => 'تبدأ ب',
     'duration_in_min'           => 'المدة بالدقائق',
     'join'                      => 'أنصم',
-
-
+    'date_and_time'             => 'تاريخ ووقت الحصة',
+    'link_for_students'         => 'اللينك للطلاب',
+    'meeting_number'            => 'رقم الأجتماع',
 ];

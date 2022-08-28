@@ -110,10 +110,13 @@ class OnlineClassController extends Controller
     public function destroy(Request $request, OnlineClass $onlineClass)
     {
         try {
-            $meeting = Zoom::meeting()->find($request->meeting_id);
-            $meeting->delete();
-
-            $onlineClass->delete();
+            if ($onlineClass->integration == false)
+                $onlineClass->delete();
+            else {
+                $meeting = Zoom::meeting()->find($request->meeting_id);
+                $meeting->delete();
+                $onlineClass->delete();
+            }
 
             toastr()->info(__('msgs.deleted', ['name' => __('trans.online_class')]));
             return redirect()->back();

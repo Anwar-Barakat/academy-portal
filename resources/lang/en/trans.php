@@ -99,6 +99,7 @@ return [
     // Zooms :
     // ===========
     'online_class'              => 'Online Class',
+    'new_class'                 => 'A New Class',
     'online_classes'            => 'Online Classes',
     'zoom_direct'               => 'Direct contact with Zoom',
     'zoom_indirect'             => 'In Direct contact with Zoom',
@@ -107,4 +108,8 @@ return [
     'start_at'                  => 'Start At',
     'duration_in_min'           => 'Duration In Minutes',
     'join'                      => 'Join',
+    'date_and_time'             => 'Class Date And Time',
+    'link_for_students'         => 'Link For Students',
+    'meeting_number'            => 'Meeting Number',
+
 ];

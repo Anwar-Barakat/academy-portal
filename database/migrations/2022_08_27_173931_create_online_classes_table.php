@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('online_classes', function (Blueprint $table) {
             $table->id();
+            $table->boolean('integration')->default(true);
             $table->foreignId('grade_id')->constrained('grades')->cascadeOnDelete();
             $table->foreignId('classroom_id')->constrained('classrooms')->cascadeOnDelete();
             $table->foreignId('section_id')->constrained('sections')->cascadeOnDelete();

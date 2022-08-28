@@ -10,6 +10,7 @@ class OnlineClass extends Model
     use HasFactory;
 
     public $fillable = [
+        'integration',
         'grade_id',
         'classroom_id',
         'section_id',

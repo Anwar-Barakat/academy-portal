@@ -26,9 +26,14 @@
                     <a href="{{ route('online-classes.create') }}" class="button button-border x-small mb-3">
                         {{ __('msgs.add', ['name' => __('trans.online_class')]) }}
                     </a>
+                    &nbsp;
+                    <a href="{{ route('indirect-classes.create') }}" class="button button x-small mb-3">
+                        {{ __('msgs.add', ['name' => __('trans.new_class')]) }}
+                    </a>
 
                     <div class="table-responsive">
-                        <table id="datatable" class="table table-striped table-bordered text-center p-0 table-hover table-sm">
+                        <table id="datatable"
+                            class="table table-striped table-bordered text-center p-0 table-hover table-sm">
                             <thead>
                                 <tr>
                                     <th class="alert-success">#</th>

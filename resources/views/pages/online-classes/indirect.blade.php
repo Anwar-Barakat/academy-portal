@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-    {{ __('msgs.add', ['name' => __('trans.online_class')]) }}
+    {{ __('msgs.add', ['name' => __('trans.new_class')]) }}
 @stop
 
 @endsection
@@ -11,7 +11,7 @@
 @endsection
 
 @section('breadcrum_home')
-{{ __('msgs.add', ['name' => __('trans.online_class')]) }}
+{{ __('msgs.add', ['name' => __('trans.new_class')]) }}
 @endsection
 
 @section('content')
@@ -29,7 +29,7 @@
                         </ul>
                     </div>
                 @endif
-                <form method="post" action="{{ route('online-classes.store') }}" autocomplete="off">
+                <form method="post" action="{{ route('indirect-classes.store') }}" autocomplete="off">
                     @csrf
                     <div class="row mb-3">
                         <div class="col-xl-4">
@@ -70,38 +70,80 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label>{{ __('trans.title') }}<span class="text-danger">*</span></label>
-                                <input class="form-control" name="topic" type="text" value="{{ old('topic') }}">
+                                <label for="meeting_id">{{ __('trans.meeting_number') }}</label>
+                                <input class="form-control" id="meeting_id" name="meeting_id" type="number"
+                                    value="{{ old('meeting_id') }}">
+                                @error('meeting_id')
+                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="topic">{{ __('trans.title') }}</label>
+                                <input class="form-control" id="topic" name="topic" type="text"
+                                    value="{{ old('topic') }}">
                                 @error('topic')
                                     <small class="text text-danger font-weight-bold">{{ $message }}</small>
                                 @enderror
                             </div>
                         </div>
-
-                        <div class="col-md-4">
+                    </div>
+                    <div class="row .col-mb-3">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label>{{ __('trans.start_at') }}<span class="text-danger">*</span></label>
-                                <input class="form-control" type="datetime-local" name="start_time"
+                                <label for="start_time">{{ __('trans.date_and_time') }}</label>
+                                <input class="form-control" id="start_time" type="datetime-local" name="start_time"
                                     value="{{ old('start_time') }}">
                                 @error('start_time')
                                     <small class="text text-danger font-weight-bold">{{ $message }}</small>
                                 @enderror
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="password">{{ __('trans.password') }}</label>
+                                <input class="form-control" id="password" type="password" name="password"
+                                    value="{{ old('password') }}">
+                                @error('password')
+                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row .col-mb-3">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>{{ __('trans.duration_in_min') }}<span class="text-danger">*</span></label>
-                                <input class="form-control" name="duration" type="number"
+                                <label for="duration">{{ __('trans.duration_in_min') }}</label>
+                                <input class="form-control" id="duration" type="duration" name="duration"
                                     value="{{ old('duration') }}">
                                 @error('duration')
                                     <small class="text text-danger font-weight-bold">{{ $message }}</small>
                                 @enderror
                             </div>
                         </div>
-
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="start_url">{{ __('trans.link') }}</label>
+                                <input class="form-control" id="start_url" type="url" name="start_url"
+                                    value="{{ old('start_url') }}">
+                                @error('start_url')
+                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="join_url">{{ __('trans.link_for_students') }}</label>
+                                <input class="form-control" id="join_url" type="join_url" name="join_url"
+                                    value="{{ old('join_url') }}">
+                                @error('join_url')
+                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
                     <hr>
                     <button type="submit" class="button button-border x-small">
