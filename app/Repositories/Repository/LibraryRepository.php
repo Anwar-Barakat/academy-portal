@@ -47,13 +47,52 @@ class LibraryRepository implements LibraryRepositoryInterface
 
     public function edit($library)
     {
+        $grades     = Grade::all();
+        return view('pages.library.edit', ['grades' => $grades, 'library' => $library]);
     }
 
     public function update($request, $library)
     {
+        if ($request->isMethod('put')) {
+            try {
+                if ($request->hasFile('file_name')) {
+                    $this->deleteFile($library->file_name);
+
+                    $this->uploadFile($request, 'file_name');
+
+                    $file_name = $request->file('file_name')->getClientOriginalName();
+                } else
+                    $file_name = $library->file_name;
+
+
+
+
+                $library->update([
+                    'title'         => $request->title,
+                    'file_name'     => $file_name,
+                    'grade_id'      => $request->grade_id,
+                    'classroom_id'  => $request->classroom_id,
+                    'section_id'    => $request->section_id,
+                    'teacher_id'    => 1,
+                ]);
+
+                toastr()->success(__('msgs.updated', ['name' => __('trans.book')]));
+                return redirect()->back();
+            } catch (\Throwable $th) {
+                return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+            }
+        }
     }
 
     public function destroy($library)
     {
+        try {
+            $this->deleteFile($library->file_name);
+            $library->delete();
+            toastr()->info(__('msgs.deleted', ['name' => __('trans.book')]));
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
     }
 }

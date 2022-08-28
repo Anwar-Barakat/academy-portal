@@ -55,14 +55,16 @@
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             <a href="{{ route('download_book_attachment', $book->file_name) }}"
-                                                class="btn btn-outline-info btn-sm" title="{{ __('buttons.download') }}">
+                                                class="btn btn-outline-dark btn-sm" title="{{ __('buttons.download') }}">
                                                 <i class="fas fa-download"></i>
                                             </a>
                                             <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal"
-                                                data-target="#delete" title="{{ __('buttons.delete') }}">
+                                                data-target="#delete{{ $book->id }}"
+                                                title="{{ __('buttons.delete') }}">
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
                                         </td>
+                                        @include('pages.library.delete')
                                     </tr>
                                 @empty
                                     <tr class="text-center">
