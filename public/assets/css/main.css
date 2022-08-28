@@ -107,6 +107,10 @@ h5 {
     background-color: #121212;
 }
 
+.side-menu-fixed .side-menu {
+    padding-bottom: 2rem;
+}
+
 .dropdown-menu.show {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

@@ -1,13 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Library;
 
 use App\Models\Library;
 use App\Http\Requests\StoreLibraryRequest;
 use App\Http\Requests\UpdateLibraryRequest;
+use App\Http\Controllers\Controller;
+use App\Repositories\Interface\LibraryRepositoryInterface;
 
 class LibraryController extends Controller
 {
+    public $library;
+    public function __construct(LibraryRepositoryInterface $library)
+    {
+        $this->library = $library;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +22,7 @@ class LibraryController extends Controller
      */
     public function index()
     {
-        //
+        return $this->library->index();
     }
 
     /**
@@ -25,7 +32,7 @@ class LibraryController extends Controller
      */
     public function create()
     {
-        //
+        return $this->library->create();
     }
 
     /**
@@ -36,7 +43,7 @@ class LibraryController extends Controller
      */
     public function store(StoreLibraryRequest $request)
     {
-        //
+        return $this->library->store($request);
     }
 
     /**
@@ -58,7 +65,7 @@ class LibraryController extends Controller
      */
     public function edit(Library $library)
     {
-        //
+        return $this->library->edit($library);
     }
 
     /**
@@ -70,7 +77,7 @@ class LibraryController extends Controller
      */
     public function update(UpdateLibraryRequest $request, Library $library)
     {
-        //
+        return $this->library->update($request, $library);
     }
 
     /**
@@ -81,6 +88,6 @@ class LibraryController extends Controller
      */
     public function destroy(Library $library)
     {
-        //
+        return $this->library->destroy($library);
     }
 }

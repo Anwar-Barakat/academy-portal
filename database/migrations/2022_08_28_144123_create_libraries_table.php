@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('file_name');
-            $table->foreignId('grade_id')->constrained('grades')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('classroom_id')->constrained('classrooms')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('section_id')->constrained('sections')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('teacher_id')->constrained('teachers')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('grade_id')->constrained('grades')->cascadeOnUpdate();
+            $table->foreignId('classroom_id')->constrained('classrooms')->cascadeOnUpdate();
+            $table->foreignId('section_id')->constrained('sections')->cascadeOnUpdate();
+            $table->foreignId('teacher_id')->constrained('teachers')->cascadeOnUpdate();
             $table->timestamps();
         });
     }

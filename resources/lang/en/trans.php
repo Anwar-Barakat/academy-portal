@@ -117,7 +117,7 @@ return [
     // Library :
     // ===========
     'library'                   => 'Library',
-    'Books'                     => 'Books',
-    'Book'                      => 'Books',
+    'books'                     => 'Books',
+    'book'                      => 'Book',
 
 ];
