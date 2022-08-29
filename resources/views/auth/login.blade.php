@@ -105,14 +105,6 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-
-                                </div>
-                                <div class="section-field">
-                                    <div class="remember-checkbox mb-30">
-                                        <input type="checkbox" class="form-control" name="two" id="two" />
-                                        <label for="two"> تذكرني</label>
-                                        <a href="#" class="float-right">هل نسيت كلمةالمرور ؟</a>
-                                    </div>
                                 </div>
                                 <button class="button"><span>{{ __('trans.login') }} </span><i
                                         class="fa fa-check"></i></button>

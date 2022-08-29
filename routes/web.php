@@ -2,11 +2,16 @@
 
 use App\Http\Controllers\Attendance\AttendanceController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\ShowLoginController;
 use App\Http\Controllers\Classroom\ClassroomController;
 use App\Http\Controllers\Classroom\EmptyClassroomController;
 use App\Http\Controllers\Classroom\FilterClassroomController;
 use App\Http\Controllers\Classroom\GetClassroomController;
+use App\Http\Controllers\Dashboard\AdminDashboardController;
+use App\Http\Controllers\Dashboard\ParentDashboardController;
+use App\Http\Controllers\Dashboard\StudentDashboardController;
+use App\Http\Controllers\Dashboard\TeacherDashboardController;
 use App\Http\Controllers\Fee\FeeController;
 use App\Http\Controllers\Fee\GetFeeAmountController;
 use App\Http\Controllers\FeeInvoice\FeeInvoiceController;
@@ -56,13 +61,36 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
-
         Route::get('/',                                             [HomeControlller::class, 'index'])->name('home');
 
-        Route::get('/login/{type}',                                 ShowLoginController::class)->middleware('guest')->name('login.show');
+        require __DIR__ . '/auth.php';
+
+        Route::get('/login/{type}',                                 ShowLoginController::class)->name('login.show');
+        Route::post('/login',                                       LoginController::class)->name('login.show');
 
 
-        Route::get('/dashboard', function () {
+        Route::middleware(['isAdmin'])->prefix('admin')->name('admin.')->group(function () {
+
+            Route::get('/dashboard',                                AdminDashboardController::class)->name('dashboard');
+        });
+
+        Route::middleware(['isTeacher'])->prefix('teacher')->name('teacher.')->group(function () {
+
+            Route::get('/dashboard',                                TeacherDashboardController::class)->name('dashboard');
+        });
+
+        Route::middleware(['isParent'])->prefix('parent')->name('parent.')->group(function () {
+
+            Route::get('/dashboard',                                ParentDashboardController::class)->name('dashboard');
+        });
+
+        Route::middleware(['isStudent'])->prefix('student')->name('student.')->group(function () {
+
+            Route::get('/dashboard',                                StudentDashboardController::class)->name('dashboard');
+        });
+
+
+        Route::get('/admin/dashboard', function () {
             return view('dashboard');
         })->name('dashboard');
 

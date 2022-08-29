@@ -45,4 +45,7 @@ return [
     // Fee Processing :
     'amount_warning'                => 'Amount must be less than :amount',
     'student_funds_is_zero'         => 'Student account is now zero',
+
+    // login :
+    'login_first'                   => 'Please, Log in First',
 ];

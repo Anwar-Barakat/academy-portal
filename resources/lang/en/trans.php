@@ -6,6 +6,8 @@ return [
     'login'                     => 'Login',
     'hello_world'               => 'Hello World !',
     'welcome_to'                => 'Welcome to',
+    'welcome_back'              => 'Welcome Back !',
+    'email_or_password'         => 'Email or Password',
 
     // ===========
     // Sidebar :
@@ -58,7 +60,7 @@ return [
     'title_en'                  => 'English Title',
     'equipments'                => 'Equipments',
     'login_way'                 => 'Login Way',
-    'admin'                     => 'ADMIN',
+    'admin'                     => 'Adminstrator',
 
 
     // ===========

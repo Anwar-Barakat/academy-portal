@@ -112,8 +112,8 @@
                         <div class="dropdown-header">
                             <div class="media">
                                 <div class="media-body">
-                                    <h5 class="mt-0 mb-0">{{ Auth::user()->name }}</h5>
-                                    <span>{{ Auth::user()->email }}</span>
+                                    {{-- <h5 class="mt-0 mb-0">{{ Auth::user()->name }}</h5> --}}
+                                    {{-- <span>{{ Auth::user()->email }}</span> --}}
                                 </div>
                             </div>
                         </div>
@@ -125,8 +125,39 @@
                                 class="badge badge-info">6</span> </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>Settings</a>
-                        <a class="dropdown-item" href="#"><i
-                                class="text-danger ti-unlock"></i>{{ __('trans.logout') }}</a>
+                        @if (auth('student')->check())
+                            <form method="GET" action="{{ route('logout', 'student') }}">
+                                @csrf
+                                <a class="dropdown-item" href="#"
+                                    onclick="event.preventDefault();this.closest('form').submit();">
+                                    <i class="fas fa-sign-out"></i> {{ __('trans.logout') }}
+                                </a>
+                            </form>
+                        @elseif (auth('parent')->check())
+                            <form method="GET" action="{{ route('logout', 'parent') }}">
+                                @csrf
+                                <a class="dropdown-item" href="#"
+                                    onclick="event.preventDefault();this.closest('form').submit();">
+                                    <i class="fas fa-sign-out"></i> {{ __('trans.logout') }}
+                                </a>
+                            </form>
+                        @elseif (auth('teacher')->check())
+                            <form method="GET" action="{{ route('logout', 'teacher') }}">
+                                @csrf
+                                <a class="dropdown-item" href="#"
+                                    onclick="event.preventDefault();this.closest('form').submit();">
+                                    <i class="fas fa-sign-out"></i> {{ __('trans.logout') }}
+                                </a>
+                            </form>
+                        @else
+                            <form method="GET" action="{{ route('logout', 'web') }}">
+                                @csrf
+                                <a class="dropdown-item" href="#"
+                                    onclick="event.preventDefault();this.closest('form').submit();">
+                                    <i class="fas fa-sign-out"></i> {{ __('trans.logout') }}
+                                </a>
+                            </form>
+                        @endif
                     </div>
                 </li>
 

@@ -48,4 +48,6 @@ return [
     'amount_warning'                => 'يجب أن يكون المبلغ أقل من :amount',
     'student_funds_is_zero'         => 'حساب الطالب الآن صفر',
 
+    // login :
+    'login_first'                   => 'الرجاء تسجيل الدخول أولا',
 ];
