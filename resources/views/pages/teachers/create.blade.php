@@ -7,7 +7,7 @@
 
 @endsection
 @section('breadcrum')
-{{ __('msgs.add', ['name' => __('teacher.teacher')]) }}
+{{ __('trans.teachers') }}
 @endsection
 
 @section('breadcrum_home')
@@ -124,9 +124,9 @@
                                 @enderror
                             </div>
                             <hr>
-                            <x-button class="btn btn-success btn-sm nextBtn btn-lg">
+                            <button class="button button-border x-small" type="submit">
                                 {{ __('buttons.submit') }}
-                            </x-button>
+                            </button>
                         </form>
                     </div>
                 </div>

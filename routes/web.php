@@ -160,7 +160,7 @@ Route::group(
 
 
             //! ===================== Settings =====================
-            Route::resource('settings',                                 SettingController::class);
+            Route::resource('settings',                                 SettingController::class)->only(['index', 'update']);
         });
     }
 );

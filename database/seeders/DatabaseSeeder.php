@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             NationalitySeeder::class,
             ReligionSeeder::class,
             SpecializationSeeder::class,
+            SettingSeeder::class,
         ]);
     }
 }

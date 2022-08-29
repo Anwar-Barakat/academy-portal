@@ -124,6 +124,10 @@ return [
     // ===========
     // Settings :
     // ===========
-    'settings'                  => 'Settings'
+    'settings'                  => 'Settings',
+    'phone'                     => 'Phone',
+    'end_first_term'            => 'End First Term',
+    'end_second_term'           => 'End Second Term',
+    'logo'                      => 'Logo',
 
 ];
