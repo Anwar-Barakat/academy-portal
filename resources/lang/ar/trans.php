@@ -1,8 +1,12 @@
 <?php
 
 return [
-
+    'an_school'                 => 'مدرسة AN',
     'list'                      => 'قائمة :name',
+    'login'                     => 'تسجيل الدخول',
+    'hello_world'               => 'مرحبا بكم !',
+    'welcome_to'                => 'مرحباً في',
+
 
     // ===========
     // Sidebar :
@@ -54,6 +58,9 @@ return [
     'attachment'                => 'المرفق',
     'equipments'                => 'التجهيزات',
     'title'                     => 'العنوان',
+    'login_way'                 => 'طريقة تسجيل الدخول',
+    'admin'                     => 'المشرف',
+
 
     // ===========
     // Attendaces :

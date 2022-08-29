@@ -1,9 +1,11 @@
 <?php
 
 return [
-
+    'an_school'                 => 'AN Schhol',
     'list'                      => ':name List',
-
+    'login'                     => 'Login',
+    'hello_world'               => 'Hello World !',
+    'welcome_to'                => 'Welcome to',
 
     // ===========
     // Sidebar :
@@ -55,6 +57,8 @@ return [
     'title_ar'                  => 'Arabic Title',
     'title_en'                  => 'English Title',
     'equipments'                => 'Equipments',
+    'login_way'                 => 'Login Way',
+    'admin'                     => 'ADMIN',
 
 
     // ===========
