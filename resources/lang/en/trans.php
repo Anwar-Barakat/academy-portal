@@ -9,6 +9,7 @@ return [
     'welcome_back'              => 'Welcome Back !',
     'email_or_password'         => 'Email or Password',
     'show_data'                 => 'Display Data',
+    'event'                     => 'Event',
 
     // ===========
     // Sidebar :

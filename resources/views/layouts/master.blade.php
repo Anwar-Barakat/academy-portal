@@ -9,6 +9,7 @@
     <meta name="author" content="potenzaglobalsolutions.com" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     @include('layouts.head')
+    @yield('livewire-css')
 </head>
 
 <body>
@@ -59,6 +60,8 @@
     <!--================================= footer -->
 
     @include('layouts.footer-scripts')
+    @yield('liwewire-js')
+    @stack('calendar-script')
 </body>
 
 </html>

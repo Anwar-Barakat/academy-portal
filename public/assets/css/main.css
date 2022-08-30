@@ -119,4 +119,10 @@ h5 {
 .form-control:focus {
     box-shadow: rgb(0 0 0 / 12%) 0px 1px 3px, rgb(0 0 0 / 24%) 0px 1px 2px;
 }
+.fc-direction-ltr .fc-daygrid-event.fc-event-end,
+.fc-direction-rtl .fc-daygrid-event.fc-event-start {
+    color: white;
+    padding: 5px;
+    font-size: 1em;
+}
 /* Global Settings */
