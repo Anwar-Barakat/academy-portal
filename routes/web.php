@@ -38,6 +38,7 @@ use App\Http\Controllers\StudentReceipt\StudentReceiptController;
 use App\Http\Controllers\Subject\GetSubjectController;
 use App\Http\Controllers\Subject\SubjectController;
 use App\Http\Controllers\Teacher\GetTeacherController;
+use App\Http\Controllers\Teacher\SectionController as TeacherSectionController;
 use App\Http\Controllers\Teacher\StudentController as TeacherStudentController;
 use App\Http\Controllers\Teacher\TeacherController;
 use Illuminate\Support\Facades\Route;
@@ -81,7 +82,9 @@ Route::group(
 
             Route::get('/dashboard',                                TeacherDashboardController::class)->name('dashboard');
 
-            Route::resource('students',                             TeacherStudentController::class);
+            Route::resource('students',                             TeacherStudentController::class)->only(['index']);
+
+            Route::get('sections',                                  TeacherSectionController::class)->name('sections.index');
         });
 
         Route::middleware(['isParent'])->prefix('parent')->name('parent.')->group(function () {

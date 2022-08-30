@@ -11,6 +11,16 @@
 <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">{{ __('trans.components') }} </li>
 
 <li>
+    <a href="{{ route('teacher.sections.index') }}" data-target="#dashboard">
+        <div class="pull-left">
+            <i class="fas fa-th-large"></i>
+            <span class="right-nav-text">{{ __('section.sections') }}</span>
+        </div>
+        <div class="clearfix"></div>
+    </a>
+</li>
+
+<li>
     <a href="{{ route('teacher.students.index') }}" data-target="#dashboard">
         <div class="pull-left">
             <i class="fas fa-user-graduate"></i>

@@ -19,6 +19,11 @@ class Section extends Model
 
     public $translatable = ['name'];
 
+    public function grade()
+    {
+        return $this->belongsTo(Grade::class, 'grade_id');
+    }
+
     public function classroom()
     {
         return $this->belongsTo(classroom::class, 'classroom_id');
