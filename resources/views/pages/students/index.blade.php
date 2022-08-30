@@ -30,13 +30,13 @@
                         <table id="datatable" class="table table-striped table-bordered text-center p-0 table-hover table-sm">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>{{ __('student.name') }}</th>
-                                    <th>{{ __('grade.grade') }}</th>
-                                    <th>{{ __('classroom.classroom') }}</th>
-                                    <th>{{ __('section.section') }}</th>
-                                    <th>{{ __('trans.created_at') }}</th>
-                                    <th>{{ __('buttons.actions') }}</th>
+                                    <th class="alert-info">#</th>
+                                    <th class="alert-info">{{ __('student.name') }}</th>
+                                    <th class="alert-success">{{ __('grade.grade') }}</th>
+                                    <th class="alert-success">{{ __('classroom.classroom') }}</th>
+                                    <th class="alert-success">{{ __('section.section') }}</th>
+                                    <th class="alert-info">{{ __('trans.created_at') }}</th>
+                                    <th class="alert-info">{{ __('buttons.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'welcome'                   => 'Welcome',
     'an_school'                 => 'AN Schhol',
     'list'                      => ':name List',
     'login'                     => 'Login',

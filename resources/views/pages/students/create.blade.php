@@ -85,7 +85,8 @@
                             <div class="form-group">
                                 <x-label for="gender" :value="__('trans.gender')" />
                                 <select class="custom-select mr-sm-2" name="gender">
-                                    <option disabled value="">{{ __('msgs.select', ['name' => '...']) }}</option>
+                                    <option disabled value="" selected>{{ __('msgs.select', ['name' => '...']) }}
+                                    </option>
                                     <option value="0">{{ __('trans.male') }}</option>
                                     <option value="1">{{ __('trans.female') }}</option>
                                 </select>

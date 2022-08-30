@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'welcome'                   => 'مرحباً',
     'an_school'                 => 'مدرسة AN',
     'list'                      => 'قائمة :name',
     'login'                     => 'تسجيل الدخول',

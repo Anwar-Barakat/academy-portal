@@ -2,7 +2,7 @@
     <li>
         <a href="{{ route('admin.dashboard') }}" data-target="#dashboard">
             <div class="pull-left">
-                <i class="ti-home"></i>
+                <i class="fas fa-school"></i>
                 <span class="right-nav-text">{{ __('trans.dashboard') }}</span>
             </div>
             <div class="clearfix"></div>

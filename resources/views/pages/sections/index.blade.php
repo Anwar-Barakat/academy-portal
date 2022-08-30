@@ -63,6 +63,7 @@
                                                                         <th>#</th>
                                                                         <th>{{ __('section.name') }}
                                                                         </th>
+                                                                        <th>{{ __('student.students') }}</th>
                                                                         <th>{{ __('section.classrrom_name') }}</th>
                                                                         <th>{{ __('section.status') }}</th>
                                                                         <th>{{ __('buttons.actions') }}</th>
@@ -73,6 +74,9 @@
                                                                         <tr>
                                                                             <td>{{ $loop->iteration }}</td>
                                                                             <td>{{ $section->name }}</td>
+                                                                            <td>
+                                                                                {{ App\Models\Student::where(['grade_id' => $grade->id, 'classroom_id' => $section->classroom->id, 'section_id' => $section->id])->count() }}
+                                                                            </td>
                                                                             <td>{{ $section->classroom->name }}
                                                                             </td>
                                                                             <td>
