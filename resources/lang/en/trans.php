@@ -10,6 +10,7 @@ return [
     'email_or_password'         => 'Email or Password',
     'show_data'                 => 'Display Data',
     'event'                     => 'Event',
+    'profile'                   => 'Profile',
 
     // ===========
     // Sidebar :

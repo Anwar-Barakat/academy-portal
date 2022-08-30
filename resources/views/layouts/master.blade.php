@@ -13,50 +13,53 @@
 </head>
 
 <body>
+
     <div class="wrapper">
 
         <!--================================= preloader -->
-
-        <div id="pre-loader">
-            <img src="{{ asset('assets/images/pre-loader/loader-01.svg') }}" alt="">
-        </div>
-
-        <!--================================= preloader -->
-
-        @include('layouts.main-header')
-
-        @include('layouts.main-sidebar')
-
-        <!--================================= Main content -->
-        <!-- main-content -->
-        <div class="content-wrapper">
-
-            @yield('page-header')
-
-            <!-- breadcrumb -->
-            <div class="page-title">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h4 class="mb-0">@yield('breadcrum')</h4>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                            <li class="breadcrumb-item"><a href=""
-                                    class="default-color">{{ __('grade.home') }}</a></li>
-                            <li class="breadcrumb-item active">@yield('breadcrum_home')</li>
-                        </ol>
-                    </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div id="pre-loader">
+                    <img src="{{ asset('assets/images/pre-loader/loader-01.svg') }}" alt="">
                 </div>
+
+                <!--================================= preloader -->
+
+                @include('layouts.main-header')
+
+                @include('layouts.main-sidebar')
+
+                <!--================================= Main content -->
+                <!-- main-content -->
+                <div class="content-wrapper">
+
+                    @yield('page-header')
+
+                    <!-- breadcrumb -->
+                    <div class="page-title">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h4 class="mb-0">@yield('breadcrum')</h4>
+                            </div>
+                            <div class="col-sm-6">
+                                <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
+                                    <li class="breadcrumb-item"><a href=""
+                                            class="default-color">{{ __('grade.home') }}</a></li>
+                                    <li class="breadcrumb-item active">@yield('breadcrum_home')</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- breadcrumb -->
+
+                    @yield('content')
+
+                    <!--================================= footer -->
+                    @include('layouts.footer')
+                </div><!-- main content wrapper end-->
             </div>
-            <!-- breadcrumb -->
-
-            @yield('content')
-
-            <!--================================= footer -->
-            @include('layouts.footer')
-        </div><!-- main content wrapper end-->
+        </div>
     </div>
-
     <!--================================= footer -->
 
     @include('layouts.footer-scripts')

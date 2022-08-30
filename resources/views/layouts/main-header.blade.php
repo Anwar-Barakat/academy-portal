@@ -112,8 +112,22 @@
                         <div class="dropdown-header">
                             <div class="media">
                                 <div class="media-body">
-                                    {{-- <h5 class="mt-0 mb-0">{{ Auth::user()->name }}</h5> --}}
-                                    {{-- <span>{{ Auth::user()->email }}</span> --}}
+                                    @if (Auth::guard('web')->check())
+                                        <h5 class="mt-0 mb-0">{{ Auth::guard('web')->user()->name }}</h5>
+                                        <span>{{ Auth::guard('web')->user()->email }}</span>
+                                    @endif
+                                    @if (Auth::guard('teacher')->check())
+                                        <h5 class="mt-0 mb-0">{{ Auth::guard('teacher')->user()->name }}</h5>
+                                        <span>{{ Auth::guard('teacher')->user()->email }}</span>
+                                    @endif
+                                    @if (Auth::guard('parent')->check())
+                                        <h5 class="mt-0 mb-0">{{ Auth::guard('parent')->user()->name }}</h5>
+                                        <span>{{ Auth::guard('parent')->user()->email }}</span>
+                                    @endif
+                                    @if (Auth::guard('student')->check())
+                                        <h5 class="mt-0 mb-0">{{ Auth::guard('student')->user()->name }}</h5>
+                                        <span>{{ Auth::guard('student')->user()->email }}</span>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -126,7 +140,7 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>Settings</a>
                         @if (auth('student')->check())
-                            <form method="GET" action="{{ route('logout', 'student') }}">
+                            <form method="GET" action="{{ route('all.logout', 'student') }}">
                                 @csrf
                                 <a class="dropdown-item" href="#"
                                     onclick="event.preventDefault();this.closest('form').submit();">
@@ -134,7 +148,7 @@
                                 </a>
                             </form>
                         @elseif (auth('parent')->check())
-                            <form method="GET" action="{{ route('logout', 'parent') }}">
+                            <form method="GET" action="{{ route('all.logout', 'parent') }}">
                                 @csrf
                                 <a class="dropdown-item" href="#"
                                     onclick="event.preventDefault();this.closest('form').submit();">
@@ -142,7 +156,7 @@
                                 </a>
                             </form>
                         @elseif (auth('teacher')->check())
-                            <form method="GET" action="{{ route('logout', 'teacher') }}">
+                            <form method="GET" action="{{ route('all.logout', 'teacher') }}">
                                 @csrf
                                 <a class="dropdown-item" href="#"
                                     onclick="event.preventDefault();this.closest('form').submit();">
@@ -150,7 +164,7 @@
                                 </a>
                             </form>
                         @else
-                            <form method="GET" action="{{ route('logout', 'web') }}">
+                            <form method="GET" action="{{ route('all.logout', 'web') }}">
                                 @csrf
                                 <a class="dropdown-item" href="#"
                                     onclick="event.preventDefault();this.closest('form').submit();">

@@ -67,7 +67,7 @@ Route::group(
 
         Route::get('/login/{type}',                                 ShowLoginController::class)->name('login.show');
         Route::post('/login',                                       LoginController::class)->name('login.show');
-        Route::get('/logout/{type?}',                               LogoutController::class)->name('all.logout');
+        Route::get('/logout/{type}',                                LogoutController::class)->name('all.logout');
 
 
 

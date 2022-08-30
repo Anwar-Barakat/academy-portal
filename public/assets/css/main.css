@@ -125,4 +125,8 @@ h5 {
     padding: 5px;
     font-size: 1em;
 }
+
+.side-menu-fixed .side-menu-bg {
+    background-color: #121212;
+}
 /* Global Settings */

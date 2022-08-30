@@ -44,7 +44,7 @@
                             <h3 class="mb-30">
                                 {{ __('msgs.select', ['name' => __('trans.login_way')]) }}</h3>
                             <div class="form-inline">
-                                <a class="btn btn-default col-lg-3" title="{{ __('trans.student') }}"
+                                <a class="btn btn-default col-lg-3" title="{{ __('student.student') }}"
                                     href="{{ route('login.show', 'student') }}">
                                     <img alt="user-img" width="150px;"
                                         src="{{ URL::asset('assets/images/vectors/student.png') }}">

@@ -14,9 +14,9 @@ class LogoutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke($guard)
+    public function __invoke($type)
     {
-        Auth::guard($guard)->logout();
+        Auth::guard($type)->logout();
 
         request()->session()->invalidate();
 
