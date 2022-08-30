@@ -50,4 +50,5 @@ return [
 
     // login :
     'login_first'                   => 'الرجاء تسجيل الدخول أولا',
+    'last_operations'               => 'آخر العمليات على النظام',
 ];

@@ -40,7 +40,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"
+                            <li class="breadcrumb-item"><a href=""
                                     class="default-color">{{ __('grade.home') }}</a></li>
                             <li class="breadcrumb-item active">@yield('breadcrum_home')</li>
                         </ol>

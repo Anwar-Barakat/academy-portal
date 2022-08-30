@@ -67,6 +67,8 @@ Route::group(
 
         Route::get('/login/{type}',                                 ShowLoginController::class)->name('login.show');
         Route::post('/login',                                       LoginController::class)->name('login.show');
+        Route::get('/logout/{type?}',                               LogoutController::class)->name('all.logout');
+
 
 
         Route::middleware(['isAdmin'])->prefix('admin')->name('admin.')->group(function () {
@@ -89,10 +91,6 @@ Route::group(
             Route::get('/dashboard',                                StudentDashboardController::class)->name('dashboard');
         });
 
-
-        Route::get('/admin/dashboard', function () {
-            return view('dashboard');
-        })->name('dashboard');
 
         //! ===================== Grades =====================
         Route::resource('grades',                                   GradeController::class);

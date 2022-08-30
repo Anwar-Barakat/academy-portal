@@ -48,4 +48,6 @@ return [
 
     // login :
     'login_first'                   => 'Please, Log in First',
+    'last_operations'               => 'Last operations on System',
+
 ];

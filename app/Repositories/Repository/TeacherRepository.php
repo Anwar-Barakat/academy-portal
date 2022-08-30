@@ -6,6 +6,7 @@ use App\Http\Requests\StoreTeacherRequest;
 use App\Models\Specialization;
 use App\Models\Teacher;
 use App\Repositories\Interface\TeacherRepositoryInterface;
+use Illuminate\Support\Facades\Hash;
 
 class TeacherRepository implements TeacherRepositoryInterface
 {
@@ -20,6 +21,7 @@ class TeacherRepository implements TeacherRepositoryInterface
             $data = $request->only(['email', 'password', 'gender', 'specialization_id', 'joining', 'address']);
             $data['name']['ar'] = $request->name_ar;
             $data['name']['en'] = $request->name_en;
+            $data['password']   = Hash::make($data['password']);
             Teacher::create($data);
 
             toastr()->success(__('msgs.added', ['name' => __('teacher.teacher')]));
@@ -41,6 +43,9 @@ class TeacherRepository implements TeacherRepositoryInterface
             $data = $request->only(['email', 'password', 'gender', 'specialization_id', 'joining', 'address']);
             $data['name']['ar'] = $request->name_ar;
             $data['name']['en'] = $request->name_en;
+            if (isset($request->password) && !empty($request->password)) {
+                $data['password']   = Hash::make($data['password']);
+            }
             $teacher->update($data);
 
             toastr()->success(__('msgs.updated', ['name' => __('teacher.teacher')]));
