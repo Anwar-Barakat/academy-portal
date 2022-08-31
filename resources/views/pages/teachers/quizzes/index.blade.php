@@ -63,7 +63,7 @@
                                                     class="fas fa-trash-alt"></i></button>
                                         </td>
 
-                                        {{-- @include('pages.quizzes.delete') --}}
+                                        @include('pages.teachers.quizzes.delete')
                                     </tr>
                                 @empty
                                     <tr class="text-center">
