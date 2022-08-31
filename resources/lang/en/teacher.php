@@ -12,4 +12,7 @@ return [
     'name_ar'                   => 'Arabic Teacher Name',
     'name_en'                   => 'English Teacher Name',
     'address'                   => 'Address',
+    'reports'                   => 'Reports',
+    'attendace_reports'         => 'Attendace Reports',
+    'quizzes_reports'           => 'Quizzes Reports',
 ];

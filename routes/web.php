@@ -37,6 +37,7 @@ use App\Http\Controllers\StudentPayment\StudentPaymentController;
 use App\Http\Controllers\StudentReceipt\StudentReceiptController;
 use App\Http\Controllers\Subject\GetSubjectController;
 use App\Http\Controllers\Subject\SubjectController;
+use App\Http\Controllers\Teacher\AttendanceController as TeacherAttendanceController;
 use App\Http\Controllers\Teacher\GetTeacherController;
 use App\Http\Controllers\Teacher\SectionController as TeacherSectionController;
 use App\Http\Controllers\Teacher\StudentController as TeacherStudentController;
@@ -85,6 +86,8 @@ Route::group(
             Route::resource('students',                             TeacherStudentController::class)->only(['index']);
 
             Route::get('sections',                                  TeacherSectionController::class)->name('sections.index');
+
+            Route::resource('students-attendance',                  TeacherAttendanceController::class)->only(['index', 'store']);
         });
 
         Route::middleware(['isParent'])->prefix('parent')->name('parent.')->group(function () {
