@@ -10,6 +10,7 @@ return [
     'show'                  => 'عرض',
     'download'              => "تحميل",
     'undo'                  => 'تراجع',
+    'search'                => 'بحث',
 
 
     'active'                => 'فعال',

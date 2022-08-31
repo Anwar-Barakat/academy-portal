@@ -38,7 +38,7 @@
         <div class="clearfix"></div>
     </a>
     <ul id="reports-menu" class="collapse" data-parent="#sidebarnav">
-        <li> <a href="{{ route('teacher.students-attendance.index') }}">{{ __('teacher.attendace_reports') }} </a> </li>
+        <li> <a href="{{ route('teacher.attendances-report.index') }}">{{ __('teacher.attendace_reports') }} </a> </li>
         <li> <a href="">{{ __('teacher.quizzes_reports') }} </a> </li>
     </ul>
 </li>

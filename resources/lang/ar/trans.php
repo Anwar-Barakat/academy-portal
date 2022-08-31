@@ -74,6 +74,7 @@ return [
     'today_data'                => 'تاريخ اليوم',
     'attendance'                => 'حضور',
     'nonAttendance'             => 'غياب',
+    'attedances_report'         => 'تقرير الحصور والغياب',
 
     // ===========
     // Subjects :

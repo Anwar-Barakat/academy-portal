@@ -33,6 +33,10 @@ body {
     background-color: #a8bbbf;
 }
 
+.content-wrapper .page-title {
+    padding: 70px 0 0;
+}
+
 .form-control {
     padding: 10px 15px;
 }

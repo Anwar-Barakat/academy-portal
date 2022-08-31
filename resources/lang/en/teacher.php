@@ -15,4 +15,11 @@ return [
     'reports'                   => 'Reports',
     'attendace_reports'         => 'Attendace Reports',
     'quizzes_reports'           => 'Quizzes Reports',
+    'start_date'                => 'Start Date',
+    'end_date'                  => 'End Date',
+    'to'                        => 'To',
+    'search_information'        => 'Search Information',
+    'all'                       => 'All',
+    'results'                   => 'Results',
+    'date'                      => 'Date',
 ];

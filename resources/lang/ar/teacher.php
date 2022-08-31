@@ -15,4 +15,12 @@ return [
     'reports'                   => 'التقارير',
     'attendace_reports'         => 'تقارير الحضور والغياب',
     'quizzes_reports'           => 'تقارير الأمتحانات',
+    'start_date'                => 'تاريخ البداية',
+    'end_date'                  => 'تاريخ النهاية',
+    'to'                        => 'إلى',
+    'search_information'        => 'معلومات البحث',
+    'all'                       => 'الجميع',
+    'results'                   => 'النتائج',
+    'date'                      => 'التاريخ',
+
 ];

@@ -10,6 +10,7 @@ return [
     'show'                  => 'Show',
     'download'              => 'Download',
     'undo'                  => 'Undo',
+    'search'                => 'Search',
 
     'active'                => 'Active',
     'disactive'             => 'Disactive',

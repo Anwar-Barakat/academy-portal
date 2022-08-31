@@ -73,6 +73,7 @@ return [
     'today_data'                => 'Today\'s Date',
     'attendance'                => 'Attendance',
     'nonAttendance'             => 'Non-Attendance',
+    'attedances_report'         => 'Attendances Report',
 
 
     // ===========
