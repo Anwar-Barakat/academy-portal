@@ -58,7 +58,7 @@
                                                             <input name="attendences[{{ $student->id }}]"
                                                                 class="leading-tight"
                                                                 @foreach ($student->attendances()->where('created_at', date('Y-m-d'))->get() as $attendance)
-                                                                {{ $attendance->status == true ? 'checked' : '' }} @endforeach
+                                                                {{ $attendance->status ? 'checked' : '' }} @endforeach
                                                                 type="radio" value="presence">
                                                             <span class="text-success">{{ __('trans.attendance') }}</span>
                                                         </label>
@@ -67,7 +67,7 @@
                                                         <label class="ml-4 block text-gray-500 font-semibold">
                                                             <input name="attendences[{{ $student->id }}]"
                                                                 @foreach ($student->attendances()->where('created_at', date('Y-m-d'))->get() as $attendance)
-                                                            {{ $attendance->status == false ? 'checked' : '' }} @endforeach
+                                                            {{ !$attendance->status ? 'checked' : '' }} @endforeach
                                                                 class="leading-tight" type="radio" value="absent">
                                                             <span
                                                                 class="text-danger">{{ __('trans.nonAttendance') }}</span>

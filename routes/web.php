@@ -43,6 +43,7 @@ use App\Http\Controllers\Teacher\GetTeacherController;
 use App\Http\Controllers\Teacher\SectionController as TeacherSectionController;
 use App\Http\Controllers\Teacher\StudentController as TeacherStudentController;
 use App\Http\Controllers\Teacher\TeacherController;
+use App\Http\Controllers\Teacher\TeacherQuizController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -90,7 +91,9 @@ Route::group(
 
             Route::resource('students-attendance',                  TeacherAttendanceController::class)->only(['index', 'store']);
 
-            Route::resource('attendances-report',                   AttendanceReportController::class);
+            Route::resource('attendances-report',                   AttendanceReportController::class)->only(['index', 'store']);
+
+            Route::resource('quizzes',                              TeacherQuizController::class);
         });
 
         Route::middleware(['isParent'])->prefix('parent')->name('parent.')->group(function () {

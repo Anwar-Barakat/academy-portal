@@ -29,7 +29,6 @@ class StoreQuizRequest extends FormRequest
             'grade_id'          => 'required',
             'classroom_id'      => 'required',
             'section_id'        => 'required',
-            'teacher_id'        => 'required',
             'subject_id'        => 'required',
         ];
     }

@@ -31,6 +31,21 @@
 </li>
 
 <li>
+    <a href="javascript:void(0);" data-toggle="collapse" data-target="#quizzes-menu">
+        <div class="pull-left"><i class="fas fa-folder-open"></i></i><span
+                class="right-nav-text">{{ __('trans.quizzes') }}</span></div>
+        <div class="pull-right"><i class="ti-plus"></i></div>
+        <div class="clearfix"></div>
+    </a>
+    <ul id="quizzes-menu" class="collapse" data-parent="#sidebarnav">
+        <li> <a href="{{ route('teacher.quizzes.index') }}">{{ __('trans.list', ['name' => __('trans.quizzes')]) }} </a>
+        </li>
+        <li> <a href="">{{ __('trans.list', ['name' => __('trans.questions')]) }}</a> </li>
+    </ul>
+</li>
+
+
+<li>
     <a href="javascript:void(0);" data-toggle="collapse" data-target="#reports-menu">
         <div class="pull-left"><i class="fas fa-calendar-alt"></i></i><span
                 class="right-nav-text">{{ __('teacher.reports') }}</span></div>
@@ -38,7 +53,8 @@
         <div class="clearfix"></div>
     </a>
     <ul id="reports-menu" class="collapse" data-parent="#sidebarnav">
-        <li> <a href="{{ route('teacher.attendances-report.index') }}">{{ __('teacher.attendace_reports') }} </a> </li>
+        <li> <a href="{{ route('teacher.attendances-report.index') }}">{{ __('teacher.attendace_reports') }} </a>
+        </li>
         <li> <a href="">{{ __('teacher.quizzes_reports') }} </a> </li>
     </ul>
 </li>
