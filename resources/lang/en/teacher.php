@@ -22,4 +22,5 @@ return [
     'all'                       => 'All',
     'results'                   => 'Results',
     'date'                      => 'Date',
+    'of'                        => 'Of',
 ];

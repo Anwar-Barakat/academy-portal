@@ -23,12 +23,19 @@
                             <div class="alert alert-danger">{{ $error }}</div>
                         @endforeach
                     @endif
-                    <a href="{{ route('questions.create') }}" class="button button-border x-small mb-3">
+
+                    <h4 class="mb-4 text-info">
+                        {{ __('trans.list', ['name' => __('trans.questions')]) }} {{ __('teacher.of') }} :
+                        {{ $quiz->name }}
+                    </h4>
+
+                    <a href="{{ route('teacher.questions.show', $quiz->id) }}" class="button button-border x-small mb-4">
                         {{ __('msgs.add', ['name' => __('trans.question')]) }}
                     </a>
 
                     <div class="table-responsive">
-                        <table id="datatable" class="table table-striped table-bordered text-center p-0 table-hover table-sm">
+                        <table id="datatable"
+                            class="table table-striped table-bordered text-center p-0 table-hover table-sm">
                             <thead>
                                 <tr>
                                     <th class="alert-info">#</th>
@@ -57,7 +64,7 @@
                                         <td>{{ $question->quiz->teacher->name }}</td>
                                         <td>{{ $question->created_at }}</td>
                                         <td>
-                                            <a href="{{ route('questions.edit', $question) }}"
+                                            <a href="{{ route('teacher.questions.edit', $question->id) }}"
                                                 class="btn btn-outline-info btn-sm" role="button" aria-pressed="true"><i
                                                     class="fas fa-edit"></i></a>
                                             <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal"
@@ -65,7 +72,7 @@
                                                     class="fas fa-trash-alt"></i></button>
                                         </td>
 
-                                        @include('pages.question.delete')
+                                        @include('pages.teachers.question.delete')
                                     </tr>
                                 @empty
                                     <tr class="text-center">

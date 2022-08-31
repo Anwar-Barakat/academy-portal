@@ -54,13 +54,22 @@
                                         <td>{{ $quiz->section->name }}</td>
                                         <td>{{ $quiz->teacher->name }}</td>
                                         <td>{{ $quiz->created_at }}</td>
-                                        <td>
-                                            <a href="{{ route('teacher.quizzes.edit', $quiz) }}"
-                                                class="btn btn-outline-info btn-sm" role="button" aria-pressed="true"><i
-                                                    class="fas fa-edit"></i></a>
-                                            <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal"
-                                                data-target="#delete{{ $quiz->id }}"><i
-                                                    class="fas fa-trash-alt"></i></button>
+                                        <td class="d-flex align-items-center justify-content-between">
+                                            <div>
+                                                <a href="{{ route('teacher.quizzes.edit', $quiz) }}"
+                                                    class="btn btn-outline-info btn-sm" role="button"
+                                                    title="{{ __('msgs.add', ['name' => __('trans.quiz')]) }}"
+                                                    aria-pressed="true"><i class="fas fa-edit"></i></a>
+                                                <button type="button" class="btn btn-outline-danger btn-sm"
+                                                    data-toggle="modal" data-target="#delete{{ $quiz->id }}"><i
+                                                        class="fas fa-trash-alt"></i></button>
+                                            </div>
+                                            <div>
+                                                <a href="{{ route('teacher.quizzes.show', $quiz) }}"
+                                                    class="btn btn-outline-warning btn-sm" role="button"
+                                                    title="{{ __('trans.list', ['name' => __('trans.questions')]) }}"
+                                                    aria-pressed="true"><i class="fas fa-eye"></i></a>
+                                            </div>
                                         </td>
 
                                         @include('pages.teachers.quizzes.delete')

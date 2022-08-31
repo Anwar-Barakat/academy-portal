@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreQuizRequest;
 use App\Http\Requests\UpdateQuizRequest;
 use App\Models\Grade;
+use App\Models\Question;
 use App\Models\Section;
 use App\Models\Subject;
 use App\Models\Teacher;
@@ -75,7 +76,8 @@ class TeacherQuizController extends Controller
      */
     public function show(Quiz $quiz)
     {
-        //
+        $questions      = Question::with(['quiz'])->where('quiz_id', $quiz->id)->latest()->get();
+        return view('pages.teachers.question.index', ['quiz' => $quiz, 'questions' => $questions]);
     }
 
     /**
