@@ -106,18 +106,17 @@
                                             <td>{{ $attendance->section->name }}</td>
                                             <td>{{ $attendance->created_at }}</td>
                                             <td>
-                                                @if ($attendance->status == 'nonAttendance')
+                                                @if ($attendance->status == false)
                                                     <span class="badge badge-danger">
-                                                        {{ __('trans.' . $attendance->status) }}
+                                                        {{ __('trans.nonAttendance') }}
                                                     </span>
                                                 @else
                                                     <span class="badge badge-success">
-                                                        {{ __('trans.' . $attendance->status) }}
+                                                        {{ __('trans.attendance') }}
                                                     </span>
                                                 @endif
                                             </td>
                                         </tr>
-                                        {{-- @include('pages.Students.Delete') --}}
                                     @endforeach
                             </table>
                         </div>

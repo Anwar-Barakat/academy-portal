@@ -48,13 +48,12 @@ class AttendanceController extends Controller
                 foreach ($request->attendences as $studentId => $attendace) {
                     $attendace == 'presence' ? $status = true : $status = false;
 
-                    Attendance::updateOrCreate(['student_id' => $studentId], [
-                        'student_id'    => $studentId,
+                    Attendance::updateOrCreate(['student_id' => $studentId, 'created_at' => date('Y-m-d')], [
                         'status'        => $status,
                         'grade_id'      => $request->grade_id,
                         'classroom_id'  => $request->classroom_id,
                         'section_id'    => $request->section_id,
-                        'teacher_id'    => 1,
+                        'teacher_id'    => Auth::guard('teacher')->user()->id,
                     ]);
                 }
 
@@ -85,7 +84,6 @@ class AttendanceController extends Controller
      */
     public function edit($id)
     {
-        return $id;
     }
 
     /**

@@ -22,19 +22,6 @@ class Attendance extends Model
     protected $dateFormat = 'Y-m-d';
 
 
-    public function status(): Attribute
-    {
-        return new Attribute(
-            get: function ($value) {
-                if ($value === 0)
-                    return 'nonAttendance';
-                else
-                    return 'attendance';
-            }
-        );
-    }
-
-
     public function createdAt(): Attribute
     {
         return new Attribute(
