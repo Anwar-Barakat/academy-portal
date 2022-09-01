@@ -23,7 +23,7 @@
                             <div class="alert alert-danger">{{ $error }}</div>
                         @endforeach
                     @endif
-                    <a href="{{ route('online-classes.create') }}" class="button button-border x-small mb-3">
+                    <a href="{{ route('teacher.online-classess.create') }}" class="button button-border x-small mb-3">
                         {{ __('msgs.add', ['name' => __('trans.online_class')]) }}
                     </a>
                     &nbsp;
@@ -70,7 +70,7 @@
                                                     class="fas fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
-                                    @include('pages.online-classes.delete')
+                                    @include('pages.teachers.online-classes.delete')
                                 @empty
                                     <tr class="text-center">
                                         <td colspan="10">{{ __('msgs.not_found_yet') }}</td>

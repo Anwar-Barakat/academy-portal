@@ -14,7 +14,7 @@ class OnlineClass extends Model
         'grade_id',
         'classroom_id',
         'section_id',
-        'user_id',
+        'created_by',
         'meeting_id',
         'topic',
         'start_at',
@@ -40,10 +40,5 @@ class OnlineClass extends Model
     public function section()
     {
         return $this->belongsTo(Section::class, 'section_id');
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id');
     }
 }

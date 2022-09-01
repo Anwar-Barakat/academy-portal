@@ -122,6 +122,8 @@ return [
     'date_and_time'             => 'تاريخ ووقت الحصة',
     'link_for_students'         => 'اللينك للطلاب',
     'meeting_number'            => 'رقم الأجتماع',
+    'created_by'                => 'أُنشأت من قبل',
+
 
 
     // ===========

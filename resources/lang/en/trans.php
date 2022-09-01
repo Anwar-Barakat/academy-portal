@@ -122,6 +122,7 @@ return [
     'date_and_time'             => 'Class Date And Time',
     'link_for_students'         => 'Link For Students',
     'meeting_number'            => 'Meeting Number',
+    'created_by'                => 'Created By',
 
 
     // ===========
