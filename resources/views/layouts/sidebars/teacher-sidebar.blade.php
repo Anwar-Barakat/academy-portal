@@ -75,3 +75,12 @@
         </li>
     </ul>
 </li>
+
+<!-- Profile -->
+<li>
+    <a href="{{ route('teacher.profile.index') }}"data-target="#profile-menu">
+        <div class="pull-left"><i class="fas fa-id-card-alt"></i><span
+                class="right-nav-text">{{ __('teacher.profile') }}</span></div>
+        <div class="clearfix"></div>
+    </a>
+</li>

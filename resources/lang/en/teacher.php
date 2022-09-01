@@ -23,4 +23,7 @@ return [
     'results'                   => 'Results',
     'date'                      => 'Date',
     'of'                        => 'Of',
+    'profile'                   => 'Profile',
+    'show_password'             => 'Show Password',
+
 ];
