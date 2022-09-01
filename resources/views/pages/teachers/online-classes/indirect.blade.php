@@ -29,7 +29,7 @@
                         </ul>
                     </div>
                 @endif
-                <form method="post" action="{{ route('indirect-classes.store') }}" autocomplete="off">
+                <form method="post" action="{{ route('teacher.indirect-classess.store') }}" autocomplete="off">
                     @csrf
                     <div class="row mb-3">
                         <div class="col-xl-4">
@@ -117,7 +117,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="duration">{{ __('trans.duration_in_min') }}</label>
-                                <input class="form-control" id="duration" type="duration" name="duration"
+                                <input class="form-control" id="duration" type="number" name="duration"
                                     value="{{ old('duration') }}">
                                 @error('duration')
                                     <small class="text text-danger font-weight-bold">{{ $message }}</small>
@@ -137,7 +137,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="join_url">{{ __('trans.link_for_students') }}</label>
-                                <input class="form-control" id="join_url" type="join_url" name="join_url"
+                                <input class="form-control" id="join_url" type="url" name="join_url"
                                     value="{{ old('join_url') }}">
                                 @error('join_url')
                                     <small class="text text-danger font-weight-bold">{{ $message }}</small>

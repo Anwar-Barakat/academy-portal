@@ -40,6 +40,7 @@ use App\Http\Controllers\Subject\SubjectController;
 use App\Http\Controllers\Teacher\AttendanceController as TeacherAttendanceController;
 use App\Http\Controllers\Teacher\AttendanceReportController;
 use App\Http\Controllers\Teacher\GetTeacherController;
+use App\Http\Controllers\Teacher\IndirectClassController as TeacherIndirectClassController;
 use App\Http\Controllers\Teacher\OnlineClassController as TeacherOnlineClassController;
 use App\Http\Controllers\Teacher\QuestionController as TeacherQuestionController;
 use App\Http\Controllers\Teacher\SectionController as TeacherSectionController;
@@ -100,6 +101,8 @@ Route::group(
             Route::resource('questions',                            TeacherQuestionController::class);
 
             Route::resource('online-classess',                      TeacherOnlineClassController::class);
+
+            Route::resource('indirect-classess',                      TeacherIndirectClassController::class);
         });
 
         Route::middleware(['isParent'])->prefix('parent')->name('parent.')->group(function () {

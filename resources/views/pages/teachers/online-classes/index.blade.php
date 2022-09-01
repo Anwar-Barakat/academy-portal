@@ -27,7 +27,7 @@
                         {{ __('msgs.add', ['name' => __('trans.online_class')]) }}
                     </a>
                     &nbsp;
-                    <a href="{{ route('indirect-classes.create') }}" class="button button x-small mb-3">
+                    <a href="{{ route('teacher.indirect-classess.create') }}" class="button button x-small mb-3">
                         {{ __('msgs.add', ['name' => __('trans.new_class')]) }}
                     </a>
 
