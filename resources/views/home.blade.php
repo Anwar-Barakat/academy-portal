@@ -39,10 +39,14 @@
             <div class="container">
                 <div class="row justify-content-center no-gutters vertical-align selection">
 
-                    <div style="border-radius: 15px;" class="col-lg-8 col-md-8 bg-white">
-                        <div class="login-fancy pb-40 clearfix text-center">
-                            <h3 class="mb-30">
+                    <div style="border-radius: 15px;" class="col-lg-8 col-md-8 bg-white mb-2">
+                        <div class="login-fancy p-2 clearfix text-center">
+                            <h3 class="p-2 m-0">
                                 {{ __('msgs.select', ['name' => __('trans.login_way')]) }}</h3>
+                        </div>
+                    </div>
+                    <div style="border-radius: 15px;" class="col-lg-8 col-md-8 bg-white">
+                        <div class="login-fancy p-2 clearfix text-center">
                             <div class="form-inline">
                                 <a class="btn btn-default col-lg-3" title="{{ __('student.student') }}"
                                     href="{{ route('login.show', 'student') }}">

@@ -16,7 +16,7 @@ class QuizController extends Controller
      */
     public function index()
     {
-        $quizzes    = Quiz::with(['subject'])->where([
+        $quizzes    = Quiz::with(['subject', 'degrees'])->where([
             'grade_id'      => Auth::guard('student')->user()->grade_id,
             'classroom_id'  => Auth::guard('student')->user()->classroom_id,
             'section_id'    => Auth::guard('student')->user()->section_id,
@@ -54,7 +54,8 @@ class QuizController extends Controller
      */
     public function show($id)
     {
-        //
+        $quiz   = Quiz::findOrFail($id);
+        return view('pages.students.quizzes.show', ['quiz' => $quiz]);
     }
 
     /**

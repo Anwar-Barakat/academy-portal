@@ -34,5 +34,11 @@ return [
     'new_classroom'             => 'New Classroom',
     'new_section'               => 'New Section',
     'new_academic_year'         => 'New Academic Year',
-    'undo_the_promotion'      => 'Undoing on Promotion'
+    'undo_the_promotion'        => 'Undoing on Promotion',
+
+
+
+    'enter_exam'                => 'Enter Exam',
+    'successful'                => 'Successful',
+    'failed'                    => 'Failed',
 ];

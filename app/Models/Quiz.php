@@ -61,4 +61,9 @@ class Quiz extends Model
     {
         return $this->hasMany(Question::class, 'quiz_id');
     }
+
+    public function degrees()
+    {
+        return $this->hasMany(Degree::class, 'quiz_id');
+    }
 }

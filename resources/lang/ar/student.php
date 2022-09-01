@@ -35,6 +35,11 @@ return [
     'new_section'               => 'القسم الدراسي الجديد',
     'old_academic_year'         => 'العام الدراسي السابق',
     'new_academic_year'         => 'العام الدراسي الجديد',
-    'undo_the_promotion'        => 'التراجع عن الترقيات'
+    'undo_the_promotion'        => 'التراجع عن الترقيات',
+
+
+    'enter_exam'                => 'دخول الأمتحان',
+    'successful'                => 'ناجح',
+    'failed'                    => 'راسب',
 
 ];

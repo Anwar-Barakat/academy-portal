@@ -29,7 +29,7 @@
                                 <th>{{ __('trans.quiz_name') }}</th>
                                 <th>{{ __('trans.subject') }}</th>
                                 <th>{{ __('trans.created_at') }}</th>
-                                <th>{{ __('buttons.actions') }}</th>
+                                <th>{{ __('student.enter_exam') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,8 +39,21 @@
                                     <td>{{ $quiz->name }}</td>
                                     <td>{{ $quiz->subject->name }}</td>
                                     <td>{{ $quiz->created_at }}</td>
-                                    <td>
-
+                                    <td class="d-flex align-items-center justify-content-center h-100">
+                                        @if ($quiz->degrees->count() > 0 && $quiz->id == $quiz->degrees[0]->quiz_id)
+                                            @if ($quiz->degrees[0]->degree >= 50)
+                                                <label class="badge badge-success">{{ $quiz->degrees[0]->degree }}
+                                                    {{ __('student.successful') }}</label>
+                                            @else
+                                                <label class="badge badge-danger">{{ $quiz->degrees[0]->degree }}
+                                                    {{ __('student.failed') }}</label>
+                                            @endif
+                                        @else
+                                            <a href="{{ route('student.quizzes.show', $quiz) }}"
+                                                class="btn btn-outline-info btn-sm" onclick="ExamWarning()">
+                                                <i class="fas fa-sign-in-alt"></i>
+                                            </a>
+                                        @endif
                                     </td>
                                 </tr>
                             @empty
@@ -61,5 +74,9 @@
 <!-- row closed -->
 @endsection
 @section('js')
-
+<script>
+    function ExamWarning() {
+        alert(`{{ __('msgs.exam_refrech_warnings') }}`);
+    }
+</script>
 @endsection

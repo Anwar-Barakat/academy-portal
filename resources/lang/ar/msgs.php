@@ -5,6 +5,7 @@ return [
     'added'                         => 'تم إضافة :name ',
     'updated'                       => 'تم تحديث :name ',
     'deleted'                       => 'تم حذف :name ',
+    'finished'                      => 'تم الأنتهاء من :name ',
     'is_existed'                    => ':name موجود مسبقاً !!',
     'is_expired'                    => ':name منتهي الصلاحية',
     'not_valid'                     => ':name غير صالح ',
@@ -55,4 +56,6 @@ return [
 
     // Questions
     'question_condition'            => 'من فضلك, قم بفصل الأجابات باستدام علامة (-)',
+    'exam_refrech_warnings'         => 'من فضلك ، لا تقم بتحديث الصفحة أثناء الاختبار ، وإلا فإننا سنلغي الاختبار',
+
 ];

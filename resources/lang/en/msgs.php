@@ -5,6 +5,7 @@ return [
     'added'                         => ':name Has Been Added',
     'updated'                       => ':name Has Been Updated',
     'deleted'                       => ':name Has Been Deleted',
+    'finished'                      => ':name Has Been Finished',
     'is_existed'                    => ':name Is Already Existed',
     'is_expired'                    => ':name Is Already Expired',
     'not_valid'                     => ':name Not Valid',
@@ -52,5 +53,5 @@ return [
 
     // Questions
     'question_condition'            => 'Please, Separate the answers usings dash (-)',
-
+    'exam_refrech_warnings'         => 'Please, do not refresh the page during the test, otherwise we will cancel the test',
 ];
