@@ -59,7 +59,8 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <x-label for="all_answers" :value="__('trans.all_answers')" />
-                                <textarea id="all_answers" class="form-control w-100" name="all_answers" rows="3" required>{{ old('all_answers', $question->all_answers) }}</textarea>
+                                <textarea id="all_answers" class="form-control w-100" name="all_answers" rows="3"
+                                    placeholder="{{ __('msgs.question_condition') }}" required>{{ old('all_answers', $question->all_answers) }}</textarea>
                                 @error('all_answers')
                                     <small class="text text-danger font-weight-bold">{{ $message }}</small>
                                 @enderror

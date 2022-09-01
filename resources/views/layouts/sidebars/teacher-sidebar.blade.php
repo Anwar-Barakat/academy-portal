@@ -10,6 +10,7 @@
 <!-- menu title -->
 <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">{{ __('trans.components') }} </li>
 
+<!-- Sections -->
 <li>
     <a href="{{ route('teacher.sections.index') }}" data-target="#dashboard">
         <div class="pull-left">
@@ -20,6 +21,7 @@
     </a>
 </li>
 
+<!-- Students -->
 <li>
     <a href="{{ route('teacher.students.index') }}" data-target="#dashboard">
         <div class="pull-left">
@@ -30,6 +32,7 @@
     </a>
 </li>
 
+<!-- Quzzies -->
 <li>
     <a href="javascript:void(0);" data-toggle="collapse" data-target="#quizzes-menu">
         <div class="pull-left"><i class="fas fa-folder-open"></i></i><span
@@ -40,11 +43,10 @@
     <ul id="quizzes-menu" class="collapse" data-parent="#sidebarnav">
         <li> <a href="{{ route('teacher.quizzes.index') }}">{{ __('trans.list', ['name' => __('trans.quizzes')]) }} </a>
         </li>
-        <li> <a href="">{{ __('trans.list', ['name' => __('trans.questions')]) }}</a> </li>
     </ul>
 </li>
 
-
+<!-- Reports -->
 <li>
     <a href="javascript:void(0);" data-toggle="collapse" data-target="#reports-menu">
         <div class="pull-left"><i class="fas fa-calendar-alt"></i></i><span

@@ -51,4 +51,8 @@ return [
     // login :
     'login_first'                   => 'الرجاء تسجيل الدخول أولا',
     'last_operations'               => 'آخر العمليات على النظام',
+
+
+    // Questions
+    'question_condition'            => 'من فضلك, قم بفصل الأجابات باستدام علامة (-)',
 ];

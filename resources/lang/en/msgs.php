@@ -50,4 +50,7 @@ return [
     'login_first'                   => 'Please, Log in First',
     'last_operations'               => 'Last operations on System',
 
+    // Questions
+    'question_condition'            => 'Please, Separate the answers usings dash (-)',
+
 ];

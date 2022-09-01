@@ -1,5 +1,8 @@
 @extends('layouts.master')
 
+@section('livewire-css')
+    @livewireStyles
+@endsection
 
 @section('title')
     {{ __('trans.dashboard') }}
@@ -64,6 +67,20 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col mb-30">
+            <div class="card card-statistics h-100">
+                <div class="card-body">
+                    <livewire:calendar />
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!--wrapper -->
+@endsection
+
+@section('liwewire-js')
+    @livewireScripts
 @endsection
