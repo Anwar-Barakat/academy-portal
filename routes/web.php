@@ -27,6 +27,7 @@ use App\Http\Controllers\Parent\Account\ReceiptController;
 use App\Http\Controllers\Parent\AttendanceController as ParentAttendanceController;
 use App\Http\Controllers\Parent\ChildrenController;
 use App\Http\Controllers\Parent\ChildResultController;
+use App\Http\Controllers\Parent\ProfileController as ParentProfileController;
 use App\Http\Controllers\Question\QuestionController;
 use App\Http\Controllers\Quiz\QuizController;
 use App\Http\Controllers\Section\GetSectionController;
@@ -131,6 +132,8 @@ Route::group(
             Route::get('children-fees',                             AccountFeeController::class)->name('children_fees');
 
             Route::get('children-fees-receipt/{id}',                ReceiptController::class)->name('children_fees_receipt');
+
+            Route::resource('profile',                              ParentProfileController::class)->only(['index', 'update']);
         });
 
         Route::middleware(['isStudent'])->prefix('student/')->name('student.')->group(function () {

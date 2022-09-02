@@ -10,7 +10,7 @@ use Illuminate\Notifications\Notifiable;
 
 class MyParent extends Authenticatable
 {
-    use HasFactory, HasTranslations,Notifiable;
+    use HasFactory, HasTranslations, Notifiable;
 
     protected $guard = 'parent';
 
@@ -18,8 +18,9 @@ class MyParent extends Authenticatable
         'father_name',
         'father_job',
         'mother_name',
-        'mother_job'
+        'mother_job',
     ];
+
 
     protected $guarded = [];
 

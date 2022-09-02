@@ -42,7 +42,7 @@
 
 {{-- Profile --}}
 <li>
-    <a href="{{ route('parent.dashboard') }}" data-target="#quizzes-menu">
+    <a href="{{ route('parent.profile.index') }}" data-target="#quizzes-menu">
         <div class="pull-left"><i class="fas fa-id-card-alt"></i><span
                 class="right-nav-text">{{ __('trans.profile') }}</span>
         </div>
