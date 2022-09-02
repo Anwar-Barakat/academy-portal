@@ -45,6 +45,7 @@ use App\Http\Controllers\Teacher\IndirectClassController as TeacherIndirectClass
 use App\Http\Controllers\Teacher\OnlineClassController as TeacherOnlineClassController;
 use App\Http\Controllers\Teacher\ProfileController;
 use App\Http\Controllers\Teacher\QuestionController as TeacherQuestionController;
+use App\Http\Controllers\Teacher\Quiz\StudentWasExamedController;
 use App\Http\Controllers\Teacher\SectionController as TeacherSectionController;
 use App\Http\Controllers\Teacher\StudentController as TeacherStudentController;
 use App\Http\Controllers\Teacher\TeacherController;
@@ -99,6 +100,8 @@ Route::group(
             Route::resource('attendances-report',                   AttendanceReportController::class)->only(['index', 'store']);
 
             Route::resource('quizzes',                              TeacherQuizController::class);
+
+            Route::get('students-was-examed/{quiz_id}',             StudentWasExamedController::class)->name('students_was_examed');
 
             Route::resource('questions',                            TeacherQuestionController::class);
 

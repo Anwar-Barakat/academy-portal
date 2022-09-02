@@ -26,4 +26,6 @@ return [
     'profile'                   => 'Profile',
     'show_password'             => 'Show Password',
 
+    'has_been_tested'           => 'Has Been Tested',
+
 ];

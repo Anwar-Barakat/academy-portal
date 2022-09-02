@@ -26,5 +26,6 @@ return [
     'profile'                   => 'الملف الشخصي',
     'show_password'             => 'إظهار كلمة المرور',
 
+    'has_been_tested'           => 'تم إمتحانهم',
 
 ];

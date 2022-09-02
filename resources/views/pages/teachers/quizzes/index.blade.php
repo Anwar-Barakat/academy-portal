@@ -54,7 +54,8 @@
                                         <td>{{ $quiz->section->name }}</td>
                                         <td>{{ $quiz->teacher->name }}</td>
                                         <td>{{ $quiz->created_at }}</td>
-                                        <td class="d-flex align-items-center justify-content-between">
+                                        <td class="d-flex align-items-center justify-content-between flex-wrap"
+                                            style="gap: 1rem">
                                             <div>
                                                 <a href="{{ route('teacher.quizzes.edit', $quiz) }}"
                                                     class="btn btn-outline-info btn-sm" role="button"
@@ -68,7 +69,13 @@
                                                 <a href="{{ route('teacher.quizzes.show', $quiz) }}"
                                                     class="btn btn-outline-warning btn-sm" role="button"
                                                     title="{{ __('trans.list', ['name' => __('trans.questions')]) }}"
-                                                    aria-pressed="true"><i class="fas fa-eye"></i></a>
+                                                    aria-pressed="true"><i class="fas fa-question"></i></a>
+                                            </div>
+                                            <div>
+                                                <a href="{{ route('teacher.students_was_examed', $quiz->id) }}"
+                                                    class="btn btn-outline-secondary btn-sm" role="button"
+                                                    title="{{ __('trans.list', ['name' => __('msgs.finished', ['name' => __('trans.quiz')])]) }}"
+                                                    aria-pressed="true"><i class="fas fa-user-graduate"></i></a>
                                             </div>
                                         </td>
 
