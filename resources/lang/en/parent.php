@@ -38,5 +38,6 @@ return [
     'step2'                     => 'Step2',
     'step3'                     => 'Step3',
 
+    'children'                  => 'Children',
 
 ];

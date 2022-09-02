@@ -22,6 +22,8 @@ use App\Http\Controllers\Library\DownloadBookController;
 use App\Http\Controllers\Library\LibraryController;
 use App\Http\Controllers\OnlineClass\IndirectClassController;
 use App\Http\Controllers\OnlineClass\OnlineClassController;
+use App\Http\Controllers\Parent\ChildrenController;
+use App\Http\Controllers\Parent\ChildResultController;
 use App\Http\Controllers\Question\QuestionController;
 use App\Http\Controllers\Quiz\QuizController;
 use App\Http\Controllers\Section\GetSectionController;
@@ -113,9 +115,13 @@ Route::group(
             Route::resource('profile',                              ProfileController::class)->only(['index', 'update']);
         });
 
-        Route::middleware(['isParent'])->prefix('parent')->name('parent.')->group(function () {
+        Route::middleware(['isParent'])->prefix('parent/')->name('parent.')->group(function () {
 
-            Route::get('/dashboard',                                ParentDashboardController::class)->name('dashboard');
+            Route::get('dashboard',                                 ParentDashboardController::class)->name('dashboard');
+
+            Route::resource('children',                             ChildrenController::class);
+
+            Route::get('child-result/{id}',                         ChildResultController::class)->name('child_result');
         });
 
         Route::middleware(['isStudent'])->prefix('student/')->name('student.')->group(function () {

@@ -37,6 +37,8 @@ return [
 
     // Parent :
     'save_data'                     => 'هل أنت متأكد من حفظ البيانات ؟',
+    'no_student_degree'             => 'لا يوجد نتائج لهذا الطالب حتى الأن !!',
+
 
 
     // Student Promotion :
