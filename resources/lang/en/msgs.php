@@ -37,6 +37,7 @@ return [
     // Parent :
     'save_data'                     => 'Are you sure saving data ?',
     'no_student_degree'             => 'No degrees for that student yet !!',
+    'no_receipts'                   => 'There are no receipts for this student',
 
     // Student Promotion :
     'not_students'                  => 'There is no student yet !!',

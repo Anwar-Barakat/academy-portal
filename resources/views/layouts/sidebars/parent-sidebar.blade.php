@@ -21,7 +21,7 @@
 
 {{-- Attendances Reports --}}
 <li>
-    <a href="{{ route('parent.dashboard') }}" data-target="#quizzes-menu">
+    <a href="{{ route('parent.attendances-report.index') }}" data-target="#quizzes-menu">
         <div class="pull-left"><i class="fas fa-calendar-alt"></i><span
                 class="right-nav-text">{{ __('trans.attendances') }}</span>
         </div>
@@ -29,9 +29,9 @@
     </a>
 </li>
 
-{{-- Attendances Reports --}}
+{{-- Fees Reports --}}
 <li>
-    <a href="{{ route('parent.dashboard') }}" data-target="#quizzes-menu">
+    <a href="{{ route('parent.children_fees') }}" data-target="#quizzes-menu">
         <div class="pull-left"><i class="fas fa-money-check-alt"></i><span
                 class="right-nav-text">{{ __('trans.accounts') }}</span>
         </div>

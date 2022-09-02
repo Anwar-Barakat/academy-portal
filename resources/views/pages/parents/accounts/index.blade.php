@@ -21,19 +21,19 @@
                         <table id="datatable" class="table  table-hover table-sm table-bordered p-0" data-page-length="50"
                             style="text-align: center">
                             <thead>
-                                <tr class="alert-success">
-                                    <th>#</th>
-                                    <th>{{ __('fee.amount') }}</th>
-                                    <th>{{ __('fee.student_name') }}</th>
-                                    <th>{{ __('fee.fees_type') }}</th>
-                                    <th>{{ __('grade.grade') }}</th>
-                                    <th>{{ __('classroom.classroom') }}</th>
-                                    <th>{{ __('fee.fee_invoice_type') }}</th>
-                                    <th>{{ __('buttons.actions') }}</th>
+                                <tr>
+                                    <th class="alert alert-info">#</th>
+                                    <th class="alert alert-info">{{ __('fee.amount') }}</th>
+                                    <th class="alert alert-success">{{ __('fee.student_name') }}</th>
+                                    <th class="alert alert-success">{{ __('fee.fees_type') }}</th>
+                                    <th class="alert alert-success">{{ __('grade.grade') }}</th>
+                                    <th class="alert alert-success">{{ __('classroom.classroom') }}</th>
+                                    <th class="alert alert-success">{{ __('fee.fee_invoice_type') }}</th>
+                                    <th class="alert alert-success">{{ __('fee.been_paid') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($feeInvoices as $feeInvoice)
+                                @forelse ($feesInvoices as $feeInvoice)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ number_format($feeInvoice->amount, 2) }}</td>
@@ -43,17 +43,17 @@
                                         <td>{{ $feeInvoice->classroom->name }}</td>
                                         <td>{{ $feeInvoice->description }}</td>
                                         <td>
-                                            <a href="{{ route('fee-invoices.edit', $feeInvoice) }}"
-                                                class="btn btn-outline-info btn-sm" role="button" aria-pressed="true"><i
-                                                    class="fas fa-edit"></i></a>
-                                            <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal"
-                                                data-target="#delete{{ $feeInvoice->id }}"><i
-                                                    class="fas fa-trash-alt"></i></button>
+                                            <a href="{{ route('parent.children_fees_receipt', $feeInvoice->student->id) }}"
+                                                class="btn btn-info btn-sm">
+                                                <i class="fas fa-dollar"></i>
+                                            </a>
                                         </td>
-
-                                        @include('pages.fee-invoices.delete')
                                     </tr>
-                                @endforeach
+                                @empty
+                                    <tr class="text-center">
+                                        <td colspan="7">{{ __('msgs.not_found_yet') }}</td>
+                                    </tr>
+                                @endforelse
                         </table>
                     </div>
                 </div>

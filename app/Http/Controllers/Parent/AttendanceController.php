@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Teacher;
+namespace App\Http\Controllers\Parent;
 
 use App\Http\Controllers\Controller;
 use App\Models\Attendance;
@@ -9,7 +9,7 @@ use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AttendanceReportController extends Controller
+class AttendanceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,11 +18,8 @@ class AttendanceReportController extends Controller
      */
     public function index()
     {
-        $sectionIds     = Teacher::findOrFail(Auth::guard('teacher')->id())->sections()->pluck('section_id');
-
-        $students       = Student::whereIn('section_id', $sectionIds)->get();
-
-        return view('pages.teachers.students.attendance-report', ['students' => $students]);
+        $students   = Student::where('parent_id', Auth::guard('parent')->id())->get();
+        return view('pages.parents.attendances.index', ['students' => $students]);
     }
 
     /**
@@ -44,19 +41,14 @@ class AttendanceReportController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'from'      => 'required|date|date_format:Y-m-d',
-            'to'        => 'required|date|date_format:Y-m-d|after_or_equal:from',
+            'from'          => 'required|date|date_format:Y-m-d',
+            'to'            => 'required|date|date_format:Y-m-d|after_or_equal:from',
         ]);
-        $data = $request->only(['student_id', 'from', 'to']);
+        $data               = $request->only(['student_id', 'from', 'to']);
 
-        $sectionIds     = Teacher::findOrFail(Auth::guard('teacher')->id())->sections()->pluck('section_id');
+        $students           = Student::where('parent_id', Auth::guard('parent')->id())->get();
 
-        $students       = Student::whereIn('section_id', $sectionIds)->get();
-
-        if ($data['student_id'] ==  'all')
-            $searchedStudents = Attendance::whereBetween('created_at', [$data['from'], $data['to']])->get();
-        else
-            $searchedStudents = Attendance::whereBetween('created_at', [$data['from'], $data['to']])->where('student_id', $data['student_id'])->get();
+        $searchedStudents   = Attendance::whereBetween('created_at', [$data['from'], $data['to']])->where('student_id', $data['student_id'])->get();
 
         return view('pages.teachers.students.attendance-report', ['students' => $students, 'searchedStudents' => $searchedStudents]);
     }

@@ -22,6 +22,9 @@ use App\Http\Controllers\Library\DownloadBookController;
 use App\Http\Controllers\Library\LibraryController;
 use App\Http\Controllers\OnlineClass\IndirectClassController;
 use App\Http\Controllers\OnlineClass\OnlineClassController;
+use App\Http\Controllers\Parent\Account\FeeController as AccountFeeController;
+use App\Http\Controllers\Parent\Account\ReceiptController;
+use App\Http\Controllers\Parent\AttendanceController as ParentAttendanceController;
 use App\Http\Controllers\Parent\ChildrenController;
 use App\Http\Controllers\Parent\ChildResultController;
 use App\Http\Controllers\Question\QuestionController;
@@ -122,6 +125,12 @@ Route::group(
             Route::resource('children',                             ChildrenController::class);
 
             Route::get('child-result/{id}',                         ChildResultController::class)->name('child_result');
+
+            Route::resource('attendances-report',                   ParentAttendanceController::class);
+
+            Route::get('children-fees',                             AccountFeeController::class)->name('children_fees');
+
+            Route::get('children-fees-receipt/{id}',                ReceiptController::class)->name('children_fees_receipt');
         });
 
         Route::middleware(['isStudent'])->prefix('student/')->name('student.')->group(function () {
