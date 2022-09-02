@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('quiz_id')->constrained('quizzes')->cascadeOnUpdate();
             $table->foreignId('student_id')->constrained('students')->cascadeOnUpdate();
-            $table->foreignId('question_id')->constrained('questions')->cascadeOnUpdate();
             $table->float('degree');
             $table->enum('abuse', ['0', '1'])->default(0);
             $table->date('date');

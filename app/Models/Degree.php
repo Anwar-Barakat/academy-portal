@@ -12,12 +12,8 @@ class Degree extends Model
     protected $fillable = [
         'quiz_id',
         'student_id',
-        'question_id',
         'degree',
         'abuse',
         'date',
     ];
-
-
-
 }

@@ -40,7 +40,15 @@
                                     <td>{{ $quiz->subject->name }}</td>
                                     <td>{{ $quiz->created_at }}</td>
                                     <td class="d-flex align-items-center justify-content-center h-100">
-                                        @if ($quiz->degrees->count() > 0 && $quiz->id == $quiz->degrees[0]->quiz_id)
+                                        @php
+                                            $examed = App\Models\Degree::where([
+                                                'student_id' => auth()
+                                                    ->guard('student')
+                                                    ->user()->id,
+                                                'quiz_id' => $quiz->id,
+                                            ])->count();
+                                        @endphp
+                                        @if ($examed > 0)
                                             @if ($quiz->degrees[0]->degree >= 50)
                                                 <label class="badge badge-success">{{ $quiz->degrees[0]->degree }}
                                                     {{ __('student.successful') }}</label>
@@ -58,7 +66,7 @@
                                 </tr>
                             @empty
                                 <tr class="text-center">
-                                    <td colspan="4">{{ __('msgs.not_found_yet') }}</td>
+                                    <td colspan="5">{{ __('msgs.not_found_yet') }}</td>
                                 </tr>
                             @endforelse
                         </tbody>
@@ -72,11 +80,4 @@
 
 
 <!-- row closed -->
-@endsection
-@section('js')
-<script>
-    function ExamWarning() {
-        alert(`{{ __('msgs.exam_refrech_warnings') }}`);
-    }
-</script>
 @endsection
