@@ -29,6 +29,7 @@ use App\Http\Controllers\Section\SectionController;
 use App\Http\Controllers\Setting\SettingController;
 use App\Http\Controllers\Student\DeleteAttachmentController;
 use App\Http\Controllers\Student\DownloadAttachmentController;
+use App\Http\Controllers\Student\ProfileController as StudentProfileController;
 use App\Http\Controllers\Student\Quiz\QuizController as StudentQuizController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Student\StudentGraduatedController;
@@ -117,11 +118,13 @@ Route::group(
             Route::get('/dashboard',                                ParentDashboardController::class)->name('dashboard');
         });
 
-        Route::middleware(['isStudent'])->prefix('student')->name('student.')->group(function () {
+        Route::middleware(['isStudent'])->prefix('student/')->name('student.')->group(function () {
 
-            Route::get('/dashboard',                                StudentDashboardController::class)->name('dashboard');
+            Route::get('dashboard',                                StudentDashboardController::class)->name('dashboard');
 
-            Route::resource('quizzes',                    StudentQuizController::class);
+            Route::resource('quizzes',                              StudentQuizController::class);
+
+            Route::resource('profile',                              StudentProfileController::class)->only(['index', 'update']);
         });
 
 

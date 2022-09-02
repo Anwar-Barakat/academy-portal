@@ -27,7 +27,7 @@ return [
 
 
     // Grade :
-    'not_found_yet'                 => 'لا يوجد حالاً !!',
+    'not_found_yet'                 => 'لم يتم العثور على بيانات',
     'deleting_warning'              => 'هل انت متاكد من عملية الحذف ؟',
     'delete_grade_error'            => 'لا يمكن حذف المرحلة لوجود فصول تابعة لها',
     'undoing_promotion_warning'     => 'هل أنت متأكد من عملية التراجع عن جميع الترقيات ؟',

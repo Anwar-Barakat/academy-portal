@@ -19,9 +19,9 @@
 </li>
 
 
-<!-- Quizzes -->
+<!-- Profile -->
 <li>
-    <a href="javascript:void(0);" data-target="#quizzes-menu">
+    <a href="{{ route('student.profile.index') }}" data-target="#quizzes-menu">
         <div class="pull-left"><i class="fas fa-id-card-alt"></i><span
                 class="right-nav-text">{{ __('trans.profile') }}</span></div>
         <div class="clearfix"></div>

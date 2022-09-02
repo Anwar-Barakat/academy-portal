@@ -27,7 +27,7 @@ return [
 
 
     // Grades :
-    'not_found_yet'                 => 'Not Found Yet !!',
+    'not_found_yet'                 => 'No data found',
     'deleting_warning'              => 'Are Sure Of The Deleting Process ?',
     'delete_grade_error'            => 'It is not possible to delete the stage because there are classrooms belonging to it',
     'undoing_promotion_warning'     => 'Are Sure Of The Undoing all Promotions Process ?',
