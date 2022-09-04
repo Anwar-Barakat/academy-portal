@@ -71,83 +71,70 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
-require __DIR__ . '/auth.php';
-
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
-        Route::get('/',                                             [HomeControlller::class, 'index'])->name('home');
-
         require __DIR__ . '/auth.php';
+        Route::get('/',                                                 [HomeControlller::class, 'index'])->name('home');
+        Route::get('/login/{type}',                                     ShowLoginController::class)->name('login.show');
+        Route::post('/login',                                           LoginController::class)->name('login.show');
+        Route::get('/logout/{type}',                                    LogoutController::class)->name('all.logout');
 
-        Route::get('/login/{type}',                                 ShowLoginController::class)->name('login.show');
-        Route::post('/login',                                       LoginController::class)->name('login.show');
-        Route::get('/logout/{type}',                                LogoutController::class)->name('all.logout');
-
-
-
-        Route::middleware(['isAdmin'])->prefix('admin')->name('admin.')->group(function () {
-
-            Route::get('/dashboard',                                AdminDashboardController::class)->name('dashboard');
+        Route::middleware(['auth:teacher,isTeacher'])->prefix('teacher')->name('teacher.')->group(function () {
+            Route::get('/dashboard',                                    TeacherDashboardController::class)->name('dashboard');
+            Route::resource('students',                                 TeacherStudentController::class)->only(['index']);
+            Route::get('sections',                                      TeacherSectionController::class)->name('sections.index');
+            Route::resource('students-attendance',                      TeacherAttendanceController::class)->only(['index', 'store']);
+            Route::resource('attendances-report',                       AttendanceReportController::class)->only(['index', 'store']);
+            Route::resource('quizzes',                                  TeacherQuizController::class);
+            Route::get('students-was-examed/{quiz_id}',                 StudentWasExamedController::class)->name('students_was_examed');
+            Route::resource('questions',                                TeacherQuestionController::class);
+            Route::resource('online-classess',                          TeacherOnlineClassController::class);
+            Route::resource('indirect-classess',                        TeacherIndirectClassController::class);
+            Route::resource('profile',                                  ProfileController::class)->only(['index', 'update']);
         });
 
-        Route::middleware(['isTeacher'])->prefix('teacher')->name('teacher.')->group(function () {
-
-            Route::get('/dashboard',                                TeacherDashboardController::class)->name('dashboard');
-
-            Route::resource('students',                             TeacherStudentController::class)->only(['index']);
-
-            Route::get('sections',                                  TeacherSectionController::class)->name('sections.index');
-
-            Route::resource('students-attendance',                  TeacherAttendanceController::class)->only(['index', 'store']);
-
-            Route::resource('attendances-report',                   AttendanceReportController::class)->only(['index', 'store']);
-
-            Route::resource('quizzes',                              TeacherQuizController::class);
-
-            Route::get('students-was-examed/{quiz_id}',             StudentWasExamedController::class)->name('students_was_examed');
-
-            Route::resource('questions',                            TeacherQuestionController::class);
-
-            Route::resource('online-classess',                      TeacherOnlineClassController::class);
-
-            Route::resource('indirect-classess',                    TeacherIndirectClassController::class);
-
-            Route::resource('profile',                              ProfileController::class)->only(['index', 'update']);
+        Route::middleware(['auth:parent,isParent'])->prefix('parent/')->name('parent.')->group(function () {
+            Route::get('dashboard',                                     ParentDashboardController::class)->name('dashboard');
+            Route::resource('children',                                 ChildrenController::class);
+            Route::get('child-result/{id}',                             ChildResultController::class)->name('child_result');
+            Route::resource('attendances-report',                       ParentAttendanceController::class);
+            Route::get('children-fees',                                 AccountFeeController::class)->name('children_fees');
+            Route::get('children-fees-receipt/{id}',                    ReceiptController::class)->name('children_fees_receipt');
+            Route::resource('profile',                                  ParentProfileController::class)->only(['index', 'update']);
         });
 
-        Route::middleware(['isParent'])->prefix('parent/')->name('parent.')->group(function () {
-
-            Route::get('dashboard',                                 ParentDashboardController::class)->name('dashboard');
-
-            Route::resource('children',                             ChildrenController::class);
-
-            Route::get('child-result/{id}',                         ChildResultController::class)->name('child_result');
-
-            Route::resource('attendances-report',                   ParentAttendanceController::class);
-
-            Route::get('children-fees',                             AccountFeeController::class)->name('children_fees');
-
-            Route::get('children-fees-receipt/{id}',                ReceiptController::class)->name('children_fees_receipt');
-
-            Route::resource('profile',                              ParentProfileController::class)->only(['index', 'update']);
+        Route::middleware(['auth:student,isStudent'])->prefix('student/')->name('student.')->group(function () {
+            Route::get('dashboard',                                     StudentDashboardController::class)->name('dashboard');
+            Route::resource('quizzes',                                  StudentQuizController::class);
+            Route::resource('profile',                                  StudentProfileController::class)->only(['index', 'update']);
         });
 
-        Route::middleware(['isStudent'])->prefix('student/')->name('student.')->group(function () {
-
-            Route::get('dashboard',                                StudentDashboardController::class)->name('dashboard');
-
-            Route::resource('quizzes',                              StudentQuizController::class);
-
-            Route::resource('profile',                              StudentProfileController::class)->only(['index', 'update']);
+        Route::middleware(['auth:web,teacher'])->group(function () {
+            Route::get('/get-classrooms/{grade_id}',                    GetClassroomController::class)->name('get-classrooms');
+            Route::get('/get-sections/{classroom_id}',                  GetSectionController::class)->name('get-sections');
         });
 
 
-        //! ===================== Grades =====================
-        Route::resource('grades',                                   GradeController::class);
+        Route::middleware(['auth:web,isAdmin'])->prefix('admin')->group(function () {
+            Route::get('/dashboard',                                    AdminDashboardController::class)->name('admin.dashboard');
+
+            //! ===================== Grades =====================
+            Route::resource('grades',                                   GradeController::class);
+        });
+
+
+
+
+
+
+
+
+
+
 
 
         //! ===================== Classrooms =====================
@@ -155,12 +142,10 @@ Route::group(
         Route::post('/delete-all-classrooms',                       EmptyClassroomController::class)->name('empty-classrooms');
         Route::get('/filter-classrooms',                            FilterClassroomController::class)->name('filter-classrooms');
         Route::post('/filter-classrooms',                           FilterClassroomController::class)->name('filter-classrooms');
-        Route::get('/get-classrooms/{grade_id}',                    GetClassroomController::class)->name('get-classrooms');
 
 
         //! ===================== Sections =====================
         Route::resource('sections',                                 SectionController::class);
-        Route::get('/get-sections/{classroom_id}',                  GetSectionController::class)->name('get-sections');
 
 
         //! ===================== Parents =====================

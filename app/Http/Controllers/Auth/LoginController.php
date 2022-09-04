@@ -34,6 +34,8 @@ class LoginController extends Controller
                     toastr()->error(__('trans.email_or_password'));
                     return redirect()->back();
                 }
+                //
+                //
             } elseif ($data['type'] == 'teacher') {
                 if (Auth::guard('teacher')->attempt(['email' => $data['email'], 'password' => $data['password']])) {
                     toastr()->success(__('trans.welcome_back'));
@@ -42,6 +44,8 @@ class LoginController extends Controller
                     toastr()->error(__('trans.email_or_password'));
                     return redirect()->back();
                 }
+                //
+                //
             } elseif ($data['type'] == 'parent') {
                 if (Auth::guard('parent')->attempt(['email' => $data['email'], 'password' => $data['password']])) {
                     toastr()->success(__('trans.welcome_back'));
@@ -50,6 +54,8 @@ class LoginController extends Controller
                     toastr()->error(__('trans.email_or_password'));
                     return redirect()->back();
                 }
+                //
+                //
             } elseif ($data['type'] == 'student') {
                 if (Auth::guard('student')->attempt(['email' => $data['email'], 'password' => $data['password']])) {
                     toastr()->success(__('trans.welcome_back'));

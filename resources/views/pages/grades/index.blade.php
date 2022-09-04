@@ -2,18 +2,18 @@
 @section('css')
 
 @section('title')
-    {{ __('grade.grades') }}
+    {{ __('trans.list', ['name' => __('grade.grades')]) }}
 @stop
-@endsection
 
 @section('breadcrum')
-{{ __('grade.grades_list') }}
-@endsection
+    {{ __('grade.grades') }}
+@stop
 
 @section('breadcrum_home')
-{{ __('grade.grades') }}
-@endsection
+    {{ __('trans.list', ['name' => __('grade.grades')]) }}
+@stop
 
+@endsection
 
 @section('content')
 <!-- row -->
@@ -109,11 +109,11 @@
                                                     <br>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
+                                                    <button type="button" class="button x-small secondary-button"
                                                         data-dismiss="modal">{{ __('buttons.close') }}</button>
-                                                    <x-button class="btn btn-success">
+                                                    <button type="submit" class="button x-small successful-button">
                                                         {{ __('buttons.update') }}
-                                                    </x-button>
+                                                    </button>
                                                 </div>
                                             </form>
 
@@ -146,11 +146,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
+                                                    <button type="button" class="button x-small secondary-button"
                                                         data-dismiss="modal">{{ __('buttons.close') }}</button>
-                                                    <x-button class="btn btn-danger">
+                                                    <button type="submit" class="button x-small dengerous-button">
                                                         {{ __('buttons.delete') }}
-                                                    </x-button>
+                                                    </button>
                                                 </div>
                                             </form>
 
@@ -191,12 +191,18 @@
                                 <x-label for="name_ar" :value="__('grade.name_ar')" /> :
                                 <x-input type="text" name="name_ar" id="name_ar" class="form-control"
                                     :value="old('name_ar')" required autofocus />
+                                @error('name_ar')
+                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                @enderror
 
                             </div>
                             <div class="col">
                                 <x-label for="name_en" :value="__('grade.name_en')" />
                                 <x-input type="text" name="name_en" class="form-control" id="name_en"
                                     :value="old('name_en')" required />
+                                @error('name_en')
+                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
                         <br>
@@ -204,15 +210,18 @@
                         <div class="form-group">
                             <x-label for="notes" :value="__('grade.notes')" />
                             <textarea class="form-control" name="notes" id="notes" rows="3">{{ old('notes') }}</textarea>
+                            @error('notes')
+                                <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                            @enderror
                         </div>
                         <br>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary"
                             data-dismiss="modal">{{ __('buttons.close') }}</button>
-                        <x-button class="btn btn-success">
+                        <button type="submit" class="button button-border x-small">
                             {{ __('buttons.submit') }}
-                        </x-button>
+                        </button>
                     </div>
                 </form>
 

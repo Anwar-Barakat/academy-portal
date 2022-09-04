@@ -20,7 +20,11 @@
             <div class="clearfix"></div>
         </a>
         <ul id="grades" class="collapse" data-parent="#sidebarnav">
-            <li><a href="{{ route('grades.index') }}">{{ __('trans.grades_list') }}</a></li>
+            <li>
+                <a href="{{ route('grades.index') }}">
+                    {{ __('trans.list', ['name' => __('grade.grades')]) }}
+                </a>
+            </li>
         </ul>
     </li>
 
