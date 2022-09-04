@@ -73,8 +73,8 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::group(
     [
-        'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+        'prefix'            => LaravelLocalization::setLocale(),
+        'middleware'        => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
         require __DIR__ . '/auth.php';
@@ -82,6 +82,7 @@ Route::group(
         Route::get('/login/{type}',                                     ShowLoginController::class)->name('login.show');
         Route::post('/login',                                           LoginController::class)->name('login.show');
         Route::get('/logout/{type}',                                    LogoutController::class)->name('all.logout');
+
 
         Route::middleware(['auth:teacher,isTeacher'])->prefix('teacher')->name('teacher.')->group(function () {
             Route::get('/dashboard',                                    TeacherDashboardController::class)->name('dashboard');
@@ -97,6 +98,7 @@ Route::group(
             Route::resource('profile',                                  ProfileController::class)->only(['index', 'update']);
         });
 
+
         Route::middleware(['auth:parent,isParent'])->prefix('parent/')->name('parent.')->group(function () {
             Route::get('dashboard',                                     ParentDashboardController::class)->name('dashboard');
             Route::resource('children',                                 ChildrenController::class);
@@ -107,11 +109,13 @@ Route::group(
             Route::resource('profile',                                  ParentProfileController::class)->only(['index', 'update']);
         });
 
+
         Route::middleware(['auth:student,isStudent'])->prefix('student/')->name('student.')->group(function () {
             Route::get('dashboard',                                     StudentDashboardController::class)->name('dashboard');
             Route::resource('quizzes',                                  StudentQuizController::class);
             Route::resource('profile',                                  StudentProfileController::class)->only(['index', 'update']);
         });
+
 
         Route::middleware(['auth:web,teacher'])->group(function () {
             Route::get('/get-classrooms/{grade_id}',                    GetClassroomController::class)->name('get-classrooms');
