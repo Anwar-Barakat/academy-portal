@@ -40,16 +40,12 @@ class GradeController extends Controller
      */
     public function store(StoreGradeRequest $request)
     {
-        $data = $request->only(['name_ar', 'name_en', 'notes']);
 
         try {
-            Grade::create([
-                'name'      => [
-                    'ar'    => $data['name_ar'],
-                    'en'    => $data['name_en'],
-                ],
-                'notes'     => $data['notes']
-            ]);
+            $data               = $request->only(['name_ar', 'name_en', 'notes']);
+            $data['name']['ar'] = $data['name_ar'];
+            $data['name']['en'] = $data['name_en'];
+            Grade::create($data);
 
             toastr()->success(__('msgs.added', ['name' => __('grade.grade')]));
             return redirect()->route('grades.index');
@@ -89,17 +85,14 @@ class GradeController extends Controller
      */
     public function update(UpdateGradeRequest $request, Grade $grade)
     {
-        $data = $request->only(['name_ar', 'name_en', 'notes']);
+
 
         try {
+            $data               = $request->only(['name_ar', 'name_en', 'notes']);
+            $data['name']['ar'] = $data['name_ar'];
+            $data['name']['en'] = $data['name_en'];
+            $grade->update($data);
 
-            $grade->update([
-                'name'      => [
-                    'ar'    => $data['name_ar'],
-                    'en'    => $data['name_en'],
-                ],
-                'notes'     => $data['notes']
-            ]);
             toastr()->success(__('msgs.updated', ['name' => __('grade.grade')]));
             return redirect()->route('grades.index');
         } catch (\Exception $e) {

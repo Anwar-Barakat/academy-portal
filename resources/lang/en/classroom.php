@@ -4,7 +4,6 @@ return [
 
     'classrooms'                => 'Classrooms',
     'classroom'                 => 'classroom',
-    'classrooms_list'           => 'Classrooms List',
     'name'                      => 'Name',
     'name_ar'                   => 'Arabic Name',
     'name_en'                   => 'English Name',

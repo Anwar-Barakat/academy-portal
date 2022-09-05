@@ -37,7 +37,11 @@
             <div class="clearfix"></div>
         </a>
         <ul id="classrooms-menu" class="collapse" data-parent="#sidebarnav">
-            <li> <a href="{{ route('classrooms.index') }}">{{ __('trans.classrooms_list') }} </a> </li>
+            <li>
+                <a href="{{ route('classrooms.index') }}">
+                    {{ __('trans.list', ['name' => __('classroom.classrooms')]) }}
+                </a>
+            </li>
         </ul>
     </li>
 
