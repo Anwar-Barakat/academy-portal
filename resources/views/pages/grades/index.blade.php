@@ -22,7 +22,7 @@
     <div class="col-xl-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-                <button type="button" class="button button-border x-small mb-3" data-toggle="modal"
+                <button type="button" class="button button-border x-small mb-4" data-toggle="modal"
                     data-target="#addNewGrade">
                     {{ __('msgs.add', ['name' => __('grade.grade')]) }}
                 </button>
@@ -49,15 +49,15 @@
                                     <td>{{ $grade->name }}</td>
                                     <td>{{ $grade->created_at }}</td>
                                     <td>
-                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                                        <button type="button" class="btn btn-outline-info btn-sm " data-toggle="modal"
                                             data-target="#editGrade{{ $grade->id }}"
                                             title="{{ __('buttons.update') }}">
-                                            <i class="fa fa-edit"></i>
+                                            <i class="fas fa-edit"></i>
                                         </button>
-                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                        <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal"
                                             data-target="#delete{{ $grade->id }}"
                                             title="{{ __('buttons.delete') }}">
-                                            <i class="fa fa-trash"></i>
+                                            <i class="fas fa-trash-alt"></i>
                                         </button>
                                     </td>
                                 </tr>

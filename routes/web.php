@@ -6,7 +6,6 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\ShowLoginController;
 use App\Http\Controllers\Classroom\ClassroomController;
 use App\Http\Controllers\Classroom\EmptyClassroomController;
-use App\Http\Controllers\Classroom\FilterClassroomController;
 use App\Http\Controllers\Classroom\GetClassroomController;
 use App\Http\Controllers\Dashboard\AdminDashboardController;
 use App\Http\Controllers\Dashboard\ParentDashboardController;
@@ -123,11 +122,15 @@ Route::group(
         });
 
 
-        Route::middleware(['auth:web,isAdmin'])->prefix('admin')->group(function () {
+        Route::middleware(['auth:web,isAdmin'])->prefix('admin/')->group(function () {
             Route::get('/dashboard',                                    AdminDashboardController::class)->name('admin.dashboard');
 
             //! ===================== Grades =====================
             Route::resource('grades',                                   GradeController::class);
+
+            //! ===================== Classrooms =====================
+            Route::resource('classrooms',                               ClassroomController::class);
+            Route::delete('delete-checked-classrooms',                  EmptyClassroomController::class);
         });
 
 
@@ -141,11 +144,6 @@ Route::group(
 
 
 
-        //! ===================== Classrooms =====================
-        Route::resource('classrooms',                               ClassroomController::class);
-        Route::post('/delete-all-classrooms',                       EmptyClassroomController::class)->name('empty-classrooms');
-        Route::get('/filter-classrooms',                            FilterClassroomController::class)->name('filter-classrooms');
-        Route::post('/filter-classrooms',                           FilterClassroomController::class)->name('filter-classrooms');
 
 
         //! ===================== Sections =====================

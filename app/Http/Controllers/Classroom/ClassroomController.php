@@ -103,6 +103,7 @@ class ClassroomController extends Controller
                 ],
                 'grade_id'  => $data['grade_id'],
             ]);
+
             toastr()->success(__('msgs.updated', ['name' => __('classroom.classroom')]));
             return redirect()->route('classrooms.index');
         } catch (\Exception $e) {
@@ -118,8 +119,12 @@ class ClassroomController extends Controller
      */
     public function destroy(Classroom $classroom)
     {
-        $classroom->delete();
-        toastr()->info(__('msgs.deleted', ['name' => __('classroom.classroom')]));
-        return redirect()->route('classrooms.index');
+        try {
+            $classroom->delete();
+            toastr()->info(__('msgs.deleted', ['name' => __('classroom.classroom')]));
+            return redirect()->route('classrooms.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 }

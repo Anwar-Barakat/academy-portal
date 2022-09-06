@@ -33,6 +33,9 @@ body {
     background-color: #a8bbbf;
 }
 
+#deleteAllClassroomsBtn {
+    display: none;
+}
 .content-wrapper .page-title {
     padding: 70px 0 0;
 }
@@ -141,7 +144,7 @@ h5 {
     color: white;
 }
 
-.dengerous-button {
+.dangerous-button {
     background: #f44336;
     border-color: #f44336;
     color: white;

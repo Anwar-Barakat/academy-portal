@@ -24,7 +24,7 @@
                     <div class="modal-footer">
                         <button type="button" class="button x-small secondary-button"
                             data-dismiss="modal">{{ __('buttons.close') }}</button>
-                        <button type="submit" class="button x-small dengerous-button">
+                        <button type="submit" class="button x-small dangerous-button">
                             {{ __('buttons.delete') }}
                         </button>
                     </div>

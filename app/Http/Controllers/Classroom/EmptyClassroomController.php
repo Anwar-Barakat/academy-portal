@@ -17,10 +17,14 @@ class EmptyClassroomController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $ids    = explode(",", $request->classrooms_id);
+        if ($request->ajax()) {
+            Classroom::whereIn('id', $request->ids)->delete();
 
-        Classroom::whereIn('id', $ids)->delete();
-        toastr()->error(__('msgs.deleted', ['name' => __('classroom.classrooms')]));
-        return redirect()->back();
+
+            return response()->json([
+                'message'   => 'success',
+                'content'   => __('msgs.deleted', __('classroom.classrooms'))
+            ]);
+        }
     }
 }
