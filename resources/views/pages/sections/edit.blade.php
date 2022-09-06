@@ -19,36 +19,52 @@
                         <div class="col">
                             <x-input type="text" name="name_ar" class="form-control" :value="old('name_ar', $section->getTranslation('name', 'ar'))"
                                 placeholder="{{ __('section.name_ar') }}" />
+                            @error('name_ar')
+                                <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                            @enderror
                         </div>
 
                         <div class="col">
                             <x-input type="text" name="name_en" class="form-control" :value="old('name_en', $section->getTranslation('name', 'en'))"
                                 placeholder="{{ __('section.name_en') }}" />
+                            @error('name_en')
+                                <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                            @enderror
                         </div>
                     </div>
                     <br>
                     <div class="col">
                         <x-label :value="__('section.grade_name')" for="grade_id" class="control-label" />
                         <select name="grade_id" class="custom-select">
-                            <option value="{{ $grade->id }}">
-                                {{ $grade->name }}
-                            </option>
                             @foreach ($grades as $grade)
-                                <option value="{{ $grade->id }}">
+                                <option value="{{ $grade->id }}"
+                                    {{ $grade->id == $section->grade_id ? 'selected' : '' }}>
                                     {{ $grade->name }}
                                 </option>
                             @endforeach
                         </select>
+                        @error('grade_id')
+                            <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                        @enderror
                     </div>
                     <br>
 
                     <div class="col">
                         <x-label :value="__('section.classrrom_name')" for="classrrom_id" class="control-label" />
                         <select name="classroom_id" class="custom-select">
-                            <option value="{{ $section->classroom->id }}">
-                                {{ $section->classroom->name }}
-                            </option>
+                            @foreach ($grades as $grade)
+                                @if ($grade->id == $section->grade_id)
+                                    @foreach ($grade->classrooms as $classroom)
+                                        <option value="{{ $classroom->id }}"
+                                            {{ $classroom->id == $section->classroom_id ? 'selected' : '' }}>
+                                            {{ $classroom->name }}</option>
+                                    @endforeach
+                                @endif
+                            @endforeach
                         </select>
+                        @error('classroom_id')
+                            <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                        @enderror
                     </div>
                     <br>
                     <div class="row">
@@ -65,7 +81,9 @@
                                         {{ $teacher->name }}
                                     </option>
                                 @endforeach
-
+                                @error('teacher_id')
+                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                @enderror
                             </select>
                         </div>
                     </div>

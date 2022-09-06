@@ -43,15 +43,11 @@ class SectionController extends Controller
     {
         try {
             $data       = $request->only(['name_ar', 'name_en', 'grade_id', 'classroom_id', 'teacher_id']);
-            $section    = Section::create([
-                'name'          => [
-                    'ar'        => $data['name_ar'],
-                    'en'        => $data['name_en'],
-                ],
-                'status'        => 1,
-                'grade_id'      => $data['grade_id'],
-                'classroom_id'  => $data['classroom_id']
-            ]);
+            $data['name']['ar'] = $data['name_ar'];
+            $data['name']['en'] = $data['name_en'];
+            $section    = Section::create($data);
+
+
             $section->teachers()->attach($data['teacher_id']);
 
 
@@ -95,15 +91,10 @@ class SectionController extends Controller
     {
         try {
             $data   = $request->only(['name_ar', 'name_en', 'grade_id', 'classroom_id', 'status', 'teacher_id']);
-            $section->update([
-                'name'          => [
-                    'ar'        => $data['name_ar'],
-                    'en'        => $data['name_en'],
-                ],
-                'status'        => $data['status'],
-                'grade_id'      => $data['grade_id'],
-                'classroom_id'  => $data['classroom_id']
-            ]);
+            $data['name']['ar'] = $data['name_ar'];
+            $data['name']['en'] = $data['name_en'];
+            $section->update($data);
+
             $section->teachers()->sync($data['teacher_id']);
 
             toastr()->success(__('msgs.updated', ['name' => __('section.section')]));
@@ -122,8 +113,15 @@ class SectionController extends Controller
     public function destroy(Section $section)
     {
         try {
-            $section->delete();
-            toastr()->info(__('msgs.delete', ['name' => __('section.section')]));
+
+            $teachers = $section->teachers()->count();
+            if ($teachers > 0)
+                toastr()->error(__('msgs.forign_error', ['parent' => __('section.section'), 'children' => __('teacher.teachers')]));
+
+            else {
+                $section->delete();
+                toastr()->info(__('msgs.delete', ['name' => __('section.section')]));
+            }
             return redirect()->route('sections.index');
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['error' => $th->getMessage()]);

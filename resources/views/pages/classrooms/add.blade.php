@@ -22,23 +22,35 @@
                                             <x-label for="name_ar" class="mr-sm-2" :value="__('classroom.name_ar')" />
                                             <x-input type="text" id="name_ar" class="form-control" name="name_ar"
                                                 :value="old('name_ar')" required autofocus />
+                                            @error('name_ar')
+                                                <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                            @enderror
 
                                         </div>
                                         <div class="col mb-1">
                                             <x-label for="name_en" class="mr-sm-2" :value="__('classroom.name_en')" />
                                             <x-input type="text" id="name_en" class="form-control" name="name_en"
                                                 :value="old('name_en')" required autofocus />
+                                            @error('name_en')
+                                                <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                            @enderror
                                         </div>
                                         <div class="col mb-1">
                                             <x-label for="grade_id" class="mr-sm-2" :value="__('classroom.grade_name')" />
 
                                             <div class="box">
                                                 <select class="fancyselect" name="grade_id">
-                                                    @foreach ($grades as $grade)
-                                                        <option value="{{ $grade->id }}">{{ $grade->name }}
+                                                    @foreach ($grades as $key => $grade)
+                                                        <option value="{{ $grade->id }}"
+                                                            {{ old('grade_id') == $key ? 'selected' : '' }}>
+                                                            {{ $grade->name }}
                                                         </option>
                                                     @endforeach
                                                 </select>
+                                                @error('grade_id')
+                                                    <small
+                                                        class="text text-danger font-weight-bold">{{ $message }}</small>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col mb-1">
