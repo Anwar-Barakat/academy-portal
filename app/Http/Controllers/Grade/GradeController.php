@@ -85,8 +85,6 @@ class GradeController extends Controller
      */
     public function update(UpdateGradeRequest $request, Grade $grade)
     {
-
-
         try {
             $data               = $request->only(['name_ar', 'name_en', 'notes']);
             $data['name']['ar'] = $data['name_ar'];
@@ -110,7 +108,7 @@ class GradeController extends Controller
     {
         $classrooms = Classroom::where('grade_id', $grade->id)->get();
         if ($classrooms->count() > 0)
-            toastr()->error(__('msgs.delete_grade_error'));
+            toastr()->error(__('msgs.forign_error', ['parent' => __('grade.grade'), 'children' => __('classroom.classrooms')]));
 
         else {
             $grade->delete();

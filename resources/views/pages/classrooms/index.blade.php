@@ -20,22 +20,20 @@
         <div class="col-xl-12 mb-30">
             <div class="card card-statistics h-100">
                 <div class="card-body">
-                    @if ($errors->any())
-                        @foreach ($errors->all() as $error)
-                            <div class="alert alert-danger">{{ $error }}</div>
-                        @endforeach
-                    @endif
-
                     <div class="d-flex mb-4 flex-wrap" style="gap: 10px">
                         <button type="button" class="button button-border x-small" data-toggle="modal"
                             data-target="#exampleModal">
                             {{ __('msgs.add', ['name' => __('classroom.classroom')]) }}
                         </button>
 
-                        <button type="button" class="button dangerous-button x-small" id="deleteAllClassroomsBtn"
-                            data-toggle="modal" data-target="#deleteAllClassrooms">
-                            {{ __('msgs.delete', ['name' => __('classroom.checked_classrooms')]) }}
-                        </button>
+                        <form action="{{ route('checked.classrooms') }}" method="POST">
+                            @csrf
+                            @method('POST')
+                            <input type="hidden" name="ids" id="classrooms_ids">
+                            <button type="submit" class="button dangerous-button x-small" id="deleteAllClassroomsBtn">
+                                {{ __('msgs.delete', ['name' => __('classroom.checked_classrooms')]) }}
+                            </button>
+                        </form>
                     </div>
 
                     <div class="table-responsive">
@@ -133,6 +131,7 @@
 @endsection
 
 @section('js')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function() {
             // Check ALl Rows
@@ -153,30 +152,30 @@
                     $('#deleteAllClassroomsBtn').css('display', 'none')
 
 
-                $('#delete-all-classrooms').click(function() {
-                    $.ajax({
-                        url: 'delete-checked-classrooms',
-                        type: "delete",
-                        data: {
-                            ids: ids,
-                        },
-                        cache: false,
-                        dataType: "text",
-                        success: function(response) {
-                            console.log(response);
-                            // if (response.success) {
-                            //     $.each(ids, function(indexInArray, valueOfElement) {
-                            //         $('#classroomID' + valueOfElement).remove();
-                            //         $('#deleteAllClassroomsBtn').css('display',
-                            //             'none');
-                            //         $('#deleteAllClassrooms').modal('hide')
-                            //     });
-                            // }
-                        },
-                        error: function(error) {
-                            alert('failed')
+                $('#deleteAllClassroomsBtn').click(function(e) {
+                    e.preventDefault();
+                    $('#classrooms_ids').val(ids);
+
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                            window.location.href =
+                                "{{ route('checked.classrooms') }}"
+
                         }
-                    });
+                    })
                 });
 
             })

@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateClassroomRequest;
 use App\Models\Grade;
 use Flasher\Laravel\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Section;
 
 class ClassroomController extends Controller
 {
@@ -120,6 +121,12 @@ class ClassroomController extends Controller
     public function destroy(Classroom $classroom)
     {
         try {
+
+            $sections = Section::where('classroom_id', $classroom->id)->get();
+            if ($sections->count() > 0)
+                toastr()->error(__('msgs.forign_error', ['parent' => __('classroom.classroom'), 'children' => __('section.sections')]));
+
+
             $classroom->delete();
             toastr()->info(__('msgs.deleted', ['name' => __('classroom.classroom')]));
             return redirect()->route('classrooms.index');

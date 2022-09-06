@@ -26,11 +26,6 @@
                     data-target="#addNewGrade">
                     {{ __('msgs.add', ['name' => __('grade.grade')]) }}
                 </button>
-                @if ($errors->any())
-                    @foreach ($errors->all() as $error)
-                        <div class="alert alert-danger">{{ $error }}</div>
-                    @endforeach
-                @endif
                 <div class="table-responsive">
                     <table id="datatable"
                         class="table table-striped table-bordered text-center p-0 table-hover table-sm">

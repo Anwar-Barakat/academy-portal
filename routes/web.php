@@ -130,7 +130,7 @@ Route::group(
 
             //! ===================== Classrooms =====================
             Route::resource('classrooms',                               ClassroomController::class);
-            Route::delete('delete-checked-classrooms',                  EmptyClassroomController::class);
+            Route::delete('delete-checked-classrooms',                  EmptyClassroomController::class)->name('checked.classrooms');
         });
 
 

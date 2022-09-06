@@ -15,6 +15,8 @@ return [
     'undone'                        => ':name Has Been undone',
     'has_graduated'                 => ':name Has Been graduated',
     'has_returned'                  => ':name Has Been returned',
+    'forign_error'                  => 'It is not possible to delete the :parent because it has :children',
+
 
     'add'                           => 'Add :name',
     'select'                        => 'Select :name',
@@ -29,7 +31,6 @@ return [
     // Grades :
     'not_found_yet'                 => 'No data found',
     'deleting_warning'              => 'Are Sure Of The Deleting Process ?',
-    'delete_grade_error'            => 'It is not possible to delete the stage because there are classrooms belonging to it',
     'undoing_promotion_warning'     => 'Are Sure Of The Undoing all Promotions Process ?',
     'return_student_warning'        => 'Are you sure the student will return ?',
     'graduate_student_warning'      => 'Are you sure the student will graduate ?',

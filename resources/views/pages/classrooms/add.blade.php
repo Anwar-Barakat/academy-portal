@@ -17,19 +17,19 @@
                         <div class="repeater">
                             <div data-repeater-list="classrooms_list">
                                 <div data-repeater-item>
-                                    <div class="row">
-                                        <div class="col">
+                                    <div class="row form-repeater-inputs">
+                                        <div class="col mb-1">
                                             <x-label for="name_ar" class="mr-sm-2" :value="__('classroom.name_ar')" />
                                             <x-input type="text" id="name_ar" class="form-control" name="name_ar"
                                                 :value="old('name_ar')" required autofocus />
 
                                         </div>
-                                        <div class="col">
+                                        <div class="col mb-1">
                                             <x-label for="name_en" class="mr-sm-2" :value="__('classroom.name_en')" />
                                             <x-input type="text" id="name_en" class="form-control" name="name_en"
                                                 :value="old('name_en')" required autofocus />
                                         </div>
-                                        <div class="col">
+                                        <div class="col mb-1">
                                             <x-label for="grade_id" class="mr-sm-2" :value="__('classroom.grade_name')" />
 
                                             <div class="box">
@@ -41,7 +41,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col">
+                                        <div class="col mb-1">
                                             <x-label for="actions" class="mr-sm-2" :value="__('buttons.actions')" />
                                             <x-input type="text" class="btn btn-danger btn-block"
                                                 data-repeater-delete type="button" :value="__('msgs.delete', ['name' => __('classroom.row')])" autofocus />

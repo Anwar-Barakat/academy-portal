@@ -14,6 +14,7 @@ return [
     'promoted'                      => 'تم ترقية :name ',
     'has_graduated'                 => 'تم تخريج :name',
     'has_returned'                  => 'تم إرجاع :name',
+    'forign_error'                  => 'لا يمكن حذف ال :parent لوجود :children تابعة له',
 
 
     'add'                           => 'إضافة :name',
@@ -29,7 +30,6 @@ return [
     // Grade :
     'not_found_yet'                 => 'لم يتم العثور على بيانات',
     'deleting_warning'              => 'هل انت متاكد من عملية الحذف ؟',
-    'delete_grade_error'            => 'لا يمكن حذف المرحلة لوجود فصول تابعة لها',
     'undoing_promotion_warning'     => 'هل أنت متأكد من عملية التراجع عن جميع الترقيات ؟',
     'return_student_warning'        => 'هل أنت متأكد من عودة الطالب ؟',
     'graduate_student_warning'      => 'هل أنت متأكد من عودة تخرج الطالب ؟',
