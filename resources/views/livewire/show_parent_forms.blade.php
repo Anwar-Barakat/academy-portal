@@ -3,16 +3,16 @@
     @livewireStyles
 
 @section('title')
-    {{ __('parent.parents_list') }}
+    {{ __('trans.list', ['name' => __('parent.parents')]) }}
 @stop
 
-@endsection
 @section('breadcrum')
-{{ __('trans.parents') }}
+    {{ __('trans.parents') }}
 @endsection
 
 @section('breadcrum_home')
-{{ __('parent.parents_list') }}
+    {{ __('trans.list', ['name' => __('parent.parents')]) }}
+@stop
 @endsection
 
 @section('content')

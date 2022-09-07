@@ -42,14 +42,14 @@
                <div class="row mb-4">
                    <div class="col">
                        <x-label for="mother_identification" :value="__('parent.mother_identification')" />
-                       <input type="text" wire:model="mother_identification" class="form-control">
+                       <input type="number" wire:model="mother_identification" class="form-control">
                        @error('mother_identification')
                            <small class="text text-danger">{{ $message }}</small>
                        @enderror
                    </div>
                    <div class="col">
                        <x-label for="mother_passport" :value="__('parent.mother_passport')" />
-                       <x-input type="text" wire:model="mother_passport" class="form-control" id="mother_passport"
+                       <x-input type="number" wire:model="mother_passport" class="form-control" id="mother_passport"
                            :value="old('mother_passport')" />
                        @error('mother_passport')
                            <small class="text text-danger">{{ $message }}</small>
@@ -58,7 +58,7 @@
 
                    <div class="col">
                        <x-label for="mother_phone" :value="__('parent.mother_phone')" />
-                       <x-input type="text" wire:model="mother_phone" class="form-control" id="mother_phone"
+                       <x-input type="tel" wire:model="mother_phone" class="form-control" id="mother_phone"
                            :value="old('mother_phone')" />
                        @error('mother_phone')
                            <small class="text text-danger">{{ $message }}</small>
@@ -109,22 +109,22 @@
 
                <div class="form-group">
                    <x-label for="mother_address" :value="__('parent.mother_address')" />
-                   <textarea class="form-control" wire:model="mother_address" id="mother_address" rows="4"></textarea>
+                   <textarea class="form-control" wire:model="mother_address" id="mother_address" rows="4">{{ old('mother_address') }}</textarea>
                    @error('mother_address')
                        <small class="text text-danger">{{ $message }}</small>
                    @enderror
                </div>
+               <br>
                <hr>
                <div class="nextPrevBtns  mt-4">
-                   <button class="btn btn-warning pull-right" wire:click="back(1)"
-                       type="button">{{ __('buttons.back') }}
+                   <button class="btn btn-secondary" wire:click="back(1)" type="button">{{ __('buttons.back') }}
                    </button>
                    @if ($updateMode === true)
-                       <button class="btn btn-success nextBtn pull-right" wire:click="secondStepEdit"
+                       <button class="button x-small successful-button" wire:click="secondStepEdit"
                            type="button">{{ __('buttons.next') }}
                        </button>
                    @else
-                       <button class="btn btn-success nextBtn pull-right" wire:click="secondStepSubmit"
+                       <button class="button x-small successful-button" wire:click="secondStepSubmit"
                            type="button">{{ __('buttons.next') }}
                        </button>
                    @endif

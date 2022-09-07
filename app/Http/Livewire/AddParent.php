@@ -25,7 +25,7 @@ class AddParent extends Component
     public $currentStep = 1,
         $email,
         $password,
-        // father varibales :
+
         $father_name_ar,
         $father_name_en,
         $father_job_ar,
@@ -37,7 +37,7 @@ class AddParent extends Component
         $father_blood_id,
         $father_religion_id,
         $father_address,
-        // mother varibales :
+
         $mother_name_ar,
         $mother_name_en,
         $mother_job_ar,
@@ -61,21 +61,21 @@ class AddParent extends Component
 
     public function updated($propertyName)
     {
-        // $this->validateOnly($propertyName, [
-        //     'email'                         => 'required|email|unique:my_parents,email',
-        //     'password'                      => 'required|min:8',
-        //     'father_name_ar'                => 'required|min:3',
-        //     'father_name_en'                => 'required|min:3',
-        //     'father_job_ar'                 => 'required|min:3',
-        //     'father_job_en'                 => 'required|min:3',
-        //     'father_passport'               => 'required|min:10|max:10|unique:my_parents,father_passport',
-        //     'father_identification'         => 'required|min:10|max:10|unique:my_parents,father_identification',
-        //     'father_phone'                  => 'required|min:10|max:10|unique:my_parents,father_phone',
-        //     'father_nationality_id'         => 'required',
-        //     'father_blood_id'               => 'required',
-        //     'father_religion_id'            => 'required:in:1,2,3',
-        //     'father_address'                => 'required|min:10',
-        // ]);
+        $this->validateOnly($propertyName, [
+            'email'                         => 'required|email|unique:my_parents,email',
+            'password'                      => 'required|min:8',
+            'father_name_ar'                => 'required|min:3|regex:/^[\pL\s\-]+$/u',
+            'father_name_en'                => 'required|min:3|regex:/^[\pL\s\-]+$/u',
+            'father_job_ar'                 => 'required|min:3|regex:/^[\pL\s\-]+$/u',
+            'father_job_en'                 => 'required|min:3|regex:/^[\pL\s\-]+$/u',
+            'father_passport'               => 'required|min:10|max:10|unique:my_parents,father_passport',
+            'father_identification'         => 'required|min:10|max:10|unique:my_parents,father_identification',
+            'father_phone'                  => 'required|min:10|unique:my_parents,father_phone',
+            'father_nationality_id'         => 'required',
+            'father_blood_id'               => 'required',
+            'father_religion_id'            => 'required:in:1,2,3',
+            'father_address'                => 'required|min:10',
+        ]);
     }
 
     public function render()
@@ -93,40 +93,40 @@ class AddParent extends Component
 
     public function firstStepSubmit()
     {
-        // $this->validate([
-        //     'email'                         => ['required', 'email', 'unique:my_parents,email,' . $this->id],
-        //     'password'                      => 'required|min:8',
-        //     'father_name_ar'                => 'required|min:3',
-        //     'father_name_en'                => 'required|min:3',
-        //     'father_job_ar'                 => 'required|min:3',
-        //     'father_job_en'                 => 'required|min:3',
-        //     'father_passport'               => ['required', 'min:10', 'max:10', 'unique:my_parents,father_passport,' . $this->id],
-        //     'father_identification'         => ['required', 'min:10', 'max:10', 'unique:my_parents,father_identification,' . $this->id],
-        //     'father_phone'                  => ['required', 'min:10', 'max:10', 'unique:my_parents,father_phone,' . $this->id],
-        //     'father_nationality_id'         => 'required',
-        //     'father_blood_id'               => 'required',
-        //     'father_religion_id'            => 'required:in:1,2,3',
-        //     'father_address'                => 'required|min:10',
-        // ]);
+        $this->validate([
+            'email'                         => ['required', 'email', 'unique:my_parents,email,' . $this->id],
+            'password'                      => 'required|min:8',
+            'father_name_ar'                => 'required|min:3|regex:/^[\pL\s\-]+$/u',
+            'father_name_en'                => 'required|min:3|regex:/^[\pL\s\-]+$/u',
+            'father_job_ar'                 => 'required|min:3|regex:/^[\pL\s\-]+$/u',
+            'father_job_en'                 => 'required|min:3|regex:/^[\pL\s\-]+$/u',
+            'father_passport'               => ['required', 'min:10', 'max:10', 'unique:my_parents,father_passport,' . $this->id],
+            'father_identification'         => ['required', 'min:10', 'max:10', 'unique:my_parents,father_identification,' . $this->id],
+            'father_phone'                  => ['required', 'min:10', 'unique:my_parents,father_phone,' . $this->id],
+            'father_nationality_id'         => 'required',
+            'father_blood_id'               => 'required',
+            'father_religion_id'            => 'required:in:1,2,3',
+            'father_address'                => 'required|min:10',
+        ]);
 
         $this->currentStep = 2;
     }
 
     public function secondStepSubmit()
     {
-        // $this->validate([
-        //     'mother_name_ar'                => 'required|min:3',
-        //     'mother_name_en'                => 'required|min:3',
-        //     'mother_job_ar'                 => 'required|min:3',
-        //     'mother_job_en'                 => 'required|min:3',
-        //     'mother_passport'               => ['required', 'min:10', 'max:10', 'unique:my_parents,mother_passport,' . $this->id],
-        //     'mother_identification'         => ['required', 'min:10', 'max:10', 'unique:my_parents,mother_identification,' . $this->id],
-        //     'mother_phone'                  => ['required', 'min:10', 'max:10', 'unique:my_parents,mother_phone,' . $this->id],
-        //     'mother_nationality_id'         => 'required',
-        //     'mother_blood_id'               => 'required',
-        //     'mother_religion_id'            => 'required:in:1,2,3',
-        //     'mother_address'                => 'required|min:10',
-        // ]);
+        $this->validate([
+            'mother_name_ar'                => 'required|min:3|regex:/^[\pL\s\-]+$/u',
+            'mother_name_en'                => 'required|min:3|regex:/^[\pL\s\-]+$/u',
+            'mother_job_ar'                 => 'required|min:3|regex:/^[\pL\s\-]+$/u',
+            'mother_job_en'                 => 'required|min:3|regex:/^[\pL\s\-]+$/u',
+            'mother_passport'               => ['required', 'min:10', 'max:10', 'unique:my_parents,mother_passport,' . $this->id],
+            'mother_identification'         => ['required', 'min:10', 'max:10', 'unique:my_parents,mother_identification,' . $this->id],
+            'mother_phone'                  => ['required', 'min:10', 'unique:my_parents,mother_phone,' . $this->id],
+            'mother_nationality_id'         => 'required',
+            'mother_blood_id'               => 'required',
+            'mother_religion_id'            => 'required:in:1,2,3',
+            'mother_address'                => 'required|min:10',
+        ]);
 
         $this->currentStep = 3;
     }
@@ -148,14 +148,8 @@ class AddParent extends Component
 
             $my_parent->email                   = $this->email;
             $my_parent->password                = Hash::make($this->password);
-            $my_parent->father_name             = [
-                'ar'    => $this->father_name_ar,
-                'en'    => $this->father_name_en,
-            ];
-            $my_parent->father_job           = [
-                'ar'    => $this->father_job_ar,
-                'en'    => $this->father_job_en,
-            ];
+            $my_parent->father_name             = ['ar'    => $this->father_name_ar, 'en'       => $this->father_name_en];
+            $my_parent->father_job              = ['ar'    => $this->father_job_ar, 'en'        => $this->father_job_en];
             $my_parent->father_passport         = $this->father_passport;
             $my_parent->father_identification   = $this->father_identification;
             $my_parent->father_phone            = $this->father_phone;
@@ -164,14 +158,8 @@ class AddParent extends Component
             $my_parent->father_religion_id      = $this->father_religion_id;
             $my_parent->father_address          = $this->father_address;
 
-            $my_parent->mother_name             = [
-                'ar'    => $this->mother_name_ar,
-                'en'    => $this->mother_name_en,
-            ];
-            $my_parent->mother_job              = [
-                'ar'    => $this->mother_job_ar,
-                'en'    => $this->mother_job_en,
-            ];
+            $my_parent->mother_name             = ['ar'    => $this->mother_name_ar, 'en'       => $this->mother_name_en];
+            $my_parent->mother_job              = ['ar'    => $this->mother_job_ar, 'en'        => $this->mother_job_en];
             $my_parent->mother_passport         = $this->mother_passport;
             $my_parent->mother_identification   = $this->mother_identification;
             $my_parent->mother_phone            = $this->mother_phone;
@@ -260,14 +248,8 @@ class AddParent extends Component
             MyParent::findOrFail($this->parent_id)->update([
                 'email'                      => $this->email,
                 'password'                   => Hash::make($this->password),
-                'father_name'                => [
-                    'ar'    => $this->father_name_ar,
-                    'en'    => $this->father_name_en,
-                ],
-                'father_job'             => [
-                    'ar'    => $this->father_job_ar,
-                    'en'    => $this->father_job_en,
-                ],
+                'father_name'                => ['ar'    => $this->father_name_ar, 'en'     => $this->father_name_en],
+                'father_job'                 => ['ar'    => $this->father_job_ar, 'en'      => $this->father_job_en,],
                 'father_passport'            => $this->father_passport,
                 'father_identification'      => $this->father_identification,
                 'father_phone'               => $this->father_phone,
@@ -276,14 +258,8 @@ class AddParent extends Component
                 'father_religion_id'         => $this->father_religion_id,
                 'father_address'             => $this->father_address,
 
-                'mother_name'                => [
-                    'ar'    => $this->mother_name_ar,
-                    'en'    => $this->mother_name_en,
-                ],
-                'mother_job'                 => [
-                    'ar'    => $this->mother_job_ar,
-                    'en'    => $this->mother_job_en,
-                ],
+                'mother_name'                => ['ar'    => $this->mother_name_ar, 'en'     => $this->mother_name_en],
+                'mother_job'                 => ['ar'    => $this->mother_job_ar, 'en'      => $this->mother_job_en,],
                 'mother_passport'            => $this->mother_passport,
                 'mother_identification'      => $this->mother_identification,
                 'mother_phone'               => $this->mother_phone,

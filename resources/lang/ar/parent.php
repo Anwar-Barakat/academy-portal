@@ -4,7 +4,6 @@ return [
 
     'parents'                   => 'أولياء الأمور',
     'parent'                    => 'ولي الأمر',
-    'parents_list'              => 'قائمة أولياء الأمور',
     'father_name'               => 'اسم الأب',
     'father_name_ar'            => 'اسم الأب بالعربي',
     'father_name_en'            => 'اسم الأب بالأنكليزي',

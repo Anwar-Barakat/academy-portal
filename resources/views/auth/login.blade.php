@@ -45,8 +45,7 @@
 
         <section class="height-100vh d-flex align-items-center page-section-ptb login"
             style="background-image: url('{{ asset('assets/images/sativa.png') }}');">
-            <div class="container"
-                @if (App::getLocale() == 'en') dir="ltr" style="text-align: left" @else dir="rtl" @endif>
+            <div class="container">
                 <div class="row justify-content-center no-gutters vertical-align">
                     <div class="col-lg-4 col-md-6 login-fancy-bg bg"
                         style="background-image: url('{{ asset('assets/images/login-inner-bg.jpg') }}');">

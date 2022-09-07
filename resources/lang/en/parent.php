@@ -4,7 +4,6 @@ return [
 
     'parents'                   => 'Parents',
     'parent'                    => 'Parent',
-    'parents_list'              => 'Parents List',
     'father_name'               => 'Father Name',
     'father_name_ar'            => 'Arabic Father Name',
     'father_name_en'            => 'English Father Name',
@@ -22,8 +21,8 @@ return [
     'mother_name'               => 'Mother Name',
     'mother_name_ar'            => 'Arabic Mother Name',
     'mother_name_en'            => 'English Mother Name',
-    'mother_identification'     => 'father Identification Number',
-    'mother_passport'           => 'father passport Number',
+    'mother_identification'     => 'Mother Identification Number',
+    'mother_passport'           => 'Mother passport Number',
     'mother_phone'              => 'Mother Phone',
     'mother_job_ar'             => 'Arabic Mother Job ',
     'mother_job_en'             => 'English Mother Job ',

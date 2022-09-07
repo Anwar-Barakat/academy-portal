@@ -26,7 +26,6 @@ return [
     'sections'                  => 'Sections',
     'sections_lost'             => 'Sections List',
     'parents'                   => 'Parents',
-    'parents_list'              => 'Parents List',
     'teachers'                  => 'Teachers',
     'teachers_list'             => 'Teachers List',
     'students'                  => 'Students',

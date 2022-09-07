@@ -137,6 +137,9 @@ Route::group(
 
             //! ===================== Teachers =====================
             Route::resource('teachers',                                 TeacherController::class);
+
+            //! ===================== Parents =====================
+            Route::view('/add-parents',                                 'livewire.show_parent_forms')->name('add-parents');
         });
 
 
@@ -151,10 +154,6 @@ Route::group(
 
 
 
-
-
-        //! ===================== Parents =====================
-        Route::view('/add-parents',                                 'livewire.show_parent_forms')->name('add-parents');
 
 
 

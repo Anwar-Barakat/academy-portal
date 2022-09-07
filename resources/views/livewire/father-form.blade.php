@@ -67,7 +67,7 @@
                    </div>
                    <div class="col">
                        <x-label for="father_passport" :value="__('parent.father_passport')" />
-                       <x-input type="text" wire:model="father_passport" class="form-control" id="father_passport"
+                       <x-input type="number" wire:model="father_passport" class="form-control" id="father_passport"
                            :value="old('father_passport')" />
                        @error('father_passport')
                            <small class="text text-danger font-weight-bold">{{ $message }}</small>
@@ -127,19 +127,20 @@
 
                <div class="form-group">
                    <x-label for="father_address" :value="__('parent.father_address')" />
-                   <textarea class="form-control" wire:model="father_address" id="father_address" rows="4"></textarea>
+                   <textarea class="form-control" wire:model="father_address" id="father_address" rows="4">{{ old('father_address') }}</textarea>
                    @error('father_address')
                        <small class="text text-danger font-weight-bold">{{ $message }}</small>
                    @enderror
                </div>
+               <br>
                <hr>
                <div class="nextPrevBtns  mt-4">
                    @if ($updateMode === true)
-                       <button class="btn btn-success nextBtn pull-right" wire:click="firstStepEdit"
+                       <button class="button x-small successful-button" wire:click="firstStepEdit"
                            type="button">{{ __('buttons.next') }}
                        </button>
                    @else
-                       <button class="btn btn-success nextBtn pull-right" wire:click="firstStepSubmit"
+                       <button class="button x-small successful-button" wire:click="firstStepSubmit"
                            type="button">{{ __('buttons.next') }}
                        </button>
                    @endif
