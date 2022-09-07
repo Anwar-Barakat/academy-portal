@@ -21,21 +21,21 @@
             </tr>
         </thead>
         <tbody>
-            @forelse ($my_parents as $parent)
+            @forelse ($my_parents as $my_parent)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $parent->email }}</td>
-                    <td>{{ $parent->father_name }}</td>
-                    <td>{{ $parent->father_identification }}</td>
-                    <td>{{ $parent->father_passport }}</td>
-                    <td>{{ $parent->father_phone }}</td>
-                    <td>{{ $parent->created_at }}</td>
+                    <td>{{ $my_parent->email }}</td>
+                    <td>{{ $my_parent->father_name }}</td>
+                    <td>{{ $my_parent->father_identification }}</td>
+                    <td>{{ $my_parent->father_passport }}</td>
+                    <td>{{ $my_parent->father_phone }}</td>
+                    <td>{{ $my_parent->created_at }}</td>
                     <td>
-                        <button type="button" class="btn btn-info btn-sm" wire:click="edit({{ $parent->id }})"
+                        <button type="button" class="btn btn-info btn-sm" wire:click="edit({{ $my_parent->id }})"
                             title="{{ __('buttons.update') }}">
                             <i class="fa fa-edit"></i>
                         </button>
-                        <button type="button" class="btn btn-danger btn-sm" wire:click="delete({{ $parent->id }})"
+                        <button type="button" class="btn btn-danger btn-sm" wire:click="delete({{ $my_parent->id }})"
                             title="{{ __('buttons.delete') }}">
                             <i class="fa fa-trash"></i>
                         </button>

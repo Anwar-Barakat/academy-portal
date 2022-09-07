@@ -244,14 +244,14 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @forelse(\App\Models\MyParent::latest()->take(5)->get() as $parent)
+                                            @forelse(\App\Models\MyParent::latest()->take(5)->get() as $my_parent)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $parent->father_name }}</td>
-                                                    <td>{{ $parent->email }}</td>
-                                                    <td>{{ $parent->father_identification }}</td>
-                                                    <td>{{ $parent->father_phone }}</td>
-                                                    <td class="text-success">{{ $parent->created_at }}</td>
+                                                    <td>{{ $my_parent->father_name }}</td>
+                                                    <td>{{ $my_parent->email }}</td>
+                                                    <td>{{ $my_parent->father_identification }}</td>
+                                                    <td>{{ $my_parent->father_phone }}</td>
+                                                    <td class="text-success">{{ $my_parent->created_at }}</td>
                                                 @empty
                                                     <td colspan="8">
                                                         {{ __('msgs.not_found_yet') }}</td>

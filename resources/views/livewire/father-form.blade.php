@@ -24,7 +24,7 @@
                    <div class="col">
                        <x-label for="father_name_ar" :value="__('parent.father_name_ar')" />
                        <x-input type="text" wire:model="father_name_ar" class="form-control" id="father_name_ar"
-                           :value="old('father_name_ar',$parent->getTranslation('father_name','ar'))" />
+                           :value="old('father_name_ar')" />
                        @error('father_name_ar')
                            <small class="text text-danger font-weight-bold">{{ $message }}</small>
                        @enderror
@@ -32,7 +32,7 @@
                    <div class="col">
                        <x-label for="father_name_en" :value="__('parent.father_name_en')" />
                        <x-input type="text" wire:model="father_name_en" class="form-control" id="father_name_en"
-                           :value="old('father_name_en',$parent->getTranslation('father_name','en'))" />
+                           :value="old('father_name_en')" />
                        @error('father_name_en')
                            <small class="text text-danger font-weight-bold">{{ $message }}</small>
                        @enderror

@@ -206,9 +206,9 @@ class AddParent extends Component
         $this->email                    = $my_parent->email;
         $this->password                 = $my_parent->password;
         $this->father_name_ar           = $my_parent->getTranslation('father_name', 'ar');
-        $this->father_name_en           = $my_parent->getTranslation('father_name', 'ar');
+        $this->father_name_en           = $my_parent->getTranslation('father_name', 'en');
         $this->father_job_ar            = $my_parent->getTranslation('father_job', 'ar');
-        $this->father_job_en            = $my_parent->getTranslation('father_job', 'ar');
+        $this->father_job_en            = $my_parent->getTranslation('father_job', 'en');
         $this->father_passport          = $my_parent->father_passport;
         $this->father_identification    = $my_parent->father_identification;
         $this->father_phone             = $my_parent->father_phone;
@@ -218,9 +218,9 @@ class AddParent extends Component
         $this->father_address           = $my_parent->father_address;
 
         $this->mother_name_ar           = $my_parent->getTranslation('mother_name', 'ar');
-        $this->mother_name_en           = $my_parent->getTranslation('mother_name', 'ar');
+        $this->mother_name_en           = $my_parent->getTranslation('mother_name', 'en');
         $this->mother_job_ar            = $my_parent->getTranslation('mother_job', 'ar');
-        $this->mother_job_en            = $my_parent->getTranslation('mother_job', 'ar');
+        $this->mother_job_en            = $my_parent->getTranslation('mother_job', 'en');
         $this->mother_passport          = $my_parent->mother_passport;
         $this->mother_identification    = $my_parent->mother_identification;
         $this->mother_phone             = $my_parent->mother_phone;
@@ -247,7 +247,8 @@ class AddParent extends Component
 
         $this->parent_id = $id;
         if (!empty($this->parent_id)) {
-            $my_parent = MyParent::findOrFail($this->parent_id)->update([
+            $my_parent = MyParent::findOrFail($this->parent_id);
+            $my_parent->update([
                 'email'                      => $this->email,
                 'password'                   => Hash::make($this->password),
                 'father_name'                => ['ar'    => $this->father_name_ar, 'en'     => $this->father_name_en],
@@ -271,35 +272,29 @@ class AddParent extends Component
                 'mother_address'             => $this->mother_address,
             ]);
 
-            $parent_name = MyParent::findOrFail($this->parent_id)->toArray();
-
-            dd($parent_name['father_name']);
-
-            // dd($parent_name);
-
-            // if (!empty($this->photos)) {
-            //     $father_id = MyParent::latest()->first()->id;
-            //     foreach ($this->photos as $photo) {
-
-            //         $exists =   Storage::disk('parents_attachments')->exists('attachments/parents/' . $parent_name . '/' . $photo);
-            //         if ($exists)
-            //             Storage::disk('parents_attachments')->delete('attachments/parents/' . $parent_name . '/' . $photo);
-
-            //         Image::where('imageable_id', $father_id)->delete();
 
 
-            //         dd('done000');
+            if (!empty($this->photos)) {
+                $father_id = $my_parent->id;
+                $father_name = $my_parent->father_name;
 
-            //         $name   = $photo->getClientOriginalName();
-            //         $photo->storeAs('attachments/parents/' . $parent_name, $name, 'parents_attachments');
+                foreach ($this->photos as $photo) {
+                    Storage::disk('parents_attachments')->delete('attachments/parents/' . $father_name);
 
-            //         $image                  = new Image();
-            //         $image->file_name       = $name;
-            //         $image->imageable_id    = $father_id;
-            //         $image->imageable_type  = 'App\Models\MyParent';
-            //         $image->save();
-            //     }
-            // }
+                    foreach ($my_parent->images as $image)
+                        $image->delete();
+
+
+                    $name   = $photo->getClientOriginalName();
+                    $photo->storeAs('attachments/parents/' . $father_name, $name, 'parents_attachments');
+
+                    $image                  = new Image();
+                    $image->file_name       = $name;
+                    $image->imageable_id    = $father_id;
+                    $image->imageable_type  = 'App\Models\MyParent';
+                    $image->save();
+                }
+            }
 
             $this->showTable = true;
 
@@ -314,21 +309,5 @@ class AddParent extends Component
         MyParent::findOrFail($id)->delete();
         $this->reset();
         $this->successfulMsg = __('msgs.deleted', ['name' => __('parent.parent')]);
-    }
-
-    public function deleteImage($parentId, $imageId)
-    {
-        $image          = Image::where('id', $imageId)->first();
-        $file_name      = $image->file_name;
-
-        $parent         = MyParent::where('id', $parentId)->first();
-        $parent_name    = $parent->father_name;
-
-
-        $exists =   Storage::disk('parents_attachments')->exists('attachments/parents/' . $parent_name . '/' . $file_name);
-        if ($exists)
-            Storage::disk('parents_attachments')->delete('attachments/parents/' . $parent_name . '/' . $file_name);
-
-        Image::where('id', $imageId)->delete();
     }
 }
