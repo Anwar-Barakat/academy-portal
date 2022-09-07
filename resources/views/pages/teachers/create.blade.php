@@ -124,7 +124,7 @@
                                 @enderror
                             </div>
                             <hr>
-                            <button class="button button-border x-small" type="submit">
+                            <button type="submit" class="button x-small successful-button">
                                 {{ __('buttons.submit') }}
                             </button>
                         </form>

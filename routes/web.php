@@ -131,6 +131,12 @@ Route::group(
 
             //! ===================== Classrooms =====================
             Route::resource('classrooms',                               ClassroomController::class);
+
+            //! ===================== Sections =====================
+            Route::resource('sections',                                 SectionController::class);
+
+            //! ===================== Teachers =====================
+            Route::resource('teachers',                                 TeacherController::class);
         });
 
 
@@ -146,16 +152,12 @@ Route::group(
 
 
 
-        //! ===================== Sections =====================
-        Route::resource('sections',                                 SectionController::class);
-
 
         //! ===================== Parents =====================
         Route::view('/add-parents',                                 'livewire.show_parent_forms')->name('add-parents');
 
 
-        //! ===================== Teachers =====================
-        Route::resource('teachers',                                             TeacherController::class);
+
         Route::get('/get-teachers/{grade_id}/{classroom_id}/{subject_id}',      GetTeacherController::class)->name('get-teachers');
 
 

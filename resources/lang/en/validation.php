@@ -182,6 +182,7 @@ return [
         'section_id'                => 'Section',
         'classroom_id'              => 'Classroom',
         'teacher_id'                => 'Teacher',
+        'status'                    => 'Status',
 
 
 

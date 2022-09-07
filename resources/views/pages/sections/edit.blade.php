@@ -103,11 +103,11 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary"
+                    <button type="button" class="button x-small secondary-button"
                         data-dismiss="modal">{{ __('buttons.close') }}</button>
-                    <x-button class="btn btn-success">
+                    <button type="submit" class="button x-small successful-button">
                         {{ __('buttons.update') }}
-                    </x-button>
+                    </button>
                 </div>
             </form>
         </div>

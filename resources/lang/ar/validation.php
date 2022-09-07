@@ -181,10 +181,9 @@ return [
         'mother_religion_id'        => 'ديانة الأم',
         'mother_address'            => 'عنوان الأم',
 
-
-
         'amount'                    => 'المبلغ',
         'description'               => 'الوصف',
+        'status'                    => 'الحالة'
     ],
 
 ];

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    {{ __('section.sections_list') }}
+    {{ __('trans.list', ['name' => __('section.sections')]) }}
 @stop
 
 @section('breadcrum')
@@ -9,7 +9,7 @@
 @endsection
 
 @section('breadcrum_home')
-    {{ __('section.sections_list') }}
+    {{ __('trans.list', ['name' => __('section.sections')]) }}
 @endsection
 
 @section('content')

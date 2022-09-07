@@ -40,12 +40,14 @@ class TeacherRepository implements TeacherRepositoryInterface
     public function update($request, $teacher)
     {
         try {
-            $data = $request->only(['email', 'password', 'gender', 'specialization_id', 'joining', 'address']);
-            $data['name']['ar'] = $request->name_ar;
-            $data['name']['en'] = $request->name_en;
+            $data                   = $request->only(['email', 'password', 'gender', 'specialization_id', 'joining', 'address']);
+            $data['name']['ar']     = $request->name_ar;
+            $data['name']['en']     = $request->name_en;
+
             if (isset($request->password) && !empty($request->password)) {
                 $data['password']   = Hash::make($data['password']);
             }
+
             $teacher->update($data);
 
             toastr()->success(__('msgs.updated', ['name' => __('teacher.teacher')]));
@@ -57,10 +59,19 @@ class TeacherRepository implements TeacherRepositoryInterface
 
     public function delete($teacher)
     {
-        Teacher::findOrFail($teacher->id)->delete();
+        try {
+            if ($teacher->sections->count() > 0)
+                toastr()->error(__('msgs.forign_error', ['parent' => __('teacher.teacher'), 'children' => __('section.sections')]));
 
-        toastr()->info(__('msgs.deleted', ['name' => __('teacher.teacher')]));
-        return redirect()->route('teachers.index');
+            else {
+                Teacher::findOrFail($teacher->id)->delete();
+                toastr()->info(__('msgs.deleted', ['name' => __('teacher.teacher')]));
+            }
+
+            return redirect()->route('teachers.index');
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
     }
 
     public function getSpecializations()

@@ -5,7 +5,7 @@
 @stop
 
 @section('breadcrum')
-    {{ __('section.sections_list') }}@endsection
+    {{ __('section.sections') }}@endsection
 
 @section('breadcrum_home')
     {{ __('trans.list', ['name' => __('section.sections')]) }}

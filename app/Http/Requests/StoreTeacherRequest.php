@@ -25,9 +25,9 @@ class StoreTeacherRequest extends FormRequest
     {
         return [
             'email'                 => 'required|email|unique:teachers,email',
-            'password'              => 'required|min:3',
-            'name_ar'               => 'required|min:3',
-            'name_en'               => 'required|min:3',
+            'password'              => 'required|min:8',
+            'name_ar'               => 'required|min:3|regex:/^[\pL\s\-]+$/u',
+            'name_en'               => 'required|min:3|regex:/^[\pL\s\-]+$/u',
             'gender'                => 'required|in:0,1',
             'specialization_id'     => 'required',
             'joining'               => 'required|date|date_format:Y-m-d',

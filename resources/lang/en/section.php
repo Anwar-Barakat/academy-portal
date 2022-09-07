@@ -4,7 +4,6 @@ return [
 
     'sections'                  => 'Sections',
     'section'                   => 'Section',
-    'sections_list'             => 'Sections List',
     'home'                      => 'Home',
     'name'                      => 'Name',
     'name_ar'                   => 'Arabic Name',
