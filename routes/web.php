@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\ShowLoginController;
 use App\Http\Controllers\Classroom\ClassroomController;
+use App\Http\Controllers\Classroom\DeleteCheckedClassroomController;
 use App\Http\Controllers\Classroom\EmptyClassroomController;
 use App\Http\Controllers\Classroom\GetClassroomController;
 use App\Http\Controllers\Dashboard\AdminDashboardController;
@@ -117,8 +118,8 @@ Route::group(
 
 
         Route::middleware(['auth:web,teacher'])->group(function () {
-            Route::get('/get-classrooms/{grade_id}',                    GetClassroomController::class)->name('get-classrooms');
-            Route::get('/get-sections/{classroom_id}',                  GetSectionController::class)->name('get-sections');
+            Route::get('get-classrooms/{grade_id}',                    GetClassroomController::class)->name('get-classrooms');
+            Route::get('get-sections/{classroom_id}',                  GetSectionController::class)->name('get-sections');
         });
 
 
@@ -130,7 +131,6 @@ Route::group(
 
             //! ===================== Classrooms =====================
             Route::resource('classrooms',                               ClassroomController::class);
-            Route::delete('delete-checked-classrooms',                  EmptyClassroomController::class)->name('checked.classrooms');
         });
 
 

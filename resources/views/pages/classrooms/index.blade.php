@@ -25,27 +25,26 @@
                             data-target="#exampleModal">
                             {{ __('msgs.add', ['name' => __('classroom.classroom')]) }}
                         </button>
-
-                        <form action="{{ route('checked.classrooms') }}" method="POST">
-                            @csrf
-                            @method('POST')
-                            <input type="hidden" name="ids" id="classrooms_ids">
-                            <button type="submit" class="button dangerous-button x-small" id="deleteAllClassroomsBtn">
-                                {{ __('msgs.delete', ['name' => __('classroom.checked_classrooms')]) }}
-                            </button>
-                        </form>
                     </div>
 
-
+                    @if ($errors->any())
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
 
                     <div class="table-responsive">
                         <table id="datatable"
                             class="table table-striped table-bordered text-center p-0 table-hover table-sm">
                             <thead>
                                 <tr>
-                                    <th>
-                                        <x-input type="checkbox" class="checkbox" id="checkAllClassrooms" />
-                                    </th>
                                     <th>#</th>
                                     <th>{{ __('classroom.name') }}</th>
                                     <th>{{ __('classroom.grade_name') }}</th>
@@ -56,10 +55,6 @@
                             <tbody>
                                 @forelse ($classrooms as $classroom)
                                     <tr id="classroomID{{ $classroom->id }}">
-                                        <td>
-                                            <x-input type="checkbox" :value="$classroom->id" class="checkBoxClass"
-                                                name="ids" />
-                                        </td>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $classroom->name }}</td>
                                         <td>{{ $classroom->grades->name }}</td>
@@ -99,88 +94,8 @@
 
     {{-- Add Classrooms --}}
     @include('pages.classrooms.add')
-
-    {{-- Delete All Classrooms --}}
-    <div class="modal fade" id="deleteAllClassrooms" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="classroomsDeleteModalLabel">
-                        {{ __('msgs.delete', ['name' => __('classroom.checked_classrooms')]) }}
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col">
-                            <h5>{{ __('msgs.deleting_warning') }}</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary"
-                        data-dismiss="modal">{{ __('buttons.close') }}</button>
-                    <button type="button" class="btn btn-danger" id="delete-all-classrooms">
-                        {{ __('buttons.delete') }}
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
 
 @section('js')
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        $(document).ready(function() {
-            // Check ALl Rows
-            $('#checkAllClassrooms').on('click', function() {
-                $('.checkBoxClass').prop('checked', $(this).prop('checked'));
-            })
 
-            $('input:checkbox[name=ids],#checkAllClassrooms').change(function() {
-                var ids = [];
-
-                $('input:checkbox[name=ids]:checked').each(function() {
-                    ids.push($(this).val())
-                });
-
-                if (ids.length > 0)
-                    $('#deleteAllClassroomsBtn').css('display', 'block')
-                else
-                    $('#deleteAllClassroomsBtn').css('display', 'none')
-
-
-                $('#deleteAllClassroomsBtn').click(function(e) {
-                    e.preventDefault();
-                    $('#classrooms_ids').val(ids);
-
-                    Swal.fire({
-                        title: 'Are you sure?',
-                        text: "You won't be able to revert this!",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Yes, delete it!'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            Swal.fire(
-                                'Deleted!',
-                                'Your file has been deleted.',
-                                'success'
-                            )
-                            window.location.href =
-                                "{{ route('checked.classrooms') }}"
-
-                        }
-                    })
-                });
-
-            })
-        });
-    </script>
 @endsection

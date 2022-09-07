@@ -41,12 +41,10 @@
                 <div class="card card-statistics h-100">
                     <div class="card-body">
                         <div class="accordion gray plus-icon round">
-
                             @foreach ($grades as $grade)
                                 <div class="acd-group">
                                     <a href="#" class="acd-heading">{{ $grade->name }}</a>
                                     <div class="acd-des">
-
                                         <div class="row">
                                             <div class="col-xl-12 mb-30">
                                                 <div class="card card-statistics h-100">
@@ -105,9 +103,13 @@
                                                                         @include('pages.sections.edit')
 
                                                                         {{-- Delete the section --}}
-                                                                        <x-delete-modal :id="$section->id"
-                                                                            :title="__('msgs.delete', ['name' => __('section.section')])"
-                                                                            :action="route('sections.destroy', $section)" />
+                                                                        <x-delete-modal :id="$section->id" :title="__('msgs.delete', [
+                                                                            'name' => __('section.section'),
+                                                                        ])"
+                                                                            :action="route(
+                                                                                'sections.destroy',
+                                                                                $section,
+                                                                            )" />
 
                                                                     @empty
                                                                         <tr class="text-center">
@@ -129,8 +131,7 @@
                     </div>
                 </div>
                 {{-- Add A new Section --}}
-           
-
+                @include('pages.sections.add')
             </div>
         </div>
     </div>
@@ -138,31 +139,6 @@
 @endsection
 
 
-@section('js')
-    <script>
-        $(document).ready(function() {
-            $('select[name=grade_id]').on('change', function() {
-                var grade_id = $(this).val()
-                if (grade_id) {
-                    $.ajax({
-                        url: "{{ URL::to('get-classrooms') }}/" + grade_id,
-                        type: 'GET',
-                        dataType: 'json',
-                        success: function(data) {
-                            $('select[name=classroom_id]').empty();
-                            $('select[name=classroom_id]').append(
-                                '<option disabled  value="" selected>{{ __('msgs.select', ['name' => '...']) }}</option>'
-                            );
-                            $.each(data, function(key, value) {
-
-                                $('select[name=classroom_id]').append(
-                                    '<option value="' + key + '">' + value +
-                                    '</option>');
-                            });
-                        },
-                    });
-                }
-            })
-        })
-    </script>
-@stop
+@section('ajax-scripts')
+    <script src="{{ asset('assets/js/custom/get-classtooms.js') }}"></script>
+@endsection
