@@ -9,6 +9,7 @@ use App\Models\MyParent;
 use App\Models\Nationality;
 use App\Models\ParentAttachment;
 use App\Models\Religion;
+use App\Models\Student;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
@@ -19,10 +20,6 @@ use phpDocumentor\Reflection\Types\Parent_;
 class AddParent extends Component
 {
     use WithFileUploads;
-
-    public $successfulMsg = '';
-
-    public $errorMsg = '';
 
     public $currentStep = 1,
         $email,
@@ -189,8 +186,7 @@ class AddParent extends Component
             $this->currentStep = 1;
 
             $this->reset();
-
-            $this->successfulMsg = __('msgs.added', ['name' => __('parent.parent')]);
+            toastr()->success(__('msgs.added', ['name' => __('parent.parent')]));
         } catch (\Throwable $th) {
             $this->errorMsg = $th->getMessage();
         }
@@ -300,8 +296,7 @@ class AddParent extends Component
             $this->showTable = true;
 
             $this->reset();
-
-            $this->successfulMsg = __('msgs.updated', ['name' => __('parent.parent')]);
+            toastr()->success(__('msgs.updated', ['name' => __('parent.parent')]));
         }
     }
 
@@ -309,17 +304,17 @@ class AddParent extends Component
     {
         $my_parent  = MyParent::findOrFail($id);
 
-        Storage::disk('parents_attachments')->delete('attachments/parents/' . $my_parent->father_name);
-
         foreach ($my_parent->images as $image) {
             Storage::disk('parents_attachments')->delete('attachments/parents/' . $my_parent->father_name . '/' . $image->file_name);
             $image->delete();
         }
 
-
-
-        $my_parent->delete();
-        $this->reset();
-        $this->successfulMsg = __('msgs.deleted', ['name' => __('parent.parent')]);
+        if (Student::where('parent_id', $my_parent->id)->count() > 0)
+            toastr()->error(__('msgs.forign_error', ['parent' => __('parent.parent'), 'children' => __('student.students')]));
+        else {
+            $my_parent->delete();
+            toastr()->info(__('msgs.deleted', ['name' => __('parent.parent')]));
+            $this->reset();
+        }
     }
 }

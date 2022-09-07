@@ -37,6 +37,7 @@ class StoreStudentRequest extends FormRequest
             'section_id'        => ['required'],
             'parent_id'         => ['required'],
             'academic_year'     => ['required'],
+            'image'             => ['required', 'image', 'max:2048']
         ];
     }
 }

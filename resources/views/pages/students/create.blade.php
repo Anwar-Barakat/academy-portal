@@ -20,15 +20,6 @@
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
                 <form method="post" action="{{ route('students.store') }}" autocomplete="off"
                     enctype="multipart/form-data">
                     @csrf
@@ -224,9 +215,12 @@
                                         id="inputGroupFileAddon01">{{ __('buttons.upload') }}</span>
                                 </div>
                                 <div class="custom-file">
-                                    <x-input type="file" name="images[]" multiple class="custom-file"
-                                        accept="image/*" id="photos" aria-describedby="inputGroupFileAddon01" />
-                                    <x-label class="custom-file-label" for="photos" :value="__('msgs.select', ['name' => __('parent.attachments')])" />
+                                    <x-input type="file" name="image" class="custom-file" accept="image/*"
+                                        id="images" aria-describedby="inputGroupFileAddon01" />
+                                    <x-label class="custom-file-label" for="images" :value="__('msgs.select', ['name' => __('parent.attachments')])" />
+                                    @error('image')
+                                        <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -245,8 +239,5 @@
 @endsection
 @section('js')
 <script src="{{ asset('assets/js/custom/get-classtooms.js') }}"></script>
-
-
 <script src="{{ asset('assets/js/custom/get-sections.js') }}"></script>
-
 @endsection

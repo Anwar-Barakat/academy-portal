@@ -13,7 +13,7 @@ use Illuminate\Notifications\Notifiable;
 
 class Student extends Authenticatable
 {
-    use HasFactory, HasTranslations, SoftDeletes,Notifiable;
+    use HasFactory, HasTranslations, SoftDeletes, Notifiable;
 
     protected $guard = 'student';
 

@@ -20,22 +20,24 @@
         <div class="card card-statistics h-100">
             <div class="card-body">
 
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+                <div class="row justify-content-center mb-5">
+                    @if ($student->images->count() > 0)
+                        @foreach ($student->images as $image)
+                            <img src="{{ asset('attachments/students/' . $student->getTranslation('name', 'en') . '/' . $image->file_name) }}"
+                                alt="" width="300" class="img img-thumbnail">
+                        @endforeach
+                    @else
+                        <img src="{{ asset('assets/images/vectors/student.png') }}" alt="" width="200"
+                            class="img img-thumbnail">
+                    @endif
+                </div>
 
                 <form method="post" action="{{ route('students.update', $student) }}" autocomplete="off"
                     enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    <h6 class="text text-info">
-                        {{ __('student.personal_information') }}</h6><br>
+                    <h4 class="text text-info mb-3">
+                        {{ __('student.personal_information') }}</h4><br>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -149,7 +151,7 @@
                         </div>
                     </div>
                     <hr>
-                    <h6 class="text text-info">{{ __('student.student_information') }}</h6>
+                    <h4 class="text text-info mb-3">{{ __('student.student_information') }}</h4>
                     <br>
                     <div class="row">
                         <div class="col-xl-4">
@@ -233,10 +235,34 @@
                                 </select>
                             </div>
                         </div>
+
                     </div><br>
-                    <x-button class="btn btn-success btn-sm nextBtn btn-lg pull-right">
+                    <br>
+                    <hr>
+                    <h4 class="text text-info mb-3">{{ __('parent.attachments') }}</h4>
+                    <div class="row">
+                        <div class="col-xl-6 col-md-12">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                        id="inputGroupFileAddon01">{{ __('buttons.upload') }}</span>
+                                </div>
+                                <div class="custom-file">
+                                    <x-input type="file" name="image" class="custom-file" accept="image/*"
+                                        id="images" aria-describedby="inputGroupFileAddon01" />
+                                    <x-label class="custom-file-label" for="images" :value="__('msgs.select', ['name' => __('parent.attachments')])" />
+                                    @error('image')
+                                        <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <hr>
+                    <button type="submit" class="button x-small successful-button">
                         {{ __('buttons.update') }}
-                    </x-button>
+                    </button>
                 </form>
             </div>
         </div>
@@ -245,60 +271,6 @@
 <!-- row closed -->
 @endsection
 @section('js')
-{{-- Get Grade's Classrooms --}}
-<script>
-    $(function() {
-        $('select[name=grade_id]').on('change', function() {
-            var grade_id = $(this).val();
-            if (grade_id) {
-                $.ajax({
-                    type: "get",
-                    url: "/get-classrooms/" + grade_id,
-                    dataType: "json",
-                    success: function(response) {
-                        $('select[name=classroom_id]').empty();
-                        $('select[name=classroom_id]').append(
-                            '<option disabled>{{ __('msgs.select', ['name' => '...']) }}</option>'
-                        );
-                        $.each(response, function(index, value) {
-                            $('select[name=classroom_id]').append(
-                                '<option value="' + index + '">' + value +
-                                '</option>'
-                            );
-                        });
-                    }
-                });
-            }
-        })
-    });
-</script>
-
-{{-- Get Classroom's Sections --}}
-<script>
-    $(function() {
-        $('select[name=classroom_id]').on('change', function() {
-            var classroom_id = $(this).val();
-            if (classroom_id) {
-                $.ajax({
-                    type: "get",
-                    url: "/get-sections/" + classroom_id,
-                    dataType: "json",
-                    success: function(response) {
-                        $('select[name=section_id]').empty();
-                        $('select[name=section_id]').append(
-                            '<option disabled>{{ __('msgs.select', ['name' => '...']) }}</option>'
-                        );
-                        $.each(response, function(index, value) {
-                            $('select[name=section_id]').append(
-                                '<option value="' + index + '">' + value +
-                                '</option>'
-                            );
-                        });
-                    }
-                });
-            }
-        })
-    });
-</script>
-
+<script src="{{ asset('assets/js/custom/get-classtooms.js') }}"></script>
+<script src="{{ asset('assets/js/custom/get-sections.js') }}"></script>
 @endsection

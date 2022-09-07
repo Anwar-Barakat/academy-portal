@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Repository;
 
+use App\Http\Traits\AttachFileTrait;
 use App\Models\Blood;
 use App\Models\Classroom;
 use App\Models\Grade;
@@ -13,9 +14,12 @@ use App\Models\Student;
 use App\Repositories\Interface\StudentPepositoryInterface;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class StudentPepository implements StudentPepositoryInterface
 {
+    use AttachFileTrait;
+
     public function index()
     {
         $students = Student::latest()->get();
@@ -38,26 +42,23 @@ class StudentPepository implements StudentPepositoryInterface
         DB::beginTransaction();
 
         try {
-            $data               = $request->only([
-                'name_ar', 'name_en', 'email', 'password', 'gender', 'birthday', 'nationality_id',
-                'blood_id', 'grade_id', 'classroom_id', 'section_id', 'parent_id', 'academic_year',
-            ]);
+            $data               = $request->only(['name_ar', 'name_en', 'email', 'password', 'gender', 'birthday', 'nationality_id', 'blood_id', 'grade_id', 'classroom_id', 'section_id', 'parent_id', 'academic_year']);
             $data['name']['ar'] = $data['name_ar'];
             $data['name']['en'] = $data['name_en'];
             $data['password'] = Hash::make($data['password']);
+
             $student = Student::create($data);
 
-            if ($request->hasFile('images')) {
-                foreach ($request->file('images') as $photo) {
-                    $name   = $photo->getClientOriginalName();
-                    $photo->storeAs('attachments/students/' . $student->getTranslation('name', 'en'), $name, 'students_attachments');
+            if ($request->hasFile('image') && $request->file('image')->isValid()) {
+                $file_name  = $request->file('image')->getClientOriginalName();
 
-                    $image                  = new Image();
-                    $image->file_name       = $name;
-                    $image->imageable_id    = $student->id;
-                    $image->imageable_type  = 'App\Models\Student';
-                    $image->save();
-                }
+                $this->uploadFile($request, 'students',  $data['name']['en'], 'image');
+
+                $image                  = new Image();
+                $image->file_name       = $file_name;
+                $image->imageable_id    = $student->id;
+                $image->imageable_type  = 'App\Models\Student';
+                $image->save();
             }
 
             DB::commit();
@@ -79,7 +80,7 @@ class StudentPepository implements StudentPepositoryInterface
 
     public function edit($student)
     {
-        $data['student']        = Student::findOrFail($student->id);
+        $data['student']        = Student::with(['images'])->findOrFail($student->id);
         $data['nationalities']  = Nationality::all();
         $data['bloods']         = Blood::all();
         $data['grades']         = Grade::with(['classrooms', 'sections'])->get();
@@ -92,14 +93,34 @@ class StudentPepository implements StudentPepositoryInterface
     public function update($request, $student)
     {
         try {
-            $data               = $request->only([
-                'name_ar', 'name_en', 'email', 'password', 'gender', 'birthday', 'nationality_id',
-                'blood_id', 'grade_id', 'classroom_id', 'section_id', 'parent_id', 'academic_year',
-            ]);
+            $data               = $request->only(['name_ar', 'name_en', 'email', 'password', 'gender', 'birthday', 'nationality_id', 'blood_id', 'grade_id', 'classroom_id', 'section_id', 'parent_id', 'academic_year']);
             $data['name']['ar'] = $data['name_ar'];
             $data['name']['en'] = $data['name_en'];
-            $data['password'] = Hash::make($data['password']);
+
+
+            if (isset($request->password) && !empty($request->password)) {
+                $data['password']   = Hash::make($data['password']);
+            }
+
             $student->update($data);
+
+            if ($request->hasFile('image') && $request->file('image')->isValid()) {
+
+                foreach ($student->images as $image) {
+                    Storage::disk('upload_attachments')->delete('attachments/students/' . $data['name']['en'] . '/' . $image->file_name);
+                    $image->delete();
+                }
+
+                $file_name  = $request->file('image')->getClientOriginalName();
+
+                $this->uploadFile($request, 'students', $data['name']['en'], 'image');
+
+                $image                  = new Image();
+                $image->file_name       = $file_name;
+                $image->imageable_id    = $student->id;
+                $image->imageable_type  = 'App\Models\Student';
+                $image->save();
+            }
 
 
             toastr()->success(__('msgs.updated', ['name' => __('student.student')]));

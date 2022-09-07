@@ -1,19 +1,4 @@
 <div>
-    @if (isset($successfulMsg) && !empty($successfulMsg))
-        <div class="alert alert-success" id="success-alert mb-5">
-            <button type="button" class="close" data-dismiss="alert">x</button>
-            {{ $successfulMsg }}
-        </div>
-    @endif
-
-    @if (isset($errorMsg) && !empty($errorMsg))
-        <div class="alert alert-danger" id="success-alert mb-5">
-            <button type="button" class="close" data-dismiss="alert">x</button>
-            {{ $errorMsg }}
-        </div>
-    @endif
-
-
     @if ($showTable === true)
         @include('livewire.parents_table')
     @else
