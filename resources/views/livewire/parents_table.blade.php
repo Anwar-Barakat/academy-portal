@@ -1,4 +1,4 @@
-<button type="button" class="button x-small mb-3" wire:click="showParentForm">
+<button type="button" class="button x-small mb-4" wire:click="showParentForm">
     {{ __('msgs.add', ['name' => __('parent.parent')]) }}
 </button>
 @if ($errors->any())

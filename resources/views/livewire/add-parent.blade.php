@@ -53,6 +53,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">{{ __('student.filename') }}</th>
                                     <th scope="col">{{ __('trans.created_at') }}</th>
+                                    <th scope="col">{{ __('buttons.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -67,10 +68,16 @@
                                                 alt="" width="100" class="img img-thumbnail">
                                         </td>
                                         <td>{{ $img->created_at->diffForHumans() }}</td>
+                                        <td>
+                                            <button class="btn btn-outline-danger btn-sm"
+                                                wire:click="deleteImage({{ $parent_id }},{{ $img->id }})">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </td>
                                     </tr>
                                 @empty
                                     <tr class="text-center">
-                                        <td colspan="3">{{ __('msgs.not_found_yet') }}</td>
+                                        <td colspan="4">{{ __('msgs.not_found_yet') }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>
@@ -95,13 +102,13 @@
                     <h3 class="mt-5">{{ __('msgs.save_data') }}</h3>
                     <hr>
                     <div class="nextPrevBtns  mt-4">
-                        <button class="btn btn-warning nextBtn pull-right" type="button"
+                        <button class="btn btn-secondary" type="button"
                             wire:click="back(2)">{{ __('buttons.back') }}</button>
                         @if ($updateMode === true)
-                            <button class="btn btn-success pull-right" wire:click="updateForm({{ $parent_id }})"
+                            <button class="button x-small successful-button" wire:click="updateForm({{ $parent_id }})"
                                 type="button">{{ __('buttons.update') }}</button>
                         @else
-                            <button class="btn btn-success pull-right" wire:click="submitForm"
+                            <button class="button x-small successful-button" wire:click="submitForm"
                                 type="button">{{ __('buttons.submit') }}</button>
                         @endif
                     </div>

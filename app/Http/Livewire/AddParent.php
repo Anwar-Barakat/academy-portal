@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Http\Traits\AttachFileTrait;
 use App\Models\Blood;
 use App\Models\Image;
 use App\Models\MyParent;
@@ -9,6 +10,7 @@ use App\Models\Nationality;
 use App\Models\ParentAttachment;
 use App\Models\Religion;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -245,7 +247,7 @@ class AddParent extends Component
 
         $this->parent_id = $id;
         if (!empty($this->parent_id)) {
-            MyParent::findOrFail($this->parent_id)->update([
+            $my_parent = MyParent::findOrFail($this->parent_id)->update([
                 'email'                      => $this->email,
                 'password'                   => Hash::make($this->password),
                 'father_name'                => ['ar'    => $this->father_name_ar, 'en'     => $this->father_name_en],
@@ -269,6 +271,36 @@ class AddParent extends Component
                 'mother_address'             => $this->mother_address,
             ]);
 
+            $parent_name = MyParent::findOrFail($this->parent_id)->toArray();
+
+            dd($parent_name['father_name']);
+
+            // dd($parent_name);
+
+            // if (!empty($this->photos)) {
+            //     $father_id = MyParent::latest()->first()->id;
+            //     foreach ($this->photos as $photo) {
+
+            //         $exists =   Storage::disk('parents_attachments')->exists('attachments/parents/' . $parent_name . '/' . $photo);
+            //         if ($exists)
+            //             Storage::disk('parents_attachments')->delete('attachments/parents/' . $parent_name . '/' . $photo);
+
+            //         Image::where('imageable_id', $father_id)->delete();
+
+
+            //         dd('done000');
+
+            //         $name   = $photo->getClientOriginalName();
+            //         $photo->storeAs('attachments/parents/' . $parent_name, $name, 'parents_attachments');
+
+            //         $image                  = new Image();
+            //         $image->file_name       = $name;
+            //         $image->imageable_id    = $father_id;
+            //         $image->imageable_type  = 'App\Models\MyParent';
+            //         $image->save();
+            //     }
+            // }
+
             $this->showTable = true;
 
             $this->reset();
@@ -282,5 +314,21 @@ class AddParent extends Component
         MyParent::findOrFail($id)->delete();
         $this->reset();
         $this->successfulMsg = __('msgs.deleted', ['name' => __('parent.parent')]);
+    }
+
+    public function deleteImage($parentId, $imageId)
+    {
+        $image          = Image::where('id', $imageId)->first();
+        $file_name      = $image->file_name;
+
+        $parent         = MyParent::where('id', $parentId)->first();
+        $parent_name    = $parent->father_name;
+
+
+        $exists =   Storage::disk('parents_attachments')->exists('attachments/parents/' . $parent_name . '/' . $file_name);
+        if ($exists)
+            Storage::disk('parents_attachments')->delete('attachments/parents/' . $parent_name . '/' . $file_name);
+
+        Image::where('id', $imageId)->delete();
     }
 }
