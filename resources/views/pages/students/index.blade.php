@@ -1,14 +1,15 @@
 @extends('layouts.master')
 
 @section('title')
-    {{ __('student.students_list') }}
+    {{ __('trans.list', ['name' => __('student.students')]) }}
 @stop
 
 @section('breadcrum')
-    {{ __('student.students') }}@endsection
+    {{ __('student.students') }}
+@endsection
 
 @section('breadcrum_home')
-    {{ __('student.students_list') }}
+    {{ __('trans.list', ['name' => __('student.students')]) }}
 @endsection
 
 @section('content')
@@ -22,7 +23,7 @@
                             <div class="alert alert-danger">{{ $error }}</div>
                         @endforeach
                     @endif
-                    <a href="{{ route('students.create') }}" class="button button-border x-small mb-3">
+                    <a href="{{ route('students.create') }}" class="button button-border x-small mb-4">
                         {{ __('msgs.add', ['name' => __('student.student')]) }}
                     </a>
 
@@ -51,7 +52,7 @@
                                         <td>{{ $student->created_at }}</td>
                                         <td>
                                             <div class="dropdown">
-                                                <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                <button class="btn btn-outline-secondary dropdown-toggle" type="button"
                                                     id="triggerId" data-toggle="dropdown" aria-haspopup="true"
                                                     aria-expanded="false">
                                                     <i class="fas fa-list-alt"></i>
@@ -148,42 +149,8 @@
                                             </div>
 
                                             {{-- Deleted The Classroom --}}
-                                            <div class="modal fade" id="delete{{ $student->id }}" tabindex="-1"
-                                                role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="deleteGradeLabel">
-                                                                {{ __('msgs.delete', ['name' => __('classroom.classroom')]) }}
-                                                            </h5>
-                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <form action="{{ route('students.force_delete', $student) }}"
-                                                            method="POST">
-                                                            <div class="modal-body">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <div class="row">
-                                                                    <div class="col">
-                                                                        <h5>{{ __('msgs.deleting_warning') }}</h5>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                    data-dismiss="modal">{{ __('buttons.close') }}</button>
-                                                                <x-button class="btn btn-danger">
-                                                                    {{ __('buttons.delete') }}
-                                                                </x-button>
-                                                            </div>
-                                                        </form>
+                                            <x-delete-modal :id="$student->id" :title="__('msgs.delete', ['name' => __('student.student')])" :action="route('students.destroy', $student)" />
 
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </td>
                                     </tr>
                                 @empty

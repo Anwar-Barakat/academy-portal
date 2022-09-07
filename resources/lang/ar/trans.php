@@ -53,7 +53,6 @@ return [
     'name_ar'                   => 'الاسم بالعربي',
     'name_en'                   => 'الاسم بالانكليزي',
     'students'                  => 'الطلاب',
-    'students_list'             => 'قائمة الطلاب',
     'gender'                    => 'الجنس',
     'male'                      => 'ذكر',
     'female'                    => 'أنثى',

@@ -3,7 +3,7 @@ $(document).ready(function () {
         var grade_id = $(this).val();
         if (grade_id) {
             $.ajax({
-                url: "get-classrooms/" + grade_id,
+                url: "/get-classrooms/" + grade_id,
                 type: "GET",
                 dataType: "json",
                 success: function (data) {

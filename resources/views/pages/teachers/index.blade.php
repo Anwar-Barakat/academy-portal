@@ -33,12 +33,12 @@
                         class="table table-striped table-bordered p-0 table-hover table-sm text-center">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>{{ __('teacher.name') }}</th>
-                                <th>{{ __('teacher.gender') }}</th>
-                                <th>{{ __('teacher.joining_data') }}</th>
-                                <th>{{ __('teacher.specialization') }}</th>
-                                <th>{{ __('buttons.actions') }}</th>
+                                <th class="alert-info">#</th>
+                                <th class="alert-info">{{ __('teacher.name') }}</th>
+                                <th class="alert-info">{{ __('teacher.gender') }}</th>
+                                <th class="alert-info">{{ __('teacher.joining_data') }}</th>
+                                <th class="alert-success">{{ __('teacher.specialization') }}</th>
+                                <th class="alert-info">{{ __('buttons.actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>

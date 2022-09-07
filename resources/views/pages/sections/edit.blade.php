@@ -91,14 +91,10 @@
 
                     <div class="col">
                         <div class="form-check">
-                            @if ($section->status === 1)
-                                <x-input type="checkbox" checked class="form-check-input" name="status"
-                                    :value="1" id="status" />
-                            @else
-                                <x-input type="checkbox" class="form-check-input" name="status" :value="0"
-                                    id="status" />
-                            @endif
-                            <x-label :value="__('section.status')" for="status" class="control-label" />
+                            <input type="checkbox" checked class="form-check-input" name="status"
+                                value="{{ $section->status }}" id="status"
+                                {{ $section->status == 1 ? 'checked' : '' }} />
+                            <label for="status" class="control-label">{{ __('section.status') }}</label>
                         </div>
                     </div>
                 </div>

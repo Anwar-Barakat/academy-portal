@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('status');
+            $table->boolean('status')->default(1);
             $table->foreignId('grade_id')->constrained('grades')->cascadeOnUpdate();
             $table->foreignId('classroom_id')->constrained('classrooms')->cascadeOnUpdate();
             $table->timestamps();

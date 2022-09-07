@@ -36,8 +36,6 @@
                         </button>
                     </div>
                 @endif
-
-
                 <div class="card card-statistics h-100">
                     <div class="card-body">
                         <div class="accordion gray plus-icon round">
@@ -58,13 +56,16 @@
                                                                 class="table center-aligned-table text-center mb-0 table-hover table-sm">
                                                                 <thead>
                                                                     <tr class="text-dark">
-                                                                        <th>#</th>
-                                                                        <th>{{ __('section.name') }}
+                                                                        <th class="alert-info">#</th>
+                                                                        <th class="alert-info">{{ __('section.name') }}</th>
+                                                                        <th class="alert-success">
+                                                                            {{ __('student.students') }}</th>
+                                                                        <th class="alert-success">
+                                                                            {{ __('section.classrrom_name') }}</th>
+                                                                        <th class="alert-info">{{ __('section.status') }}
                                                                         </th>
-                                                                        <th>{{ __('student.students') }}</th>
-                                                                        <th>{{ __('section.classrrom_name') }}</th>
-                                                                        <th>{{ __('section.status') }}</th>
-                                                                        <th>{{ __('buttons.actions') }}</th>
+                                                                        <th class="alert-info">{{ __('buttons.actions') }}
+                                                                        </th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>

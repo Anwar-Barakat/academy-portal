@@ -174,12 +174,13 @@ class AddParent extends Component
             if (!empty($this->photos)) {
                 $father_id = MyParent::latest()->first()->id;
                 foreach ($this->photos as $photo) {
+
                     $name   = $photo->getClientOriginalName();
                     $photo->storeAs('attachments/parents/' . $my_parent->father_name, $name, 'parents_attachments');
 
                     $image                  = new Image();
                     $image->file_name       = $name;
-                    $image->imageable_id    =  $father_id;
+                    $image->imageable_id    = $father_id;
                     $image->imageable_type  = 'App\Models\MyParent';
                     $image->save();
                 }
@@ -279,11 +280,11 @@ class AddParent extends Component
                 $father_name = $my_parent->father_name;
 
                 foreach ($this->photos as $photo) {
-                    Storage::disk('parents_attachments')->delete('attachments/parents/' . $father_name);
 
-                    foreach ($my_parent->images as $image)
+                    foreach ($my_parent->images as $image) {
+                        Storage::disk('parents_attachments')->delete('attachments/parents/' . $father_name . '/' . $image->file_name);
                         $image->delete();
-
+                    }
 
                     $name   = $photo->getClientOriginalName();
                     $photo->storeAs('attachments/parents/' . $father_name, $name, 'parents_attachments');
@@ -306,7 +307,18 @@ class AddParent extends Component
 
     public function delete($id)
     {
-        MyParent::findOrFail($id)->delete();
+        $my_parent  = MyParent::findOrFail($id);
+
+        Storage::disk('parents_attachments')->delete('attachments/parents/' . $my_parent->father_name);
+
+        foreach ($my_parent->images as $image) {
+            Storage::disk('parents_attachments')->delete('attachments/parents/' . $my_parent->father_name . '/' . $image->file_name);
+            $image->delete();
+        }
+
+
+
+        $my_parent->delete();
         $this->reset();
         $this->successfulMsg = __('msgs.deleted', ['name' => __('parent.parent')]);
     }

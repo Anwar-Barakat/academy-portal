@@ -107,7 +107,10 @@
                     <div class="clearfix"></div>
                 </a>
                 <ul id="student_information" class="collapse">
-                    <li> <a href="{{ route('students.index') }}">{{ __('trans.students_list') }}</a>
+                    <li>
+                        <a href="{{ route('students.index') }}">
+                            {{ __('trans.list', ['name' => __('student.students')]) }}
+                        </a>
                     </li>
                     <li>
                         <a href="{{ route('students.create') }}">{{ __('msgs.add', ['name' => __('student.student')]) }}

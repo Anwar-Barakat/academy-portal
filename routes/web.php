@@ -118,8 +118,8 @@ Route::group(
 
 
         Route::middleware(['auth:web,teacher'])->group(function () {
-            Route::get('get-classrooms/{grade_id}',                    GetClassroomController::class)->name('get-classrooms');
-            Route::get('get-sections/{classroom_id}',                  GetSectionController::class)->name('get-sections');
+            Route::get('/get-classrooms/{grade_id}',                    GetClassroomController::class)->name('get-classrooms');
+            Route::get('/get-sections/{classroom_id}',                  GetSectionController::class)->name('get-sections');
         });
 
 
@@ -140,6 +140,9 @@ Route::group(
 
             //! ===================== Parents =====================
             Route::view('/add-parents',                                 'livewire.show_parent_forms')->name('add-parents');
+
+            //! ===================== Students =====================
+            Route::resource('students',                                 StudentController::class);
         });
 
 
@@ -161,8 +164,7 @@ Route::group(
 
 
 
-        //! ===================== Students =====================
-        Route::resource('students',                                 StudentController::class);
+
         Route::post('upload-attachments',                           UploadAttachmentController::class)->name('student_upload_attachment');
         Route::get('download-attachment/{studname}/{filename}',     DownloadAttachmentController::class)->name('download_student_attachment');
         Route::delete('delete-attachment',                          DeleteAttachmentController::class)->name('delete_student_attachment');

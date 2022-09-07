@@ -62,7 +62,7 @@
                                                                         <td class="d-flex justify-content-center"
                                                                             style="gap: 5px">
                                                                             <a href="{{ route('add_attendances', $section->id) }}"
-                                                                                class="btn btn-outline-info btn-sm">{{ __('student.students_list') }}</a>
+                                                                                class="btn btn-outline-info btn-sm">{{ __('trans.list', ['name' => __('student.students')]) }}</a>
                                                                         </td>
                                                                     </tr>
                                                                 @empty

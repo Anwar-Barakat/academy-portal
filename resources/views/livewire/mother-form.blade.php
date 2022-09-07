@@ -3,7 +3,7 @@
        <div class="col-xs-12">
            <div class="col-md-12">
                <div class="row mb-4 mt-3">
-                   <div class="col">
+                   <div class="col-lg-6 col-md-12">
                        <x-label for="mother_name_ar" :value="__('parent.mother_name_ar')" />
                        <x-input type="text" wire:model="mother_name_ar" class="form-control" id="mother_name_ar"
                            :value="old('mother_name_ar')" />
@@ -11,7 +11,7 @@
                            <small class="text text-danger">{{ $message }}</small>
                        @enderror
                    </div>
-                   <div class="col">
+                   <div class="col-lg-6 col-md-12">
                        <x-label for="mother_name_en" :value="__('parent.mother_name_en')" />
                        <x-input type="text" wire:model="mother_name_en" class="form-control" id="mother_name_en"
                            :value="old('mother_name_en')" />
@@ -22,7 +22,7 @@
                </div>
 
                <div class="row mb-4">
-                   <div class="col">
+                   <div class="col-lg-6 col-md-12">
                        <x-label for="mother_job_ar" :value="__('parent.mother_job_ar')" />
                        <x-input type="text" wire:model="mother_job_ar" class="form-control" id="mother_job_ar"
                            :value="old('mother_job_ar')" />
@@ -30,7 +30,7 @@
                            <small class="text text-danger">{{ $message }}</small>
                        @enderror
                    </div>
-                   <div class="col">
+                   <div class="col-lg-6 col-md-12">
                        <x-label for="mother_job_en" :value="__('parent.mother_job_en')" />
                        <x-input type="text" wire:model="mother_job_en" class="form-control" id="mother_job_en"
                            :value="old('mother_job_en')" />
@@ -40,14 +40,14 @@
                    </div>
                </div>
                <div class="row mb-4">
-                   <div class="col">
+                   <div class="col-lg-4 col-md-12">
                        <x-label for="mother_identification" :value="__('parent.mother_identification')" />
                        <input type="number" wire:model="mother_identification" class="form-control">
                        @error('mother_identification')
                            <small class="text text-danger">{{ $message }}</small>
                        @enderror
                    </div>
-                   <div class="col">
+                   <div class="col-lg-4 col-md-12">
                        <x-label for="mother_passport" :value="__('parent.mother_passport')" />
                        <x-input type="number" wire:model="mother_passport" class="form-control" id="mother_passport"
                            :value="old('mother_passport')" />
@@ -56,7 +56,7 @@
                        @enderror
                    </div>
 
-                   <div class="col">
+                   <div class="col-lg-4 col-md-12">
                        <x-label for="mother_phone" :value="__('parent.mother_phone')" />
                        <x-input type="tel" wire:model="mother_phone" class="form-control" id="mother_phone"
                            :value="old('mother_phone')" />
@@ -68,7 +68,7 @@
 
 
                <div class="row mb-4">
-                   <div class="form-group col">
+                   <div class="form-group col-lg-4 col-md-12">
                        <x-label for="mother_nationality_id" :value="__('parent.mother_nationality_id')" />
                        <select class="custom-select my-1 mr-sm-2" wire:model="mother_nationality_id">
                            <option selected value="">{{ __('msgs.select', ['name' => '...']) }}</option>
@@ -80,7 +80,7 @@
                            <small class="text text-danger">{{ $message }}</small>
                        @enderror
                    </div>
-                   <div class="form-group col">
+                   <div class="form-group col-lg-4 col-md-12">
                        <x-label for="mother_blood_id" :value="__('parent.mother_blood_id')" />
                        <select class="custom-select my-1 mr-sm-2" wire:model="mother_blood_id">
                            <option selected value="">{{ __('msgs.select', ['name' => '...']) }}</option>
@@ -92,7 +92,7 @@
                            <small class="text text-danger">{{ $message }}</small>
                        @enderror
                    </div>
-                   <div class="form-group col">
+                   <div class="form-group col-lg-4 col-md-12">
                        <x-label for="mother_religion_id" :value="__('parent.mother_religion_id')" />
                        <select class="custom-select my-1 mr-sm-2" wire:model="mother_religion_id">
                            <option selected value="">{{ __('msgs.select', ['name' => '...']) }}</option>

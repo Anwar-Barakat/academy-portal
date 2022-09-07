@@ -45,7 +45,6 @@ class SectionController extends Controller
             $data       = $request->only(['name_ar', 'name_en', 'grade_id', 'classroom_id', 'teacher_id']);
             $data['name']['ar'] = $data['name_ar'];
             $data['name']['en'] = $data['name_en'];
-            $data['status']     = 1;
             $section    = Section::create($data);
 
 
@@ -94,6 +93,8 @@ class SectionController extends Controller
             $data   = $request->only(['name_ar', 'name_en', 'grade_id', 'classroom_id', 'status', 'teacher_id']);
             $data['name']['ar'] = $data['name_ar'];
             $data['name']['en'] = $data['name_en'];
+            $data['status']     = $request->status;
+            return $data;
             $section->update($data);
 
             $section->teachers()->sync($data['teacher_id']);

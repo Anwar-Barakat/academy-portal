@@ -16,7 +16,7 @@ class GetSectionController extends Controller
      */
     public function __invoke($classroom_id)
     {
-        $sections = Section::where('classroom_id', $classroom_id)->pluck('name', 'id');
+        $sections = Section::where('classroom_id', $classroom_id)->where('status', 1)->pluck('name', 'id');
 
         return $sections;
     }

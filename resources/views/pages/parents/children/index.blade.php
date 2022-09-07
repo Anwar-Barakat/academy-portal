@@ -1,14 +1,14 @@
 @extends('layouts.master')
 
 @section('title')
-    {{ __('student.students_list') }}
+    {{ __('trans.list', ['name' => __('student.students')]) }}
 @stop
 
 @section('breadcrum')
     {{ __('student.students') }}@endsection
 
 @section('breadcrum_home')
-    {{ __('student.students_list') }}
+    {{ __('trans.list', ['name' => __('student.students')]) }}
 @endsection
 
 @section('content')

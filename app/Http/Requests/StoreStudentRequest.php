@@ -24,8 +24,8 @@ class StoreStudentRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_ar'           => ['required', 'min:3'],
-            'name_en'           => ['required', 'min:3'],
+            'name_ar'           => ['required', 'min:3', 'regex:/^[\pL\s\-]+$/u'],
+            'name_en'           => ['required', 'min:3', 'regex:/^[\pL\s\-]+$/u'],
             'email'             => ['required', 'unique:students,email'],
             'password'          => ['required', 'min:8'],
             'gender'            => ['required', 'in:0,1'],

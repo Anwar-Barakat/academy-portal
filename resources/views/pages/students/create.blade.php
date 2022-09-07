@@ -32,8 +32,8 @@
                 <form method="post" action="{{ route('students.store') }}" autocomplete="off"
                     enctype="multipart/form-data">
                     @csrf
-                    <h5 class="text text-info">
-                        {{ __('student.personal_information') }}</h5><br>
+                    <h4 class="text text-info mb-3">
+                        {{ __('student.personal_information') }}</h4>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -138,10 +138,10 @@
                         </div>
                     </div>
                     <hr>
-                    <h6 class="text text-info">{{ __('student.student_information') }}</h6>
                     <br>
+                    <h4 class="text text-info mb-3">{{ __('student.student_information') }}</h4>
                     <div class="row">
-                        <div class="col-xl-4">
+                        <div class="col-xl-4 col-md-12">
                             <div class="form-group">
                                 <x-label for="grade_id" :value="__('grade.grades')" />
                                 <select class="custom-select mr-sm-2" name="grade_id">
@@ -156,7 +156,7 @@
                             </div>
                         </div>
 
-                        <div class="col-xl-4">
+                        <div class="col-xl-4 col-md-12">
                             <div class="form-group">
                                 <x-label for="classroom_id" :value="__('classroom.classrooms')" />
                                 <select class="custom-select mr-sm-2" name="classroom_id">
@@ -168,7 +168,7 @@
                             </div>
                         </div>
 
-                        <div class="col-xl-4">
+                        <div class="col-xl-4 col-md-12">
                             <div class="form-group">
                                 <x-label for="section_id" :value="__('section.section')" />
                                 <select class="custom-select mr-sm-2" name="section_id">
@@ -180,7 +180,7 @@
                             </div>
                         </div>
 
-                        <div class="col-xl-6">
+                        <div class="col-xl-6 col-md-12">
                             <div class="form-group">
                                 <x-label for="parent_id" :value="__('parent.parents')" />
                                 <select class="custom-select mr-sm-2" name="parent_id">
@@ -195,7 +195,7 @@
                             </div>
                         </div>
 
-                        <div class="col-xl-6">
+                        <div class="col-xl-6 col-md-12">
                             <div class="form-group">
                                 <x-label for="academic_year" :value="__('student.academic_year')" />
                                 <select class="custom-select mr-sm-2" name="academic_year">
@@ -213,8 +213,9 @@
                             </div>
                         </div>
                     </div>
+                    <br>
                     <hr>
-                    <h5 class="text text-info">{{ __('parent.attachments') }}</h5>
+                    <h4 class="text text-info mb-3">{{ __('parent.attachments') }}</h4>
                     <div class="row">
                         <div class="col-xl-6 col-md-12">
                             <div class="input-group">
@@ -232,7 +233,7 @@
                     </div>
                     <br>
                     <hr>
-                    <button type="submit" class="button button-border x-small">
+                    <button type="submit" class="button x-small successful-button">
                         {{ __('buttons.submit') }}
                     </button>
                 </form>
@@ -243,60 +244,9 @@
 <!-- row closed -->
 @endsection
 @section('js')
-{{-- Get Grade's Classrooms --}}
-<script>
-    $(function() {
-        $('select[name=grade_id]').on('change', function() {
-            var grade_id = $(this).val();
-            if (grade_id) {
-                $.ajax({
-                    type: "get",
-                    url: "/get-classrooms/" + grade_id,
-                    dataType: "json",
-                    success: function(response) {
-                        $('select[name=classroom_id]').empty();
-                        $('select[name=classroom_id]').append(
-                            '<option disabled  value="" selected>{{ __('msgs.select', ['name' => '...']) }}</option>'
-                        );
-                        $.each(response, function(index, value) {
-                            $('select[name=classroom_id]').append(
-                                '<option value="' + index + '">' + value +
-                                '</option>'
-                            );
-                        });
-                    }
-                });
-            }
-        })
-    });
-</script>
+<script src="{{ asset('assets/js/custom/get-classtooms.js') }}"></script>
 
-{{-- Get Classroom's Sections --}}
-<script>
-    $(function() {
-        $('select[name=classroom_id]').on('change', function() {
-            var classroom_id = $(this).val();
-            if (classroom_id) {
-                $.ajax({
-                    type: "get",
-                    url: "/get-sections/" + classroom_id,
-                    dataType: "json",
-                    success: function(response) {
-                        $('select[name=section_id]').empty();
-                        $('select[name=section_id]').append(
-                            '<option disabled  value="" selected>{{ __('msgs.select', ['name' => '...']) }}</option>'
-                        );
-                        $.each(response, function(index, value) {
-                            $('select[name=section_id]').append(
-                                '<option value="' + index + '">' + value +
-                                '</option>'
-                            );
-                        });
-                    }
-                });
-            }
-        })
-    });
-</script>
+
+<script src="{{ asset('assets/js/custom/get-sections.js') }}"></script>
 
 @endsection

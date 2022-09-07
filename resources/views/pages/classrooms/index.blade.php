@@ -45,11 +45,11 @@
                             class="table table-striped table-bordered text-center p-0 table-hover table-sm">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>{{ __('classroom.name') }}</th>
-                                    <th>{{ __('classroom.grade_name') }}</th>
-                                    <th>{{ __('trans.created_at') }}</th>
-                                    <th>{{ __('buttons.actions') }}</th>
+                                    <th class="alert-info">#</th>
+                                    <th class="alert-info">{{ __('classroom.name') }}</th>
+                                    <th class="alert-success">{{ __('classroom.grade_name') }}</th>
+                                    <th class="alert-info">{{ __('trans.created_at') }}</th>
+                                    <th class="alert-info">{{ __('buttons.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>

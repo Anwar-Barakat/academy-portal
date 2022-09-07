@@ -77,6 +77,13 @@
                             @enderror
                         </div>
                     </div>
+                    <div class="col">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" name="status" value="{{ old('status') }}"
+                                id="status" />
+                            <label for="status" class="control-label">{{ __('section.status') }}</label>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary"
