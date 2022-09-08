@@ -6,12 +6,12 @@ use App\Models\StudentReceipt;
 use App\Http\Requests\StoreStudentReceiptRequest;
 use App\Http\Requests\UpdateStudentReceiptRequest;
 use App\Http\Controllers\Controller;
-use App\Repositories\Interface\ReceiptStudentRepositoryInterface;
+use App\Repositories\Interface\StudentReceiptRepositoryInterface;
 
 class StudentReceiptController extends Controller
 {
     public $receipt;
-    public function __construct(ReceiptStudentRepositoryInterface $receipt)
+    public function __construct(StudentReceiptRepositoryInterface $receipt)
     {
         $this->receipt = $receipt;
     }

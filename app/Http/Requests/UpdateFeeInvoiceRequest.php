@@ -24,7 +24,11 @@ class UpdateFeeInvoiceRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'student_id'    => 'required',
+            'fee_id'        => 'required',
+            'amount'        => 'required',
+            'grade_id'      => 'required',
+            'classroom_id'  => 'required',
         ];
     }
 }

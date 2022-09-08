@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Interface;
 
-interface ReceiptStudentRepositoryInterface
+interface StudentReceiptRepositoryInterface
 {
     public function index();
 

@@ -12,21 +12,10 @@
 @endsection
 
 @section('content')
-    <!-- row -->
     <div class="row">
         <div class="col-md-12 mb-30">
             <div class="card card-statistics h-100">
                 <div class="card-body">
-
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
                     <h5 class="text text-info mb-4">
                         {{ __('fee.student_fees_invoices') }}</h5>
                     <div class="table-responsive mt-15">
@@ -63,22 +52,10 @@
             </div>
         </div>
     </div>
-    <!-- row closed -->
-    <!-- row -->
     <div class="row">
         <div class="col-md-12 mb-30">
             <div class="card card-statistics h-100">
                 <div class="card-body">
-
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
                     <h5 class="text text-info">
                         {{ __('msgs.add', ['name' => __('fee.fees_invoices')]) }}</h5>
                     <form class=" row mb-30" action="{{ route('fee-invoices.store') }}" method="POST">
@@ -135,7 +112,6 @@
             </div>
         </div>
     </div>
-    <!-- row closed -->
 @endsection
 
 

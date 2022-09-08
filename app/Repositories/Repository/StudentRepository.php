@@ -114,7 +114,6 @@ class StudentRepository implements StudentRepositoryInterface
 
     public function delete($student)
     {
-
         $loans   = number_format($student->studentAccounts->sum('debit') - $student->studentAccounts->sum('credit'));
         if ($loans > 0)
             toastr()->error(__('msgs.has_fees', ['name' => $loans]));

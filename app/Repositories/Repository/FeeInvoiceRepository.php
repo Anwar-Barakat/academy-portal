@@ -23,7 +23,7 @@ class FeeInvoiceRepository implements FeeInvoiceRepositoryInterface
     {
         $student                = Student::findorfail($student_id);
         $fees                   = Fee::where('classroom_id', $student->classroom_id)->get();
-        $studentFeeInvoices     = FeeInvoice::with(['student', 'fee'])->where('student_id', $student_id)->get();
+        $studentFeeInvoices     = FeeInvoice::where('student_id', $student_id)->get();
         return view('pages.fee-invoices.create', compact('student', 'fees', 'studentFeeInvoices'));
     }
 
@@ -70,8 +70,10 @@ class FeeInvoiceRepository implements FeeInvoiceRepositoryInterface
 
     public function edit($feeInvoice)
     {
-        $fees   = Fee::where('classroom_id', $feeInvoice->classroom_id)->get();
-        return view('pages.fee-invoices.edit', ['feeInvoice' => $feeInvoice, 'fees' => $fees]);
+        $student                = Student::findorfail($feeInvoice->student_id);
+        $fees                   = Fee::where('classroom_id', $student->classroom_id)->get();
+        $studentFeeInvoices     = FeeInvoice::where('student_id', $feeInvoice->student_id)->get();
+        return view('pages.fee-invoices.edit', compact('feeInvoice', 'student', 'fees', 'studentFeeInvoices'));
     }
 
     public function update($request, $feeInvoice)
@@ -110,8 +112,15 @@ class FeeInvoiceRepository implements FeeInvoiceRepositoryInterface
     public function destroy($feeInvoice)
     {
         try {
-            $feeInvoice->delete();
-            toastr()->info(__('msgs.deleted', ['name' => __('fee.student_invoice')]));
+            $student    = Student::where('id', $feeInvoice->student_id)->first();
+
+            if ($student)
+                toastr()->error(__('msgs.is_existed', ['name' => $student->name]));
+            else {
+                $feeInvoice->delete();
+                toastr()->info(__('msgs.deleted', ['name' => __('fee.student_invoice')]));
+            }
+
             return redirect()->route('fee-invoices.index');
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['error' => $th->getMessage()]);

@@ -7,15 +7,23 @@ use App\Models\FundAccount;
 use App\Models\Student;
 use App\Models\StudentAccount;
 use App\Models\StudentReceipt;
-use App\Repositories\Interface\ReceiptStudentRepositoryInterface;
+use App\Repositories\Interface\StudentReceiptRepositoryInterface;
 use Illuminate\Support\Facades\DB;
 
-class ReceiptStudentRepository implements ReceiptStudentRepositoryInterface
+class StudentReceiptRepository implements StudentReceiptRepositoryInterface
 {
     public function index()
     {
         $studentReceipts                = StudentReceipt::latest()->get();
         return view('pages.student-receipts.index', ['studentReceipts' => $studentReceipts]);
+    }
+
+    public function addStudentReceipt($student_id)
+    {
+        $student                = Student::findOrFail($student_id);
+        $studentFeeInvoices     = FeeInvoice::where('student_id', $student_id)->get();
+        $studentReceipts        = StudentReceipt::where('student_id', $student_id)->get();
+        return view('pages.student-receipts.create', compact('student', 'studentFeeInvoices', 'studentReceipts'));
     }
 
     public function store($request)
@@ -40,9 +48,8 @@ class ReceiptStudentRepository implements ReceiptStudentRepositoryInterface
                     'type'              => 'receipt',
                     'studentReceipt_id' =>  StudentReceipt::latest()->first()->id,
                     'student_id'        => $data['student_id'],
-                    'debit'             => 0,
+                    'debit'             => 0.00,
                     'credit'            => $data['debit'],
-                    'description'       => $data['description'],
                 ]);
 
                 DB::commit();
@@ -59,12 +66,7 @@ class ReceiptStudentRepository implements ReceiptStudentRepositoryInterface
         $student                = Student::findOrFail($studentReceipt->student_id);
         $studentFeeInvoices     = FeeInvoice::with(['student', 'fee'])->where('student_id', $studentReceipt->student_id)->get();
         $studentReceipts        = StudentReceipt::where('student_id', $studentReceipt->student_id)->get();
-        return view('pages.student-receipts.edit', [
-            'studentReceipt'        => $studentReceipt,
-            'student'               => $student,
-            'studentReceipts'       => $studentReceipts,
-            'studentFeeInvoices'    => $studentFeeInvoices
-        ]);
+        return view('pages.student-receipts.edit', compact('studentReceipt', 'student', 'studentFeeInvoices', 'studentReceipts'));
     }
 
     public function update($request, $studentReceipt)
@@ -100,23 +102,18 @@ class ReceiptStudentRepository implements ReceiptStudentRepositoryInterface
     public function destroy($studentReceipt)
     {
         try {
-            $studentReceipt->delete();
-            toastr()->info(__('msgs.deleted', ['name' => __('fee.receipt')]));
+            $student    = Student::where('id', $studentReceipt->student_id)->first();
+
+            if ($student)
+                toastr()->error(__('msgs.is_existed', ['name' => $student->name]));
+            else {
+
+                $studentReceipt->delete();
+                toastr()->info(__('msgs.deleted', ['name' => __('fee.receipt')]));
+            }
             return redirect()->back();
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['error' => $th->getMessage()]);
         }
-    }
-
-    public function addStudentReceipt($student_id)
-    {
-        $student                = Student::findOrFail($student_id);
-        $studentFeeInvoices     = FeeInvoice::with(['student', 'fee'])->where('student_id', $student_id)->get();
-        $studentReceipts        = StudentReceipt::where('student_id', $student_id)->get();
-        return view('pages.student-receipts.create', [
-            'student'               => $student,
-            'studentReceipts'       => $studentReceipts,
-            'studentFeeInvoices'    => $studentFeeInvoices
-        ]);
     }
 }

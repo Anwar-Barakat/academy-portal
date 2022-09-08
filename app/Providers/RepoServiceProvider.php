@@ -9,10 +9,10 @@ use App\Repositories\Interface\FeeRepositoryInterface;
 use App\Repositories\Interface\LibraryRepositoryInterface;
 use App\Repositories\Interface\QuestionRepositoryInterface;
 use App\Repositories\Interface\QuizRepositoryInterface;
-use App\Repositories\Interface\ReceiptStudentRepositoryInterface;
 use App\Repositories\Interface\StudentGraduatedRepositoryInterface;
 use App\Repositories\Interface\StudentPaymentRepositoryInterface;
 use App\Repositories\Interface\StudentPromotionRepositoryInterface;
+use App\Repositories\Interface\StudentReceiptRepositoryInterface;
 use App\Repositories\Interface\StudentRepositoryInterface;
 use App\Repositories\Interface\SubjectRepositoryInterface;
 use App\Repositories\Interface\TeacherRepositoryInterface;
@@ -23,10 +23,10 @@ use App\Repositories\Repository\FeeRepository;
 use App\Repositories\Repository\LibraryRepository;
 use App\Repositories\Repository\QuestionRepository;
 use App\Repositories\Repository\QuizRepository;
-use App\Repositories\Repository\ReceiptStudentRepository;
 use App\Repositories\Repository\StudentGraduatedRepository;
 use App\Repositories\Repository\StudentPaymentRepository;
 use App\Repositories\Repository\StudentPromotionRepository;
+use App\Repositories\Repository\StudentReceiptRepository;
 use App\Repositories\Repository\StudentRepository;
 use App\Repositories\Repository\SubjectRepository;
 use App\Repositories\Repository\TeacherRepository;
@@ -53,7 +53,7 @@ class RepoServiceProvider extends ServiceProvider
 
         $this->app->bind(FeeInvoiceRepositoryInterface::class,                  FeeInvoiceRepository::class);
 
-        $this->app->bind(ReceiptStudentRepositoryInterface::class,              ReceiptStudentRepository::class);
+        $this->app->bind(StudentReceiptRepositoryInterface::class,              StudentReceiptRepository::class);
 
         $this->app->bind(FeeProcessingRepositoryInterface::class,               FeeProcessingRepository::class);
 
