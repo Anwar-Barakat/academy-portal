@@ -50,15 +50,7 @@ class StudentRepository implements StudentRepositoryInterface
             $student = Student::create($data);
 
             if ($request->hasFile('image') && $request->file('image')->isValid()) {
-                $file_name  = $request->file('image')->getClientOriginalName();
-
-                $this->uploadFile($request, 'students',  $data['name']['en'], 'image');
-
-                $image                  = new Image();
-                $image->file_name       = $file_name;
-                $image->imageable_id    = $student->id;
-                $image->imageable_type  = 'App\Models\Student';
-                $image->save();
+                $this->uploadFile($request, 'students',  $data['name']['en'], $student->id, 'image', 'Student');
             }
 
             DB::commit();
@@ -111,15 +103,7 @@ class StudentRepository implements StudentRepositoryInterface
                     $image->delete();
                 }
 
-                $file_name  = $request->file('image')->getClientOriginalName();
-
-                $this->uploadFile($request, 'students', $data['name']['en'], 'image');
-
-                $image                  = new Image();
-                $image->file_name       = $file_name;
-                $image->imageable_id    = $student->id;
-                $image->imageable_type  = 'App\Models\Student';
-                $image->save();
+                $this->uploadFile($request, 'students',  $data['name']['en'], $student->id, 'image', 'Student');
             }
 
 
