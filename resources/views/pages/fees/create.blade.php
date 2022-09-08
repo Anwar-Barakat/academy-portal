@@ -23,7 +23,7 @@
                     <form method="post" action="{{ route('fees.store') }}" autocomplete="off">
                         @csrf
                         <div class="form-row">
-                            <div class="form-group col-md-12 col-lg-6">
+                            <div class="form-group col-md-12 col-lg-6 mb-3">
                                 <x-label for="type" :value="__('fee.fees_type')" />
                                 <select class="custom-select mr-sm-2" name="type">
                                     <option selected disabled>{{ __('msgs.select', ['name' => '...']) }}</option>
@@ -47,7 +47,7 @@
 
 
                         <div class="row">
-                            <div class="form-group col-md-12 col-lg-6">
+                            <div class="form-group col-md-12 col-lg-6 mb-3">
                                 <x-label for="grade_id" :value="__('grade.grades')" />
                                 <select class="custom-select mr-sm-2" name="grade_id">
                                     <option selected disabled>{{ __('msgs.select', ['name' => '...']) }}</option>
@@ -59,7 +59,7 @@
                                     <small class="text text-danger font-weight-bold">{{ $message }}</small>
                                 @enderror
                             </div>
-                            <div class="form-group col-md-12 col-lg-6">
+                            <div class="form-group col-md-12 col-lg-6 mb-3">
                                 <x-label for="classroom_id" :value="__('classroom.classrooms')" />
                                 <select class="custom-select mr-sm-2" name="classroom_id"></select>
                                 @error('classroom_id')
@@ -68,7 +68,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="form-group col-md-12 col-lg-6">
+                            <div class="form-group col-md-12 col-lg-6 mb-3">
                                 <x-label for="year" :value="__('student.academic_year')" />
                                 <select class="custom-select mr-sm-2" name="year" id="year">
                                     <option selected disabled>{{ __('msgs.select', ['name' => '...']) }}</option>

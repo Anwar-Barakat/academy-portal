@@ -54,7 +54,7 @@
                                                     class="fas fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
-                                    @include('pages.student-receipts.delete')
+                                    <x-delete-modal :id="$studentReceipt->id" :title="__('msgs.delete', ['name' => __('fee.receipt')])" :action="route('student-receipts.destroy', $studentReceipt)" />
                                 @endforeach
                         </table>
                     </div>

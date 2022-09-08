@@ -1,14 +1,14 @@
 @extends('layouts.master')
 
 @section('title')
-    {{ __('fee.fee_exclusion_list') }}
+    {{ __('trans.list', ['name' => __('fee.fee_exclusion')]) }}
 @stop
 
 @section('breadcrum')
     {{ __('fee.fee_exclusion') }}@endsection
 
 @section('breadcrum_home')
-    {{ __('fee.fee_exclusion_list') }}
+    {{ __('trans.list', ['name' => __('fee.fee_exclusion')]) }}
 @endsection
 
 @section('content')
@@ -54,7 +54,8 @@
                                                     class="fas fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
-                                    @include('pages.fee-processings.delete')
+                                    {{-- delete fee processing --}}
+                                    <x-delete-modal :id="$feeProcessing->id" :title="__('msgs.delete', ['name' => __('fee.fee_exclusion')])" :action="route('fee-processings.destroy', $feeProcessing)" />
                                 @endforeach
                         </table>
                     </div>

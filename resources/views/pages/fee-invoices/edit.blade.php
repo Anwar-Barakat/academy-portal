@@ -65,7 +65,7 @@
                         <div class="card-body">
                             <div class="repeater">
                                 <div class="row">
-                                    <div class="col-md-12 col-lg-6 mb-2">
+                                    <div class="col-md-12 col-lg-6 mb-3">
                                         <x-label for="student_id" class="mr-sm-2" :value="__('fee.student_name')" />
                                         <select class="fancyselect" id="student_id">
                                             <option value="" selected aria-readonly="">
@@ -73,7 +73,7 @@
                                         </select>
                                     </div>
 
-                                    <div class="col-md-12 col-lg-6 mb-2">
+                                    <div class="col-md-12 col-lg-6 mb-3">
                                         <x-label for="fee_id" class="mr-sm-2" :value="__('fee.fees_type')" />
                                         <div class="box">
                                             <select class="fancyselect" name="fee_id" required>
@@ -90,7 +90,7 @@
 
                                     </div>
 
-                                    <div class="col-md-12 col-lg-6 mb-2">
+                                    <div class="col-md-12 col-lg-6 mb-3">
                                         <x-label for="amount" class="mr-sm-2" :value="__('fee.amount')" />
                                         <div class="box">
                                             <select class="fancyselect" name="amount" required>

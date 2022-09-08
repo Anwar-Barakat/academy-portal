@@ -27,7 +27,6 @@ return [
     'been_paid'                 => 'تم الدفع',
 
     'fee_exclusion'             => 'استبعاد الرسوم',
-    'fee_exclusion_list'        => 'قائمة استبعاد الرسوم',
     'student_funds'             => 'رصيد الطالب',
 
     'payments'                  => 'سندات صرف',

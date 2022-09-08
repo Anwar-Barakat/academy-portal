@@ -62,7 +62,7 @@
                         @csrf
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-12 col-lg-4 mb-2 d-flex flex-column">
+                                <div class="col-md-12 col-lg-4 mb-3 d-flex flex-column">
                                     <x-label for="student_id" class="mr-sm-2" :value="__('fee.student_name')" />
                                     <select class="form-control" name="student_id">
                                         <option value="{{ $student->id }}" selected aria-readonly="">
@@ -73,7 +73,7 @@
                                     @enderror
                                 </div>
 
-                                <div class="col-md-12 col-lg-4 mb-2 d-flex flex-column">
+                                <div class="col-md-12 col-lg-4 mb-3 d-flex flex-column">
                                     <x-label for="fee_id" class="mr-sm-2" :value="__('fee.fees_type')" />
                                     <select class="fancyselect" name="fee_id" required>
                                         <option disabled value="" selected>
@@ -88,7 +88,7 @@
                                     @enderror
                                 </div>
 
-                                <div class="col-md-12 col-lg-4 mb-2">
+                                <div class="col-md-12 col-lg-4 mb-3">
                                     <x-label for="amount" class="mr-sm-2" :value="__('fee.amount')" />
                                     <div class="box">
                                         <select aria-readonly="" class="form-control" name="amount"

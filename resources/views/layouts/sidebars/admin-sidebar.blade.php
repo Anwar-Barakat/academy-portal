@@ -221,8 +221,9 @@
             <div class="clearfix"></div>
         </a>
         <ul id="fee-exclusion-menu" class="collapse" data-parent="#sidebarnav">
-            <li><a target="_blank"
-                    href="{{ route('fee-processings.index') }}">{{ __('fee.fee_exclusion_list') }}</a>
+            <li><a target="_blank" href="{{ route('fee-processings.index') }}">
+                    {{ __('trans.list', ['name' => __('fee.fee_exclusion')]) }}
+                </a>
             </li>
         </ul>
     </li>

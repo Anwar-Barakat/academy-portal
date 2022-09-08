@@ -167,10 +167,10 @@
                             <div class="col-md-12 col-lg-6">
                                 <div class="form-group">
                                     <x-label for="student_funds" :value="__('fee.student_funds')" />
-                                    <select name="student_funds" id="student_funds" class="form-control" aria-readonly="">
+                                    <select id="student_funds" class="form-control">
                                         <option
                                             value="{{ number_format($student->studentAccounts->sum('debit') - $student->studentAccounts->sum('credit')) }}"
-                                            selected aria-readonly="">
+                                            selected aria-readonly="" disabled>
                                             {{ number_format($student->studentAccounts->sum('debit') - $student->studentAccounts->sum('credit')) }}
                                         </option>
                                     </select>

@@ -25,7 +25,7 @@ class UpdateFeeProcessingRequest extends FormRequest
     {
         return [
             'student_id'    => 'required',
-            'amount'         => 'required|digits_between:1,4',
+            'amount'        => 'required|numeric|min:0',
             'description'   => 'required|min:10',
         ];
     }
