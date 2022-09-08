@@ -77,8 +77,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <x-label for="password" :value="__('trans.password')" />
-                                <x-input type="password" name="password" class="form-control" name="password"
-                                    :value="old('password')" />
+                                <input type="password" name="password" class="form-control" name="password" />
                                 @error('password')
                                     <small class="text text-danger font-weight-bold">{{ $message }}</small>
                                 @enderror

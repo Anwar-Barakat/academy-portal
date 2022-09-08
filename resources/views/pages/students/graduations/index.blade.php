@@ -3,14 +3,14 @@
 
 
 @section('title')
-    {{ __('trans.graduations_list') }}
+    {{ __('trans.list', ['name' => __('trans.graduation')]) }}
 @stop
 
 @section('breadcrum')
     {{ __('trans.graduation_students') }}@endsection
 
 @section('breadcrum_home')
-    {{ __('trans.graduations_list') }}
+    {{ __('trans.list', ['name' => __('trans.graduation')]) }}
 @endsection
 
 @section('content')
@@ -29,13 +29,13 @@
                         <table id="datatable" class="table table-striped table-bordered text-center p-0 table-hover table-sm">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>{{ __('student.name') }}</th>
-                                    <th>{{ __('grade.grade') }}</th>
-                                    <th>{{ __('classroom.classroom') }}</th>
-                                    <th>{{ __('section.section') }}</th>
-                                    <th>{{ __('trans.created_at') }}</th>
-                                    <th>{{ __('buttons.actions') }}</th>
+                                    <th class="alert alert-info">#</th>
+                                    <th class="alert alert-info">{{ __('student.name') }}</th>
+                                    <th class="alert alert-success">{{ __('grade.grade') }}</th>
+                                    <th class="alert alert-success">{{ __('classroom.classroom') }}</th>
+                                    <th class="alert alert-success">{{ __('section.section') }}</th>
+                                    <th class="alert alert-info">{{ __('student.deleted_at') }}</th>
+                                    <th class="alert alert-info">{{ __('buttons.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,7 +47,7 @@
                                         <td>{{ $student->grade->name }}</td>
                                         <td>{{ $student->classroom->name }}</td>
                                         <td>{{ $student->section->name }}</td>
-                                        <td>{{ $student->created_at }}</td>
+                                        <td>{{ $student->deleted_at->diffForHumans() }}</td>
                                         <td class="students-promotions-buttons">
                                             <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal"
                                                 data-target="#returnStudent{{ $student->id }}">{{ __('msgs.returned') }}

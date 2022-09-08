@@ -18,6 +18,7 @@ return [
 
     'student_details'           => 'Student Details',
     'filename'                  => 'File Name',
+    'deleted_at'                => 'Deleted At',
 
     'promotion'                 => 'Promotion',
     'old_grade'                 => 'Old Grade',

@@ -98,7 +98,7 @@ class StudentPepository implements StudentPepositoryInterface
             $data['name']['en'] = $data['name_en'];
 
 
-            if (isset($request->password) && !empty($request->password)) {
+            if (!empty($request->password)) {
                 $data['password']   = Hash::make($data['password']);
             }
 
@@ -133,7 +133,12 @@ class StudentPepository implements StudentPepositoryInterface
     public function delete($student)
     {
 
+        foreach ($student->images as $image) {
+            Storage::disk('upload_attachments')->delete('attachments/students/' . $student->getTranslation('name', 'en') . '/' . $image->file_name);
+            $image->delete();
+        }
         $student->delete();
+
         toastr()->info(__('msgs.deleted', ['name' => __('student.student')]));
         return redirect()->route('students.index');
     }

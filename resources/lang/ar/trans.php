@@ -34,8 +34,6 @@ return [
     'specialization'            => 'التخصص الدراسي',
     'students_promotion'        => 'ترقية الطلاب',
     'managmenet_promotion'      => 'إدارة الترقية',
-    'promotions_list'           => "قائمة الترقيات",
-    'graduations_list'          => 'قائمة المتخرجين',
     'graduation'                => 'تخرج',
     'graduation_students'       => 'الطلاب المتخرجين',
     'fees_list'                 => 'قائمة الرسوم',

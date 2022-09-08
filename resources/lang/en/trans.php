@@ -31,8 +31,6 @@ return [
     'students'                  => 'Students',
     'students_promotion'        => 'Students Promotion',
     'managmenet_promotion'      => 'Managmenet Promotion',
-    'promotions_list'           => "Promotions List",
-    'graduations_list'          => 'Graduations List',
     'graduation'                => 'Graduation',
     'graduation_students'       => 'Graduation Students',
     'fees_list'                 => 'Fees List',

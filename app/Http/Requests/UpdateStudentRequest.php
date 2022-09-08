@@ -28,7 +28,7 @@ class UpdateStudentRequest extends FormRequest
             'name_ar'           => ['required', 'min:3'],
             'name_en'           => ['required', 'min:3'],
             'email'             => ['required', 'email', Rule::unique('students')->ignore($this->student->id)],
-            'password'          => 'required|min:8',
+            'password'          => 'min:8',
             'gender'            => ['required', 'in:0,1'],
             'birthday'          => ['required', 'date', 'date_format:Y-m-d'],
             'nationality_id'    => ['required'],

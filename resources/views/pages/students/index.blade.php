@@ -23,12 +23,13 @@
                             <div class="alert alert-danger">{{ $error }}</div>
                         @endforeach
                     @endif
-                    <a href="{{ route('students.create') }}" class="button button-border x-small mb-4">
+                    <a href="{{ route('students.create') }}" target="_blank" class="button button-border x-small mb-4">
                         {{ __('msgs.add', ['name' => __('student.student')]) }}
                     </a>
 
                     <div class="table-responsive">
-                        <table id="datatable" class="table table-striped table-bordered text-center p-0 table-hover table-sm">
+                        <table id="datatable"
+                            class="table table-striped table-bordered text-center p-0 table-hover table-sm">
                             <thead>
                                 <tr>
                                     <th class="alert-info">#</th>
@@ -52,42 +53,42 @@
                                         <td>{{ $student->created_at }}</td>
                                         <td>
                                             <div class="dropdown">
-                                                <button class="btn btn-outline-secondary dropdown-toggle" type="button"
-                                                    id="triggerId" data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false">
+                                                <button class="btn pt-1 pb-0 btn-outline-secondary dropdown-toggle"
+                                                    type="button" id="triggerId" data-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false">
                                                     <i class="fas fa-list-alt"></i>
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="triggerId">
                                                     <a class="dropdown-item" title="{{ __('buttons.update') }}"
-                                                        href="{{ route('students.edit', $student) }}">
+                                                        target="_blank" href="{{ route('students.edit', $student) }}">
                                                         <i class="fas fa-edit text-success"></i>
                                                         {{ __('buttons.update') }}
                                                     </a>
 
                                                     <a class="dropdown-item" title="{{ __('buttons.show') }}"
-                                                        href="{{ route('students.show', $student) }}">
+                                                        target="_blank" href="{{ route('students.show', $student) }}">
                                                         <i class="fas fa-eye text-warning"></i>
                                                         {{ __('buttons.show') }}
                                                     </a>
-                                                    <a class="dropdown-item"
+                                                    <a class="dropdown-item" target="_blank"
                                                         title="{{ __('msgs.add', ['name' => __('fee.invoice')]) }}"
                                                         href="{{ route('add_student_invoice', $student->id) }}">
                                                         <i class="fas fa-file-invoice-dollar text-gray-600"></i>
                                                         {{ __('msgs.add', ['name' => __('fee.invoice')]) }}
                                                     </a>
-                                                    <a class="dropdown-item"
+                                                    <a class="dropdown-item" target="_blank"
                                                         title=" {{ __('msgs.add', ['name' => __('fee.receipt')]) }}"
                                                         href="{{ route('add_student_receipt', $student->id) }}">
                                                         <i class="fas fa-money-bill-wave-alt text-primary"></i>
                                                         {{ __('msgs.add', ['name' => __('fee.receipt')]) }}
                                                     </a>
-                                                    <a class="dropdown-item"
+                                                    <a class="dropdown-item" target="_blank"
                                                         title=" {{ __('msgs.add', ['name' => __('fee.fee_exclusion')]) }}"
                                                         href="{{ route('add_fee_exclusion', $student->id) }}">
                                                         <i class="fas fa-money-check-alt text-secondary"></i>
                                                         {{ __('msgs.add', ['name' => __('fee.fee_exclusion')]) }}
                                                     </a>
-                                                    <a class="dropdown-item"
+                                                    <a class="dropdown-item" target="_blank"
                                                         title=" {{ __('msgs.add', ['name' => __('fee.payment')]) }}"
                                                         href="{{ route('add_student_payment', $student->id) }}">
                                                         <i class="fas fa-donate text-googleplus"></i>

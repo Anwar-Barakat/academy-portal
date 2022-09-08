@@ -1,16 +1,15 @@
 @extends('layouts.master')
 
-
-
 @section('title')
-    {{ __('trans.promotions_list') }}
+    {{ __('trans.list', ['name' => __('student.promotion')]) }}
 @stop
 
 @section('breadcrum')
-    {{ __('trans.students_promotion') }}@endsection
+    {{ __('trans.students_promotion') }}
+@endsection
 
 @section('breadcrum_home')
-    {{ __('trans.promotions_list') }}
+    {{ __('trans.list', ['name' => __('student.promotion')]) }}
 @endsection
 
 @section('content')
@@ -19,11 +18,10 @@
         <div class="col-xl-12 mb-30">
             <div class="card card-statistics h-100">
                 <div class="card-body">
-                    @if ($errors->any())
-                        @foreach ($errors->all() as $error)
-                            <div class="alert alert-danger">{{ $error }}</div>
-                        @endforeach
-                    @endif
+                    <a href="{{ route('students-promotions.create') }}" target="_blank" class="button button-border x-small mb-4">
+                        {{ __('msgs.add', ['name' => __('student.promotion')]) }}
+                    </a>
+
                     @if ($promotions->count() > 0)
                         <button type="button" class="button button-border x-small mb-3" data-toggle="modal"
                             data-target="#undoPromotion" title="{{ __('student.undo_the_promotion') }}">

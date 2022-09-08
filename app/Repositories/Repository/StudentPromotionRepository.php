@@ -42,8 +42,8 @@ class  StudentPromotionRepository implements StudentPromotionRepositoryInterface
             )->get();
 
             if ($students->count() < 1) {
-                toastr()->error(__('msgs.not_available'));
-                return redirect()->route('students.index');
+                toastr()->error(__('msgs.not_available', ['name' => __('student.students')]));
+                return back();
             }
 
 
@@ -68,7 +68,6 @@ class  StudentPromotionRepository implements StudentPromotionRepositoryInterface
                     'new_academic_year'     => $data['new_academic_year'],
                 ]);
             }
-
 
             DB::commit();
 
