@@ -24,10 +24,8 @@ class UpdateFeeRequest extends FormRequest
     public function rules()
     {
         return [
-            'title_ar'      => 'required|min:3',
-            'title_en'      => 'required|min:3',
-            'amount'        => 'required|digits_between:2,5',
             'type'          => 'required|in:0,1',
+            'amount'        => 'required|min:0|numeric',
             'grade_id'      => 'required',
             'classroom_id'  => 'required',
             'description'   => 'required|min:10',

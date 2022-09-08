@@ -5,35 +5,30 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Translatable\HasTranslations;
 
 class Fee extends Model
 {
-    use HasFactory, HasTranslations;
+    use HasFactory;
 
     protected $fillable = [
-        'title',
-        'amount',
         'type',
+        'amount',
         'grade_id',
         'classroom_id',
         'description',
         'year',
     ];
 
-    public function gender(): Attribute
+    public function type(): Attribute
     {
         return new Attribute(
             get: function ($value) {
-                if ($value === 0)
-                    return 'study';
-                else
-                    return 'bus';
+                $value === 0 ? $type = 'study' : $type = 'bus';
+                return $type;
             }
         );
     }
 
-    public $translatable = ['title'];
 
     public function grade()
     {

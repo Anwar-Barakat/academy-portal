@@ -147,9 +147,13 @@ Route::group(
 
             //? =====================
             Route::resource('students-promotions',                      StudentPromotionController::class);
-
             //? =====================
             Route::resource('students-graduations',                     StudentGraduatedController::class);
+
+
+            //! ===================== Fees =====================
+            Route::resource('fees',                                     FeeController::class);
+            Route::get('/get-fee-amount/{id}',                          GetFeeAmountController::class)->name('get-fee-amount');
         });
 
 
@@ -181,9 +185,7 @@ Route::group(
 
 
 
-        //! ===================== Fees =====================
-        Route::resource('fees',                                     FeeController::class);
-        Route::get('/get-fee-amount/{id}',                          GetFeeAmountController::class)->name('get-fee-amount');
+
 
 
         //! ===================== Fee Invoices =====================

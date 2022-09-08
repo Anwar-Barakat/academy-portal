@@ -32,10 +32,8 @@ class Teacher extends Authenticatable
     {
         return new Attribute(
             get: function ($value) {
-                if ($value === 0)
-                    return 'male';
-                else
-                    return 'female';
+                $value === 0 ? $gender = 'male' : $gender = 'female';
+                return $gender;
             }
         );
     }

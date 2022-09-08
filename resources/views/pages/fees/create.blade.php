@@ -20,35 +20,16 @@
             <div class="card card-statistics h-100">
                 <div class="card-body">
 
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-
                     <form method="post" action="{{ route('fees.store') }}" autocomplete="off">
                         @csrf
                         <div class="form-row">
-                            <div class="form-group col">
-                                <x-label for="title_ar" :value="__('trans.name_ar')" />
-                                <x-input id="title_ar" name="title_ar" :value="old('title_ar')" class="form-control"
-                                    type="text" />
-                                @error('title_ar')
-                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
-                                @enderror
-                            </div>
-
-                            <div class="form-group col">
-                                <x-label for="title_en" :value="__('trans.name_en')" />
-                                <x-input id="title_en" name="title_en" :value="old('title_en')" class="form-control"
-                                    type="text" />
-                                @error('title_en')
-                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
-                                @enderror
+                            <div class="form-group col-md-12 col-lg-6">
+                                <x-label for="type" :value="__('fee.fees_type')" />
+                                <select class="custom-select mr-sm-2" name="type">
+                                    <option selected disabled>{{ __('msgs.select', ['name' => '...']) }}</option>
+                                    <option value="0">{{ __('fee.study') }}</option>
+                                    <option value="1">{{ __('fee.bus') }}</option>
+                                </select>
                             </div>
 
                             <div class="form-group col">
@@ -90,19 +71,11 @@
                                     @endfor
                                 </select>
                             </div>
-                            <div class="form-group col-md-12 col-lg-6">
-                                <x-label for="type" :value="__('fee.fees_type')" />
-                                <select class="custom-select mr-sm-2" name="type">
-                                    <option selected disabled>{{ __('msgs.select', ['name' => '...']) }}</option>
-                                    <option value="0">{{ __('fee.study') }}</option>
-                                    <option value="1">{{ __('fee.bus') }}</option>
-                                </select>
-                            </div>
                         </div>
 
                         <div class="form-group">
-                            <x-label for="classroom_id" :value="__('fee.notes')" />
-                            <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="4">{{ old('notes') }}</textarea>
+                            <x-label for="description" :value="__('fee.notes')" />
+                            <textarea class="form-control" name="description" id="description" rows="4">{{ old('description') }}</textarea>
                         </div>
                         <br>
 
@@ -116,30 +89,5 @@
 @endsection
 
 @section('js')
-    <script>
-        $(document).ready(function() {
-            $('select[name=grade_id]').on('change', function() {
-                var grade_id = $(this).val()
-                if (grade_id) {
-                    $.ajax({
-                        url: "{{ URL::to('get-classrooms') }}/" + grade_id,
-                        type: 'GET',
-                        dataType: 'json',
-                        success: function(data) {
-                            $('select[name=classroom_id]').empty();
-                            $('select[name=classroom_id]').append(
-                                '<option disabled  value="" selected>{{ __('msgs.select', ['name' => '...']) }}</option>'
-                            );
-                            $.each(data, function(key, value) {
-
-                                $('select[name=classroom_id]').append(
-                                    '<option value="' + key + '">' + value +
-                                    '</option>');
-                            });
-                        },
-                    });
-                }
-            })
-        })
-    </script>
-@stop
+    <script src="{{ asset('assets/js/custom/get-classtooms.js') }}"></script>
+@endsection

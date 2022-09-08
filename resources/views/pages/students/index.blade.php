@@ -149,7 +149,7 @@
                                                 </div>
                                             </div>
 
-                                            {{-- Deleted The Classroom --}}
+                                            {{-- Deleted The Student --}}
                                             <x-delete-modal :id="$student->id" :title="__('msgs.delete', ['name' => __('student.student')])" :action="route('students.destroy', $student)" />
 
                                         </td>

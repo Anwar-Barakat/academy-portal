@@ -41,22 +41,25 @@
                                 @forelse ($fees as $fee)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $fee->title }}</td>
+                                        <td>{{ __('fee.' . $fee->type) }}</td>
                                         <td>{{ number_format($fee->amount, 2) }}</td>
                                         <td>{{ $fee->grade->name }}</td>
                                         <td>{{ $fee->classroom->name }}</td>
                                         <td>{{ $fee->year }}</td>
                                         <td>
-                                            <a href="{{ route('fees.edit', $fee) }}" class="btn btn-info btn-sm"
-                                                role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
-                                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                            <a href="{{ route('fees.edit', $fee) }}" target="_blank"
+                                                class="btn btn-outline-info btn-sm" role="button" aria-pressed="true"><i
+                                                    class="fas fa-edit"></i></a>
+                                            <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal"
                                                 data-target="#delete{{ $fee->id }}"
-                                                title="{{ __('buttons.delete') }}"><i class="fa fa-trash"></i></button>
-                                            <a href="#" class="btn btn-warning btn-sm" role="button"
-                                                aria-pressed="true"><i class="far fa-eye"></i></a>
+                                                title="{{ __('buttons.delete') }}">
+                                                <i class="fas fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
-                                    @include('pages.fees.delete')
+
+                                    {{-- Deleted The Fee --}}
+                                    <x-delete-modal :id="$fee->id" :title="__('msgs.delete', ['name' => __('fee.fee')])" :action="route('fees.destroy', $fee)" />
+
                                 @empty
                                     <tr class="text-center">
                                         <td colspan="7">{{ __('msgs.not_found_yet') }}</td>
