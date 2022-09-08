@@ -32,6 +32,9 @@
                                     <option value="1" {{ $fee->type == 'bus' ? 'selected' : '' }}>{{ __('fee.bus') }}
                                     </option>
                                 </select>
+                                @error('type')
+                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                @enderror
                             </div>
 
                             <div class="form-group col">
@@ -56,6 +59,9 @@
                                         </option>
                                     @endforeach
                                 </select>
+                                @error('grade_id')
+                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                @enderror
                             </div>
                             <div class="form-group col-md-12 col-lg-6">
                                 <x-label for="classroom_id" :value="__('classroom.classrooms')" />
@@ -70,12 +76,15 @@
                                         @endif
                                     @endforeach
                                 </select>
+                                @error('classroom_id')
+                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-12 col-lg-6">
-                                <x-label for="classroom_id" :value="__('student.academic_year')" />
-                                <select class="custom-select mr-sm-2" name="year">
+                                <x-label for="year" :value="__('student.academic_year')" />
+                                <select class="custom-select mr-sm-2" name="year" id="year">
                                     <option selected disabled>{{ __('msgs.select', ['name' => '...']) }}</option>
                                     @php
                                         $current_year = date('Y');
@@ -85,6 +94,9 @@
                                             {{ $year }}</option>
                                     @endfor
                                 </select>
+                                @error('year')
+                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
 
@@ -92,6 +104,9 @@
                             <x-label for="description" :value="__('fee.notes')" />
                             <textarea class="form-control" name="description" id="description" rows="4">{{ old('description', $fee->description) }}
                             </textarea>
+                            @error('description')
+                                <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                            @enderror
                         </div>
                         <br>
 

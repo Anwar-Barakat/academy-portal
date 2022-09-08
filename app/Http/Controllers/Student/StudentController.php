@@ -6,12 +6,12 @@ use App\Models\Student;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Http\Controllers\Controller;
-use App\Repositories\Interface\StudentPepositoryInterface;
+use App\Repositories\Interface\StudentRepositoryInterface;
 
 class StudentController extends Controller
 {
     public $student;
-    public function __construct(StudentPepositoryInterface $student)
+    public function __construct(StudentRepositoryInterface $student)
     {
         $this->student = $student;
     }

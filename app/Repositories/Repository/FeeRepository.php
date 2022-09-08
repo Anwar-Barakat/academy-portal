@@ -23,10 +23,15 @@ class  FeeRepository implements FeeRepositoryInterface
     public function store($request)
     {
         if ($request->isMethod('post')) {
-            $data                   = $request->only(['amount', 'type', 'grade_id', 'classroom_id', 'description', 'year']);
-            Fee::create($data);
+            $data   = $request->only(['amount', 'type', 'grade_id', 'classroom_id', 'description', 'year']);
+            $exists = Fee::where(['grade_id' => $data['grade_id'], 'classroom_id' => $data['classroom_id'], 'type' => $data['type']])->count();
 
-            toastr()->success(__('msgs.added', ['name' => __('fee.fees')]));
+            if ($exists > 0)
+                toastr()->error(__('msgs.is_existed', ['name' => __('fee.fees')]));
+            else {
+                Fee::create($data);
+                toastr()->success(__('msgs.added', ['name' => __('fee.fees')]));
+            }
             return redirect()->route('fees.index');
         }
     }
@@ -41,10 +46,16 @@ class  FeeRepository implements FeeRepositoryInterface
     public function update($request, $fee)
     {
         try {
-            $data                   = $request->only(['amount', 'type', 'grade_id', 'classroom_id', 'description', 'year']);
-            $fee->update($data);
+            $data       = $request->only(['amount', 'type', 'grade_id', 'classroom_id', 'description', 'year']);
+            $exists     = Fee::where(['grade_id' => $data['grade_id'], 'classroom_id' => $data['classroom_id'], 'type' => $data['type']])->count();
 
-            toastr()->success(__('msgs.updated', ['name' => __('fee.fees')]));
+            if ($exists > 0)
+                toastr()->error(__('msgs.is_existed', ['name' => __('fee.fees')]));
+            else {
+                $fee->update($data);
+                toastr()->success(__('msgs.updated', ['name' => __('fee.fees')]));
+            }
+
             return redirect()->route('fees.index');
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['error' => $th->getMessage()]);

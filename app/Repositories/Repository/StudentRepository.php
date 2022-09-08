@@ -11,12 +11,12 @@ use App\Models\MyParent;
 use App\Models\Nationality;
 use App\Models\Section;
 use App\Models\Student;
-use App\Repositories\Interface\StudentPepositoryInterface;
+use App\Repositories\Interface\StudentRepositoryInterface;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
-class StudentPepository implements StudentPepositoryInterface
+class StudentRepository implements StudentRepositoryInterface
 {
     use AttachFileTrait;
 
