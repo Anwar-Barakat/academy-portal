@@ -132,7 +132,6 @@ class StudentPepository implements StudentPepositoryInterface
 
     public function delete($student)
     {
-
         foreach ($student->images as $image) {
             Storage::disk('upload_attachments')->delete('attachments/students/' . $student->getTranslation('name', 'en') . '/' . $image->file_name);
             $image->delete();
@@ -146,7 +145,11 @@ class StudentPepository implements StudentPepositoryInterface
 
     public function forceDelete($student)
     {
-        Student::where('id', $student->id)->first()->forceDelete();
+        foreach ($student->images as $image) {
+            Storage::disk('upload_attachments')->delete('attachments/students/' . $student->getTranslation('name', 'en') . '/' . $image->file_name);
+            $image->delete();
+        }
+        $student->forceDelete();
         toastr()->info(__('msgs.deleted', ['name' => __('student.student')]));
         return redirect()->back();
     }

@@ -143,6 +143,13 @@ Route::group(
 
             //! ===================== Students =====================
             Route::resource('students',                                 StudentController::class);
+            Route::delete('student-force-delete/{student}',             [StudentController::class, 'forceDelete'])->name('students.force_delete');
+
+            //? =====================
+            Route::resource('students-promotions',                      StudentPromotionController::class);
+
+            //? =====================
+            Route::resource('students-graduations',                     StudentGraduatedController::class);
         });
 
 
@@ -168,13 +175,9 @@ Route::group(
         Route::post('upload-attachments',                           UploadAttachmentController::class)->name('student_upload_attachment');
         Route::get('download-attachment/{studname}/{filename}',     DownloadAttachmentController::class)->name('download_student_attachment');
         Route::delete('delete-attachment',                          DeleteAttachmentController::class)->name('delete_student_attachment');
-        Route::delete('student-force-delete/{student}',             [StudentController::class, 'forceDelete'])->name('students.force_delete');
 
-        //? =====================
-        Route::resource('students-promotions',                      StudentPromotionController::class);
 
-        //? =====================
-        Route::resource('students-graduations',                     StudentGraduatedController::class);
+
 
 
 

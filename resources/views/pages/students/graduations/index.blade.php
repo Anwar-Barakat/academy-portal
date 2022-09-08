@@ -77,7 +77,8 @@
                                                         <div class="modal-body">
                                                             @csrf
                                                             @method('PUT')
-                                                            <x-input type="hidden" name="id" :value="$student->id" />
+                                                            <input type="hidden" value="{{ $student->id }}"
+                                                                name="id">
                                                             <div class="row">
                                                                 <div class="col">
                                                                     <h5>{{ __('msgs.return_student_warning') }}</h5>
@@ -111,12 +112,11 @@
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <form action="{{ route('students-graduations.destroy', 'test') }}"
+                                                    <form action="{{ route('students-graduations.destroy', $student) }}"
                                                         method="POST">
                                                         <div class="modal-body">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <x-input type="hidden" name="id" :value="$student->id" />
                                                             <div class="row">
                                                                 <div class="col">
                                                                     <h5>{{ __('msgs.return_student_warning') }}</h5>

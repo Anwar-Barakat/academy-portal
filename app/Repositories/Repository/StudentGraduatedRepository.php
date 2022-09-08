@@ -46,16 +46,23 @@ class StudentGraduatedRepository implements StudentGraduatedRepositoryInterface
 
     public function returned($request)
     {
-        $data   = $request->only(['id']);
-        Student::onlyTrashed()->where('id', $data['id'])->first()->restore();
-        toastr()->success(__('msgs.has_returned', ['name' => __('student.students')]));
-        return redirect()->back();
+        try {
+            Student::onlyTrashed()->where('id', $request->id)->restore();
+            toastr()->success(__('msgs.has_returned', ['name' => __('student.students')]));
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
     }
 
-    public function destroy($id)
+    public function destroy($student)
     {
-        Student::onlyTrashed()->where('id', $id)->first()->forceDelete();
-        toastr()->info(__('msgs.deleted', ['name' => __('student.student')]));
-        return redirect()->back();
+        try {
+            Student::onlyTrashed()->where('id', $student)->forceDelete();
+            toastr()->info(__('msgs.deleted', ['name' => __('student.student')]));
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
     }
 }
