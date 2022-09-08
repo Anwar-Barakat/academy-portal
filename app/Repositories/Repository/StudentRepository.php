@@ -6,11 +6,11 @@ use App\Http\Traits\AttachFileTrait;
 use App\Models\Blood;
 use App\Models\Classroom;
 use App\Models\Grade;
-use App\Models\Image;
 use App\Models\MyParent;
 use App\Models\Nationality;
 use App\Models\Section;
 use App\Models\Student;
+use App\Models\StudentAccount;
 use App\Repositories\Interface\StudentRepositoryInterface;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -49,9 +49,9 @@ class StudentRepository implements StudentRepositoryInterface
 
             $student = Student::create($data);
 
-            if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            if ($request->hasFile('image') && $request->file('image')->isValid())
                 $this->uploadFile($request, 'students',  $data['name']['en'], $student->id, 'image', 'Student');
-            }
+
 
             DB::commit();
 
@@ -90,19 +90,17 @@ class StudentRepository implements StudentRepositoryInterface
             $data['name']['en'] = $data['name_en'];
 
 
-            if (!empty($request->password)) {
+            if (!empty($request->password))
                 $data['password']   = Hash::make($data['password']);
-            }
+
 
             $student->update($data);
 
             if ($request->hasFile('image') && $request->file('image')->isValid()) {
-
                 foreach ($student->images as $image) {
                     Storage::disk('upload_attachments')->delete('attachments/students/' . $data['name']['en'] . '/' . $image->file_name);
                     $image->delete();
                 }
-
                 $this->uploadFile($request, 'students',  $data['name']['en'], $student->id, 'image', 'Student');
             }
 
@@ -116,13 +114,20 @@ class StudentRepository implements StudentRepositoryInterface
 
     public function delete($student)
     {
-        foreach ($student->images as $image) {
-            Storage::disk('upload_attachments')->delete('attachments/students/' . $student->getTranslation('name', 'en') . '/' . $image->file_name);
-            $image->delete();
-        }
-        $student->delete();
 
-        toastr()->info(__('msgs.deleted', ['name' => __('student.student')]));
+        $loans   = number_format($student->studentAccounts->sum('debit') - $student->studentAccounts->sum('credit'));
+        if ($loans > 0)
+            toastr()->error(__('msgs.has_fees', ['name' => $loans]));
+
+        else {
+            foreach ($student->images as $image) {
+                Storage::disk('upload_attachments')->delete('attachments/students/' . $student->getTranslation('name', 'en') . '/' . $image->file_name);
+                $image->delete();
+            }
+            $student->delete();
+            toastr()->info(__('msgs.deleted', ['name' => __('student.student')]));
+        }
+
         return redirect()->route('students.index');
     }
 

@@ -15,6 +15,7 @@ return [
     'has_graduated'                 => 'تم تخريج :name',
     'has_returned'                  => 'تم إرجاع :name',
     'forign_error'                  => 'لا يمكن حذف ال :parent لوجود :children تابعة له',
+    'has_fees'                      => 'قروض الطالب هي :name',
 
 
     'add'                           => 'إضافة :name',

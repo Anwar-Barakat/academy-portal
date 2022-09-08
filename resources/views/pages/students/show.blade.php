@@ -133,7 +133,7 @@
                                                                     'name' => __('trans.attachments'),
                                                                 ])" />
                                                             <input type="hidden" name="student_name"
-                                                                value="{{ $student->name }}">
+                                                                value="{{ $student->getTranslation('name', 'en') }}">
                                                             <input type="hidden" name="student_id"
                                                                 value="{{ $student->id }}">
                                                         </div>
@@ -161,13 +161,13 @@
                                                 <tr class="text-center">
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>
-                                                        <img src="{{ asset('attachments/students/' . $img->imageable->name . '/' . $img->file_name) }}"
+                                                        <img src="{{ asset('attachments/students/' . $student->getTranslation('name', 'en') . '/' . $img->file_name) }}"
                                                             alt="" width="100" class="img img-thumbnail">
                                                     </td>
                                                     <td>{{ $img->created_at->diffForHumans() }}</td>
                                                     <td colspan="2">
                                                         <a class="btn btn-outline-info btn-sm"
-                                                            href="{{ url('download-attachment') }}/{{ $img->imageable->name }}/{{ $img->file_name }}"
+                                                            href="{{ url('download-attachment') }}/{{ $student->getTranslation('name', 'en') }}/{{ $img->file_name }}"
                                                             role="button"><i class="fas fa-download"></i>&nbsp;
                                                             {{ __('buttons.download') }}</a>
 

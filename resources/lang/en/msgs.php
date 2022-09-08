@@ -16,6 +16,7 @@ return [
     'has_graduated'                 => ':name Has Been graduated',
     'has_returned'                  => ':name Has Been returned',
     'forign_error'                  => 'It is not possible to delete the :parent because it has :children',
+    'has_fees'                      => 'This students loans is :name',
 
 
     'add'                           => 'Add :name',

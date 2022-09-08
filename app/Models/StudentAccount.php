@@ -20,7 +20,6 @@ class StudentAccount extends Model
         'studentPayment_id',
         'debit',
         'credit',
-        'description',
     ];
 
 

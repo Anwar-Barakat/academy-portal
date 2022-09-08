@@ -90,6 +90,7 @@ class FeeInvoiceController extends Controller
         return $this->feeInvoice->destroy($feeInvoice);
     }
 
+    
     public function addStudentInvoice($id)
     {
         return $this->feeInvoice->create($id);

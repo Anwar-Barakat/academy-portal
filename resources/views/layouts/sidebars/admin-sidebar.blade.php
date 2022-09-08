@@ -190,7 +190,9 @@
             <div class="clearfix"></div>
         </a>
         <ul id="fee-invoices-menu" class="collapse" data-parent="#sidebarnav">
-            <li><a target="_blank" href="{{ route('fee-invoices.index') }}">{{ __('fee.fees_invoices_list') }}</a>
+            <li><a target="_blank" href="{{ route('fee-invoices.index') }}">
+                    {{ __('trans.list', ['name' => __('fee.fees_invoices')]) }}
+                </a>
             </li>
 
         </ul>

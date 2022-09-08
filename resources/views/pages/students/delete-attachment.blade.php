@@ -17,7 +17,7 @@
                     @method('DELETE')
                     <x-input type="hidden" name="id" :value="$img->id" />
                     <x-input type="hidden" name="student_id" :value="$img->imageable->id" />
-                    <x-input type="hidden" name="student_name" :value="$img->imageable->name" />
+                    <x-input type="hidden" name="student_name" :value="$student->getTranslation('name', 'en')" />
                     <x-input type="hidden" name="file_name" :value="$img->file_name" />
                     <div class="row">
                         <div class="col">

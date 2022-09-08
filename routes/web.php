@@ -144,6 +144,9 @@ Route::group(
             //! ===================== Students =====================
             Route::resource('students',                                 StudentController::class);
             Route::delete('student-force-delete/{student}',             [StudentController::class, 'forceDelete'])->name('students.force_delete');
+            Route::post('upload-attachments',                           UploadAttachmentController::class)->name('student_upload_attachment');
+            Route::get('download-attachment/{studname}/{filename}',     DownloadAttachmentController::class)->name('download_student_attachment');
+            Route::delete('delete-attachment',                          DeleteAttachmentController::class)->name('delete_student_attachment');
 
             //? =====================
             Route::resource('students-promotions',                      StudentPromotionController::class);
@@ -154,6 +157,10 @@ Route::group(
             //! ===================== Fees =====================
             Route::resource('fees',                                     FeeController::class);
             Route::get('/get-fee-amount/{id}',                          GetFeeAmountController::class)->name('get-fee-amount');
+
+            //! ===================== Fee Invoices =====================
+            Route::resource('fee-invoices',                             FeeInvoiceController::class);
+            Route::get('add-student-invoice/{id}',                      [FeeInvoiceController::class, 'addStudentInvoice'])->name('add_student_invoice');
         });
 
 
@@ -176,9 +183,6 @@ Route::group(
 
 
 
-        Route::post('upload-attachments',                           UploadAttachmentController::class)->name('student_upload_attachment');
-        Route::get('download-attachment/{studname}/{filename}',     DownloadAttachmentController::class)->name('download_student_attachment');
-        Route::delete('delete-attachment',                          DeleteAttachmentController::class)->name('delete_student_attachment');
 
 
 
@@ -188,9 +192,8 @@ Route::group(
 
 
 
-        //! ===================== Fee Invoices =====================
-        Route::resource('fee-invoices',                             FeeInvoiceController::class);
-        Route::get('add-student-invoice/{id}',                      [FeeInvoiceController::class, 'addStudentInvoice'])->name('add_student_invoice');
+
+
 
 
         //! ===================== Student Receipts =====================

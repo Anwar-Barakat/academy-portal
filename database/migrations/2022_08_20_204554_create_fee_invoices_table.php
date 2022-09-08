@@ -17,11 +17,10 @@ return new class extends Migration
             $table->id();
             $table->date('date');
             $table->foreignId('student_id')->constrained('students')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('grade_id')->constrained('grades')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('classroom_id')->constrained('classrooms')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('fee_id')->constrained('fees')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('grade_id')->constrained('grades')->cascadeOnUpdate();
+            $table->foreignId('classroom_id')->constrained('classrooms')->cascadeOnUpdate();
+            $table->foreignId('fee_id')->constrained('fees')->cascadeOnUpdate();
             $table->decimal('amount', 8, 2);
-            $table->string('description')->nullable();
             $table->timestamps();
         });
     }

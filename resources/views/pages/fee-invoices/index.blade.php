@@ -1,14 +1,15 @@
 @extends('layouts.master')
 
 @section('title')
-    {{ __('fee.fees_invoices_list') }}
+    {{ __('trans.list', ['name' => __('fee.fees_invoices')]) }}
 @stop
 
 @section('breadcrum')
-    {{ __('fee.fees_invoices') }}@endsection
+    {{ __('fee.fees_invoices') }}
+@endsection
 
 @section('breadcrum_home')
-    {{ __('fee.fees_invoices_list') }}
+    {{ __('trans.list', ['name' => __('fee.fees_invoices')]) }}
 @endsection
 
 @section('content')
@@ -28,20 +29,18 @@
                                     <th>{{ __('fee.fees_type') }}</th>
                                     <th>{{ __('grade.grade') }}</th>
                                     <th>{{ __('classroom.classroom') }}</th>
-                                    <th>{{ __('fee.fee_invoice_type') }}</th>
                                     <th>{{ __('buttons.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($feeInvoices as $feeInvoice)
+                                @forelse ($feeInvoices as $feeInvoice)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ number_format($feeInvoice->amount, 2) }}</td>
-                                        <td>{{ $feeInvoice->student->name }}</td>
-                                        <td>{{ $feeInvoice->fee->title }}</td>
+                                        <td>{{ $feeInvoice->student->name ?? '' }}</td>
+                                        <td>{{ __('fee.' . $feeInvoice->fee->type) }}</td>
                                         <td>{{ $feeInvoice->grade->name }}</td>
                                         <td>{{ $feeInvoice->classroom->name }}</td>
-                                        <td>{{ $feeInvoice->description }}</td>
                                         <td>
                                             <a href="{{ route('fee-invoices.edit', $feeInvoice) }}"
                                                 class="btn btn-outline-info btn-sm" role="button" aria-pressed="true"><i
@@ -51,9 +50,14 @@
                                                     class="fas fa-trash-alt"></i></button>
                                         </td>
 
-                                        @include('pages.fee-invoices.delete')
+                                        {{-- Delete The Fee Invoice --}}
+                                        <x-delete-modal :id="$feeInvoice->id" :title="__('msgs.delete', ['name' => __('fee.invoice')])" :action="route('fee-invoices.destroy', $feeInvoice)" />
                                     </tr>
-                                @endforeach
+                                @empty
+                                    <tr class="text-center">
+                                        <td colspan="8">{{ __('msgs.not_found_yet') }}</td>
+                                    </tr>
+                                @endforelse
                         </table>
                     </div>
                 </div>

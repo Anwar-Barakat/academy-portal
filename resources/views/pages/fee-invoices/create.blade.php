@@ -45,7 +45,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $feeInvoice->student->name }}</td>
-                                        <td>{{ $feeInvoice->fee->title }}</td>
+                                        <td>{{ $feeInvoice->fee->type }}</td>
                                         <td>{{ $feeInvoice->amount }}</td>
                                         <td>{{ $feeInvoice->created_at }}</td>
                                     </tr>
@@ -85,38 +85,40 @@
                         @csrf
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-12 col-lg-3 mb-2 d-flex flex-column">
+                                <div class="col-md-12 col-lg-4 mb-2 d-flex flex-column">
                                     <x-label for="student_id" class="mr-sm-2" :value="__('fee.student_name')" />
-                                    <select class="form-control" name="student_id" aria-readonly="">
-                                        <option value="{{ $student->id }}">{{ $student->name }}</option>
+                                    <select class="form-control" name="student_id">
+                                        <option value="{{ $student->id }}" selected aria-readonly="">
+                                            {{ $student->name }}</option>
                                     </select>
+                                    @error('student_id')
+                                        <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                    @enderror
                                 </div>
 
-                                <div class="col-md-12 col-lg-3 mb-2 d-flex flex-column">
+                                <div class="col-md-12 col-lg-4 mb-2 d-flex flex-column">
                                     <x-label for="fee_id" class="mr-sm-2" :value="__('fee.fees_type')" />
                                     <select class="fancyselect" name="fee_id" required>
                                         <option disabled value="" selected>
                                             {{ __('msgs.select', ['name' => '...']) }}</option>
                                         @foreach ($fees as $fee)
-                                            <option value="{{ $fee->id }}">{{ $fee->title }}
+                                            <option value="{{ $fee->id }}">{{ __('fee.' . $fee->type) }}
                                             </option>
                                         @endforeach
                                     </select>
+                                    @error('fee_id')
+                                        <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                    @enderror
                                 </div>
 
-                                <div class="col-md-12 col-lg-3 mb-2">
+                                <div class="col-md-12 col-lg-4 mb-2">
                                     <x-label for="amount" class="mr-sm-2" :value="__('fee.amount')" />
                                     <div class="box">
                                         <select aria-readonly="" class="form-control" name="amount"
                                             id="amount"></select>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12 col-lg-3 mb-2">
-                                    <x-label for="description" class="mr-sm-2" :value="__('fee.report')" />
-                                    <div class="box">
-                                        <input type="text" class="form-control" name="description"max="20"
-                                            required>
+                                        @error('amount')
+                                            <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -138,24 +140,5 @@
 
 
 @section('js')
-    <script>
-        $(document).ready(function() {
-            $('select[name=fee_id]').on('change', function() {
-                var fee_id = $(this).val()
-                if (fee_id) {
-                    $.ajax({
-                        url: "{{ URL::to('get-fee-amount') }}/" + fee_id,
-                        type: 'GET',
-                        dataType: 'json',
-                        success: function(data) {
-                            console.log(data);
-                            $('#amount').empty();
-                            $('#amount').append('<option selected value="' + data +
-                                '">' + data + '</option>');
-                        },
-                    });
-                }
-            })
-        })
-    </script>
+    <script src="{{ asset('assets/js/custom/get-fee-amount.js') }}"></script>
 @stop
