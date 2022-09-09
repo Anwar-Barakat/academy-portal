@@ -244,21 +244,7 @@
         </ul>
     </li>
 
-    <!-- Attendances -->
-    <li>
-        <a href="javascript:void(0);" data-toggle="collapse" data-target="#attendances-menu">
-            <div class="pull-left"><i class="fas fa-calendar-alt"></i><span
-                    class="right-nav-text">{{ __('trans.attendances') }}</span></div>
-            <div class="pull-right"><i class="ti-plus"></i></div>
-            <div class="clearfix"></div>
-        </a>
-        <ul id="attendances-menu" class="collapse" data-parent="#sidebarnav">
-            <li>
-                <a target="_blank" href="{{ route('attendances.index') }}">{{ __('trans.attendances_list') }}</a>
-            </li>
 
-        </ul>
-    </li>
 
     <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">{{ __('trans.equipments') }} </li>
 

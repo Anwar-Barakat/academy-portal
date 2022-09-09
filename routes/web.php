@@ -134,6 +134,7 @@ Route::group(
 
             //! ===================== Sections =====================
             Route::resource('sections',                                 SectionController::class);
+            Route::get('/get-teachers/{section_id}',                    GetTeacherController::class)->name('get-teachers');
 
             //! ===================== Teachers =====================
             Route::resource('teachers',                                 TeacherController::class);
@@ -190,7 +191,6 @@ Route::group(
 
 
 
-        Route::get('/get-teachers/{grade_id}/{classroom_id}/{subject_id}',      GetTeacherController::class)->name('get-teachers');
 
 
 

@@ -16,7 +16,7 @@ class GetTeacherController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke($grade_id, $classroom_id, $subject_id)
+    public function __invoke($section_id)
     {
         // $teachers   = Section::where('id', $section_id)->with('teachers')->whereHas('teachers', function ($query) {
         //     $query->select('teachers.id', 'teachers.name');
@@ -24,13 +24,19 @@ class GetTeacherController extends Controller
         // return $teachers;
 
 
-        $teachers   = Subject::with('teacher')->whereHas('teacher', function ($query) {
+        // $teachers   = Subject::with('teacher')->whereHas('teacher', function ($query) {
+        //     $query->select('teachers.id', 'teachers.name');
+        // })->where([
+        //     'id'            => $subject_id,
+        //     'grade_id'      => $grade_id,
+        //     'classroom_id'  => $classroom_id
+        // ])->get()->pluck('teacher');
+
+        $section = Section::findOrFail($section_id);
+
+        $teachers = $section::with(array('teachers' => function ($query) {
             $query->select('teachers.id', 'teachers.name');
-        })->where([
-            'id'            => $subject_id,
-            'grade_id'      => $grade_id,
-            'classroom_id'  => $classroom_id
-        ])->get()->pluck('teacher');
+        }))->get()->pluck('teachers');;
 
 
         return $teachers;

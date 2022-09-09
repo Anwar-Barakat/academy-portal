@@ -26,7 +26,7 @@ class SubjectRepository implements SubjectRepositoryInterface
     {
         try {
             if ($request->isMethod('post')) {
-                $data               = $request->only(['name_ar', 'name_en', 'grade_id', 'classroom_id', 'teacher_id']);
+                $data               = $request->only(['name_ar', 'name_en', 'grade_id', 'classroom_id', 'section_id', 'teacher_id']);
                 $data['name']['ar'] = $data['name_ar'];
                 $data['name']['en'] = $data['name_en'];
                 Subject::create($data);
@@ -51,7 +51,7 @@ class SubjectRepository implements SubjectRepositoryInterface
     {
         try {
             if ($request->isMethod('put')) {
-                $data               = $request->only(['name_ar', 'name_en', 'grade_id', 'classroom_id', 'teacher_id']);
+                $data               = $request->only(['name_ar', 'name_en', 'grade_id', 'classroom_id', 'section_id', 'teacher_id']);
                 $data['name']['ar'] = $data['name_ar'];
                 $data['name']['en'] = $data['name_en'];
                 $subject->update($data);

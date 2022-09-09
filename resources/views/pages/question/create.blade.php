@@ -223,7 +223,6 @@
                         $('select[name=teacher_id]').append(
                             '<option disabled  value="" selected>{{ __('msgs.select', ['name' => '...']) }}</option>'
                         );
-                        console.log(response);
                         response.forEach((teacher) => {
                             document.querySelector(
                                     'select[name=teacher_id]')

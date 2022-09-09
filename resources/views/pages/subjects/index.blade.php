@@ -51,7 +51,9 @@
                                                 data-target="#delete{{ $subject->id }}"><i
                                                     class="fas fa-trash-alt"></i></button>
                                         </td>
-                                        @include('pages.subjects.delete')
+                                        {{-- Deleted The Subject --}}
+                                        <x-delete-modal :id="$subject->id" :title="__('msgs.delete', ['name' => __('trans.subject')])" :action="route('subjects.destroy', $subject)" />
+
                                     </tr>
                                 @empty
                                     <tr class="text-center">

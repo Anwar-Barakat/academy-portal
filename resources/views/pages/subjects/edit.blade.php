@@ -93,6 +93,23 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="col-xl-4">
+                            <div class="form-group">
+                                <x-label for="grade_id" :value="__('grade.grades')" />
+                                <select class="custom-select mr-sm-2" name="grade_id">
+                                    <option selected disabled>{{ __('msgs.select', ['name' => '...']) }}</option>
+                                    @foreach ($grades as $grade)
+                                        <option value="{{ $grade->id }}"
+                                            {{ $grade->id == $student->grade_id ? 'selected' : '' }}>
+                                            {{ $grade->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('grade_id')
+                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
 
                         <div class="col-xl-4">
                             <div class="form-group">
