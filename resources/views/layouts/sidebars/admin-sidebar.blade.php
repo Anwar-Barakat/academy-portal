@@ -68,7 +68,9 @@
             <div class="clearfix"></div>
         </a>
         <ul id="teachers-menu" class="collapse" data-parent="#sidebarnav">
-            <li><a target="_blank" href="{{ route('teachers.index') }}">{{ __('trans.teachers_list') }}</a></li>
+            <li><a target="_blank" href="{{ route('teachers.index') }}">
+                    {{ __('trans.list', ['name' => __('trans.teachers')]) }}
+                </a></li>
             <li>
                 <a target="_blank" href="{{ route('teachers.create') }}">
                     {{ __('msgs.add', ['name' => __('teacher.teacher')]) }}
@@ -174,7 +176,9 @@
             <div class="clearfix"></div>
         </a>
         <ul id="fees-menu" class="collapse" data-parent="#sidebarnav">
-            <li><a target="_blank" href="{{ route('fees.index') }}">{{ __('trans.fees_list') }}</a></li>
+            <li><a target="_blank" href="{{ route('fees.index') }}">
+                    {{ __('trans.list', ['name' => __('trans.fees')]) }}
+                </a></li>
             <li><a target="_blank"
                     href="{{ route('fees.create') }}">{{ __('msgs.add', ['name' => __('trans.fees')]) }}</a>
             </li>
@@ -207,7 +211,9 @@
             <div class="clearfix"></div>
         </a>
         <ul id="student-receipts-menu" class="collapse" data-parent="#sidebarnav">
-            <li><a target="_blank" href="{{ route('student-receipts.index') }}">{{ __('fee.receipts_list') }}</a>
+            <li><a target="_blank" href="{{ route('student-receipts.index') }}">
+                    {{ __('trans.list', ['name' => __('fee.receipts')]) }}
+                </a>
             </li>
         </ul>
     </li>
@@ -238,7 +244,9 @@
         </a>
         <ul id="student-payments-menu" class="collapse" data-parent="#sidebarnav">
             <li>
-                <a target="_blank" href="{{ route('student-payments.index') }}">{{ __('fee.payments_list') }}</a>
+                <a target="_blank" href="{{ route('student-payments.index') }}">
+                    {{ __('trans.list', ['name' => __('fee.payments')]) }}
+                </a>
             </li>
 
         </ul>
@@ -258,7 +266,9 @@
         </a>
         <ul id="subjects-menu" class="collapse" data-parent="#sidebarnav">
             <li>
-                <a target="_blank" href="{{ route('subjects.index') }}">{{ __('trans.subjects_list') }}</a>
+                <a target="_blank" href="{{ route('subjects.index') }}">
+                    {{ __('trans.list', ['name' => __('trans.subjects')]) }}
+                </a>
             </li>
             <li>
                 <a target="_blank" href="{{ route('subjects.create') }}">
@@ -278,7 +288,9 @@
         </a>
         <ul id="quizzes-menu" class="collapse" data-parent="#sidebarnav">
             <li>
-                <a target="_blank" href="{{ route('quizzes.index') }}">{{ __('trans.quizzes_list') }}</a>
+                <a target="_blank" href="{{ route('quizzes.index') }}">
+                    {{ __('trans.list', ['name' => __('trans.quizzes')]) }}
+                </a>
             </li>
             <li>
                 <a target="_blank" href="{{ route('quizzes.create') }}">
@@ -298,7 +310,9 @@
         </a>
         <ul id="questions-menu" class="collapse" data-parent="#sidebarnav">
             <li>
-                <a target="_blank" href="{{ route('questions.index') }}">{{ __('trans.questions_list') }}</a>
+                <a target="_blank" href="{{ route('questions.index') }}">
+                    {{ __('trans.list', ['name' => __('trans.questions')]) }}
+                </a>
             </li>
             <li>
                 <a target="_blank" href="{{ route('questions.create') }}">

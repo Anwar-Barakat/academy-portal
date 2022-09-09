@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    {{ __('trans.fees_list') }}
+    {{ __('trans.list', ['name' => __('fee.fees')]) }}
 @stop
 
 @section('breadcrum')
@@ -9,7 +9,7 @@
 @endsection
 
 @section('breadcrum_home')
-    {{ __('trans.fees_list') }}
+    {{ __('trans.list', ['name' => __('fee.fees')]) }}
 @endsection
 
 @section('content')

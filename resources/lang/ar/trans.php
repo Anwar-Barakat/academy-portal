@@ -28,19 +28,15 @@ return [
     'sections_lost'             => 'قائمة الأقسام الدراسية',
     'parents'                   => 'أولياء الأمور',
     'teachers'                  => 'المدرسين',
-    'teachers_list'             => 'قائمة المدرسين',
     'specializations'           => 'التخصصات الدراسية',
-    'specializations_list'      => 'قائمةالتخصصات الدراسية',
     'specialization'            => 'التخصص الدراسي',
     'students_promotion'        => 'ترقية الطلاب',
     'managmenet_promotion'      => 'إدارة الترقية',
     'graduation'                => 'تخرج',
     'graduation_students'       => 'الطلاب المتخرجين',
-    'fees_list'                 => 'قائمة الرسوم',
     'fees'                      => "رسوم",
     'accounts'                  => 'الحسابات',
     'attendances'               => 'الحضورات',
-    'attendances_list'          => 'قائمة الحضورات',
 
 
 
@@ -75,7 +71,6 @@ return [
     // ===========
     'subjects'                  => 'المواد الدراسية',
     'subject'                   => 'مادة دراسية',
-    'subjects_list'             => 'قائمة المواد الدراسية',
 
 
     // ===========
@@ -83,7 +78,6 @@ return [
     // ===========
     'quizzes'                   => 'الأختبارات',
     'quiz'                      => 'أختبار',
-    'quizzes_list'              => 'قائمة الأختبارات',
     'quiz_name'                 => 'اسم الأختبار',
 
 
@@ -92,7 +86,6 @@ return [
     // ===========
     'questions'                 => 'الأسألة',
     'question'                  => 'السؤال',
-    'questions_list'            => 'قائمة الأسألة',
     'arabic_question'           => 'السؤال بالعربي',
     'english_question'          => 'السؤال بالأنكليزي',
     'right_answer'              => 'الأجابة الصحيحة',

@@ -27,20 +27,16 @@ return [
     'sections_lost'             => 'Sections List',
     'parents'                   => 'Parents',
     'teachers'                  => 'Teachers',
-    'teachers_list'             => 'Teachers List',
     'students'                  => 'Students',
     'students_promotion'        => 'Students Promotion',
     'managmenet_promotion'      => 'Managmenet Promotion',
     'graduation'                => 'Graduation',
     'graduation_students'       => 'Graduation Students',
-    'fees_list'                 => 'Fees List',
     'fees'                      => 'Fees',
     'accounts'                  => 'Accounts',
     'attendances'               => 'Attendances',
-    'attendances_list'          => 'Attendances List',
 
     'specializations'           => 'Specializations',
-    'specializations_list'      => 'Specializations List',
     'specialization'            => 'Specialization',
     'created_at'                => 'Created At',
     'email'                     => 'Email',
@@ -75,7 +71,6 @@ return [
     // ===========
     'subjects'                  => 'Subjects',
     'subject'                   => 'Subject',
-    'subjects_list'             => 'Subjects Lists',
 
 
     // ===========
@@ -83,7 +78,6 @@ return [
     // ===========
     'quizzes'                   => 'Quizzes',
     'quiz'                      => 'Quiz',
-    'quizzes_list'              => 'Quizzes List',
     'quiz_name'                 => 'Quiz Name',
 
 
@@ -92,7 +86,6 @@ return [
     // ===========
     'questions'                 => 'Questions',
     'question'                  => 'Question',
-    'questions_list'            => 'Questions List',
     'arabic_question'           => 'Arabic Question',
     'english_question'          => 'English Question',
     'right_answer'              => 'Right Answer',

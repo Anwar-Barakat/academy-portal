@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    {{ __('trans.questions_list') }}
+    {{ __('trans.list', ['name' => __('trans.questions')]) }}
 @stop
 
 @section('breadcrum')
@@ -9,7 +9,7 @@
 @endsection
 
 @section('breadcrum_home')
-    {{ __('trans.questions_list') }}
+    {{ __('trans.list', ['name' => __('trans.questions')]) }}
 @endsection
 
 @section('content')
@@ -64,8 +64,8 @@
                                                 data-target="#delete{{ $question->id }}"><i
                                                     class="fas fa-trash-alt"></i></button>
                                         </td>
-
-                                        @include('pages.question.delete')
+                                        {{-- Deleted The Quiz --}}
+                                        <x-delete-modal :id="$question->id" :title="__('msgs.delete', ['name' => __('trans.questions')])" :action="route('questions.destroy', $question)" />
                                     </tr>
                                 @empty
                                     <tr class="text-center">

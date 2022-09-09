@@ -1,14 +1,14 @@
 @extends('layouts.master')
 
 @section('title')
-    {{ __('fee.receipts_list') }}
+    {{ __('trans.list', ['name' => __('fee.receipts')]) }}
 @stop
 
 @section('breadcrum')
     {{ __('fee.receipts') }}@endsection
 
 @section('breadcrum_home')
-    {{ __('fee.receipts_list') }}
+    {{ __('trans.list', ['name' => __('fee.receipts')]) }}
 @endsection
 
 @section('content')
