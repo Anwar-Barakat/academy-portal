@@ -161,6 +161,18 @@ Route::group(
             //! ===================== Fee Invoices =====================
             Route::resource('fee-invoices',                             FeeInvoiceController::class);
             Route::get('add-student-invoice/{id}',                      [FeeInvoiceController::class, 'addStudentInvoice'])->name('add_student_invoice');
+
+            //! ===================== Student Receipts =====================
+            Route::resource('student-receipts',                         StudentReceiptController::class);
+            Route::get('add-student-receipt/{id}',                      [StudentReceiptController::class, 'addStudentReceipt'])->name('add_student_receipt');
+
+            //! ===================== Fee Processings =====================
+            Route::resource('fee-processings',                          FeeProcessingController::class);
+            Route::get('add-fee-exclusion/{id}',                        [FeeProcessingController::class, 'addFeeExclusion'])->name('add_fee_exclusion');
+
+            //! ===================== Student Payments =====================
+            Route::resource('student-payments',                         StudentPaymentController::class);
+            Route::get('add-student-payment/{id}',                      [StudentPaymentController::class, 'addStudentPayment'])->name('add_student_payment');
         });
 
 
@@ -183,37 +195,6 @@ Route::group(
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //! ===================== Student Receipts =====================
-        Route::resource('student-receipts',                         StudentReceiptController::class);
-        Route::get('add-student-receipt/{id}',                      [StudentReceiptController::class, 'addStudentReceipt'])->name('add_student_receipt');
-
-
-        //! ===================== Fee Processings =====================
-        Route::resource('fee-processings',                          FeeProcessingController::class);
-        Route::get('add-fee-exclusion/{id}',                        [FeeProcessingController::class, 'addFeeExclusion'])->name('add_fee_exclusion');
-
-
-        //! ===================== Student Payments =====================
-        Route::resource('student-payments',                         StudentPaymentController::class);
-        Route::get('add-student-payment/{id}',                      [StudentPaymentController::class, 'addStudentPayment'])->name('add_student_payment');
-
-
-        //! ===================== Attendances =====================
-        Route::resource('attendances',                              AttendanceController::class);
-        Route::get('add-attendances/{id}',                          [AttendanceController::class, 'addAttendance'])->name('add_attendances');
 
 
         //! ===================== Subjects =====================
