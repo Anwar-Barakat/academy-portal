@@ -18,27 +18,9 @@ class GetTeacherController extends Controller
      */
     public function __invoke($section_id)
     {
-        // $teachers   = Section::where('id', $section_id)->with('teachers')->whereHas('teachers', function ($query) {
-        //     $query->select('teachers.id', 'teachers.name');
-        // })->get()->pluck('teachers');
-        // return $teachers;
-
-
-        // $teachers   = Subject::with('teacher')->whereHas('teacher', function ($query) {
-        //     $query->select('teachers.id', 'teachers.name');
-        // })->where([
-        //     'id'            => $subject_id,
-        //     'grade_id'      => $grade_id,
-        //     'classroom_id'  => $classroom_id
-        // ])->get()->pluck('teacher');
-
-        $section = Section::findOrFail($section_id);
-
-        $teachers = $section::with(array('teachers' => function ($query) {
+        $teachers   = Section::where('id', $section_id)->with('teachers')->whereHas('teachers', function ($query) {
             $query->select('teachers.id', 'teachers.name');
-        }))->get()->pluck('teachers');;
-
-
+        })->get()->pluck('teachers');
         return $teachers;
     }
 }

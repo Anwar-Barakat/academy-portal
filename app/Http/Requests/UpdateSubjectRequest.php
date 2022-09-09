@@ -28,6 +28,7 @@ class UpdateSubjectRequest extends FormRequest
             'name_en'       => 'required|min:3',
             'grade_id'      => 'required',
             'classroom_id'  => 'required',
+            'section_id'    => 'required',
             'teacher_id'    => 'required',
         ];
     }

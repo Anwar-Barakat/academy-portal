@@ -93,19 +93,22 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-xl-4">
+
+                        <div class="col-xl-4 col-md-12">
                             <div class="form-group">
-                                <x-label for="grade_id" :value="__('grade.grades')" />
-                                <select class="custom-select mr-sm-2" name="grade_id">
-                                    <option selected disabled>{{ __('msgs.select', ['name' => '...']) }}</option>
+                                <x-label for="section_id" :value="__('section.section')" />
+                                <select class="custom-select mr-sm-2" name="section_id">
                                     @foreach ($grades as $grade)
-                                        <option value="{{ $grade->id }}"
-                                            {{ $grade->id == $student->grade_id ? 'selected' : '' }}>
-                                            {{ $grade->name }}
-                                        </option>
+                                        @if ($grade->id == $subject->grade_id)
+                                            @foreach ($grade->sections as $section)
+                                                @if ($section->id == $subject->section_id)
+                                                    <option value="{{ $section->id }}">{{ $section->name }}</option>
+                                                @endif
+                                            @endforeach
+                                        @endif
                                     @endforeach
                                 </select>
-                                @error('grade_id')
+                                @error('section_id')
                                     <small class="text text-danger font-weight-bold">{{ $message }}</small>
                                 @enderror
                             </div>
@@ -118,11 +121,19 @@
                                     <option value="" selected disabled>
                                         {{ __('msgs.select', ['name' => '...']) }}
                                     </option>
-                                    @foreach ($teachers as $teacher)
-                                        <option value="{{ $teacher->id }}"
-                                            {{ $subject->teacher_id == $teacher->id ? 'selected' : '' }}>
-                                            {{ $teacher->name }} - {{ $teacher->specialization->name }}
-                                        </option>
+                                    @foreach ($grades as $grade)
+                                        @if ($grade->id == $subject->grade_id)
+                                            @foreach ($grade->sections as $section)
+                                                @if ($section->id == $subject->section_id)
+                                                    @foreach ($section->teachers as $teacher)
+                                                        <option value="{{ $teacher->id }}"
+                                                            {{ $teacher->id == $subject->teacher_id ? 'selected' : '' }}>
+                                                            {{ $teacher->name }}
+                                                        </option>
+                                                    @endforeach
+                                                @endif
+                                            @endforeach
+                                        @endif
                                     @endforeach
                                 </select>
                                 @error('teacher_id')
@@ -144,60 +155,7 @@
 <!-- row closed -->
 @endsection
 @section('js')
-{{-- Get Grade's Classrooms --}}
-<script>
-    $(function() {
-        $('select[name=grade_id]').on('change', function() {
-            var grade_id = $(this).val();
-            if (grade_id) {
-                $.ajax({
-                    type: "get",
-                    url: "/get-classrooms/" + grade_id,
-                    dataType: "json",
-                    success: function(response) {
-                        $('select[name=classroom_id]').empty();
-                        $('select[name=classroom_id]').append(
-                            '<option disabled  value="" selected>{{ __('msgs.select', ['name' => '...']) }}</option>'
-                        );
-                        $.each(response, function(index, value) {
-                            $('select[name=classroom_id]').append(
-                                '<option value="' + index + '">' + value +
-                                '</option>'
-                            );
-                        });
-                    }
-                });
-            }
-        })
-    });
-</script>
-
-{{-- Get Classroom's Sections --}}
-<script>
-    $(function() {
-        $('select[name=classroom_id]').on('change', function() {
-            var classroom_id = $(this).val();
-            if (classroom_id) {
-                $.ajax({
-                    type: "get",
-                    url: "/get-sections/" + classroom_id,
-                    dataType: "json",
-                    success: function(response) {
-                        $('select[name=section_id]').empty();
-                        $('select[name=section_id]').append(
-                            '<option disabled  value="" selected>{{ __('msgs.select', ['name' => '...']) }}</option>'
-                        );
-                        $.each(response, function(index, value) {
-                            $('select[name=section_id]').append(
-                                '<option value="' + index + '">' + value +
-                                '</option>'
-                            );
-                        });
-                    }
-                });
-            }
-        })
-    });
-</script>
-
+<script src="{{ asset('assets/js/custom/get-classtooms.js') }}"></script>
+<script src="{{ asset('assets/js/custom/get-sections.js') }}"></script>
+<script src="{{ asset('assets/js/custom/get-teachers.js') }}"></script>
 @endsection

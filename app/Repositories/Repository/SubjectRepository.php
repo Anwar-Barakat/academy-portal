@@ -68,9 +68,13 @@ class SubjectRepository implements SubjectRepositoryInterface
     public function destroy($subject)
     {
         try {
-            $subject->delete();
+            if ($subject->teacher->count() > 0)
+                toastr()->error(__('msgs.is_existed', ['name' => __('teacher.teacher') . ' ' .  $subject->teacher->name]));
+            else {
+                $subject->delete();
+                toastr()->info(__('msgs.deleted', ['name' => __('trans.subject')]));
+            }
 
-            toastr()->info(__('msgs.deleted', ['name' => __('trans.subject')]));
             return redirect()->back();
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['error' => $th->getMessage()]);
