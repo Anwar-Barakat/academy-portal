@@ -83,7 +83,9 @@ Route::group(
         Route::post('/login',                                           LoginController::class)->name('login.show');
         Route::get('/logout/{type}',                                    LogoutController::class)->name('all.logout');
 
-
+        //? =====================
+        //? Teacher Dashboard
+        //? =====================
         Route::middleware(['auth:teacher,isTeacher'])->prefix('teacher')->name('teacher.')->group(function () {
             Route::get('/dashboard',                                    TeacherDashboardController::class)->name('dashboard');
             Route::resource('students',                                 TeacherStudentController::class)->only(['index']);
@@ -96,9 +98,15 @@ Route::group(
             Route::resource('online-classess',                          TeacherOnlineClassController::class);
             Route::resource('indirect-classess',                        TeacherIndirectClassController::class);
             Route::resource('profile',                                  ProfileController::class)->only(['index', 'update']);
+
+            //! ===================== Library =====================
+            Route::resource('library',                                  LibraryController::class);
+            Route::get('download-book-attachment/{file_name}',          DownloadBookController::class)->name('download_book_attachment');
         });
 
-
+        //? =====================
+        //? Parent Dashboard
+        //? =====================
         Route::middleware(['auth:parent,isParent'])->prefix('parent/')->name('parent.')->group(function () {
             Route::get('dashboard',                                     ParentDashboardController::class)->name('dashboard');
             Route::resource('children',                                 ChildrenController::class);
@@ -109,7 +117,9 @@ Route::group(
             Route::resource('profile',                                  ParentProfileController::class)->only(['index', 'update']);
         });
 
-
+        //? =====================
+        //? Student Dashboard
+        //? =====================
         Route::middleware(['auth:student,isStudent'])->prefix('student/')->name('student.')->group(function () {
             Route::get('dashboard',                                     StudentDashboardController::class)->name('dashboard');
             Route::resource('quizzes',                                  StudentQuizController::class);
@@ -123,6 +133,9 @@ Route::group(
         });
 
 
+        //? =====================
+        //? Admin Dashboard
+        //? =====================
         Route::middleware(['auth:web,isAdmin'])->prefix('admin/')->group(function () {
             Route::get('/dashboard',                                    AdminDashboardController::class)->name('admin.dashboard');
 
@@ -179,50 +192,19 @@ Route::group(
             //! ===================== Subjects =====================
             Route::resource('subjects',                                 SubjectController::class);
             Route::get('/get-subjects/{teacher_id}',                    GetSubjectController::class)->name('get-subjects');
+
+            //! ===================== Quizzes =====================
+            Route::resource('quizzes',                                  QuizController::class);
+
+            //! ===================== Questions =====================
+            Route::resource('questions',                                QuestionController::class);
+
+            //! ===================== Online Classes =====================
+            Route::resource('online-classes',                           OnlineClassController::class);
+            Route::resource('indirect-classes',                         IndirectClassController::class)->only(['create', 'store']);
+
+            //! ===================== Settings =====================
+            Route::resource('settings',                                 SettingController::class)->only(['index', 'update']);
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //! ===================== Quizzes =====================
-        Route::resource('quizzes',                                  QuizController::class);
-
-
-        //! ===================== Questions =====================
-        Route::resource('questions',                                QuestionController::class);
-
-
-        //! ===================== Online Classes =====================
-        Route::resource('online-classes',                           OnlineClassController::class);
-        Route::resource('indirect-classes',                         IndirectClassController::class)->only(['create', 'store']);
-
-
-        //! ===================== Library =====================
-        Route::resource('library',                                  LibraryController::class);
-        Route::get('download-book-attachment/{file_name}',          DownloadBookController::class)->name('download_book_attachment');
-
-
-        //! ===================== Settings =====================
-        Route::resource('settings',                                 SettingController::class)->only(['index', 'update']);
     }
 );

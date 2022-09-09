@@ -39,4 +39,5 @@ class Library extends Model
     {
         return $this->belongsTo(Teacher::class, 'teacher_id');
     }
+
 }

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use PhpParser\Node\Expr\FuncCall;
 
 class Teacher extends Authenticatable
@@ -46,6 +47,12 @@ class Teacher extends Authenticatable
                 return Carbon::parse($this->attributes['joining'])->format('Y-m-d');
             }
         );
+    }
+
+
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
     }
 
     public function specialization()

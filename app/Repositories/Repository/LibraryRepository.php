@@ -4,8 +4,12 @@ namespace App\Repositories\Repository;
 
 use App\Http\Traits\AttachFileTrait;
 use App\Models\Grade;
+use App\Models\Image;
 use App\Models\Library;
+use App\Models\Teacher;
 use App\Repositories\Interface\LibraryRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class LibraryRepository implements LibraryRepositoryInterface
 {
@@ -13,13 +17,13 @@ class LibraryRepository implements LibraryRepositoryInterface
     public function index()
     {
         $library    = Library::latest()->get();
-        return view('pages.library.index', ['library' => $library]);
+        return view('pages.teachers.library.index', ['library' => $library]);
     }
 
     public function create()
     {
         $grades     = Grade::all();
-        return view('pages.library.create', ['grades' => $grades]);
+        return view('pages.teachers.library.create', ['grades' => $grades]);
     }
 
     public function store($request)
@@ -32,10 +36,11 @@ class LibraryRepository implements LibraryRepositoryInterface
                     'grade_id'      => $request->grade_id,
                     'classroom_id'  => $request->classroom_id,
                     'section_id'    => $request->section_id,
-                    'teacher_id'    => 1,
+                    'teacher_id'    => Auth::guard('teacher')->id(),
                 ]);
 
-                $this->uploadFile($request, 'file_name');
+
+                $this->uploadFile($request, 'library',  Auth::guard('teacher')->user()->getTranslation('name', 'en'),  Auth::guard('teacher')->id(), 'file_name', 'Teacher');
 
                 toastr()->success(__('msgs.added', ['name' => __('trans.book')]));
                 return redirect()->back();
@@ -48,33 +53,38 @@ class LibraryRepository implements LibraryRepositoryInterface
     public function edit($library)
     {
         $grades     = Grade::all();
-        return view('pages.library.edit', ['grades' => $grades, 'library' => $library]);
+        return view('pages.teachers.library.edit', ['grades' => $grades, 'library' => $library]);
     }
 
     public function update($request, $library)
     {
         if ($request->isMethod('put')) {
             try {
-                if ($request->hasFile('file_name')) {
-                    $this->deleteFile($library->file_name);
 
-                    $this->uploadFile($request, 'file_name');
+                if ($request->hasFile('file_name') && $request->file('file_name')->isValid()) {
+                    Image::where([
+                        'file_name'         => $library->file_name,
+                        'imageable_type'    => 'App\Models\Teacher',
+                        'imageable_id'      => Auth::guard('teacher')->user()->id
+                    ])->delete();
+                    Storage::disk('upload_attachments')->delete('attachments/library/' . Auth::guard('teacher')->user()->getTranslation('name', 'en') . '/' . $library->file_name);
 
-                    $file_name = $request->file('file_name')->getClientOriginalName();
+
+                    $this->uploadFile($request, 'library',  Auth::guard('teacher')->user()->getTranslation('name', 'en'),  Auth::guard('teacher')->id(), 'file_name', 'Teacher');
                 } else
                     $file_name = $library->file_name;
 
 
-
-
                 $library->update([
                     'title'         => $request->title,
-                    'file_name'     => $file_name,
+                    'file_name'     => $request->file('file_name')->getClientOriginalName(),
                     'grade_id'      => $request->grade_id,
                     'classroom_id'  => $request->classroom_id,
                     'section_id'    => $request->section_id,
-                    'teacher_id'    => 1,
+                    'teacher_id'    => Auth::guard('teacher')->id(),
                 ]);
+
+
 
                 toastr()->success(__('msgs.updated', ['name' => __('trans.book')]));
                 return redirect()->back();
@@ -87,7 +97,13 @@ class LibraryRepository implements LibraryRepositoryInterface
     public function destroy($library)
     {
         try {
-            $this->deleteFile($library->file_name);
+            Image::where([
+                'file_name'         => $library->file_name,
+                'imageable_type'    => 'App\Models\Teacher',
+                'imageable_id'      => Auth::guard('teacher')->user()->id
+            ])->delete();
+            Storage::disk('upload_attachments')->delete('attachments/library/' . Auth::guard('teacher')->user()->getTranslation('name', 'en') . '/' . $library->file_name);
+
             $library->delete();
             toastr()->info(__('msgs.deleted', ['name' => __('trans.book')]));
             return redirect()->back();

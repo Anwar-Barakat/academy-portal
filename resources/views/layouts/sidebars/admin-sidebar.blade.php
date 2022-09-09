@@ -339,23 +339,6 @@
         </ul>
     </li>
 
-    <!-- Libarary -->
-    <li>
-        <a href="javascript:void(0);" data-toggle="collapse" data-target="#library-menu">
-            <div class="pull-left"><i class="fas fa-books"></i><span
-                    class="right-nav-text">{{ __('trans.library') }}</span></div>
-            <div class="pull-right"><i class="ti-plus"></i></div>
-            <div class="clearfix"></div>
-        </a>
-        <ul id="library-menu" class="collapse" data-parent="#sidebarnav">
-            <li>
-                <a target="_blank" href="{{ route('library.index') }}">
-                    {{ __('trans.list', ['name' => __('trans.books')]) }}
-                </a>
-            </li>
-        </ul>
-    </li>
-
     <!-- Settings -->
     <li>
         <a target="_blank" href="{{ route('settings.index') }}" data-target="#settings-menu">
@@ -364,4 +347,3 @@
             <div class="clearfix"></div>
         </a>
     </li>
-    </ul>
