@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Subject;
 
 use App\Http\Controllers\Controller;
-use App\Models\Subject;
-use Illuminate\Http\Request;
+use App\Models\Teacher;
 
 class GetSubjectController extends Controller
 {
@@ -14,9 +13,11 @@ class GetSubjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke($grade_id, $classroom_id)
+    public function __invoke($teacher_id)
     {
-        $subjects = Subject::where(['grade_id' => $grade_id, 'classroom_id' => $classroom_id])->pluck('name', 'id');
+        $subjects   = Teacher::where('id', $teacher_id)->with('subjects')->whereHas('subjects', function ($query) {
+            $query->select('subjects.id', 'subjects.name');
+        })->get()->pluck('subjects');
 
         return $subjects;
     }

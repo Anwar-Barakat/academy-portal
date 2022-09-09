@@ -43,7 +43,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-
                                 @forelse ($quizzes as $quiz)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
@@ -63,11 +62,12 @@
                                                     class="fas fa-trash-alt"></i></button>
                                         </td>
 
-                                        @include('pages.quizzes.delete')
+                                        {{-- Deleted The Quiz --}}
+                                        <x-delete-modal :id="$quiz->id" :title="__('msgs.delete', ['name' => __('trans.quiz')])" :action="route('quizzes.destroy', $quiz)" />
                                     </tr>
                                 @empty
                                     <tr class="text-center">
-                                        <td colspan="8">{{ __('msgs.not_found_yet') }}</td>
+                                        <td colspan="9">{{ __('msgs.not_found_yet') }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>

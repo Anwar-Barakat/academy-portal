@@ -96,14 +96,7 @@
                             <div class="form-group">
                                 <x-label for="teacher_id" :value="__('trans.teachers')" />
                                 <select class="custom-select mr-sm-2" name="teacher_id">
-                                    <option value="" selected disabled>
-                                        {{ __('msgs.select', ['name' => '...']) }}
-                                    </option>
-                                    @foreach ($teachers as $teacher)
-                                        <option value="{{ $teacher->id }}">
-                                            {{ $teacher->name }} - {{ $teacher->specialization->name }}
-                                        </option>
-                                    @endforeach
+
                                 </select>
                                 @error('teacher_id')
                                     <small class="text text-danger font-weight-bold">{{ $message }}</small>

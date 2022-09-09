@@ -115,41 +115,19 @@
                                 @enderror
                             </div>
                         </div>
-
-                        <div class="col-xl-6">
-                            <div class="form-group">
-                                <x-label for="subject_id" :value="__('trans.subjects')" />
-                                <select class="custom-select mr-sm-2" name="subject_id">
-                                    @foreach ($grades as $grade)
-                                        @if ($grade->id == $quiz->grade_id)
-                                            @foreach ($grade->subjects as $subject)
-                                                <option value="{{ $subject->id }}"
-                                                    {{ $subject->id == $quiz->subject_id }}>
-                                                    {{ $subject->name }}</option>
-                                            @endforeach
-                                        @endif
-                                    @endforeach
-                                </select>
-                                @error('subject_id')
-                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
-
                         <div class="col-xl-6">
                             <div class="form-group">
                                 <x-label for="teacher_id" :value="__('trans.teachers')" />
                                 <select class="custom-select mr-sm-2" name="teacher_id">
                                     @foreach ($grades as $grade)
                                         @if ($grade->id == $quiz->grade_id)
-                                            @foreach ($grade->classrooms as $classroom)
-                                                @if ($classroom->id == $quiz->classroom_id)
-                                                    @foreach ($classroom->subjects as $subject)
-                                                        @if ($subject->id == $quiz->subject_id)
-                                                            <option value="{{ $subject->teacher->id }}">
-                                                                {{ $subject->teacher->name }}
-                                                            </option>
-                                                        @endif
+                                            @foreach ($grade->sections as $section)
+                                                @if ($section->id == $quiz->section_id)
+                                                    @foreach ($section->teachers as $teacher)
+                                                        <option value="{{ $teacher->id }}"
+                                                            {{ $teacher->id == $quiz->teacher_id ? 'selected' : '' }}>
+                                                            {{ $teacher->name }}
+                                                        </option>
                                                     @endforeach
                                                 @endif
                                             @endforeach
@@ -161,10 +139,38 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="col-xl-6">
+                            <div class="form-group">
+                                <x-label for="subject_id" :value="__('trans.subjects')" />
+                                <select class="custom-select mr-sm-2" name="subject_id">
+                                    @foreach ($grades as $grade)
+                                        @if ($grade->id == $quiz->grade_id)
+                                            @foreach ($grade->sections as $section)
+                                                @if ($section->id == $quiz->section_id)
+                                                    @foreach ($section->teachers as $teacher)
+                                                        @if ($teacher->id == $quiz->teacher_id)
+                                                            @foreach ($teacher->subjects as $subject)
+                                                                <option value="{{ $subject->id }}"
+                                                                    {{ $subject->id == $quiz->subject_id ? 'selected' : '' }}>
+                                                                    {{ $subject->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    @endforeach
+                                </select>
+                                @error('subject_id')
+                                    <small class="text text-danger font-weight-bold">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
                     <hr>
                     <button type="submit" class="button button-border x-small">
-                        {{ __('buttons.submit') }}
+                        {{ __('buttons.update') }}
                     </button>
                 </form>
             </div>
@@ -174,151 +180,8 @@
 <!-- row closed -->
 @endsection
 @section('js')
-{{-- Get Grade's Classrooms --}}
-<script>
-    $(function() {
-        $('select[name=grade_id]').on('change', function() {
-            var grade_id = $(this).val();
-            if (grade_id) {
-                $.ajax({
-                    type: "get",
-                    url: "/get-classrooms/" + grade_id,
-                    dataType: "json",
-                    success: function(response) {
-                        $('select[name=classroom_id]').empty();
-                        $('select[name=classroom_id]').append(
-                            '<option disabled  value="" selected>{{ __('msgs.select', ['name' => '...']) }}</option>'
-                        );
-                        $.each(response, function(index, value) {
-                            $('select[name=classroom_id]').append(
-                                '<option value="' + index + '">' + value +
-                                '</option>'
-                            );
-                        });
-                    }
-                });
-            }
-        })
-    });
-</script>
-
-{{-- Get Classroom's Sections --}}
-<script>
-    $(function() {
-        $('select[name=classroom_id]').on('change', function() {
-            var classroom_id = $(this).val();
-            if (classroom_id) {
-                $.ajax({
-                    type: "get",
-                    url: "/get-sections/" + classroom_id,
-                    dataType: "json",
-                    success: function(response) {
-                        $('select[name=section_id]').empty();
-                        $('select[name=section_id]').append(
-                            '<option disabled  value="" selected>{{ __('msgs.select', ['name' => '...']) }}</option>'
-                        );
-                        $.each(response, function(index, value) {
-                            $('select[name=section_id]').append(
-                                '<option value="' + index + '">' + value +
-                                '</option>'
-                            );
-                        });
-                    }
-                });
-            }
-        })
-    });
-</script>
-
-{{-- Get Classroom's Subjects --}}
-<script>
-    $(function() {
-        $('select[name=classroom_id]').on('change', function() {
-            var grade_id = $('select[name=grade_id]').val();
-            var classroom_id = $(this).val();
-            if (classroom_id) {
-                $.ajax({
-                    type: "get",
-                    url: "/get-subjects/" + grade_id + '/' + classroom_id,
-                    dataType: "json",
-                    success: function(response) {
-                        $('select[name=subject_id]').empty();
-                        $('select[name=subject_id]').append(
-                            '<option disabled  value="" selected>{{ __('msgs.select', ['name' => '...']) }}</option>'
-                        );
-                        $.each(response, function(index, value) {
-                            $('select[name=subject_id]').append(
-                                '<option value="' + index + '">' + value +
-                                '</option>'
-                            );
-                        });
-                    }
-                });
-            }
-        })
-    });
-</script>
-
-{{-- Get Subject's Teacher --}}
-<script>
-    $(function() {
-        $('select[name=subject_id]').on('change', function() {
-            var grade_id = $('select[name=grade_id]').val();
-            var classroom_id = $('select[name=classroom_id]').val();
-            var subject_id = $('select[name=subject_id]').val();
-            if (classroom_id) {
-                $.ajax({
-                    type: "get",
-                    url: "/get-teachers/" + grade_id + '/' + classroom_id + '/' + subject_id,
-                    dataType: "json",
-                    success: function(response) {
-                        $('select[name=teacher_id]').empty();
-                        $('select[name=teacher_id]').append(
-                            '<option disabled  value="" selected>{{ __('msgs.select', ['name' => '...']) }}</option>'
-                        );
-                        console.log(response);
-                        response.forEach((teacher) => {
-                            document.querySelector(
-                                    'select[name=teacher_id]')
-                                .innerHTML +=
-                                `<option value=${teacher['id']}>${teacher['name']['en']}</option>`;
-                        });
-                    }
-                });
-            }
-        })
-    });
-</script>
-
-
-
-{{-- Get Section's Teachers --}}
-{{-- <script>
-    $(function() {
-        $('select[name=section_id]').on('change', function() {
-            var section_id = $(this).val();
-            if (section_id) {
-                $.ajax({
-                    type: "get",
-                    url: "/get-teachers/" + section_id,
-                    dataType: "json",
-                    success: function(response) {
-                        $('select[name=teacher_id]').empty();
-                        $('select[name=teacher_id]').append(
-                            '<option disabled  value="" selected>{{ __('msgs.select', ['name' => '...']) }}</option>'
-                        );
-                        response.forEach((teachers) => {
-                            teachers.forEach((teacher) => {
-                                document.querySelector(
-                                        'select[name=teacher_id]')
-                                    .innerHTML +=
-                                    `<option value=${teacher['id']}>${teacher['name']['en']}</option>`;
-                            })
-                        });
-                    }
-                });
-            }
-        })
-    });
-</script> --}}
+<script src="{{ asset('assets/js/custom/get-classtooms.js') }}"></script>
+<script src="{{ asset('assets/js/custom/get-sections.js') }}"></script>
+<script src="{{ asset('assets/js/custom/get-teachers.js') }}"></script>
+<script src="{{ asset('assets/js/custom/get-subjects.js') }}"></script>
 @endsection

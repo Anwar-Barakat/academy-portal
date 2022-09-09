@@ -18,8 +18,7 @@ class SubjectRepository implements SubjectRepositoryInterface
     public function create()
     {
         $grades     = Grade::all();
-        $teachers   = Teacher::with('specialization')->get();
-        return view('pages.subjects.create', ['grades' => $grades, 'teachers' => $teachers]);
+        return view('pages.subjects.create', ['grades' => $grades]);
     }
 
     public function store($request)
@@ -43,8 +42,7 @@ class SubjectRepository implements SubjectRepositoryInterface
     public function edit($subject)
     {
         $grades     = Grade::all();
-        $teachers   = Teacher::with('specialization')->get();
-        return view('pages.subjects.edit', ['grades' => $grades, 'teachers' => $teachers, 'subject' => $subject]);
+        return view('pages.subjects.edit', ['grades' => $grades, 'subject' => $subject]);
     }
 
     public function update($request, $subject)

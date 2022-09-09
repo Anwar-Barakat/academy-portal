@@ -174,6 +174,11 @@ Route::group(
             //! ===================== Student Payments =====================
             Route::resource('student-payments',                         StudentPaymentController::class);
             Route::get('add-student-payment/{id}',                      [StudentPaymentController::class, 'addStudentPayment'])->name('add_student_payment');
+
+
+            //! ===================== Subjects =====================
+            Route::resource('subjects',                                 SubjectController::class);
+            Route::get('/get-subjects/{teacher_id}',                    GetSubjectController::class)->name('get-subjects');
         });
 
 
@@ -197,9 +202,6 @@ Route::group(
 
 
 
-        //! ===================== Subjects =====================
-        Route::resource('subjects',                                 SubjectController::class);
-        Route::get('/get-subjects/{grade_id}/{classroom_id}',       GetSubjectController::class)->name('get-subjects');
 
 
         //! ===================== Quizzes =====================

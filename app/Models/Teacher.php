@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use PhpParser\Node\Expr\FuncCall;
 
 class Teacher extends Authenticatable
 {
@@ -52,9 +53,13 @@ class Teacher extends Authenticatable
         return $this->belongsTo(Specialization::class, 'specialization_id');
     }
 
-
     public function sections()
     {
         return $this->belongsToMany(Section::class, 'section_teacher');
+    }
+
+    public function subjects()
+    {
+        return $this->hasMany(Subject::class, 'teacher_id');
     }
 }
