@@ -5,6 +5,10 @@ body {
     font-family: "Cairo", sans-serif !important;
 }
 
+img {
+    max-width: 100% !important;
+}
+
 ::-webkit-scrollbar {
     width: 10px;
 }

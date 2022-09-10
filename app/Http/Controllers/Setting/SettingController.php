@@ -7,6 +7,9 @@ use App\Http\Requests\StoreSettingRequest;
 use App\Http\Requests\UpdateSettingRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\AttachFileTrait;
+use App\Models\Image;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class SettingController extends Controller
 {
@@ -82,20 +85,24 @@ class SettingController extends Controller
             try {
                 $data = $request->except(['_method', '_token', 'logo']);
 
-                foreach ($data as $key => $value) {
+                foreach ($data as $key => $value)
                     Setting::where('key', $key)->update(['value' => $value]);
-                }
 
                 if ($request->hasFile('logo')) {
+                    $logo   =  Setting::where('key', 'logo')->pluck('value');
+                    Storage::disk('upload_attachments')->delete('attachments/logo/' . $this->adminName() . '/' . $logo);
+                    Image::where(['imageable_id' => $this->adminId(), 'file_name' => $logo])->delete();
+
+
                     $file_name  = $request->file('logo')->getClientOriginalName();
                     Setting::where('key', 'logo')->update(['value' => $file_name]);
-                    $this->deleteFile('logo', $file_name);
-                    $this->uploadFile($request, 'logo', 'logo');
+                    $this->uploadFile($request, 'logo', $this->adminName(),  $this->adminId(), 'logo', 'Setting');
                 }
 
                 toastr()->success(__('msgs.updated', ['name' => __('trans.settings')]));
                 return redirect()->back();
             } catch (\Throwable $th) {
+                return back()->withErrors(['error' => $th->getMessage()]);
             }
         }
     }
@@ -109,5 +116,14 @@ class SettingController extends Controller
     public function destroy(Setting $setting)
     {
         //
+    }
+
+    private function adminName()
+    {
+        return Auth::user()->name;
+    }
+    private function adminId()
+    {
+        return Auth::id();
     }
 }

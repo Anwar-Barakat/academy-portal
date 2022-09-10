@@ -21,19 +21,18 @@
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-                @if (session()->has('error'))
-                    <small class="text text-danger font-weight-bold alert-dismissible fade show" role="alert">
-                        <strong>{{ session()->get('error') }}</strong>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </small>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
                 @endif
-                <div class="col-xs-12">
-                    <div class="col-md-12" style="display: grid; grid-template-columns: repeat(2,1fr)">
-
-                        <form action="{{ route('settings.update', 'test') }}" method="post"
-                            enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-8">
+                        <form action="{{ route('settings.update', 'test') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('put')
                             <div class="form-group row mb-lg-5 mb-4">
@@ -136,11 +135,13 @@
                                 {{ __('buttons.update') }}
                             </button>
                         </form>
+                    </div>
+                    <div class="col-md-4">
                         @if (isset($setting['logo']) && !empty($setting['logo']))
-                            <img src="{{ asset('attachments/logo/' . $setting['logo']) }}" alt=""
-                                class="img img-thumbnail">
+                            <img src="{{ asset('attachments/logo/' . auth()->user()->name . '/' . $setting['logo']) }}"
+                                alt="" class="img ">
                         @else
-                            <img src="{{ asset('assets/images/logo-icon.png') }}" width="300" alt="">
+                            <img src="{{ asset('attachments/logo/logo-icon.png') }}" width="300" alt="">
                         @endif
                     </div>
                 </div>

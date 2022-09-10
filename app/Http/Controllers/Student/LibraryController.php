@@ -13,14 +13,12 @@ use Illuminate\Support\Facades\Auth;
 
 class LibraryController extends Controller
 {
+
     public function index()
     {
-        $student    = Student::findOrFail(Auth::guard('student')->id());
-
+        $student    = Student::findOrFail($this->stdId());
         $grade      = Grade::findOrFail($student->grade_id);
-
         $section    = $grade->sections()->where('id', $student->section_id)->first();
-
         $teachers   = $section->teachers;
 
         foreach ($teachers as $teacher) {
@@ -35,5 +33,10 @@ class LibraryController extends Controller
     {
         $teacher = Teacher::findOrFail($tId);
         return response()->download('attachments/library/' . $teacher->getTranslation('name', 'en') . '/' . $file_name);
+    }
+
+    private function stdId()
+    {
+        return Auth::guard('student')->id();
     }
 }

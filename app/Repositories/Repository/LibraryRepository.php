@@ -37,11 +37,11 @@ class LibraryRepository implements LibraryRepositoryInterface
                     'grade_id'      => $request->grade_id,
                     'classroom_id'  => $request->classroom_id,
                     'section_id'    => $request->section_id,
-                    'teacher_id'    => Auth::guard('teacher')->id(),
+                    'teacher_id'    => $this->teacherId(),
                 ]);
 
 
-                $this->uploadFile($request, 'library',  Auth::guard('teacher')->user()->getTranslation('name', 'en'),  Auth::guard('teacher')->id(), 'file_name', 'Teacher');
+                $this->uploadFile($request, 'library',  $this->teacherName(),  $this->teacherId(), 'file_name', 'Teacher');
 
                 toastr()->success(__('msgs.added', ['name' => __('trans.book')]));
                 return redirect()->back();
@@ -65,13 +65,12 @@ class LibraryRepository implements LibraryRepositoryInterface
                 if ($request->hasFile('file_name') && $request->file('file_name')->isValid()) {
                     Image::where([
                         'file_name'         => $library->file_name,
-                        'imageable_type'    => 'App\Models\Teacher',
                         'imageable_id'      => Auth::guard('teacher')->user()->id
                     ])->delete();
-                    Storage::disk('upload_attachments')->delete('attachments/library/' . Auth::guard('teacher')->user()->getTranslation('name', 'en') . '/' . $library->file_name);
+                    Storage::disk('upload_attachments')->delete('attachments/library/' . $this->teacherName() . '/' . $library->file_name);
 
 
-                    $this->uploadFile($request, 'library',  Auth::guard('teacher')->user()->getTranslation('name', 'en'),  Auth::guard('teacher')->id(), 'file_name', 'Teacher');
+                    $this->uploadFile($request, 'library',  $this->teacherName(),  $this->teacherId(), 'file_name', 'Teacher');
                 } else
                     $file_name = $library->file_name;
 
@@ -82,10 +81,8 @@ class LibraryRepository implements LibraryRepositoryInterface
                     'grade_id'      => $request->grade_id,
                     'classroom_id'  => $request->classroom_id,
                     'section_id'    => $request->section_id,
-                    'teacher_id'    => Auth::guard('teacher')->id(),
+                    'teacher_id'    => $this->teacherId(),
                 ]);
-
-
 
                 toastr()->success(__('msgs.updated', ['name' => __('trans.book')]));
                 return redirect()->back();
@@ -100,10 +97,9 @@ class LibraryRepository implements LibraryRepositoryInterface
         try {
             Image::where([
                 'file_name'         => $library->file_name,
-                'imageable_type'    => 'App\Models\Teacher',
-                'imageable_id'      => Auth::guard('teacher')->user()->id
+                'imageable_id'      => $this->teacherId()
             ])->delete();
-            Storage::disk('upload_attachments')->delete('attachments/library/' . Auth::guard('teacher')->user()->getTranslation('name', 'en') . '/' . $library->file_name);
+            Storage::disk('upload_attachments')->delete('attachments/library/' . $this->teacherName() . '/' . $library->file_name);
 
             $library->delete();
             toastr()->info(__('msgs.deleted', ['name' => __('trans.book')]));
@@ -111,5 +107,14 @@ class LibraryRepository implements LibraryRepositoryInterface
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['error' => $th->getMessage()]);
         }
+    }
+
+    private function teacherName()
+    {
+        return Auth::guard('teacher')->user()->getTranslation('name', 'en');
+    }
+    private function teacherId()
+    {
+        return Auth::guard('teacher')->id();
     }
 }

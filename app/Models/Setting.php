@@ -10,4 +10,9 @@ class Setting extends Model
     use HasFactory;
 
     protected $fillable = ['key', 'value'];
+
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
 }
