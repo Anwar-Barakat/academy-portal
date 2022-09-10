@@ -16,7 +16,7 @@ class ChildrenController extends Controller
      */
     public function index()
     {
-        $children   = Student::where('parent_id', Auth::guard('parent')->user()->id)->get();
+        $children   = Student::where('parent_id', Auth::guard('parent')->id())->get();
         return view('pages.parents.children.index', ['children' => $children]);
     }
 

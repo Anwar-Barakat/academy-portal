@@ -18,7 +18,7 @@ class AttendanceController extends Controller
      */
     public function index()
     {
-        $sectionIds     = Teacher::findOrFail(Auth::guard('teacher')->id())->sections()->pluck('section_id');
+        $sectionIds     = Teacher::findOrFail($this->teacherId())->sections()->pluck('section_id');
 
         $students       = Student::whereIn('section_id', $sectionIds)->get();
 
@@ -53,7 +53,7 @@ class AttendanceController extends Controller
                         'grade_id'      => $request->grade_id,
                         'classroom_id'  => $request->classroom_id,
                         'section_id'    => $request->section_id,
-                        'teacher_id'    => Auth::guard('teacher')->user()->id,
+                        'teacher_id'    => $this->teacherId(),
                     ]);
                 }
 
@@ -106,5 +106,10 @@ class AttendanceController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function teacherId()
+    {
+        return Auth::guard('teacher')->id();
     }
 }

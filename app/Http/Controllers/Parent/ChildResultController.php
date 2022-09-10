@@ -18,7 +18,7 @@ class ChildResultController extends Controller
      */
     public function __invoke($id)
     {
-        $student        = Student::where('id', $id)->where('parent_id', Auth::guard('parent')->user()->id)->first();
+        $student        = Student::where('id', $id)->where('parent_id', Auth::guard('parent')->id())->first();
 
         if ($student) {
 

@@ -18,7 +18,7 @@ class AttendanceReportController extends Controller
      */
     public function index()
     {
-        $sectionIds     = Teacher::findOrFail(Auth::guard('teacher')->id())->sections()->pluck('section_id');
+        $sectionIds     = Teacher::findOrFail($this->teacherId())->sections()->pluck('section_id');
 
         $students       = Student::whereIn('section_id', $sectionIds)->get();
 
@@ -49,7 +49,7 @@ class AttendanceReportController extends Controller
         ]);
         $data = $request->only(['student_id', 'from', 'to']);
 
-        $sectionIds     = Teacher::findOrFail(Auth::guard('teacher')->id())->sections()->pluck('section_id');
+        $sectionIds     = Teacher::findOrFail($this->teacherId())->sections()->pluck('section_id');
 
         $students       = Student::whereIn('section_id', $sectionIds)->get();
 
@@ -104,5 +104,11 @@ class AttendanceReportController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    private function teacherId()
+    {
+        return Auth::guard('teacher')->id();
     }
 }

@@ -17,7 +17,7 @@ class FeeController extends Controller
      */
     public function __invoke()
     {
-        $studentsId   = Student::where('parent_id', Auth::guard('parent')->id())->pluck('id');
+        $studentsId         = Student::where('parent_id', Auth::guard('parent')->id())->pluck('id');
 
         $feesInvoices       = FeeInvoice::whereIn('student_id', $studentsId)->get();
 

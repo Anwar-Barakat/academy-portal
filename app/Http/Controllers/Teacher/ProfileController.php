@@ -75,7 +75,7 @@ class ProfileController extends Controller
         if ($request->isMethod('put')) {
             $data = $request->only(['name_ar', 'name_en']);
 
-            $teacher = Teacher::findOrFail(Auth::guard('teacher')->user()->id);
+            $teacher = Teacher::findOrFail(Auth::guard('teacher')->id());
             if (isset($request->password) && !empty($request->password)) {
 
                 $this->validate($request, [

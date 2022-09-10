@@ -23,7 +23,7 @@ class TeacherQuizController extends Controller
      */
     public function index()
     {
-        $quizzes    = Quiz::where('teacher_id', Auth::guard('teacher')->user()->id)->orderBy('created_at', 'desc')->get();
+        $quizzes    = Quiz::where('teacher_id', $this->teacherId())->orderBy('created_at', 'desc')->get();
         return view('pages.teachers.quizzes.index', ['quizzes' => $quizzes]);
     }
 
@@ -34,11 +34,11 @@ class TeacherQuizController extends Controller
      */
     public function create()
     {
-        $sectionIds         = Teacher::findOrFail(Auth::guard('teacher')->id())->sections()->pluck('section_id');
+        $sectionIds         = Teacher::findOrFail($this->teacherId())->sections()->pluck('section_id');
 
         $sections           = Section::with(['grade', 'classroom'])->whereIn('id', $sectionIds)->get();
 
-        $subjects           = Subject::where('teacher_id', Auth::guard('teacher')->user()->id)->get();
+        $subjects           = Subject::where('teacher_id', $this->teacherId())->get();
 
         return view('pages.teachers.quizzes.create', ['sections' => $sections, 'subjects' => $subjects]);
     }
@@ -56,7 +56,7 @@ class TeacherQuizController extends Controller
                 $data               = $request->only(['grade_id', 'classroom_id', 'section_id', 'subject_id']);
                 $data['name']['ar'] = $request->name_ar;
                 $data['name']['en'] = $request->name_en;
-                $data['teacher_id'] = Auth::guard('teacher')->user()->id;
+                $data['teacher_id'] = $this->teacherId();
 
                 Quiz::create($data);
 
@@ -88,11 +88,11 @@ class TeacherQuizController extends Controller
      */
     public function edit(Quiz $quiz)
     {
-        $sectionIds         = Teacher::findOrFail(Auth::guard('teacher')->id())->sections()->pluck('section_id');
+        $sectionIds         = Teacher::findOrFail($this->teacherId())->sections()->pluck('section_id');
 
         $sections           = Section::with(['grade', 'classroom'])->whereIn('id', $sectionIds)->get();
 
-        $subjects           = Subject::where('teacher_id', Auth::guard('teacher')->user()->id)->get();
+        $subjects           = Subject::where('teacher_id', $this->teacherId())->get();
 
         return view('pages.teachers.quizzes.edit', ['sections' => $sections, 'subjects' => $subjects, 'quiz' => $quiz]);
     }
@@ -112,7 +112,7 @@ class TeacherQuizController extends Controller
                 $data['name']['ar'] = $request->name_ar;
                 $data['name']['en'] = $request->name_en;
                 $data['name']['en'] = $request->name_en;
-                $data['teacher_id'] = Auth::guard('teacher')->user()->id;
+                $data['teacher_id'] = $this->teacherId();
 
 
                 $quiz->update($data);
@@ -140,5 +140,10 @@ class TeacherQuizController extends Controller
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['error' => $th->getMessage()]);
         }
+    }
+
+    private function teacherId()
+    {
+        return Auth::guard('teacher')->id();
     }
 }
