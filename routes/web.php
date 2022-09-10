@@ -35,6 +35,7 @@ use App\Http\Controllers\Section\SectionController;
 use App\Http\Controllers\Setting\SettingController;
 use App\Http\Controllers\Student\DeleteAttachmentController;
 use App\Http\Controllers\Student\DownloadAttachmentController;
+use App\Http\Controllers\Student\LibraryController as StudentLibraryController;
 use App\Http\Controllers\Student\ProfileController as StudentProfileController;
 use App\Http\Controllers\Student\Quiz\QuizController as StudentQuizController;
 use App\Http\Controllers\Student\StudentController;
@@ -124,6 +125,8 @@ Route::group(
             Route::get('dashboard',                                     StudentDashboardController::class)->name('dashboard');
             Route::resource('quizzes',                                  StudentQuizController::class);
             Route::resource('profile',                                  StudentProfileController::class)->only(['index', 'update']);
+            Route::get('books-index',                                   [StudentLibraryController::class, 'index'])->name('books.index');
+            Route::get('download-book-attachment/{file_name}/{tId}',    [StudentLibraryController::class, 'download'])->name('download_book_attachment');
         });
 
 

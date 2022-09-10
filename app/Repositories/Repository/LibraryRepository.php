@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Storage;
 class LibraryRepository implements LibraryRepositoryInterface
 {
     use AttachFileTrait;
+
     public function index()
     {
         $library    = Library::latest()->get();
