@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('fee_invoices', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
             $table->foreignId('student_id')->constrained('students')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('grade_id')->constrained('grades')->cascadeOnUpdate();
             $table->foreignId('classroom_id')->constrained('classrooms')->cascadeOnUpdate();

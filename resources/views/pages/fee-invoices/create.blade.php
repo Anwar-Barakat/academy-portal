@@ -53,6 +53,11 @@
         </div>
     </div>
     <div class="row">
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger">{{ $error }}</div>
+            @endforeach
+        @endif
         <div class="col-md-12 mb-30">
             <div class="card card-statistics h-100">
                 <div class="card-body">
@@ -65,7 +70,7 @@
                                 <div class="col-md-12 col-lg-4 mb-3 d-flex flex-column">
                                     <x-label for="student_id" class="mr-sm-2" :value="__('fee.student_name')" />
                                     <select class="form-control" name="student_id">
-                                        <option value="{{ $student->id }}" selected aria-readonly="">
+                                        <option value="{{ $student->id }}" selected>
                                             {{ $student->name }}</option>
                                     </select>
                                     @error('student_id')
@@ -76,7 +81,7 @@
                                 <div class="col-md-12 col-lg-4 mb-3 d-flex flex-column">
                                     <x-label for="fee_id" class="mr-sm-2" :value="__('fee.fees_type')" />
                                     <select class="fancyselect" name="fee_id" required>
-                                        <option disabled value="" selected>
+                                        <option value="" selected>
                                             {{ __('msgs.select', ['name' => '...']) }}</option>
                                         @foreach ($fees as $fee)
                                             <option value="{{ $fee->id }}">{{ __('fee.' . $fee->type) }}
@@ -91,8 +96,7 @@
                                 <div class="col-md-12 col-lg-4 mb-3">
                                     <x-label for="amount" class="mr-sm-2" :value="__('fee.amount')" />
                                     <div class="box">
-                                        <select aria-readonly="" class="form-control" name="amount"
-                                            id="amount"></select>
+                                        <select class="form-control" name="amount" id="amount"></select>
                                         @error('amount')
                                             <small class="text text-danger font-weight-bold">{{ $message }}</small>
                                         @enderror
