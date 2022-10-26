@@ -1,6 +1,6 @@
 <!-- Dashboard -->
 <li>
-    <a href="{{ route('parent.dashboard') }}" data-target="#quizzes-menu">
+    <a href="{{ route('parent.dashboard') }}" class="mt-2" data-target="#quizzes-menu">
         <div class="pull-left"><i class="fas fa-school"></i><span class="right-nav-text">{{ __('trans.dashboard') }}</span>
         </div>
         <div class="clearfix"></div>

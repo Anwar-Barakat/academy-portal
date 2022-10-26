@@ -1,6 +1,6 @@
     <!-- menu item Dashboard-->
     <li>
-        <a target="_blank" href="{{ route('admin.dashboard') }}" data-target="#dashboard">
+        <a target="_blank" href="{{ route('admin.dashboard') }}" class="mt-2" data-target="#dashboard">
             <div class="pull-left">
                 <i class="fas fa-school"></i>
                 <span class="right-nav-text">{{ __('trans.dashboard') }}</span>

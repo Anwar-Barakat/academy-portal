@@ -78,24 +78,24 @@
                             @endif
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
-
                                 <div class="section-field mb-20">
                                     <label class="mb-10" for="name">{{ __('trans.email') }}</label>
                                     <input id="email" type="email"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                        @if ($type == 'student') value="anwar0@info.com" @else value="{{ old('email') }}" @endif
+                                        required autocomplete="email" autofocus>
                                     <input type="hidden" value="{{ $type }}" name="type">
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-
                                 </div>
 
                                 <div class="section-field mb-20">
                                     <label class="mb-10" for="Password">{{ __('trans.password') }}</label>
                                     <input id="password" type="password"
+                                        @if ($type == 'student') value="12345678" @endif
                                         class="form-control @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="current-password">
 

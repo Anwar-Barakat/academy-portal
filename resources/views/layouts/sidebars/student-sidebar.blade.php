@@ -1,6 +1,6 @@
 <!-- Dashboard -->
 <li>
-    <a href="{{ route('student.dashboard') }}" data-toggle="collapse" data-target="#quizzes-menu">
+    <a href="{{ route('student.dashboard') }}" class="mt-2" data-target="#quizzes-menu">
         <div class="pull-left"><i class="fas fa-school"></i><span class="right-nav-text">{{ __('trans.dashboard') }}</span>
         </div>
         <div class="clearfix"></div>
@@ -20,7 +20,7 @@
 
 <!-- Libarary -->
 <li>
-    <a href="javascript:void(0);" data-toggle="collapse" data-target="#library-menu">
+    <a href="javascript:void(0);" data-target="#library-menu">
         <div class="pull-left"><i class="fas fa-books"></i><span class="right-nav-text">{{ __('trans.library') }}</span>
         </div>
         <div class="pull-right"><i class="ti-plus"></i></div>

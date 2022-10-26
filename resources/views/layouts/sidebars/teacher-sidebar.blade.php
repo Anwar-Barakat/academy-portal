@@ -1,5 +1,5 @@
 <li>
-    <a href="{{ route('teacher.dashboard') }}" data-target="#dashboard">
+    <a href="{{ route('teacher.dashboard') }}" class="mt-2" data-target="#dashboard">
         <div class="pull-left">
             <i class="fas fa-school"></i>
             <span class="right-nav-text">{{ __('trans.dashboard') }}</span>
