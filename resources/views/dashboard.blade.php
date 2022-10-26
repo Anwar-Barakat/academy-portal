@@ -118,7 +118,7 @@
             <div class="col mb-30">
                 <div class="card card-statistics h-100">
                     <div class="card-body" style="height: 400px">
-                        {!! $chart->container() !!}
+                        {!! $studentChart->container() !!}
                     </div>
                 </div>
             </div>
@@ -127,8 +127,8 @@
         <div class="p-0 col-md-6">
             <div class="col mb-30">
                 <div class="card card-statistics h-100">
-                    <div class="card-body">
-                        {{-- {!! $chartjs->render() !!} --}}
+                    <div class="card-body" style="height: 400px">
+                        {!! $studentInvoices->container() !!}
                     </div>
                 </div>
             </div>
@@ -345,6 +345,7 @@
 
 @section('liwewire-js')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
-    {!! $chart->script() !!}
+    {!! $studentChart->script() !!}
+    {!! $studentInvoices->script() !!}
     @livewireScripts
 @endsection

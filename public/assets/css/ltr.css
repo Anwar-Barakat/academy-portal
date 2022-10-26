@@ -27331,14 +27331,14 @@ ul.list-unstyled li {
 
 .admin-header.navbar .navbar-brand-wrapper .navbar-brand {
     color: #5a5f61;
-    font-size: 2rem;
+    font-size: 1.4rem;
     margin-right: 0;
-    margin-left: 20px;
 }
 
 .admin-header.navbar .navbar-brand-wrapper .navbar-brand img {
     max-width: 100%;
     margin: auto;
+    margin-right: 13px;
 }
 
 .admin-header.navbar .navbar-brand-wrapper .brand-logo-mini {

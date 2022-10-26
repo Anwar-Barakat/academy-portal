@@ -6,10 +6,11 @@
 <nav class="admin-header navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <!-- logo -->
     <div class="text-left navbar-brand-wrapper">
-        <a class="navbar-brand brand-logo" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+        <a class="navbar-brand brand-logo d-flex" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
             aria-expanded="false">
             <img src="{{ asset('attachments/logo/logo-icon.png') }}" alt=""
                 style="border-radius: inherit; max-width: 60px">
+            <span>AN Managment <br> School</span>
         </a>
     </div>
     <!-- Top bar left -->
