@@ -20,12 +20,30 @@
     <!-- css -->
     <link href="{{ URL::asset('assets/css/rtl.css') }}" rel="stylesheet">
     <style>
+        .main-shadow {
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+                rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+                rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        }
+
+        .form-inline {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(44%, 1fr));
+            gap: 2rem;
+        }
+
         @media screen and (max-width:768px) {
             .selection {
                 border-radius: 15px;
                 width: 80%;
                 padding-top: 3rem;
                 margin: 1rem auto 4rem;
+            }
+
+            .form-inline {
+                display: grid;
+                grid-template-columns: unset;
+                gap: 1rem;
             }
         }
     </style>
@@ -39,31 +57,31 @@
             <div class="container">
                 <div class="row justify-content-center no-gutters vertical-align selection">
 
-                    <div style="border-radius: 15px;" class="col-lg-8 col-md-8 bg-white mb-2">
-                        <div class="login-fancy p-2 clearfix text-center">
+                    <div class="col-lg-9 col-md-9 bg-white  mb-4 main-shadow">
+                        <div class="p-2 clearfix text-center">
                             <h3 class="p-2 m-0">
                                 {{ __('msgs.select', ['name' => __('trans.login_way')]) }}</h3>
                         </div>
                     </div>
-                    <div style="border-radius: 15px;" class="col-lg-8 col-md-8 bg-white">
-                        <div class="login-fancy p-2 clearfix text-center">
+                    <div class="col-lg-9 col-md-9 ">
+                        <div class="clearfix text-center">
                             <div class="form-inline">
-                                <a class="btn btn-default col-lg-3" title="{{ __('student.student') }}"
+                                <a class="btn btn-default login-fancy main-shadow" title="{{ __('student.student') }}"
                                     href="{{ route('login.show', 'student') }}">
                                     <img alt="user-img" width="150px;"
                                         src="{{ URL::asset('assets/images/vectors/student.png') }}">
                                 </a>
-                                <a class="btn btn-default col-lg-3" title="{{ __('parent.parent') }}"
+                                <a class="btn btn-default login-fancy main-shadow" title="{{ __('parent.parent') }}"
                                     href="{{ route('login.show', 'parent') }}">
                                     <img alt="user-img" width="150px;"
                                         src="{{ URL::asset('assets/images/vectors/parents.png') }}">
                                 </a>
-                                <a class="btn btn-default col-lg-3" title="{{ __('teacher.teacher') }}"
+                                <a class="btn btn-default login-fancy main-shadow" title="{{ __('teacher.teacher') }}"
                                     href="{{ route('login.show', 'teacher') }}">
                                     <img alt="user-img" width="150px;"
                                         src="{{ URL::asset('assets/images/vectors/teacher.png') }}">
                                 </a>
-                                <a class="btn btn-default col-lg-3" title="{{ __('trans.admin') }}"
+                                <a class="btn btn-default login-fancy main-shadow" title="{{ __('trans.admin') }}"
                                     href="{{ route('login.show', 'admin') }}">
                                     <img alt="user-img" width="150px;"
                                         src="{{ URL::asset('assets/images/vectors/admin.png') }}">

@@ -112,6 +112,29 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="p-0 col-md-6">
+            <div class="col mb-30">
+                <div class="card card-statistics h-100">
+                    <div class="card-body">
+                        {{-- {!! $chartjs->render() !!} --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-0 col-md-6">
+            <div class="col mb-30">
+                <div class="card card-statistics h-100">
+                    <div class="card-body">
+                        {{-- {!! $chartjs->render() !!} --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div style="height: 400px;" class="col-xl-12 mb-30">
             <div class="card card-statistics h-100">
@@ -306,6 +329,7 @@
             </div>
         </div>
     </div>
+
     <div class="row">
         <div class="col mb-30">
             <div class="card card-statistics h-100">

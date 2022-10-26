@@ -1,15 +1,15 @@
 @php
-$setting = App\Models\Setting::all();
+    $setting = App\Models\Setting::all();
 @endphp
 
 <!--================================= header start-->
 <nav class="admin-header navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <!-- logo -->
     <div class="text-left navbar-brand-wrapper">
-        <a class="navbar-brand brand-logo" href="index.html">
-            <img src="{{ asset('assets/images/logo-dark.png') }}" alt=""></a>
-        <a class="navbar-brand brand-logo-mini" href="index.html">
-            <img src="{{ asset('assets/images/logo-icon-dark.png') }}" alt="">
+        <a class="navbar-brand brand-logo" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+            aria-expanded="false">
+            <img src="{{ asset('attachments/logo/logo-icon.png') }}" alt=""
+                style="border-radius: inherit; max-width: 60px">
         </a>
     </div>
     <!-- Top bar left -->
@@ -57,6 +57,7 @@ $setting = App\Models\Setting::all();
                 aria-haspopup="true" aria-expanded="false">
                 <img src="{{ asset('attachments/logo/logo-icon.png') }}" alt="" style="border-radius: inherit;">
             </a>
+
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-header">
                     <div class="media">
