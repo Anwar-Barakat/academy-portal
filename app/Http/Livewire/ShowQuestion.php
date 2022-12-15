@@ -34,7 +34,6 @@ class ShowQuestion extends Component
 
 
         if ($this->counter == $this->questionCount - 1) {
-
             Degree::updateOrCreate([
                 'quiz_id'       => $this->quiz_id,
                 'student_id'    => $this->student_id,
@@ -49,7 +48,6 @@ class ShowQuestion extends Component
         if ($this->counter < $this->questionCount - 1) {
             $this->counter++;
         } else {
-            toastr()->success(__('msgs.finished', ['name' => __('trans.quiz')]));
             return redirect()->route('student.quizzes.index');
         }
     }

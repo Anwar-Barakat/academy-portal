@@ -34,6 +34,7 @@
                                     <th class="alert-info">#</th>
                                     <th class="alert-info">{{ __('trans.question') }}</th>
                                     <th class="alert-success">{{ __('trans.quiz_name') }}</th>
+                                    <th class="alert-success">{{ __('trans.degrees') }}</th>
                                     <th class="alert-success">{{ __('trans.subject') }}</th>
                                     <th class="alert-success">{{ __('grade.grade') }}</th>
                                     <th class="alert-success">{{ __('classroom.classroom') }}</th>
@@ -49,6 +50,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $question->title }}</td>
+                                        <td>{{ $question->degrees }}</td>
                                         <td>{{ $question->quiz->name }}</td>
                                         <td>{{ $question->quiz->subject->name }}</td>
                                         <td>{{ $question->quiz->grade->name }}</td>
@@ -57,12 +59,8 @@
                                         <td>{{ $question->quiz->teacher->name }}</td>
                                         <td>{{ $question->created_at }}</td>
                                         <td>
-                                            <a href="{{ route('questions.edit', $question) }}"
-                                                class="btn btn-outline-info btn-sm" role="button" aria-pressed="true"><i
-                                                    class="fas fa-edit"></i></a>
-                                            <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal"
-                                                data-target="#delete{{ $question->id }}"><i
-                                                    class="fas fa-trash-alt"></i></button>
+                                            <a href="{{ route('questions.edit', $question) }}" class="btn btn-outline-info btn-sm" role="button" aria-pressed="true"><i class="fas fa-edit"></i></a>
+                                            <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#delete{{ $question->id }}"><i class="fas fa-trash-alt"></i></button>
                                         </td>
                                         {{-- Deleted The Quiz --}}
                                         <x-delete-modal :id="$question->id" :title="__('msgs.delete', ['name' => __('trans.questions')])" :action="route('questions.destroy', $question)" />

@@ -35,7 +35,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $feeInvoice->student->name }}</td>
-                                        <td>{{ $feeInvoice->fee->title }}</td>
+                                        <td>{{ $feeInvoice->fee->type }}</td>
                                         <td>{{ $feeInvoice->amount }}</td>
                                         <td>{{ $feeInvoice->created_at }}</td>
                                     </tr>
@@ -157,8 +157,7 @@
                             <div class="col-md-12 col-lg-6">
                                 <div class="form-group">
                                     <x-label for="amount" :value="__('fee.amount')" />
-                                    <x-input type="number" id="amount" name="amount" :value="old('amount', $feeProcessing->amount)"
-                                        class="form-control" />
+                                    <x-input type="number" id="amount" name="amount" :value="old('amount', $feeProcessing->amount)" class="form-control" />
                                     @error('amount')
                                         <small class="text text-danger font-weight-bold">{{ $message }}</small>
                                     @enderror
@@ -168,9 +167,7 @@
                                 <div class="form-group">
                                     <x-label for="student_funds" :value="__('fee.student_funds')" />
                                     <select id="student_funds" class="form-control">
-                                        <option
-                                            value="{{ number_format($student->studentAccounts->sum('debit') - $student->studentAccounts->sum('credit')) }}"
-                                            selected aria-readonly="" disabled>
+                                        <option value="{{ number_format($student->studentAccounts->sum('debit') - $student->studentAccounts->sum('credit')) }}" selected aria-readonly="" disabled>
                                             {{ number_format($student->studentAccounts->sum('debit') - $student->studentAccounts->sum('credit')) }}
                                         </option>
                                     </select>

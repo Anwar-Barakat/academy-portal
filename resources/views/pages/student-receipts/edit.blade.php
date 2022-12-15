@@ -35,7 +35,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $feeInvoice->student->name }}</td>
-                                        <td>{{ $feeInvoice->fee->title }}</td>
+                                        <td>{{ $feeInvoice->fee->type }}</td>
                                         <td>{{ $feeInvoice->amount }}</td>
                                         <td>{{ $feeInvoice->created_at }}</td>
                                     </tr>
@@ -110,8 +110,7 @@
                     @endif
                     <h5 class="text text-info mb-4">{{ __('student.student') }} ({{ $studentReceipt->student->name }})
                     </h5>
-                    <form method="post" action="{{ route('student-receipts.update', $studentReceipt) }}"
-                        autocomplete="off">
+                    <form method="post" action="{{ route('student-receipts.update', $studentReceipt) }}" autocomplete="off">
                         @csrf
                         @method('PUT')
                         <x-input type="hidden" name="student_id" :value="$studentReceipt->student->id" />
@@ -119,8 +118,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <x-label for="debit" :value="__('fee.amount')" />
-                                    <x-input type="number" id="debit" name="debit" :value="old('debit', $studentReceipt->debit)"
-                                        class="form-control" />
+                                    <x-input type="number" id="debit" name="debit" :value="old('debit', $studentReceipt->debit)" class="form-control" />
                                     @error('debit')
                                         <small class="text text-danger font-weight-bold">{{ $message }}</small>
                                     @enderror

@@ -18,11 +18,11 @@ class UserSeeder extends Seeder
     public function run()
     {
         $admin = [
-            'name' => 'Anwar Barakat',
-            'email' => 'brkatanwar0@gmail.com',
+            'name'              => 'Anwar Barakat',
+            'email'             => 'brkatanwar0@gmail.com',
             'email_verified_at' => now(),
-            'password' => Hash::make('adminadmin'),
-            'remember_token' => Str::random(10),
+            'password'          => Hash::make('adminadmin'),
+            'remember_token'    => Str::random(10),
         ];
 
         if (is_null(User::where(['email' => 'brkatanwar0@gmail.com'])->first()))

@@ -172,6 +172,12 @@ h5 {
     gap: 1rem;
 }
 
+@media screen and (max-width: 991px) {
+    .mobile-hidden {
+        display: none;
+    }
+}
+
 @media screen and (max-width: 400px) {
     .form-repeater-inputs {
         grid-template-columns: initial;

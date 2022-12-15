@@ -5,12 +5,10 @@
 <!--================================= header start-->
 <nav class="admin-header navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <!-- logo -->
-    <div class="text-left navbar-brand-wrapper">
-        <a class="navbar-brand brand-logo d-flex" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-            aria-expanded="false">
-            <img src="{{ asset('attachments/logo/logo-icon.png') }}" alt=""
-                style="border-radius: inherit; max-width: 60px">
-            <span>AN Managment <br> School</span>
+    <div class="text-left navbar-brand-wrapper d-flex pl-3">
+        <a class="navbar-brand brand-logo d-flex" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <img src="{{ asset('attachments/logo/logo-icon.png') }}" alt="" style="border-radius: inherit; max-width: 60px">
+            <span class="mobile-hidden">AN Academy <br>Managment</span>
         </a>
     </div>
     <!-- Top bar left -->
@@ -24,8 +22,7 @@
             <div class="search">
                 <a class="search-btn not_click" href="javascript:void(0);"></a>
                 <div class="search-box not-click">
-                    <input type="text" class="not-click form-control" placeholder="Search" value=""
-                        name="search">
+                    <input type="text" class="not-click form-control" placeholder="Search" value="" name="search">
                     <button class="search-button" type="submit"> <i class="fa fa-search not-click"></i></button>
                 </div>
             </div>
@@ -37,14 +34,12 @@
     <!-- top bar right -->
     <ul class="nav navbar-nav ml-auto align-items-center">
         <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-language language-toggle" aria-hidden="true"></i>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                    <a rel="alternate" hreflang="{{ $localeCode }}" class="dropdown-item"
-                        href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                    <a rel="alternate" hreflang="{{ $localeCode }}" class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
                         {{ $properties['native'] }}
                     </a>
                 @endforeach
@@ -54,8 +49,7 @@
             <a id="btnFullscreen" href="#" class="nav-link"><i class="ti-fullscreen"></i></a>
         </li>
         <li class="nav-item dropdown mr-30">
-            <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button"
-                aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                 <img src="{{ asset('attachments/logo/logo-icon.png') }}" alt="" style="border-radius: inherit;">
             </a>
 
@@ -84,42 +78,34 @@
                 </div>
                 <div class="dropdown-divider"></div>
                 @if (auth('student')->check())
-                    <a class="dropdown-item" href="{{ route('student.profile.index') }}"><i
-                            class="text-info ti-settings"></i>{{ __('trans.settings') }}</a>
+                    <a class="dropdown-item" href="{{ route('student.profile.index') }}"><i class="text-info ti-settings"></i>{{ __('trans.settings') }}</a>
                     <form method="GET" action="{{ route('all.logout', 'student') }}">
                         @csrf
-                        <a class="dropdown-item" href="#"
-                            onclick="event.preventDefault();this.closest('form').submit();">
+                        <a class="dropdown-item" href="#" onclick="event.preventDefault();this.closest('form').submit();">
                             <i class="fas fa-sign-out"></i> {{ __('trans.logout') }}
                         </a>
                     </form>
                 @elseif (auth('parent')->check())
-                    <a class="dropdown-item" href="{{ route('parent.profile.index') }}"><i
-                            class="text-info ti-settings"></i>{{ __('trans.settings') }}</a>
+                    <a class="dropdown-item" href="{{ route('parent.profile.index') }}"><i class="text-info ti-settings"></i>{{ __('trans.settings') }}</a>
                     <form method="GET" action="{{ route('all.logout', 'parent') }}">
                         @csrf
-                        <a class="dropdown-item" href="#"
-                            onclick="event.preventDefault();this.closest('form').submit();">
+                        <a class="dropdown-item" href="#" onclick="event.preventDefault();this.closest('form').submit();">
                             <i class="fas fa-sign-out"></i> {{ __('trans.logout') }}
                         </a>
                     </form>
                 @elseif (auth('teacher')->check())
-                    <a class="dropdown-item" href="{{ route('student.profile.index') }}"><i
-                            class="text-info ti-settings"></i>{{ __('trans.settings') }}</a>
+                    <a class="dropdown-item" href="{{ route('student.profile.index') }}"><i class="text-info ti-settings"></i>{{ __('trans.settings') }}</a>
                     <form method="GET" action="{{ route('all.logout', 'teacher') }}">
                         @csrf
-                        <a class="dropdown-item" href="#"
-                            onclick="event.preventDefault();this.closest('form').submit();">
+                        <a class="dropdown-item" href="#" onclick="event.preventDefault();this.closest('form').submit();">
                             <i class="fas fa-sign-out"></i> {{ __('trans.logout') }}
                         </a>
                     </form>
                 @else
-                    <a class="dropdown-item" href="{{ route('settings.index') }}"><i
-                            class="text-info ti-settings"></i>{{ __('trans.settings') }}</a>
+                    <a class="dropdown-item" href="{{ route('settings.index') }}"><i class="text-info ti-settings"></i>{{ __('trans.settings') }}</a>
                     <form method="GET" action="{{ route('all.logout', 'web') }}">
                         @csrf
-                        <a class="dropdown-item" href="#"
-                            onclick="event.preventDefault();this.closest('form').submit();">
+                        <a class="dropdown-item" href="#" onclick="event.preventDefault();this.closest('form').submit();">
                             <i class="fas fa-sign-out"></i> {{ __('trans.logout') }}
                         </a>
                     </form>

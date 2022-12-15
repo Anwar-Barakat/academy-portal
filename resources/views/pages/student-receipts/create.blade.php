@@ -35,7 +35,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $feeInvoice->student->name }}</td>
-                                        <td>{{ $feeInvoice->fee->title }}</td>
+                                        <td>{{ $feeInvoice->fee->type }}</td>
                                         <td>{{ $feeInvoice->amount }}</td>
                                         <td>{{ $feeInvoice->created_at }}</td>
                                     </tr>
@@ -116,8 +116,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <x-label for="debit" :value="__('fee.amount')" />
-                                    <x-input type="number" id="debit" name="debit" :value="old('debit')"
-                                        class="form-control" />
+                                    <x-input type="number" id="debit" name="debit" :value="old('debit')" class="form-control" />
                                     @error('debit')
                                         <small class="text text-danger font-weight-bold">{{ $message }}</small>
                                     @enderror

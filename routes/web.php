@@ -139,7 +139,7 @@ Route::group(
         //? =====================
         //? Admin Dashboard
         //? =====================
-        Route::middleware(['auth:web,isAdmin'])->prefix('admin/')->group(function () {
+        Route::middleware(['auth:web'])->prefix('admin/')->group(function () {
             Route::get('/dashboard',                                    AdminDashboardController::class)->name('admin.dashboard');
 
             //! ===================== Grades =====================

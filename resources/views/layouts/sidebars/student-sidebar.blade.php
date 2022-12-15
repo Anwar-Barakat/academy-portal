@@ -12,18 +12,17 @@
 <!-- Quizzes -->
 <li>
     <a href="{{ route('student.quizzes.index') }}" data-target="#quizzes-menu">
-        <div class="pull-left"><i class="fas fa-book-open"></i><span
-                class="right-nav-text">{{ __('trans.quizzes') }}</span></div>
+        <div class="pull-left"><i class="fas fa-book-open"></i><span class="right-nav-text">{{ __('trans.quizzes') }}</span></div>
         <div class="clearfix"></div>
     </a>
 </li>
 
 <!-- Libarary -->
 <li>
-    <a href="javascript:void(0);" data-target="#library-menu">
+    <a data-target="#library-menu" href="{{ route('student.books.index') }}">
         <div class="pull-left"><i class="fas fa-books"></i><span class="right-nav-text">{{ __('trans.library') }}</span>
         </div>
-        <div class="pull-right"><i class="ti-plus"></i></div>
+        <div class="pull-right"></div>
         <div class="clearfix"></div>
     </a>
     <ul id="library-menu" class="collapse" data-parent="#sidebarnav">
@@ -38,8 +37,7 @@
 <!-- Profile -->
 <li>
     <a href="{{ route('student.profile.index') }}" data-target="#quizzes-menu">
-        <div class="pull-left"><i class="fas fa-id-card-alt"></i><span
-                class="right-nav-text">{{ __('trans.profile') }}</span></div>
+        <div class="pull-left"><i class="fas fa-id-card-alt"></i><span class="right-nav-text">{{ __('trans.profile') }}</span></div>
         <div class="clearfix"></div>
     </a>
 </li>

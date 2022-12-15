@@ -15,6 +15,7 @@ class Degree extends Model
         'quiz_id',
         'student_id',
         'degree',
+        'date',
     ];
 
     public function createdAt(): Attribute

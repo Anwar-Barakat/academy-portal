@@ -35,7 +35,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $feeInvoice->student->name }}</td>
-                                        <td>{{ $feeInvoice->fee->title }}</td>
+                                        <td>{{ $feeInvoice->fee->type }}</td>
                                         <td>{{ $feeInvoice->amount }}</td>
                                         <td>{{ $feeInvoice->created_at }}</td>
                                     </tr>

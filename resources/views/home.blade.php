@@ -14,8 +14,7 @@
     <link rel="shortcut icon" href="images/favicon.ico" />
 
     <!-- Font -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Poppins:200,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900">
 
     <!-- css -->
     <link href="{{ URL::asset('assets/css/rtl.css') }}" rel="stylesheet">
@@ -52,8 +51,7 @@
 <body>
 
     <div class="wrapper">
-        <section class="height-100vh d-flex align-items-center page-section-ptb login"
-            style="background-image: url('{{ asset('assets/images/sativa.png') }}');">
+        <section class="height-100vh d-flex align-items-center page-section-ptb login" style="background-image: url('{{ asset('assets/images/sativa.png') }}');">
             <div class="container">
                 <div class="row justify-content-center no-gutters vertical-align selection">
 
@@ -66,25 +64,17 @@
                     <div class="col-lg-9 col-md-9 ">
                         <div class="clearfix text-center">
                             <div class="form-inline">
-                                <a class="btn btn-default login-fancy main-shadow" title="{{ __('student.student') }}"
-                                    href="{{ route('login.show', 'student') }}">
-                                    <img alt="user-img" width="150px;"
-                                        src="{{ URL::asset('assets/images/vectors/student.png') }}">
+                                <a class="btn btn-default login-fancy main-shadow" title="{{ __('student.student') }}" href="{{ route('login.show', 'student') }}">
+                                    <img alt="user-img" loading="lazy" width="150px;" src="{{ URL::asset('assets/images/vectors/student.png') }}">
                                 </a>
-                                <a class="btn btn-default login-fancy main-shadow" title="{{ __('parent.parent') }}"
-                                    href="{{ route('login.show', 'parent') }}">
-                                    <img alt="user-img" width="150px;"
-                                        src="{{ URL::asset('assets/images/vectors/parents.png') }}">
+                                <a class="btn btn-default login-fancy main-shadow" title="{{ __('parent.parent') }}" href="{{ route('login.show', 'parent') }}">
+                                    <img alt="user-img" loading="lazy" width="150px;" src="{{ URL::asset('assets/images/vectors/parents.png') }}">
                                 </a>
-                                <a class="btn btn-default login-fancy main-shadow" title="{{ __('teacher.teacher') }}"
-                                    href="{{ route('login.show', 'teacher') }}">
-                                    <img alt="user-img" width="150px;"
-                                        src="{{ URL::asset('assets/images/vectors/teacher.png') }}">
+                                <a class="btn btn-default login-fancy main-shadow" title="{{ __('teacher.teacher') }}" href="{{ route('login.show', 'teacher') }}">
+                                    <img alt="user-img" loading="lazy" width="150px;" src="{{ URL::asset('assets/images/vectors/teacher.png') }}">
                                 </a>
-                                <a class="btn btn-default login-fancy main-shadow" title="{{ __('trans.admin') }}"
-                                    href="{{ route('login.show', 'admin') }}">
-                                    <img alt="user-img" width="150px;"
-                                        src="{{ URL::asset('assets/images/vectors/admin.png') }}">
+                                <a class="btn btn-default login-fancy main-shadow" title="{{ __('trans.admin') }}" href="{{ route('login.show', 'admin') }}">
+                                    <img alt="user-img" loading="lazy" width="150px;" src="{{ URL::asset('assets/images/vectors/admin.png') }}">
                                 </a>
                             </div>
                         </div>

@@ -25,7 +25,6 @@ class LoginController extends Controller
         ]);
 
         if ($request->isMethod('post')) {
-
             if ($data['type'] == 'admin') {
                 if (Auth::guard('web')->attempt(['email' => $data['email'], 'password' => $data['password']])) {
                     toastr()->success(__('trans.welcome_back'));
@@ -64,7 +63,11 @@ class LoginController extends Controller
                     toastr()->error(__('trans.email_or_password'));
                     return redirect()->back();
                 }
+            } else {
+                return redirect()->route('login.show');
             }
+        } else {
+            return redirect()->route('login.show');
         }
     }
 }
